@@ -12,6 +12,7 @@ let EditCatyCellID = "EditCatyCell_ID"
 class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     var mainTabelView : UITableView!//
     var dataArr : [String] = NSArray() as! [String]
+    var isEdit : Bool = false//是否为编辑状态
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,24 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
     }
     
     override func navigationRightBtnClick() {
+        if isEdit {
+            //取消编辑状态
+            isEdit = false
+            self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
+            mainTabelView.setEditing(false, animated: true)
+            //发送编辑后的结果
+        } else {
+            //不是编辑状态 是添加新分类功能
+            XJLog(message: "添加分类")
 
+        }
+    
+    }
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
     }
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y:LNAVIGATION_HEIGHT + ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) - LNAVIGATION_HEIGHT), style: .plain)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) ), style: .plain)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -40,7 +55,6 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-        mainTabelView.setEditing(true, animated: true)
         mainTabelView.register(EditCatyTableViewCell.self, forCellReuseIdentifier: EditCatyCellID)
         self.view.addSubview(mainTabelView)
     }
@@ -52,9 +66,12 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : EditCatyTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: EditCatyCellID, for: indexPath) as! EditCatyTableViewCell
+        cell.isUserInteractionEnabled = true
         if (cell == nil)  {
             cell = EditCatyTableViewCell(style: .default, reuseIdentifier: EditCatyCellID)
         }
+        let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.edit_click))
+        cell.addGestureRecognizer(tap)
         cell.setData(name: dataArr[indexPath.row] )
         return cell
     }
@@ -69,25 +86,23 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         return true
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        XJLog(message: "样式")
         return UITableViewCellEditingStyle.none
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
     }
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        return
-//    }
-    
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         XJLog(message: "起始位置\(sourceIndexPath)")
         XJLog(message: "重点位置\(destinationIndexPath)")
     }
-    
-    override func navigationLeftBtnClick() {
-        self.navigationController?.popViewController(animated: true)
+    //MARK: 编辑
+    func edit_click() {
+         isEdit = true
+         self.navigationBar_rightBtn_title(title: "确定")
+         mainTabelView.setEditing(true, animated: true)
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
