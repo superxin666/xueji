@@ -37,7 +37,7 @@ class EditCatyTableViewCell: UITableViewCell {
     }
     
     func creatUI() {
-        nameLabel.frame  = CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(85), height: ip6(25));
+        nameLabel.frame  = CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(56), height: ip6(25));
         nameLabel.font = xj_fzFontMedium(ip6(18))
         nameLabel.text = "分类"
         nameLabel.textColor = black_53

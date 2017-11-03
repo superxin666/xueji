@@ -39,7 +39,9 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         } else {
             //不是编辑状态 是添加新分类功能
             XJLog(message: "添加分类")
-
+            let vc = AddCategoryViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     
     }
