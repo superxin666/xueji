@@ -32,7 +32,7 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
 
     }
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25)), style: .plain)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y:LNAVIGATION_HEIGHT + ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) - LNAVIGATION_HEIGHT), style: .plain)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
