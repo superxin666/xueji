@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-import Charts
+
 //MARK:尺寸
 let KSCREEN_WIDTH = UIScreen.main.bounds.size.width
 let KSCREEN_HEIGHT = UIScreen.main.bounds.size.height
@@ -27,10 +27,16 @@ var xj_fzFontMedium = { (num : CGFloat) ->  UIFont in
 let black_53 = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
 let black_8c8484 = UIColor.xj_colorFromRGB(rgbValue: 0x8c8484)
 let black_97 = UIColor.xj_colorFromRGB(rgbValue: 0x979797)
-let blue_tab_selected = UIColor.xj_colorFromRGB(rgbValue: 0x2c73b2)
 let black_e3e0e0 = UIColor.xj_colorFromRGB(rgbValue: 0xe3e0e0)
+let black_e3e3e3 = UIColor.xj_colorFromRGB(rgbValue: 0xe3e3e3)
+let black_ebebee = UIColor.xj_colorFromRGB(rgbValue: 0xebebee)
 let black_22 = UIColor.xj_colorFromRGB(rgbValue: 0x222222)
+let black_fcf9f9 = UIColor.xj_colorFromRGB(rgbValue: 0xfcf9f9)
+
 let bluek_0068be = UIColor.xj_colorFromRGB(rgbValue: 0x0068be)
+let blue_tab_selected = UIColor.xj_colorFromRGB(rgbValue: 0x2c73b2)
+
+let orange_F46F56 = UIColor.xj_colorFromRGB(rgbValue: 0xF46F56)
 //自定义调试信息打印
 func XJLog<T>(message : T, file : String = #file, lineNumber : Int = #line) {
     //#if DEBUG

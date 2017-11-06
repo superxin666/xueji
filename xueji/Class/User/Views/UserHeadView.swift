@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2017/11/6.
 //  Copyright © 2017年 lvxin. All rights reserved.
-//  tab 我的界面头部视图
+//  我的--头部视图
 
 import UIKit
 let headViewHeight = ip6(189)
