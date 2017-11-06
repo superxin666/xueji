@@ -32,7 +32,7 @@ class StudyBookCellTableViewCell: UITableViewCell {
             let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
             let imageView = UIImageView()
             imageView.frame = CGRect(x: X, y: Y, width: imageW, height: imageH)
-            imageView.kf.setImage(with:  URL(string: ""), placeholder: #imageLiteral(resourceName: "book"), options: [.transition(.fade((1)))], progressBlock: nil, completionHandler: nil)
+            imageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
             self.addSubview(imageView)
         }
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Charts
 //MARK:尺寸
 let KSCREEN_WIDTH = UIScreen.main.bounds.size.width
 let KSCREEN_HEIGHT = UIScreen.main.bounds.size.height
