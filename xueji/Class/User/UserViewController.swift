@@ -8,7 +8,7 @@
 
 import UIKit
 let study_value_sectionHeight = ip6(148)//学习力
-let study_aim_sectionHeight = ip6(148)//学习目标
+let study_aim_sectionHeight = ip6(126)//学习目标
 let study_time_sectionHeight = ip6(148)//学习时间
 let study_amount_sectionHeight = ip6(148)//学习量
 let study_distribute_sectionHeight = ip6(148)//学习分布
@@ -49,7 +49,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         self.view.addSubview(headView)
     }
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headView.frame.maxY + ip6(10) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headView.frame.maxY - ip6(10)), style: .plain)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headView.frame.maxY + ip6(10) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headView.frame.maxY - ip6(10)), style: .grouped)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -73,7 +73,10 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let  cell = StudyTableViewCell(style: .default, reuseIdentifier: "")
+            let  cell = StudyValueTableViewCell(style: .default, reuseIdentifier: "")
+            return cell
+        } else if indexPath.section == 1{
+            let  cell = StudyAimTableViewCell(style: .default, reuseIdentifier: "")
             return cell
         } else {
             var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
@@ -104,15 +107,15 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return ip6(148)
+            return study_value_sectionHeight
         } else if indexPath.section == 1 {
-            return ip6(216)
+            return study_aim_sectionHeight
         } else if indexPath.section == 2 {
-            return ip6(216)
+            return study_time_sectionHeight
         } else if indexPath.section == 3 {
-            return ip6(216)
+            return study_amount_sectionHeight
         } else if indexPath.section == 4{
-            return ip6(216)
+            return study_distribute_sectionHeight
         } else {
             return 0
         }

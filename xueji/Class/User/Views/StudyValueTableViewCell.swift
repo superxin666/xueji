@@ -8,7 +8,7 @@
 
 import UIKit
 import Charts
-class StudyTableViewCell: UITableViewCell {
+class StudyValueTableViewCell: UITableViewCell {
     var scoreView : UIView!
     var scoreLabel : UILabel!
     var lineChart : LineChartView!
@@ -16,6 +16,7 @@ class StudyTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.creatUI()
     }
     
@@ -145,7 +146,7 @@ class StudyTableViewCell: UITableViewCell {
         //线条上的文字
 //        lineChartDataSet.valueColors = [kDefault_0xff872e_clolr]
         //显示
-                lineChartDataSet.drawValuesEnabled = false
+        lineChartDataSet.drawValuesEnabled = false
         //添加显示动画
         lineChart.animate(xAxisDuration: 1)
     }
