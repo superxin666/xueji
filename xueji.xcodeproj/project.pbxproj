@@ -135,8 +135,8 @@
 			children = (
 				21145B7B1FAFFDD600063A98 /* UserHeadView.swift */,
 				21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */,
-				215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */,
 				215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */,
+				215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
