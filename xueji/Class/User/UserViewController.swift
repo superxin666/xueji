@@ -11,7 +11,13 @@ let study_value_sectionHeight = ip6(148)//学习力
 let study_aim_sectionHeight = ip6(126)//学习目标
 let study_time_sectionHeight = ip6(236)//学习时间
 let study_amount_sectionHeight = ip6(250)//学习量
-let study_distribute_sectionHeight = ip6(148)//学习分布
+let study_distribute_sectionHeight = ip6(318)//学习分布
+
+let study_value_cell_ID = "study_value_cell_id"
+let study_aim_cell_ID = "study_aim_cell_id"
+let study_time_cell_ID = "study_time_cell_id"
+let study_amount_cell_ID = "study_amount_cell_id"
+let study_distribute_cell_ID = "study_distreibute_cell_id"
 
 class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
@@ -61,8 +67,13 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
         //        mainTabelView.mj_footer = footer
         //        mainTabelView.mj_header = header
-        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
-        //        mainTabelView.register(TeachTableViewCell.self, forCellReuseIdentifier: TEACHCELLID)
+        mainTabelView.register(StudyValueTableViewCell.self, forCellReuseIdentifier: study_value_cell_ID)
+        mainTabelView.register(StudyAimTableViewCell.self, forCellReuseIdentifier: study_aim_cell_ID)
+        mainTabelView.register(StudyTimeTableViewCell.self, forCellReuseIdentifier: study_time_cell_ID)
+        mainTabelView.register(StudyAmountTableViewCell.self, forCellReuseIdentifier: study_amount_cell_ID)
+        mainTabelView.register(StudyDistributeTableViewCell.self, forCellReuseIdentifier: study_distribute_cell_ID)
+  
+
         self.view.addSubview(mainTabelView)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,24 +84,39 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let  cell = StudyValueTableViewCell(style: .default, reuseIdentifier: "")
+            var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
+            if (cell == nil)  {
+               cell = StudyValueTableViewCell(style: .default, reuseIdentifier: study_value_cell_ID)
+            }
             return cell
+            
         } else if indexPath.section == 1{
-            let  cell = StudyAimTableViewCell(style: .default, reuseIdentifier: "")
+            var cell : StudyAimTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_aim_cell_ID, for: indexPath) as! StudyAimTableViewCell
+            if (cell == nil)  {
+                cell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
+            }
             return cell
         } else if indexPath.section == 2{
-            let  cell = StudyTimeTableViewCell(style: .default, reuseIdentifier: "")
+            var cell : StudyTimeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
+            if (cell == nil)  {
+                cell = StudyTimeTableViewCell(style: .default, reuseIdentifier: study_time_cell_ID)
+            }
             return cell
             
         } else if indexPath.section == 3{
-            let  cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: "")
-            return cell
-        } else {
-            var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
+            var cell : StudyAmountTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
             if (cell == nil)  {
-                cell = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
+                cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
             }
-            cell.setUpUI()
+            return cell
+//
+//            let  cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
+//            return cell
+        } else {
+            var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
+            if (cell == nil)  {
+                cell = StudyDistributeTableViewCell(style: .default, reuseIdentifier: study_distribute_cell_ID)
+            }
             return cell
         }
 
