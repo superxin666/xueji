@@ -34,6 +34,7 @@
 		21DCA3A91FA724F60094DCFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DCA3A71FA724F60094DCFE /* LaunchScreen.storyboard */; };
 		21DCA3B41FA724F60094DCFE /* xuejiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3B31FA724F60094DCFE /* xuejiTests.swift */; };
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
+		21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */; };
 		4798374154E4CA8DCC2CFD55 /* Pods_xuejiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */; };
 		6022D1E7832C34F150C69369 /* Pods_xuejiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1815B015A5B2C4E70823CA /* Pods_xuejiTests.framework */; };
 		7377D8F73D84BC02523D0E77 /* Pods_xueji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0F7421EED81570BE0C32B7 /* Pods_xueji.framework */; };
@@ -94,6 +95,7 @@
 		21DCA3BA1FA724F60094DCFE /* xuejiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xuejiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xuejiUITests.swift; sourceTree = "<group>"; };
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
 		30E52D3BD459C7C0D47320C4 /* Pods-xuejiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3578FAA0FBCA4889AAA1A633 /* Pods-xueji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xueji.release.xcconfig"; path = "Pods/Target Support Files/Pods-xueji/Pods-xueji.release.xcconfig"; sourceTree = "<group>"; };
 		5FC2A00CA99500FC6D92E836 /* Pods-xuejiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiTests/Pods-xuejiTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */,
 				215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */,
 				215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */,
+				21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
 				214429CD1FA7264900004C38 /* Color+fun.swift in Sources */,
 				215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */,
+				21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 let study_value_sectionHeight = ip6(148)//学习力
 let study_aim_sectionHeight = ip6(126)//学习目标
 let study_time_sectionHeight = ip6(236)//学习时间
-let study_amount_sectionHeight = ip6(148)//学习量
+let study_amount_sectionHeight = ip6(250)//学习量
 let study_distribute_sectionHeight = ip6(148)//学习分布
 
 class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
@@ -82,6 +82,9 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             let  cell = StudyTimeTableViewCell(style: .default, reuseIdentifier: "")
             return cell
             
+        } else if indexPath.section == 3{
+            let  cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: "")
+            return cell
         } else {
             var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
             if (cell == nil)  {
