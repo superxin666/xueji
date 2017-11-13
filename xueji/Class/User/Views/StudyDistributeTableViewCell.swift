@@ -65,13 +65,17 @@ class StudyDistributeTableViewCell: UITableViewCell {
             pieChartView.legend.formSize = 12;//图示大小
            
             if i == 0 {
+                topBackView = backView
                 timePieChartView = pieChartView
             } else {
+                bottomView = backView
                 amountPieChartView = pieChartView
             }
         }
         
         self.setPieData()
+        self.setLineData_top()
+        self.setLineData_bottom()
     }
     
     func setPieData() {
@@ -118,6 +122,46 @@ class StudyDistributeTableViewCell: UITableViewCell {
         amountPieChartView.data = data
     }
     
+    func setLineData_top() {
+        //画线赋值
+        
+        for i in 0..<5 {
+            let subBackView = UIView(frame: CGRect(x: self.timePieChartView.frame.maxX + ip6(15), y:self.timePieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
+            self.topBackView.addSubview(subBackView)
     
+            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)))
+            titleLabel.text = "母猪的产后护理"
+            titleLabel.textAlignment = .left
+            titleLabel.font = xj_fzFontMedium(ip6(8))
+            titleLabel.textColor = black_53
+            subBackView.addSubview(titleLabel)
+            
+            let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
+            lineView.backgroundColor = orange_F46F56
+            subBackView.addSubview(lineView)
+            
+        }
+        
+    }
+    func setLineData_bottom() {
+        //画线赋值
+        for i in 0..<5 {
+            let subBackView = UIView(frame: CGRect(x: self.amountPieChartView.frame.maxX + ip6(15), y:self.amountPieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
+            self.bottomView.addSubview(subBackView)
+            
+            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)))
+            titleLabel.text = "母猪的产后护理"
+            titleLabel.textAlignment = .left
+            titleLabel.font = xj_fzFontMedium(ip6(8))
+            titleLabel.textColor = black_53
+            subBackView.addSubview(titleLabel)
+            
+            let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
+            lineView.backgroundColor = orange_F46F56
+            subBackView.addSubview(lineView)
+            
+        }
+        
+    }
     
 }
