@@ -14,7 +14,6 @@
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B31FA7260400004C38 /* BaseViewController.swift */; };
 		214429BF1FA7260400004C38 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B51FA7260400004C38 /* LogViewController.swift */; };
-		214429C01FA7260400004C38 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B71FA7260400004C38 /* ReviewViewController.swift */; };
 		214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */; };
 		214429C21FA7260400004C38 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BB1FA7260400004C38 /* StudyViewController.swift */; };
 		214429C31FA7260400004C38 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BD1FA7260400004C38 /* UserViewController.swift */; };
@@ -26,6 +25,8 @@
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */; };
 		215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */; };
+		21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */; };
+		21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */; };
 		21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C989331FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift */; };
 		21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA39E1FA724F60094DCFE /* AppDelegate.swift */; };
 		21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3A01FA724F60094DCFE /* ViewController.swift */; };
@@ -69,7 +70,6 @@
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		214429B31FA7260400004C38 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		214429B51FA7260400004C38 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
-		214429B71FA7260400004C38 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		214429BB1FA7260400004C38 /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		214429BD1FA7260400004C38 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,8 @@
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
+		21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		21C989331FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCatyTableViewCell.swift; sourceTree = "<group>"; };
 		21DCA39B1FA724F60094DCFE /* xueji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DCA39E1FA724F60094DCFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,7 +187,8 @@
 		214429B61FA7260400004C38 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				214429B71FA7260400004C38 /* ReviewViewController.swift */,
+				21C436CB1FB992130031F2C3 /* Views */,
+				21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -194,9 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				214429B91FA7260400004C38 /* Cells */,
-				214429BB1FA7260400004C38 /* StudyViewController.swift */,
 				21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */,
 				21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */,
+				214429BB1FA7260400004C38 /* StudyViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 				21145B7D1FB001E500063A98 /* ImageView+loading.swift */,
 			);
 			path = SupportFile;
+			sourceTree = "<group>";
+		};
+		21C436CB1FB992130031F2C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		21DCA3921FA724F60094DCFE = {
@@ -608,14 +619,15 @@
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				21145B7E1FB001E500063A98 /* ImageView+loading.swift in Sources */,
+				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
 				214429CF1FA7264900004C38 /* String+fun.swift in Sources */,
-				214429C01FA7260400004C38 /* ReviewViewController.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,
 				214429D01FA7264900004C38 /* View+Clipping.swift in Sources */,
 				214429CC1FA7264900004C38 /* APIS.swift in Sources */,
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
 				214429CD1FA7264900004C38 /* Color+fun.swift in Sources */,
+				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */,
 				21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */,
 			);
