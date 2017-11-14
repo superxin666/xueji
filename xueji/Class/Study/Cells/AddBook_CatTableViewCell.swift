@@ -43,8 +43,8 @@ class AddBook_CatTableViewCell: UITableViewCell {
         let arroImageView = UIImageView(frame: CGRect(x: viewW - ip6(7), y: ip6(24), width: ip6(7), height: ip6(12)))
         arroImageView.image = #imageLiteral(resourceName: "study_shape_>")
         backView.addSubview(arroImageView)
-        
-        catLabel = UILabel(frame: CGRect(x: titleLabel.frame.maxX, y: ip6(16), width: viewW - titleLabel.frame.maxX - ip6(7), height: ip6(25)))
+//
+        catLabel = UILabel(frame: CGRect(x: titleLabel.frame.maxX, y: ip6(16), width: viewW - titleLabel.frame.maxX - ip6(10), height: ip6(25)))
         catLabel.font = xj_fzFontMedium(ip6(18))
         catLabel.textColor = black_53
         catLabel.textAlignment = .right
