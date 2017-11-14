@@ -85,6 +85,9 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         }
         let selfAction = UIAlertAction(title: "手动添加", style: .default) { (action) in
             //手动添加
+            let vc : AddBookViewController = AddBookViewController()
+            vc.hidesBottomBarWhenPushed = true
+            weakSelf?.navigationController?.pushViewController(vc, animated: true)
             
         }
         weakSelf?.alertController.addAction(cancleAction)
@@ -195,7 +198,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     // MARK: - TableViewdelegate
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
