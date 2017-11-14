@@ -88,7 +88,9 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.row == 4 {
+            XJLog(message: "选择分类")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -7,6 +7,7 @@
 //  添加资料 添加分类cell
 
 import UIKit
+typealias AddBook_CatTableViewCellBlock = () -> ()
 
 class AddBook_CatTableViewCell: UITableViewCell {
     var backView : UIView!

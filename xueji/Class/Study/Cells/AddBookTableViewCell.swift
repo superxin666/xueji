@@ -33,6 +33,12 @@ class AddBookTableViewCell: UITableViewCell {
         titleLabel.textAlignment = .left
         self.contentView.addSubview(titleLabel)
         
+        textTextField = UITextField(frame: CGRect(x: titleLabel.frame.maxX + ip6(30), y: ip6(17), width: KSCREEN_WIDTH - ip6(36) - titleLabel.frame.maxX  - ip6 (30), height: ip6(25)))
+        textTextField.placeholder = "必填"
+        textTextField.font = xj_fzFontMedium(ip6(18))
+        textTextField.textColor = black_53
+        self.contentView.addSubview(textTextField)
+        
         let lineView : UIView = UIView(frame: CGRect(x: ip6(39), y: addBookCellHeight - 1, width: KSCREEN_WIDTH - ip6(78), height: 1))
         lineView.backgroundColor = black_e3e0e0
         self.contentView.addSubview(lineView)
