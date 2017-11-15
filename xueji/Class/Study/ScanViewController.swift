@@ -9,9 +9,14 @@
 import UIKit
 import AVFoundation
 
-class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate {
+class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate {
     var  scanSession : AVCaptureSession!
     var scanPane : UIView!
+    var alertView : UIAlertView!
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +29,26 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         self.creatScan()
     }
 
+    func creatUI() {
+        
+    }
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        XJLog(message: "移除")
+        self.dismiss(animated: true, completion: {
+            
+        })
+    }
+    
     func creatScan() {
         //设置捕捉设备
+       
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo.description) == .restricted || AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo.description) == .denied {
+            XJLog(message: "没有权限")
+            alertView = UIAlertView(title: nil, message: "设置--通用--学记--打开相机", delegate: self, cancelButtonTitle: "确定")
+            alertView.delegate = self
+            alertView.show()
+            return
+        }
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
             //设置设备输入输出
