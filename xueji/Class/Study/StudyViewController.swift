@@ -81,7 +81,11 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         }
         let scanAction = UIAlertAction(title: "扫码添加", style: .default) { (action) in
             //扫码添加
-            
+            let vc : ScanViewController = ScanViewController()
+            self.present(vc, animated: true, completion: {
+                
+            })
+  
         }
         let selfAction = UIAlertAction(title: "手动添加", style: .default) { (action) in
             //手动添加
