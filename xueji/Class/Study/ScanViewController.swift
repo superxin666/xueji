@@ -11,10 +11,16 @@ import AVFoundation
 
 class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate {
     var  scanSession : AVCaptureSession!
+    var scanPane : UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        scanPane = UIView(frame: CGRect(x: ip6(30), y: ip6(200), width: KSCREEN_WIDTH - ip6(120), height: ip6(300)))
+        scanPane.backgroundColor = .red
+        scanPane.alpha = 0.3
+        self.view.addSubview(scanPane)
         self.creatScan()
     }
 
@@ -49,11 +55,13 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
                 AVMetadataObjectTypeCode39Mod43Code,
                 AVMetadataObjectTypeEAN13Code,
                 AVMetadataObjectTypeEAN8Code,
-                AVMetadataObjectTypeCode93Code]
+                AVMetadataObjectTypeCode93Code,
+            ]
             //预览图层
             let scanPreviewLayer = AVCaptureVideoPreviewLayer(session:scanSession)
             scanPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             scanPreviewLayer?.frame = view.layer.bounds
+            
             view.layer.insertSublayer(scanPreviewLayer!, at: 0)
 
             //自动对焦
@@ -62,10 +70,16 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
                 input.device.focusMode = .autoFocus
                 input.device.unlockForConfiguration()
             }
+//            if (device?.isFocusModeSupported(AVCaptureExposureModeContinuousAutoExposure))!{
+//                do { try input.device.lockForConfiguration() } catch{ }
+//                input.device.focusMode = .autoFocus
+//                input.device.unlockForConfiguration()
+//            }
             //设置扫描区域
-//            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
-////                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: self.scanPane.frame))!
-//            })
+
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
+                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: (self?.scanPane.frame)!))!
+            })
     
             if !scanSession.isRunning
             {
