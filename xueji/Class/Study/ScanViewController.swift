@@ -17,9 +17,15 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     var bottomBackView :UIView!//底部背景栏
     var cancleBtn : UIButton!//取消
     var lightBtn : UIButton!//灯光
+    var addBookBtn : UIButton!//手动添加
     
+
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLoad() {
@@ -56,7 +62,16 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         let bottomView : UIView  = UIView(frame: CGRect(x: leftView.frame.maxX, y: scanPane.frame.maxY, width: KSCREEN_WIDTH - ip6(70), height: KSCREEN_HEIGHT - ip6(58) - scanPane.frame.maxY))
         bottomView.backgroundColor = .black
         bottomView.alpha = 0.5
+        bottomView.isUserInteractionEnabled = true
         self.view.addSubview(bottomView)
+        
+        addBookBtn = UIButton(frame: CGRect(x: (bottomView.frame.width - ip6(80))/2, y: ip6(18), width: ip6(80), height: ip6(22)))
+        addBookBtn.titleLabel?.font = xj_fzFontMedium(ip6(18))
+        addBookBtn.titleLabel?.textAlignment = .center
+        addBookBtn.setTitleColor(.white, for: .normal)
+        addBookBtn.setTitle("手动添加", for: .normal)
+        addBookBtn.addTarget(self, action: #selector(self.addBook_click), for: .touchUpInside)
+        bottomView.addSubview(addBookBtn)
         
         bottomBackView  = UIView(frame: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(58), width: KSCREEN_WIDTH, height: ip6(58)))
         bottomBackView.backgroundColor = .black
@@ -78,6 +93,12 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         bottomBackView.addSubview(lightBtn)
         
         
+    }
+    //MARK: 手动添加
+    func addBook_click()  {
+        XJLog(message: "手动添加")
+        let vc : AddBookViewController = AddBookViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: 灯光
@@ -124,13 +145,6 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     func cancle_click() {
         self.dismissVC()
     }
-    
-     //MARK: 相机权限提醒
-    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        XJLog(message: "移除")
-        self.dismissVC()
-    }
-    
     func dismissVC() {
         self.dismiss(animated: true, completion: {
             let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -147,7 +161,12 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             }
         })
     }
-    
+     //MARK: 相机权限提醒
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        XJLog(message: "移除")
+        self.dismissVC()
+    }
+
     //MARK: 设置捕捉设备
     func creatScan() {
         
@@ -203,22 +222,14 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
                 input.device.focusMode = .autoFocus
                 input.device.unlockForConfiguration()
             }
-//            if (device?.isFocusModeSupported(AVCaptureExposureModeContinuousAutoExposure))!{
-//                do { try input.device.lockForConfiguration() } catch{ }
-//                input.device.focusMode = .autoFocus
-//                input.device.unlockForConfiguration()
-//            }
-            //设置扫描区域
-
-//            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
-            output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: (self.scanPane.frame)))!
-//            })
-    
-            if !scanSession.isRunning
-            {
+            let fream = CGRect(x: ip6(35), y: ip6(190), width: KSCREEN_WIDTH - ip6(70), height: ip6(250))
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
+                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: fream))!
+            })
+            
+            if !scanSession.isRunning{
                 scanSession.startRunning()
             }
-            
         } catch {
             self.showErro(infoStr: "相机不可用")
             
@@ -228,11 +239,14 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     
     func captureOutput(_ output: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         self.scanSession!.stopRunning()
+        XJLog(message: "扫描完成")
         //扫完完成
         if metadataObjects.count > 0{
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject{
                 XJLog(message: resultObj.stringValue)
             }
+        } else {
+            XJLog(message: "扫描无结果")
         }
     }
     

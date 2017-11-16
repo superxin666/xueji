@@ -17,7 +17,10 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
