@@ -16,6 +16,8 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
     var titleLabel:UILabel!
     var cancleBtn : UIButton!
     var compleBtn : UIButton!
+    var addCat : UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,14 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         titleLabel.textAlignment = .left
         self.view.addSubview(titleLabel)
         
+        addCat = UIButton(type: .custom)
+        addCat.frame = CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: titleLabel.frame.maxY + ip6(30), width: ip6(60), height: ip6(25))
+        addCat.setTitle("添加分类", for: .normal)
+        addCat.setTitleColor(blue_0076f9, for: .normal)
+        addCat.titleLabel?.font = xj_fzFontMedium(ip6(12))
+        addCat.addTarget(self, action: #selector(self.addCatBtn_click), for: .touchUpInside)
+        self.view.addSubview(addCat)
+        
         cancleBtn = UIButton(type: .custom)
         cancleBtn.frame = CGRect(x: ip6(14), y: ip6(24) , width: ip6(28), height: ip6(20))
         cancleBtn.setTitle("取消", for: .normal)
@@ -58,7 +68,7 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.view.addSubview(compleBtn)
         
         
-        mainTabelView = UITableView(frame: CGRect(x: 0, y: ip6(120), width: fream.size.width, height: fream.size.height - ip6(120)), style: .plain)
+        mainTabelView = UITableView(frame: CGRect(x: 0, y: addCat.frame.maxY + ip6(30), width: fream.size.width, height: fream.size.height - addCat.frame.maxY - ip6(30)), style: .plain)
         mainTabelView.backgroundColor = UIColor.white
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -95,7 +105,9 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
     }
-    
+    func addCatBtn_click() {
+        XJLog(message: "添加分类")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

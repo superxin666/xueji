@@ -34,6 +34,7 @@ let black_22 = UIColor.xj_colorFromRGB(rgbValue: 0x222222)
 let black_fcf9f9 = UIColor.xj_colorFromRGB(rgbValue: 0xfcf9f9)
 
 let bluek_0068be = UIColor.xj_colorFromRGB(rgbValue: 0x0068be)
+let blue_0076f9 = UIColor.xj_colorFromRGB(rgbValue: 0x0076f9)
 let blue_tab_selected = UIColor.xj_colorFromRGB(rgbValue: 0x2c73b2)
 //
 let purple_5657CE = UIColor.xj_colorFromRGB(rgbValue: 0x5657CE)
