@@ -16,6 +16,8 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -93,6 +95,10 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 4 {
             XJLog(message: "选择分类")
+            let vc = SelectCatViewController()
+            vc.view.frame = mainTabelView.frame
+            self.addChildViewController(vc)
+            self.view.addSubview(vc.view)
         }
     }
     override func didReceiveMemoryWarning() {
