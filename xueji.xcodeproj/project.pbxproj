@@ -167,7 +167,6 @@
 		214429B11FA7260400004C38 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				214429B21FA7260400004C38 /* Base */,
 				214429B41FA7260400004C38 /* Log */,
 				214429B61FA7260400004C38 /* Review */,
 				214429B81FA7260400004C38 /* Study */,
@@ -245,6 +244,7 @@
 				214429CA1FA7264900004C38 /* String+fun.swift */,
 				214429CB1FA7264900004C38 /* View+Clipping.swift */,
 				21145B7D1FB001E500063A98 /* ImageView+loading.swift */,
+				214429B21FA7260400004C38 /* Base */,
 			);
 			path = SupportFile;
 			sourceTree = "<group>";

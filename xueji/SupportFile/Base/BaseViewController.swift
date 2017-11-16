@@ -17,6 +17,14 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
     }
+    //MARK: 蒙板
+    lazy var maskView : UIView = {
+        ()-> UIView in
+        let maskView = UIView()
+        maskView.backgroundColor = UIColor.init(white: 0.0, alpha: 0.7)
+        maskView.frame = CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT)
+        return maskView
+    }()
     //MARK: 导航栏
     func navigation_title_fontsize(name:String, fontsize:Int) {
         self.title = name
