@@ -40,6 +40,7 @@
 		21DCA3A91FA724F60094DCFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DCA3A71FA724F60094DCFE /* LaunchScreen.storyboard */; };
 		21DCA3B41FA724F60094DCFE /* xuejiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3B31FA724F60094DCFE /* xuejiTests.swift */; };
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
+		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
 		21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */; };
 		21F82E771FB57639006DCB22 /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */; };
 		4798374154E4CA8DCC2CFD55 /* Pods_xuejiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */; };
@@ -108,6 +109,7 @@
 		21DCA3BA1FA724F60094DCFE /* xuejiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xuejiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xuejiUITests.swift; sourceTree = "<group>"; };
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
 		21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
 		21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
 		30E52D3BD459C7C0D47320C4 /* Pods-xuejiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				21C989331FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift */,
 				21C436D01FBAC0A00031F2C3 /* AddBookTableViewCell.swift */,
 				21C436D21FBACC240031F2C3 /* AddBook_CatTableViewCell.swift */,
+				21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				21F82E771FB57639006DCB22 /* StudyDistributeTableViewCell.swift in Sources */,
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
 				21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */,
+				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,

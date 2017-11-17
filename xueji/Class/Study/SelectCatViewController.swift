@@ -8,6 +8,7 @@
 
 import UIKit
 typealias SelectCatViewControllerBlock = (_ str : String)->()
+let SelectedCatCellID = "SelectedCatCell_id"
 
 class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
@@ -78,7 +79,7 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-        mainTabelView.register(EditCatyTableViewCell.self, forCellReuseIdentifier: EditCatyCellID)
+        mainTabelView.register(SelectedCatTableViewCell.self, forCellReuseIdentifier: SelectedCatCellID)
         self.view.addSubview(mainTabelView)
     }
     
@@ -90,11 +91,11 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        var cell : EditCatyTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: EditCatyCellID, for: indexPath) as! EditCatyTableViewCell
+        var cell : SelectedCatTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: SelectedCatCellID, for: indexPath) as! SelectedCatTableViewCell
         cell.isUserInteractionEnabled = true
         cell.backgroundColor = .white
         if (cell == nil)  {
-            cell = EditCatyTableViewCell(style: .default, reuseIdentifier: EditCatyCellID)
+            cell = SelectedCatTableViewCell(style: .default, reuseIdentifier: SelectedCatCellID)
         }
         cell.setData(name: dataArr[indexPath.row] )
         return cell
