@@ -95,8 +95,13 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 4 {
             XJLog(message: "选择分类")
+            XJLog(message: mainTabelView.frame)
             let vc = SelectCatViewController()
-            vc.view.frame = mainTabelView.frame
+            vc.fream = mainTabelView.frame
+            vc.selectedCatBlock = {(catName) in
+                let cell : AddBook_CatTableViewCell = self.mainTabelView.cellForRow(at: IndexPath.init(row: 4, section: 0)) as! AddBook_CatTableViewCell
+                cell.catLabel.text = catName
+            }
             self.addChildViewController(vc)
             self.view.addSubview(vc.view)
         }

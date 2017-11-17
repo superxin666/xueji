@@ -7,6 +7,7 @@
 //  添加书本 选择分类view
 
 import UIKit
+typealias SelectCatViewControllerBlock = (_ str : String)->()
 
 class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
@@ -18,12 +19,14 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
     var compleBtn : UIButton!
     var addCat : UIButton!
     
-    
+    var selectedCatBlock : SelectCatViewControllerBlock!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        self.view.frame = fream
         self.creatUI()
         
     }
@@ -33,9 +36,8 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
             XJLog(message: "分类\(i)")
             dataArr.append("分类\(i)")
         }
-        
-        fream = self.view.frame
-        
+
+        XJLog(message: fream)
         titleLabel = UILabel(frame: CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: ip6(22), width: ip6(60), height: ip6(25)))
         titleLabel.font = xj_fzFontMedium(ip6(15))
         titleLabel.textColor = black_53
@@ -64,7 +66,7 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         compleBtn.setTitle("完成", for: .normal)
         compleBtn.setTitleColor(black_53, for: .normal)
         compleBtn.titleLabel?.font = xj_fzFontMedium(ip6(12))
-        //        cancleBtn.addTarget(self, action: #selector(self.btnClick(sender:)), for: .touchUpInside)
+        compleBtn.addTarget(self, action: #selector(self.compleBtn_click), for: .touchUpInside)
         self.view.addSubview(compleBtn)
         
         
@@ -101,12 +103,23 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         return ip6(51)
     }
     
+    func compleBtn_click() {
+        XJLog(message: "完成")
+        if (selectedCatBlock != nil) {
+            self.selectedCatBlock("你好分类")
+        }
+        self.cancleBtn_click()
+    }
+    
     func cancleBtn_click() {
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
     }
     func addCatBtn_click() {
         XJLog(message: "添加分类")
+        let vc = AddCategoryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
