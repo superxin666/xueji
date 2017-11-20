@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210198121FC2C62600569FEE /* UIButton+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210198111FC2C62600569FEE /* UIButton+Init.swift */; };
 		21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7B1FAFFDD600063A98 /* UserHeadView.swift */; };
 		21145B7E1FB001E500063A98 /* ImageView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7D1FB001E500063A98 /* ImageView+loading.swift */; };
 		21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		0A0F7421EED81570BE0C32B7 /* Pods_xueji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xueji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xuejiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194577466803D1F0BD81935E /* Pods-xuejiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		210198111FC2C62600569FEE /* UIButton+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Init.swift"; sourceTree = "<group>"; };
 		21145B7B1FAFFDD600063A98 /* UserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
 		21145B7D1FB001E500063A98 /* ImageView+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+loading.swift"; sourceTree = "<group>"; };
 		21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				214429CA1FA7264900004C38 /* String+fun.swift */,
 				214429CB1FA7264900004C38 /* View+Clipping.swift */,
 				21145B7D1FB001E500063A98 /* ImageView+loading.swift */,
+				210198111FC2C62600569FEE /* UIButton+Init.swift */,
 				214429B21FA7260400004C38 /* Base */,
 			);
 			path = SupportFile;
@@ -630,6 +633,7 @@
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
+				210198121FC2C62600569FEE /* UIButton+Init.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
 				21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,

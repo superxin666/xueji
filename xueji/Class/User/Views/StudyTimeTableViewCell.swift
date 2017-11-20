@@ -62,18 +62,9 @@ class StudyTimeTableViewCell: UITableViewCell {
             timeLabel.textColor = black_8c8484
             backView.addSubview(timeLabel)
             
-            let btn = UIButton()
-            
-            btn.frame = CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23))
-            //
-            btn.setTitle(btnNameArr[i], for: .normal)
-            btn.setTitleColor(black_53, for: .normal)
-            btn.backgroundColor = .white
-            btn.tag = i
+            let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
             btn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
             btn.xj_makeRadius(radius: 3)
-            btn.titleLabel?.font = xj_fzFontMedium(ip6(14))
-            btn.addTarget(self, action: #selector(self.btnClick(sender:)), for: .touchUpInside)
             backView.addSubview(btn)
             
             if i == 0 {

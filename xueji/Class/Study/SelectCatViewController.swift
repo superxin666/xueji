@@ -46,28 +46,14 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         titleLabel.textAlignment = .left
         self.view.addSubview(titleLabel)
         
-        addCat = UIButton(type: .custom)
-        addCat.frame = CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: titleLabel.frame.maxY + ip6(30), width: ip6(60), height: ip6(25))
-        addCat.setTitle("添加分类", for: .normal)
-        addCat.setTitleColor(blue_0076f9, for: .normal)
-        addCat.titleLabel?.font = xj_fzFontMedium(ip6(12))
-        addCat.addTarget(self, action: #selector(self.addCatBtn_click), for: .touchUpInside)
+        
+        addCat = UIButton.getBtn_titleStyle(title_normal: "添加分类", title_selected: "", fream: CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: titleLabel.frame.maxY + ip6(30), width: ip6(60), height: ip6(25)), backgroundColor: .white, textColor: blue_0076f9, fontSize: 12, textAlignment: .center, selector: #selector(self.addCatBtn_click), vc: self,tag: 0)
         self.view.addSubview(addCat)
         
-        cancleBtn = UIButton(type: .custom)
-        cancleBtn.frame = CGRect(x: ip6(14), y: ip6(24) , width: ip6(28), height: ip6(20))
-        cancleBtn.setTitle("取消", for: .normal)
-        cancleBtn.setTitleColor(black_53, for: .normal)
-        cancleBtn.titleLabel?.font = xj_fzFontMedium(ip6(12))
-        cancleBtn.addTarget(self, action: #selector(self.cancleBtn_click), for: .touchUpInside)
+        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(14), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.cancleBtn_click), vc: self,tag: 0)
         self.view.addSubview(cancleBtn)
         
-        compleBtn = UIButton(type: .custom)
-        compleBtn.frame = CGRect(x:KSCREEN_WIDTH - ip6(42), y: ip6(24) , width: ip6(28), height: ip6(20))
-        compleBtn.setTitle("完成", for: .normal)
-        compleBtn.setTitleColor(black_53, for: .normal)
-        compleBtn.titleLabel?.font = xj_fzFontMedium(ip6(12))
-        compleBtn.addTarget(self, action: #selector(self.compleBtn_click), for: .touchUpInside)
+        compleBtn = UIButton.getBtn_titleStyle(title_normal: "完成", title_selected: "", fream: CGRect(x:KSCREEN_WIDTH - ip6(42), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.compleBtn_click), vc: self,tag: 0)
         self.view.addSubview(compleBtn)
         
         

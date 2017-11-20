@@ -65,12 +65,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         bottomView.isUserInteractionEnabled = true
         self.view.addSubview(bottomView)
         
-        addBookBtn = UIButton(frame: CGRect(x: (bottomView.frame.width - ip6(80))/2, y: ip6(18), width: ip6(80), height: ip6(22)))
-        addBookBtn.titleLabel?.font = xj_fzFontMedium(ip6(18))
-        addBookBtn.titleLabel?.textAlignment = .center
-        addBookBtn.setTitleColor(.white, for: .normal)
-        addBookBtn.setTitle("手动添加", for: .normal)
-        addBookBtn.addTarget(self, action: #selector(self.addBook_click), for: .touchUpInside)
+        
+        addBookBtn = UIButton.getBtn_titleStyle(title_normal: "手动添加", title_selected: "", fream:  CGRect(x: (bottomView.frame.width - ip6(80))/2, y: ip6(18), width: ip6(80), height: ip6(22)), backgroundColor: .clear, textColor: .white, fontSize: 18, textAlignment: .center, selector: #selector(self.addBook_click), vc: self, tag: 0)
         bottomView.addSubview(addBookBtn)
         
         bottomBackView  = UIView(frame: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(58), width: KSCREEN_WIDTH, height: ip6(58)))
@@ -78,14 +74,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         bottomBackView.alpha = 0.7
         self.view.addSubview(bottomBackView)
         
-        cancleBtn = UIButton(frame: CGRect(x: ip6(15), y: ip6(18), width: ip6(60), height: ip6(22)))
-        cancleBtn.titleLabel?.font = xj_fzFontMedium(ip6(18))
-        cancleBtn.titleLabel?.textAlignment = .left
-        cancleBtn.setTitleColor(.white, for: .normal)
-        cancleBtn.setTitle("取消", for: .normal)
-        cancleBtn.addTarget(self, action: #selector(self.cancle_click), for: .touchUpInside)
+        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(15), y: ip6(18), width: ip6(60), height: ip6(22)), backgroundColor: .clear, textColor: .white, fontSize: 18, textAlignment: .left,selector : #selector(self.cancle_click),vc : self,tag: 0)
         bottomBackView.addSubview(cancleBtn)
-        
         
         lightBtn = UIButton(frame: CGRect(x:KSCREEN_WIDTH -  ip6(30), y: ip6(18), width: ip6(15), height: ip6(18)))
         lightBtn.setImage(#imageLiteral(resourceName: "study_flashlight_fill"), for: .normal)

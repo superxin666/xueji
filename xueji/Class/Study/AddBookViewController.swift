@@ -17,6 +17,7 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
 
+    var alertController : UIAlertController!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,11 +42,45 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
     }
+    
+    func bookIconImageView_click() {
+        alertController  = UIAlertController(title: nil, message: "添加封面", preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            //取消
+            self.alertController.dismiss(animated: true, completion: {
+                
+            })
+        }
+        let systemAction = UIAlertAction(title: "系统封面", style: .default) { (action) in
+            //系统封面
+            
+        }
+        let takePhotoAction = UIAlertAction(title: "拍照", style: .default) { (action) in
+            //拍照
+            
+        }
+        let albumAction = UIAlertAction(title: "相册", style: .default) { (action) in
+            //相册
+            
+        }
+        
+        alertController.addAction(cancleAction)
+        alertController.addAction(systemAction)
+        alertController.addAction(takePhotoAction)
+        alertController.addAction(albumAction)
+        self.present((alertController)!, animated: true, completion: nil)
+    }
+    
     // MARK: - 创建视图
     func creatUI() {
         bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: LNAVIGATION_HEIGHT + ip6(20), width: ip6(100), height: ip6(150)))
         bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
+        bookImageView.isUserInteractionEnabled = true
         self.view.addSubview(bookImageView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
+        bookImageView.addGestureRecognizer(tap)
+        
         
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: bookImageView.frame.maxY + ip6(30) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - bookImageView.frame.maxY - ip6(30)), style: .plain)
         mainTabelView.backgroundColor = UIColor.clear
