@@ -18,7 +18,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     var alertController : UIAlertController!
     var isEdit : Bool = false//是否为编辑状态
     
-    let bottomBtn : UIButton = UIButton()//底部编辑按钮
+    var bottomBtn : UIButton!//底部编辑按钮
     
     
     override func viewDidLoad() {
@@ -105,15 +105,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     func showEditView() {
         self.tabBarController?.tabBar.isHidden = true
         mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY - ip6(57)
-        bottomBtn.frame = CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(57) , width: KSCREEN_WIDTH, height: ip6(57))
-        //
-        bottomBtn.setTitle("分类设置", for: .normal)
-        bottomBtn.setTitleColor(black_53, for: .normal)
-        bottomBtn.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xf7f7f9)
-        bottomBtn.setImage(#imageLiteral(resourceName: "study_setup"), for: .normal)
-        bottomBtn.titleLabel?.font = xj_fzFontMedium(ip6(19))
-        bottomBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
-        bottomBtn.addTarget(self, action: #selector(self.set_categary_click), for: .touchUpInside)
+        bottomBtn = UIButton.getBtn_title_imageStyle(title_normal: "分类设置", image_normal: #imageLiteral(resourceName: "study_setup"), fream: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(57) , width: KSCREEN_WIDTH, height: ip6(57)), imageEdgeInsets: UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0xf7f7f9), textColor: black_53, fontSize: 19, textAlignment: .center, selector: #selector(self.set_categary_click), vc: self, tag: 0)
         self.view.addSubview(bottomBtn)
     }
     func remoEditeView() {

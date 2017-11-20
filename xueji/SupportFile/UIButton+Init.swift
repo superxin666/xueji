@@ -38,12 +38,38 @@ extension UIButton {
         return btn
     }
     
+    
+    /// 初始化图片按钮 只有图片
+    ///
+    /// - Parameters:
+    ///   - image_normal: 图片
+    ///   - image_selected: 选中图片
+    ///   - fream: 尺寸
+    ///   - selector: 点击事件
+    ///   - vc: 拥有者
+    ///   - tag: tag
+    /// - Returns: 按钮
     static func getBtn_picStyle(image_normal : UIImage,image_selected : UIImage,fream : CGRect,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
         let btn = UIButton(type: .custom)
         btn.frame = fream
         btn.tag = tag
         btn.setImage(image_normal, for: .normal)
         btn.setImage(image_selected, for: .selected)
+        btn.addTarget(vc, action: selector, for: .touchUpInside)
+        return btn
+    }
+    
+    static func getBtn_title_imageStyle(title_normal : String,image_normal : UIImage,fream : CGRect,imageEdgeInsets : UIEdgeInsets,backgroundColor : UIColor,textColor : UIColor,fontSize : CGFloat,textAlignment : NSTextAlignment,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
+        let btn = UIButton(type: .custom)
+        btn.frame = fream
+        btn.imageEdgeInsets = imageEdgeInsets
+        btn.tag = tag
+        btn.setTitle(title_normal, for: .normal)
+        btn.setImage(image_normal, for: .normal)
+        btn.backgroundColor = backgroundColor
+        btn.titleLabel?.font = xj_fzFontMedium(ip6(Int(fontSize)))
+        btn.setTitleColor(textColor, for: .normal)
+        btn.titleLabel?.textAlignment = textAlignment
         btn.addTarget(vc, action: selector, for: .touchUpInside)
         return btn
     }
