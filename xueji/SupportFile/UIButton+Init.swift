@@ -38,16 +38,12 @@ extension UIButton {
         return btn
     }
     
-    
-    static func getBtn_picStyle(title_normal : String,title_selected : String,fream : CGRect,backgroundColor : UIColor,textColor : UIColor,fontSize : CGFloat,textAlignment : NSTextAlignment,selector : Selector,vc : Any) ->(UIButton)  {
+    static func getBtn_picStyle(image_normal : UIImage,image_selected : UIImage,fream : CGRect,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
         let btn = UIButton(type: .custom)
         btn.frame = fream
-        btn.setTitle(title_normal, for: .normal)
-        btn.setTitle(title_selected, for: .selected)
-        btn.backgroundColor = backgroundColor
-        btn.titleLabel?.font = xj_fzFontMedium(ip6(Int(fontSize)))
-        btn.titleLabel?.textColor = textColor
-        btn.titleLabel?.textAlignment = textAlignment
+        btn.tag = tag
+        btn.setImage(image_normal, for: .normal)
+        btn.setImage(image_selected, for: .selected)
         btn.addTarget(vc, action: selector, for: .touchUpInside)
         return btn
     }

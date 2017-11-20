@@ -77,11 +77,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(15), y: ip6(18), width: ip6(60), height: ip6(22)), backgroundColor: .clear, textColor: .white, fontSize: 18, textAlignment: .left,selector : #selector(self.cancle_click),vc : self,tag: 0)
         bottomBackView.addSubview(cancleBtn)
         
-        lightBtn = UIButton(frame: CGRect(x:KSCREEN_WIDTH -  ip6(30), y: ip6(18), width: ip6(15), height: ip6(18)))
-        lightBtn.setImage(#imageLiteral(resourceName: "study_flashlight_fill"), for: .normal)
-        lightBtn.addTarget(self, action: #selector(self.openLight_click(sender:)), for: .touchUpInside)
+        lightBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_flashlight_fill"), image_selected: #imageLiteral(resourceName: "study_flashlight_fill"), fream: CGRect(x:KSCREEN_WIDTH -  ip6(30), y: ip6(18), width: ip6(15), height: ip6(18)), selector: #selector(self.openLight_click(sender:)), vc: self, tag: 0)
         bottomBackView.addSubview(lightBtn)
-        
         
     }
     //MARK: 手动添加

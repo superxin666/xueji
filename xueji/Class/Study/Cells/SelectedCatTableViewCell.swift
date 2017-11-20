@@ -55,12 +55,8 @@ class SelectedCatTableViewCell: UITableViewCell {
         numLabel.textAlignment = .left
         self.addSubview(numLabel)
         
-        selectedBtn = UIButton(type: .custom)
-        selectedBtn.frame = CGRect(x: KSCREEN_WIDTH - ip6(28) - ip6(25), y: ip6(13) , width: ip6(25), height: ip6(25))
-        selectedBtn.addTarget(self, action: #selector(self.selectedBtn_click(sender:)), for: .touchUpInside)
-        selectedBtn.setImage(#imageLiteral(resourceName: "study_Circle_normal"), for: .normal)
-        selectedBtn.setImage(#imageLiteral(resourceName: "study_Circle_selected"), for: .selected)
-        self.addSubview(selectedBtn)
+        selectedBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_Circle_normal"), image_selected: #imageLiteral(resourceName: "study_Circle_selected"), fream: CGRect(x: KSCREEN_WIDTH - ip6(28) - ip6(25), y: ip6(13) , width: ip6(25), height: ip6(25)), selector: #selector(self.selectedBtn_click(sender:)), vc: self, tag: 0)
+         self.addSubview(selectedBtn)
         
         let lineView = UIView(frame: CGRect(x: ip6(26), y: ip6(50), width: KSCREEN_WIDTH - ip6(52), height:1))
         lineView.backgroundColor = black_97
