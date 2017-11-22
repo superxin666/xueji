@@ -15,6 +15,7 @@
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
+		213B1F3A1FC5165E0003619D /* UILabel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213B1F391FC5165D0003619D /* UILabel+Init.swift */; };
 		214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B31FA7260400004C38 /* BaseViewController.swift */; };
 		214429BF1FA7260400004C38 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B51FA7260400004C38 /* LogViewController.swift */; };
 		214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */; };
@@ -78,6 +79,7 @@
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		213B1F391FC5165D0003619D /* UILabel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Init.swift"; sourceTree = "<group>"; };
 		214429B31FA7260400004C38 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		214429B51FA7260400004C38 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadBookCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				214429CB1FA7264900004C38 /* View+Clipping.swift */,
 				21145B7D1FB001E500063A98 /* ImageView+loading.swift */,
 				210198111FC2C62600569FEE /* UIButton+Init.swift */,
+				213B1F391FC5165D0003619D /* UILabel+Init.swift */,
 				214429B21FA7260400004C38 /* Base */,
 			);
 			path = SupportFile;
@@ -643,6 +646,7 @@
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				214429CE1FA7264900004C38 /* pch.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
+				213B1F3A1FC5165E0003619D /* UILabel+Init.swift in Sources */,
 				215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,

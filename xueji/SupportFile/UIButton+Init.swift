@@ -59,6 +59,22 @@ extension UIButton {
         return btn
     }
     
+    
+    /// 初始化按钮 文字 图片
+    ///
+    /// - Parameters:
+    ///   - title_normal: 标题
+    ///   - image_normal: 图片
+    ///   - fream: 尺寸
+    ///   - imageEdgeInsets: 图片尺寸
+    ///   - backgroundColor: 背景颜色
+    ///   - textColor: 文字颜色
+    ///   - fontSize: 字体大小
+    ///   - textAlignment: 文字位置
+    ///   - selector: 点击事件
+    ///   - vc: 拥有者
+    ///   - tag: tag
+    /// - Returns: 按钮
     static func getBtn_title_imageStyle(title_normal : String,image_normal : UIImage,fream : CGRect,imageEdgeInsets : UIEdgeInsets,backgroundColor : UIColor,textColor : UIColor,fontSize : CGFloat,textAlignment : NSTextAlignment,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
         let btn = UIButton(type: .custom)
         btn.frame = fream

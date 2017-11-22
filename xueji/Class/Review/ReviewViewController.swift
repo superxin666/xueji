@@ -70,11 +70,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view : UIView = UIView()
-        let nameLabel : UILabel = UILabel(frame: CGRect(x: ip6(10), y: ip6(16), width: KSCREEN_WIDTH - ip6(10), height: ip6(20)))
-        nameLabel.text = "任务列表"
-        nameLabel.textAlignment = .left
-        nameLabel.font = xj_fzFontMedium(ip6(15))
-        nameLabel.textColor = black_53
+        let nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(10), y: ip6(16), width: KSCREEN_WIDTH - ip6(10), height: ip6(20)), fontSize: 15, text: "任务列表", textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
         return view
     }

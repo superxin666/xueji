@@ -9,7 +9,9 @@
 import UIKit
 
 class AddCategoryViewController: BaseViewController {
-
+    var nameLabel :UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,12 +34,7 @@ class AddCategoryViewController: BaseViewController {
         let backView : UIView = UIView(frame: CGRect(x: ip6(40), y:LNAVIGATION_HEIGHT + ip6(60), width: KSCREEN_WIDTH - ip6(80), height: ip6(27)))
         self.view.addSubview(backView)
         
-        let nameLabel : UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(54), height: ip6(25)))
-        nameLabel.text = "标 题"
-        nameLabel.textColor = black_53
-        nameLabel.font = xj_fzFontMedium(ip6(18))
-        nameLabel.backgroundColor = .clear
-        nameLabel.textAlignment = .left
+        nameLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(54), height: ip6(25)), fontSize: 18, text: "标 题", textColor: black_53, textAlignment: .left)
         backView.addSubview(nameLabel)
         
         let txtField : UITextField = UITextField(frame: CGRect(x: nameLabel.frame.maxX + ip6(50), y: 0, width: backView.frame.size.width - nameLabel.frame.maxX - ip6(50), height: ip6(25)))

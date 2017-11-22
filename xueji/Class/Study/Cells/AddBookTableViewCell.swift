@@ -27,10 +27,8 @@ class AddBookTableViewCell: UITableViewCell {
     }
     
     func creatUI()  {
-        titleLabel = UILabel(frame: CGRect(x: ip6(39), y: ip6(16), width: ip6(60), height: ip6(25)))
-        titleLabel.font = xj_fzFontMedium(ip6(18))
-        titleLabel.textColor = black_53
-        titleLabel.textAlignment = .left
+        
+        titleLabel = UILabel.getLabel(fream: CGRect(x: ip6(39), y: ip6(16), width: ip6(60), height: ip6(25)), fontSize: 18, text: "", textColor: black_53, textAlignment: .left)
         self.contentView.addSubview(titleLabel)
         
         textTextField = UITextField(frame: CGRect(x: titleLabel.frame.maxX + ip6(30), y: ip6(17), width: KSCREEN_WIDTH - ip6(36) - titleLabel.frame.maxX  - ip6 (30), height: ip6(25)))

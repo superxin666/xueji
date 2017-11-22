@@ -39,20 +39,11 @@ class SelectedCatTableViewCell: UITableViewCell {
     }
     
     func creatUI() {
-        nameLabel = UILabel()
-        nameLabel.frame  = CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(56), height: ip6(25));
-        nameLabel.font = xj_fzFontMedium(ip6(18))
-        nameLabel.text = "分类"
-        nameLabel.textColor = black_53
-        nameLabel.textAlignment = .left
+        
+        nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(56), height: ip6(25)), fontSize: 18, text: "分类", textColor: black_53, textAlignment: .left)
         self.addSubview(nameLabel)
         
-        numLabel = UILabel()
-        numLabel.frame  = CGRect(x: ip6(28), y: nameLabel.frame.maxY, width: KSCREEN_WIDTH - ip6(85), height: ip6(13));
-        numLabel.font = xj_fzFontMedium(ip6(9))
-        numLabel.text = "资料数：3"
-        numLabel.textColor = black_8c8484
-        numLabel.textAlignment = .left
+        numLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: nameLabel.frame.maxY, width: KSCREEN_WIDTH - ip6(85), height: ip6(13)), fontSize: 9, text: "资料数：3", textColor: black_53, textAlignment: .left)
         self.addSubview(numLabel)
         
         selectedBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_Circle_normal"), image_selected: #imageLiteral(resourceName: "study_Circle_selected"), fream: CGRect(x: KSCREEN_WIDTH - ip6(28) - ip6(25), y: ip6(13) , width: ip6(25), height: ip6(25)), selector: #selector(self.selectedBtn_click(sender:)), vc: self, tag: 0)

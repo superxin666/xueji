@@ -11,10 +11,10 @@ import UIKit
 class EditCatyTableViewCell: UITableViewCell {
 
     /// 分类名字标签
-    let nameLabel : UILabel = UILabel()
+    var nameLabel : UILabel!
     
     /// 个数标签
-    let numLabel : UILabel = UILabel()
+    var numLabel : UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,18 +37,11 @@ class EditCatyTableViewCell: UITableViewCell {
     }
     
     func creatUI() {
-        nameLabel.frame  = CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(56), height: ip6(25));
-        nameLabel.font = xj_fzFontMedium(ip6(18))
-        nameLabel.text = "分类"
-        nameLabel.textColor = black_53
-        nameLabel.textAlignment = .left
+        
+        nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: ip6(7), width: KSCREEN_WIDTH - ip6(56), height: ip6(25)), fontSize: 18, text: "分类", textColor: black_53, textAlignment: .left)
         self.addSubview(nameLabel)
         
-        numLabel.frame  = CGRect(x: ip6(28), y: nameLabel.frame.maxY, width: KSCREEN_WIDTH - ip6(85), height: ip6(13));
-        numLabel.font = xj_fzFontMedium(ip6(9))
-        numLabel.text = "资料数：3"
-        numLabel.textColor = black_8c8484
-        numLabel.textAlignment = .left
+        numLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: nameLabel.frame.maxY, width: KSCREEN_WIDTH - ip6(85), height: ip6(13)), fontSize: 9, text: "资料数：3", textColor: black_8c8484, textAlignment: .left)
         self.addSubview(numLabel)
         
         let lineView = UIView(frame: CGRect(x: ip6(26), y: ip6(50), width: KSCREEN_WIDTH - ip6(26) - ip6(26), height:1))

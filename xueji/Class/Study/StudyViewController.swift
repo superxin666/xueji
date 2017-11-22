@@ -128,11 +128,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.view.addSubview(headBackView)
         
         //名字
-        let headTitleLabel : UILabel = UILabel(frame: CGRect(x: ip6(16), y: ip6(10), width: ip6(80), height: ip6(20)))
-        headTitleLabel.text = "最近学习"
-        headTitleLabel.textColor = black_53
-        headTitleLabel.textAlignment = .left
-        headTitleLabel.font = xj_fzFontMedium(ip6(15))
+        
+        let headTitleLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(10), width: ip6(80), height: ip6(20)), fontSize: 15, text: "最近学习", textColor: black_53, textAlignment: .left)
         headBackView.addSubview(headTitleLabel)
         
         //图片
@@ -211,11 +208,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view : UIView = UIView()
-        let nameLabel : UILabel = UILabel(frame: CGRect(x: ip6(16), y: ip6(12), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)))
-        nameLabel.text = "分类"
-        nameLabel.textAlignment = .left
-        nameLabel.font = xj_fzFontMedium(ip6(15))
-        nameLabel.textColor = black_53
+        
+        let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(12), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: "分类", textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
         return view
     }

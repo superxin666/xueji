@@ -39,11 +39,7 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
 
         XJLog(message: fream)
-        titleLabel = UILabel(frame: CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: ip6(22), width: ip6(60), height: ip6(25)))
-        titleLabel.font = xj_fzFontMedium(ip6(15))
-        titleLabel.textColor = black_53
-        titleLabel.text = "选择分类"
-        titleLabel.textAlignment = .left
+        titleLabel = UILabel.getLabel(fream:CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: ip6(22), width: ip6(60), height: ip6(25)), fontSize: 15, text: "选择分类", textColor: black_53, textAlignment: .left)
         self.view.addSubview(titleLabel)
         
         
