@@ -36,26 +36,14 @@ class StudyValueTableViewCell: UITableViewCell {
         
 
         //分数
-        scoreLabel = UILabel(frame: CGRect(x: 0, y: ip6(15), width: ip6(98), height: ip6(47)))
-        scoreLabel.text = "120"
-        scoreLabel.textColor = black_fcf9f9
-        scoreLabel.font = xj_fzFontMedium(ip6(47))
-        scoreLabel.textAlignment = .center
+        scoreLabel = UILabel.getLabel(fream: CGRect(x: 0, y: ip6(15), width: ip6(98), height: ip6(47)), fontSize: 47, text: "120", textColor: black_fcf9f9, textAlignment: .center)
         scoreView.addSubview(scoreLabel)
         
-        let scoreNameLabel : UILabel = UILabel(frame: CGRect(x: 0, y: scoreLabel.frame.maxY, width: ip6(98), height: ip6(21)))
-        scoreNameLabel.text = "分"
-        scoreNameLabel.textColor = black_fcf9f9
-        scoreNameLabel.font = xj_fzFontMedium(ip6(21))
-        scoreNameLabel.textAlignment = .center
+        let scoreNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: scoreLabel.frame.maxY, width: ip6(98), height: ip6(21)), fontSize: 21, text: "分", textColor: black_fcf9f9, textAlignment: .center)
         scoreView.addSubview(scoreNameLabel)
         
         //标题
-        let titleLabel : UILabel = UILabel(frame: CGRect(x: scoreView.frame.maxX + ip6(10), y: ip6(8), width: ip6(98), height: ip6(10)))
-        titleLabel.text = "学习力增长曲线"
-        titleLabel.textColor = black_53
-        titleLabel.font = xj_fzFontMedium(ip6(10))
-        titleLabel.textAlignment = .left
+        let titleLabel = UILabel.getLabel(fream: CGRect(x: scoreView.frame.maxX + ip6(10), y: ip6(8), width: ip6(98), height: ip6(10)), fontSize: 10, text: "学习力增长曲线", textColor: black_53, textAlignment: .left)
         self.addSubview(titleLabel)
         
         //折线
