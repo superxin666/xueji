@@ -37,12 +37,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let backView = UIView(frame: CGRect(x: 0, y: CGFloat(i) * viewH , width: KSCREEN_WIDTH, height: viewH))
 
             self.addSubview(backView)
-            
-            let titleLabel = UILabel(frame: CGRect(x: ip6(15), y: ip6(12), width: ip6(84), height: ip6(14)))
-            titleLabel.text = nameArr[i]
-            titleLabel.textAlignment = .center
-            titleLabel.font = xj_fzFontMedium(ip6(10))
-            titleLabel.textColor = black_53
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: ip6(15), y: ip6(12), width: ip6(84), height: ip6(14)), fontSize: 10, text: nameArr[i], textColor: black_53, textAlignment: .center)
             backView.addSubview(titleLabel)
             
             //表格
@@ -129,11 +124,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let subBackView = UIView(frame: CGRect(x: self.timePieChartView.frame.maxX + ip6(15), y:self.timePieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.topBackView.addSubview(subBackView)
     
-            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)))
-            titleLabel.text = "母猪的产后护理"
-            titleLabel.textAlignment = .left
-            titleLabel.font = xj_fzFontMedium(ip6(8))
-            titleLabel.textColor = black_53
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: "母猪的产后护理", textColor: black_53, textAlignment: .left)
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
@@ -149,11 +140,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let subBackView = UIView(frame: CGRect(x: self.amountPieChartView.frame.maxX + ip6(15), y:self.amountPieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.bottomView.addSubview(subBackView)
             
-            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)))
-            titleLabel.text = "母猪的产后护理"
-            titleLabel.textAlignment = .left
-            titleLabel.font = xj_fzFontMedium(ip6(8))
-            titleLabel.textColor = black_53
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: "母猪的产后护理", textColor: black_53, textAlignment: .left)
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))

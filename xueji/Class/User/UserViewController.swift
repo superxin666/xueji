@@ -123,11 +123,8 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view : UIView = UIView()
-        let nameLabel : UILabel = UILabel(frame: CGRect(x: ip6(19), y: ip6(8), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)))
-        nameLabel.text = sectionTitleArr[section]
-        nameLabel.textAlignment = .left
-        nameLabel.font = xj_fzFontMedium(ip6(15))
-        nameLabel.textColor = black_53
+
+        let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(19), y: ip6(8), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: sectionTitleArr[section], textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
         
         let lineView = UIView(frame: CGRect(x: ip6(10), y: ip6(34), width: KSCREEN_WIDTH - ip6(20), height: 1))

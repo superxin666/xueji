@@ -48,18 +48,10 @@ class StudyTimeTableViewCell: UITableViewCell {
            let  backView = UIView(frame: CGRect(x: ip6(20) + CGFloat(i) * backViewW, y: 0, width: backViewW, height: backViewH))
             self.addSubview(backView)
             
-            let titleLabel = UILabel(frame: CGRect(x: 0, y: titleLabelY, width: backViewW, height: titleLabelH))
-            titleLabel.text = titleNameArr[i]
-            titleLabel.textAlignment = .center
-            titleLabel.font = xj_fzFontMedium(ip6(10))
-            titleLabel.textColor = black_53
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabelY, width: backViewW, height: titleLabelH), fontSize: 10, text: titleNameArr[i], textColor: black_53, textAlignment: .center)
             backView.addSubview(titleLabel)
             
-            let timeLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.maxY + ip6(5), width: backViewW, height: ip6(30)))
-            timeLabel.text = "1000h"
-            timeLabel.textAlignment = .center
-            timeLabel.font = xj_fzFontMedium(ip6(22))
-            timeLabel.textColor = black_8c8484
+            let timeLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabel.frame.maxY + ip6(5), width: backViewW, height: ip6(30)), fontSize: 22, text: "1000h", textColor: black_8c8484, textAlignment: .center)
             backView.addSubview(timeLabel)
             
             let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
