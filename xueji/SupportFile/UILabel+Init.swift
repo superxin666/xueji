@@ -20,4 +20,13 @@ extension UILabel {
         return label
     }
     
+    static func getLabel_AttributedTitle(fream : CGRect,fontSize : CGFloat,text : NSMutableAttributedString,textColor:UIColor,textAlignment : NSTextAlignment) ->(UILabel) {
+        let label : UILabel = UILabel()
+        label.frame  = fream
+        label.font = xj_fzFontMedium(ip6(Int(fontSize)))
+        label.textColor = textColor
+        label.attributedText = text
+        label.textAlignment = textAlignment
+        return label
+    }
 }

@@ -11,9 +11,9 @@ let headViewHeight = ip6(189)
 class UserHeadView: UIView {
     let headBackView : UIView = UIView()//头部视图背景
     let iconImageView : UIImageView = UIImageView()//头像
-    let nameLabel : UILabel = UILabel()//名字
-    let dayNumLabel : UILabel = UILabel()//天数
-    let timeNumLabel : UILabel = UILabel()//时间
+    var nameLabel : UILabel!//名字
+    var dayNumLabel : UILabel!//天数
+    var timeNumLabel : UILabel!//时间
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.creatUI()
@@ -33,34 +33,22 @@ class UserHeadView: UIView {
         iconImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
         iconImageView.xj_makeRound()
         headBackView.addSubview(iconImageView)
-        
-        nameLabel.frame = CGRect(x: ip6(30), y: iconImageView.frame.maxY + ip6(7), width: KSCREEN_WIDTH/2 - ip6(30), height: ip6(24))
-        nameLabel.font = xj_fzFontMedium(ip6(14))
-        nameLabel.text = "尼古拉斯 赵四"
-        nameLabel.textColor = black_53
-        nameLabel.textAlignment = .left
+  
+        nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(30), y: iconImageView.frame.maxY + ip6(7), width: KSCREEN_WIDTH/2 - ip6(30), height: ip6(24)), fontSize: 14, text: "尼古拉斯 赵四", textColor: black_53, textAlignment: .left)
         headBackView.addSubview(nameLabel)
+        
         //标题
-        let titleLabel : UILabel = UILabel(frame: CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: ip6(27), width: ip6(14) * 6, height: ip6(20)))
-        titleLabel.font = xj_fzFontMedium(ip6(14))
-        titleLabel.text = "连续学习天数"
-        titleLabel.textColor = black_53
-        titleLabel.textAlignment = .right
+        let titleLabel : UILabel = UILabel.getLabel(fream: CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: ip6(27), width: ip6(14) * 6, height: ip6(20)), fontSize: 14, text: "连续学习天数", textColor: black_53, textAlignment: .right)
         headBackView.addSubview(titleLabel)
         //天数
-
-        dayNumLabel.frame = CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: titleLabel.frame.maxY + ip6(8), width: ip6(14) * 6, height: ip6(42))
-        dayNumLabel.font = xj_fzFontMedium(ip6(30))
-        dayNumLabel.text = "32天"
-        dayNumLabel.textColor = bluek_0068be
-        dayNumLabel.textAlignment = .center
+        dayNumLabel = UILabel.getLabel(fream: CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: titleLabel.frame.maxY + ip6(8), width: ip6(14) * 6, height: ip6(42)), fontSize: 14, text: "32天", textColor: bluek_0068be, textAlignment: .center)
         headBackView.addSubview(dayNumLabel)
         
-        timeNumLabel.frame = CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: dayNumLabel.frame.maxY + ip6(8), width: ip6(14) * 6, height: ip6(32))
-        timeNumLabel.font = xj_fzFontMedium(ip6(11))
-        timeNumLabel.text = "起2017年08月01日\n至2017年09月02日"
-        timeNumLabel.textColor = black_53
-        timeNumLabel.textAlignment = .center
+        let str = "2017年08月01日".getAttributedStr_color(color: black_53, fontSzie: 11)
+        str.append("\n至2017年09月02日".getAttributedStr_color(color: bluek_0068be, fontSzie: 11))
+        
+        timeNumLabel = UILabel.getLabel_AttributedTitle(fream: CGRect(x: KSCREEN_WIDTH - ip6(45) - ip6(14) * 6, y: dayNumLabel.frame.maxY + ip6(8), width: ip6(14) * 7, height: ip6(32)), fontSize: 11, text: str, textColor: black_53, textAlignment: .center)
+        timeNumLabel.numberOfLines = 0
         headBackView.addSubview(timeNumLabel)
         
         let topLine : UIView = UIView(frame: CGRect(x: 0, y: headViewHeight - ip6(44), width: KSCREEN_WIDTH, height: ip6(2)))
@@ -71,13 +59,4 @@ class UserHeadView: UIView {
         bottomLine.backgroundColor = black_22
         headBackView.addSubview(bottomLine)
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-
 }

@@ -128,5 +128,13 @@ extension String {
         return dfmatter2.string(from: date!)
     }
     
+    func getAttributedStr_color(color : UIColor,fontSzie : Int) ->(NSMutableAttributedString) {
+         let attributeStr = NSMutableAttributedString(string: self)
+         let range : NSRange = NSRange.init(location: 0, length: self.count)
+         attributeStr.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+         attributeStr.addAttribute(NSFontAttributeName, value: xj_fzFontMedium(ip6(fontSzie)), range: range)
+         return attributeStr
+    }
+    
 }
 
