@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2017/11/15.
 //  Copyright © 2017年 lvxin. All rights reserved.
-//
+//  二维码扫描
 
 import UIKit
 import AVFoundation
