@@ -20,7 +20,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     
     var bottomBtn : UIButton!//底部编辑按钮
     
-    
+    // MARK: - lifeCirlce
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,8 +30,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.creatHeadView()
         self.creatTableView()
     }
-    // MARK: - 导航栏按钮
     
+    // MARK: - view
     func setUpNavigation_normal() {
         self.navigation_title_fontsize(name: "学习", fontsize: 20)
         self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "study_setup"))
@@ -43,86 +44,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.navigationBar_leftBtn_title(title: "取消")
     }
     
-    //添加书籍
-    override func navigationRightBtnClick() {
-        if isEdit {
-            //编辑状态 确定
-            XJLog(message: "确定")
-        } else {
-            //正常状态 添加书籍
-            self.addBookAleart()
-        }
-
-    }
-    //编辑分类
-    override func navigationLeftBtnClick() {
-        if isEdit {
-            //编辑分类 取消
-            isEdit = false
-            self.setUpNavigation_normal()
-            self.remoEditeView()
-        } else {
-            //正常状态 编辑分类
-            isEdit = true
-            self.setUpNavigation_edit()
-            self.showEditView()
-        }
-    }
-    
-    //添加书籍提示
-    func addBookAleart() {
-        weak var weakSelf = self
-        alertController  = UIAlertController(title: nil, message: "添加学习资料", preferredStyle: .actionSheet)
-        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
-            //取消
-            weakSelf?.alertController.dismiss(animated: true, completion: {
-                
-            })
-        }
-        let scanAction = UIAlertAction(title: "扫码添加", style: .default) { (action) in
-            //扫码添加
-            let vc : ScanViewController = ScanViewController()
-            let nv = UINavigationController(rootViewController: vc)
-            
-            self.present(nv, animated: true, completion: {
-                
-            })
-  
-        }
-        let selfAction = UIAlertAction(title: "手动添加", style: .default) { (action) in
-            //手动添加
-            let vc : AddBookViewController = AddBookViewController()
-            vc.hidesBottomBarWhenPushed = true
-            weakSelf?.navigationController?.pushViewController(vc, animated: true)
-            
-        }
-        weakSelf?.alertController.addAction(cancleAction)
-        weakSelf?.alertController.addAction(scanAction)
-        weakSelf?.alertController.addAction(selfAction)
-        self.present((weakSelf?.alertController)!, animated: true, completion: nil)
-    }
-     // MARK: - 编辑页面
-    func showEditView() {
-        self.tabBarController?.tabBar.isHidden = true
-        mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY - ip6(57)
-        bottomBtn = UIButton.getBtn_title_imageStyle(title_normal: "分类设置", image_normal: #imageLiteral(resourceName: "study_setup"), fream: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(57) , width: KSCREEN_WIDTH, height: ip6(57)), imageEdgeInsets: UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0xf7f7f9), textColor: black_53, fontSize: 19, textAlignment: .center, selector: #selector(self.set_categary_click), vc: self, tag: 0)
-        self.view.addSubview(bottomBtn)
-    }
-    func remoEditeView() {
-        bottomBtn.removeFromSuperview()
-        self.tabBarController?.tabBar.isHidden = false
-        mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY
-        
-    }
-    // 分类设置 点击
-    func set_categary_click() {
-        XJLog(message: "分类设置点击")
-        let vc = EditCategoryViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
-    
-    // MARK: - 头部视图
+ 
     func creatHeadView() {
         headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
         self.view.addSubview(headBackView)
@@ -149,6 +71,25 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         
         
     }
+    // MARK: - TableView视图
+    func creatTableView()  {
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headBackView.frame.maxY , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .plain)
+        mainTabelView.backgroundColor = UIColor.clear
+        mainTabelView.delegate = self;
+        mainTabelView.dataSource = self;
+        mainTabelView.tableFooterView = UIView()
+        mainTabelView.separatorStyle = .none
+        mainTabelView.showsVerticalScrollIndicator = false
+        mainTabelView.showsHorizontalScrollIndicator = false
+        //        footer.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.loadMoreData))
+        //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
+        //        mainTabelView.mj_footer = footer
+        //        mainTabelView.mj_header = header
+        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
+        //        mainTabelView.register(TeachTableViewCell.self, forCellReuseIdentifier: TEACHCELLID)
+        self.view.addSubview(mainTabelView)
+    }
+    // MARK: - delegate
     // MARK: - UICollectionViewDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -172,26 +113,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
-    // MARK: - TableView视图
-    func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headBackView.frame.maxY , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .plain)
-        mainTabelView.backgroundColor = UIColor.clear
-        mainTabelView.delegate = self;
-        mainTabelView.dataSource = self;
-        mainTabelView.tableFooterView = UIView()
-        mainTabelView.separatorStyle = .none
-        mainTabelView.showsVerticalScrollIndicator = false
-        mainTabelView.showsHorizontalScrollIndicator = false
-//        footer.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.loadMoreData))
-//        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
-//        mainTabelView.mj_footer = footer
-//        mainTabelView.mj_header = header
-        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
-//        mainTabelView.register(TeachTableViewCell.self, forCellReuseIdentifier: TEACHCELLID)
-        self.view.addSubview(mainTabelView)
-    }
     // MARK: - TableViewdelegate
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -222,21 +145,89 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    // MARK: - EvenResponse
+    //添加书籍
+    override func navigationRightBtnClick() {
+        if isEdit {
+            //编辑状态 确定
+            XJLog(message: "确定")
+        } else {
+            //正常状态 添加书籍
+            self.addBookAleart()
+        }
+        
+    }
+    //编辑分类
+    override func navigationLeftBtnClick() {
+        if isEdit {
+            //编辑分类 取消
+            isEdit = false
+            self.setUpNavigation_normal()
+            self.remoEditeView()
+        } else {
+            //正常状态 编辑分类
+            isEdit = true
+            self.setUpNavigation_edit()
+            self.showEditView()
+        }
+    }
+
+    func showEditView() {
+        self.tabBarController?.tabBar.isHidden = true
+        mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY - ip6(57)
+        bottomBtn = UIButton.getBtn_title_imageStyle(title_normal: "分类设置", image_normal: #imageLiteral(resourceName: "study_setup"), fream: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(57) , width: KSCREEN_WIDTH, height: ip6(57)), imageEdgeInsets: UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0xf7f7f9), textColor: black_53, fontSize: 19, textAlignment: .center, selector: #selector(self.set_categary_click), vc: self, tag: 0)
+        self.view.addSubview(bottomBtn)
+    }
+    func remoEditeView() {
+        bottomBtn.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+        mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY
+        
+    }
+
+    //添加书籍提示
+    func addBookAleart() {
+        weak var weakSelf = self
+        alertController  = UIAlertController(title: nil, message: "添加学习资料", preferredStyle: .actionSheet)
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            //取消
+            weakSelf?.alertController.dismiss(animated: true, completion: {
+                
+            })
+        }
+        let scanAction = UIAlertAction(title: "扫码添加", style: .default) { (action) in
+            //扫码添加
+            let vc : ScanViewController = ScanViewController()
+            let nv = UINavigationController(rootViewController: vc)
+            
+            self.present(nv, animated: true, completion: {
+                
+            })
+            
+        }
+        let selfAction = UIAlertAction(title: "手动添加", style: .default) { (action) in
+            //手动添加
+            let vc : AddBookViewController = AddBookViewController()
+            vc.hidesBottomBarWhenPushed = true
+            weakSelf?.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        weakSelf?.alertController.addAction(cancleAction)
+        weakSelf?.alertController.addAction(scanAction)
+        weakSelf?.alertController.addAction(selfAction)
+        self.present((weakSelf?.alertController)!, animated: true, completion: nil)
+    }
+    // 分类设置 点击
+    func set_categary_click() {
+        XJLog(message: "分类设置点击")
+        let vc = EditCategoryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

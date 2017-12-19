@@ -177,6 +177,7 @@
 		214429B11FA7260400004C38 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				2145A8BB1FE8B7AD005A181B /* DataManger */,
 				214429B41FA7260400004C38 /* Log */,
 				214429B61FA7260400004C38 /* Review */,
 				214429B81FA7260400004C38 /* Study */,
@@ -262,6 +263,13 @@
 				214429B21FA7260400004C38 /* Base */,
 			);
 			path = SupportFile;
+			sourceTree = "<group>";
+		};
+		2145A8BB1FE8B7AD005A181B /* DataManger */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataManger;
 			sourceTree = "<group>";
 		};
 		21C436CB1FB992130031F2C3 /* Views */ = {
