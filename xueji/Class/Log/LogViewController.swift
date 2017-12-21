@@ -8,16 +8,18 @@
 
 import UIKit
 
-class LogViewController: UIViewController {
+class LogViewController: BaseViewController {
 
+     // MARK: - lifeCircle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        self.navigationBar_rightBtn_title(title: "")
         self.creatUI()
     }
-    
+    // MARK: - UI
     func creatUI() {
         //登陆按钮
         let logBtn = UIButton(type: .custom)
@@ -26,9 +28,10 @@ class LogViewController: UIViewController {
         logBtn.backgroundColor = .red
         logBtn.addTarget(self, action: #selector(logInClick), for: UIControlEvents.touchUpInside)
         self.view.addSubview(logBtn)
-        
+
     }
-    
+    // MARK: - delegate
+    // MARK: - event response
     func logInClick() {
         print("登陆")
     }

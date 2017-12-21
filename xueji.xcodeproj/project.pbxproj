@@ -10,6 +10,7 @@
 		21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7B1FAFFDD600063A98 /* UserHeadView.swift */; };
 		21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
+		212239201FEBFD2100A2743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122391F1FEBFD2100A2743E /* LoginView.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
@@ -78,6 +79,7 @@
 		21145B7B1FAFFDD600063A98 /* UserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
 		21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
+		2122391F1FEBFD2100A2743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		2122391E1FEBFB1500A2743E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2122391F1FEBFD2100A2743E /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		214429B11FA7260400004C38 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		214429B41FA7260400004C38 /* Log */ = {
 			isa = PBXGroup;
 			children = (
+				2122391E1FEBFB1500A2743E /* Views */,
 				214429B51FA7260400004C38 /* LogViewController.swift */,
 			);
 			path = Log;
@@ -685,6 +696,7 @@
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
+				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				214F911A1FEA4A4E00D44165 /* StudyApiMangerViewController.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,
