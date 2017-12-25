@@ -30,6 +30,8 @@
 		214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91491FEA5A3C00D44165 /* APIS.swift */; };
 		214F914D1FEA5A3C00D44165 /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914A1FEA5A3C00D44165 /* pch.swift */; };
 		214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */; };
+		2151F6581FF09869007D4FFE /* CategoryApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F6571FF09869007D4FFE /* CategoryApiMangerViewController.swift */; };
+		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */; };
 		215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */; };
@@ -100,6 +102,9 @@
 		214F914A1FEA5A3C00D44165 /* pch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
 		214F914B1FEA5A3C00D44165 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseMangerViewController.swift; sourceTree = "<group>"; };
+		2151F6571FF09869007D4FFE /* CategoryApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryApiMangerViewController.swift; sourceTree = "<group>"; };
+		2151F65B1FF09B46007D4FFE /* UserDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManger.swift; sourceTree = "<group>"; };
+		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
@@ -273,6 +278,8 @@
 			children = (
 				214F91191FEA4A4E00D44165 /* StudyApiMangerViewController.swift */,
 				213C36E41FEB877E00140CA2 /* BaseApiMangerViewController.swift */,
+				2151F6571FF09869007D4FFE /* CategoryApiMangerViewController.swift */,
+				2151F65B1FF09B46007D4FFE /* UserDataManger.swift */,
 			);
 			path = DataManger;
 			sourceTree = "<group>";
@@ -334,6 +341,7 @@
 		21DCA39D1FA724F60094DCFE /* xueji */ = {
 			isa = PBXGroup;
 			children = (
+				2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */,
 				214429C51FA7264900004C38 /* SupportFile */,
 				214429B11FA7260400004C38 /* Class */,
 				21DCA39E1FA724F60094DCFE /* AppDelegate.swift */,
@@ -465,6 +473,11 @@
 					21DCA39A1FA724F60094DCFE = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					21DCA3AE1FA724F60094DCFE = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -532,13 +545,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-xuejiTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1431EF8CCEBF2C2DDBEF5EDB /* [CP] Copy Pods Resources */ = {
@@ -577,13 +593,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-xuejiUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4899FA5888E019C2F28FB1BC /* [CP] Embed Pods Frameworks */ = {
@@ -607,9 +626,30 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-xueji/Pods-xueji-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -652,13 +692,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-xueji-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -691,8 +734,10 @@
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
 				214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */,
+				2151F6581FF09869007D4FFE /* CategoryApiMangerViewController.swift in Sources */,
 				215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */,
 				214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */,
+				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
@@ -872,6 +917,7 @@
 			baseConfigurationReference = 732B418D69BB48759A284302 /* Pods-xueji.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F3W6D3BQ5;
@@ -892,6 +938,7 @@
 			baseConfigurationReference = 3578FAA0FBCA4889AAA1A633 /* Pods-xueji.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F3W6D3BQ5;

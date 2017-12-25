@@ -15,7 +15,7 @@ target 'xueji' do
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 	pod 'SwiftyJSON'
     	pod 'MJRefresh'
-
+        pod 'KeychainSwift', '~> 10.0'
   target 'xuejiTests' do
     inherit! :search_paths
     # Pods for testing

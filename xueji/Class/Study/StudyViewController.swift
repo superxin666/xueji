@@ -29,6 +29,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.setUpNavigation_normal()
         self.creatHeadView()
         self.creatTableView()
+//        UserDataManger.setToken(token: "12344")
     }
     
     // MARK: - view
@@ -148,6 +149,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     // MARK: - EvenResponse
     //添加书籍
     override func navigationRightBtnClick() {
+ 
         if isEdit {
             //编辑状态 确定
             XJLog(message: "确定")

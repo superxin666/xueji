@@ -26,10 +26,9 @@ class BaseApiMangerViewController: UIViewController {
     /// 请求头
     var headers : HTTPHeaders!
     //请求参数字典
-    
     var requestMethod : HTTPMethod!
     
-    
+
 
     func request_api()  {
         
@@ -49,6 +48,10 @@ class BaseApiMangerViewController: UIViewController {
 //            }
 //
 //        }
+        
+    }
+    
+    func getHttpHead() {
         
     }
 }
