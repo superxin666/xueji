@@ -78,11 +78,15 @@ extension String {
     ///
     /// - returns: 是否
     
-    static func xj_isStr(str : String) -> Bool {
-        if str.characters.count > 0 {
-            return true
-        } else {
+    static func xj_isStr(str : String?) -> Bool {
+        if (str == nil)  {
             return false
+        } else {
+            if ((str?.count)! < 0){
+                return false
+            } else {
+                return true
+            }
         }
     }
     
@@ -127,7 +131,13 @@ extension String {
         dfmatter2.dateFormat = styleSty
         return dfmatter2.string(from: date!)
     }
-    
+
+    /// 将str转为attributeStr
+    ///
+    /// - Parameters:
+    ///   - color: 字体颜色
+    ///   - fontSzie: 字体
+    /// - Returns: <#return value description#>
     func getAttributedStr_color(color : UIColor,fontSzie : Int) ->(NSMutableAttributedString) {
          let attributeStr = NSMutableAttributedString(string: self)
          let range : NSRange = NSRange.init(location: 0, length: self.count)
@@ -136,5 +146,6 @@ extension String {
          return attributeStr
     }
     
+
 }
 

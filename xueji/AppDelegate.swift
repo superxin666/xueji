@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let tokenStr = UserDataManger.getTokenFromChain()
         XJLog(message: "tokenStr----\(String(describing: tokenStr))")
+        if String.xj_isStr(str: tokenStr){
+            //有token 代表已经登录
+            XJLog(message: "已经登录")
+        } else {
+            //没有token 发送注册请求
+            XJLog(message: "未登录")
+        }
+        
         self.tabCreat()
         return true
     }
