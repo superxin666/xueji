@@ -15,30 +15,15 @@ class UserDataManger: NSObject {
     var addQuery : NSMutableDictionary!
     var token : String!
     
-   static  func storeTokenInChain(token : String) {
+    static  func storeTokenInChain(token : String) {
         XJLog(message: "token储存---\(token)")
-        UserDataManger.setToken(token: "token")
-
-    }
-    
-    static func getTokenFromChain() -> String? {
-        let str = UserDataManger.getToken()
-        return str
-    }
-    
-   static func upDataChainData(token : String){
-        XJLog(message: "token储存---\(token)")
-        UserDataManger.setToken(token: "token")
-    }
-    
-   static func setToken(token : String) {
         let keychain = KeychainSwift()
         keychain.synchronizable = true
         keychain.set(token, forKey: TOKENSTR)
         
     }
     
-   static func getToken() -> String? {
+    static func getTokenFromChain() -> String? {
         let keychain = KeychainSwift()
         keychain.synchronizable = true
         let str = keychain.get(TOKENSTR)
@@ -46,4 +31,16 @@ class UserDataManger: NSObject {
         return str
     }
     
+    static func delChain() {
+        let keychain = KeychainSwift()
+        keychain.synchronizable = true
+//        let ok = keychain.delete(TOKENSTR)
+        let ok = keychain.clear()
+        if ok {
+            XJLog(message: "清除成功")
+        }else {
+            XJLog(message: "清除失败")
+
+        }
+    }
 }

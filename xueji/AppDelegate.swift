@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let tokenStr = UserDataManger.getTokenFromChain()
+        XJLog(message: "tokenStr----\(String(describing: tokenStr))")
         self.tabCreat()
         return true
     }
