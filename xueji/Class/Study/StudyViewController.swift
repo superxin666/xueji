@@ -47,7 +47,8 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     
  
     func creatHeadView() {
-        headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
+        XJLog(message: LNAVIGATION_HEIGHT)
+        headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT  + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
         self.view.addSubview(headBackView)
         
         //名字
