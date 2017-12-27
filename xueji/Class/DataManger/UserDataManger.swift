@@ -10,11 +10,19 @@ import UIKit
 import KeychainSwift
 let TOKENSTR = "token"
 
+let TOKENUDSTR = "LOGININTOKEN"
+let LOGINUDSTR = "LOGININLOGINID"
+let ISLOGINSTR = "ISHAVELOGIN"
 
 class UserDataManger: NSObject {
     var addQuery : NSMutableDictionary!
     var token : String!
     
+    //MARK: chain 部分
+    
+    /// 储存token到keychain中
+    ///
+    /// - Parameter token: <#token description#>
     static  func storeTokenInChain(token : String) {
         XJLog(message: "token储存---\(token)")
         let keychain = KeychainSwift()
@@ -23,6 +31,9 @@ class UserDataManger: NSObject {
         
     }
     
+    /// 获取chain 中的 token
+    ///
+    /// - Returns: <#return value description#>
     static func getTokenFromChain() -> String? {
         let keychain = KeychainSwift()
         keychain.synchronizable = true
@@ -31,6 +42,8 @@ class UserDataManger: NSObject {
         return str
     }
     
+    
+    /// 删除所有keychain的数据
     static func delChain() {
         let keychain = KeychainSwift()
         keychain.synchronizable = true
@@ -43,4 +56,67 @@ class UserDataManger: NSObject {
 
         }
     }
+    
+        //MARK: userDefaule 部分
+    
+    /// 储存用户数据到UserDefaults
+    ///
+    /// - Parameters:
+    ///   - loginUserId: 用户id
+    ///   - token: token
+    ///   - complate: <#complate description#>
+    class func storeLoginIdAndTokenInUD(loginUserId : String , token : String, complate:(_ data : Any) ->() ){
+        UserDefaults.standard.set("1", forKey: ISLOGINSTR)
+        UserDefaults.standard.set(token, forKey: TOKENUDSTR)
+        UserDefaults.standard.set(loginUserId, forKey: LOGINUDSTR)
+    
+        let ok = UserDefaults.standard.synchronize()
+        if ok {
+            print("存储成功")
+            complate("1")
+        } else {
+            print("存储失败")
+            complate("0")
+        }
+    }
+    
+    /// 返回当前登录用户的 loginid tokenid
+    ///
+    /// - returns: 返回元组loginid
+    class func getLoginIdAndTokenInUD() -> (loginId : String, tokenStr:String,isHaveLogin : String) {
+        var isloginStr :String? = UserDefaults.standard.value(forKey: ISLOGINSTR) as! String?
+        if isloginStr == nil {
+            isloginStr = "0"
+        }
+        var loginStr :String? = UserDefaults.standard.value(forKey: LOGINUDSTR) as! String?
+        if loginStr == nil {
+            loginStr = ""
+        }
+        var tokenStr :String? = UserDefaults.standard.value(forKey: TOKENUDSTR) as! String?
+        if tokenStr == nil {
+            tokenStr = ""
+        }
+        return (loginStr!,tokenStr!,isloginStr!)
+    }
+    
+    
+    
+    /// 登出
+    ///
+    /// - Parameter complate: <#complate description#>
+    class func setLogout(complate:(_ data : Any) ->()) {
+        UserDefaults.standard.set("0", forKey: ISLOGINSTR)
+        UserDefaults.standard.set("", forKey: TOKENUDSTR)
+        UserDefaults.standard.set("", forKey: LOGINUDSTR)
+        let ok = UserDefaults.standard.synchronize()
+        if ok {
+            print("存储成功")
+            complate("1")
+        } else {
+            print("存储失败")
+            complate("0")
+        }
+        
+    }
+
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class LogViewController: BaseViewController {
+    var loginView: LoginView!
+    
 
      // MARK: - lifeCircle
     override func viewDidLoad() {
@@ -16,18 +18,15 @@ class LogViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
-        self.navigationBar_rightBtn_title(title: "")
+      
+        
         self.creatUI()
     }
     // MARK: - UI
     func creatUI() {
-        //登陆按钮
-        let logBtn = UIButton(type: .custom)
-        logBtn.frame = CGRect(x: 100, y: 200, width: 50, height: 50)
-        logBtn.setTitle("登陆", for: .normal)
-        logBtn.backgroundColor = .red
-        logBtn.addTarget(self, action: #selector(logInClick), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(logBtn)
+        self.navigationBar_rightBtn_title(title: "注册新账号")
+        loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
+        self.view.addSubview(loginView)
 
     }
     // MARK: - delegate

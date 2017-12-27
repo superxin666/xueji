@@ -16,16 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: life circle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let tokenStr = UserDataManger.getTokenFromChain()
-        XJLog(message: "tokenStr----\(String(describing: tokenStr))")
-        if String.xj_isStr(str: tokenStr){
-            //有token 代表已经登录
-            XJLog(message: "已经登录")
+        let login = UserDataManger.getLoginIdAndTokenInUD().isHaveLogin
+        let token = UserDataManger.getLoginIdAndTokenInUD().tokenStr
+        print("login\(login)")
+        print("info\(token)")
+        XJLog(message: token)
+        if login == "1" {
+            //显示主页
+            self.tabCreat()
         } else {
-            //没有token 发送注册请求
-            XJLog(message: "未登录")
+            //显示登录注册页面
+            self.showLogin()
         }
-        self.tabCreat()
+        
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
@@ -73,7 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(object:blue_tab_selected, forKey:NSForegroundColorAttributeName as NSCopying) as? [String : AnyObject], for:UIControlState.selected)
         self.window?.rootViewController = tab
         
-        
+    }
+    func showLogin()  {
+        let loginVC = LogViewController()
+        let nv :UINavigationController = UINavigationController(rootViewController: loginVC)
+        self.window?.rootViewController = nv
         
     }
 
