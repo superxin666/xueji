@@ -7,9 +7,14 @@
 //  登录view
 
 import UIKit
-
+protocol LoginViewDelegate {
+    func login()
+    func forgetPassword()
+}
 class LoginView: UIView ,UITextFieldDelegate{
 
+    var delegate : LoginViewDelegate!
+    
     /// 标题
     var titleLabel : UILabel!
     /// 副标题
@@ -31,6 +36,7 @@ class LoginView: UIView ,UITextFieldDelegate{
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.isUserInteractionEnabled = true
         self.loadViews()
     }
 
@@ -44,11 +50,13 @@ class LoginView: UIView ,UITextFieldDelegate{
 
         titleLabel_sub = UILabel.getLabel(fream: CGRect(x: ip6(28), y: titleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(56), height: ip6(15)), fontSize: ip6(15), text: "加入学记，精细化管理学习", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
 
-        let backViewWidth = KSCREEN_WIDTH - ip6(56)
+        let backViewX = ip6(35)
+        let backViewWidth = KSCREEN_WIDTH - backViewX * 2
         let backViewHeight = ip6(25)
         
+        
         //手机号码
-        let phoneBackView = UIView(frame: CGRect(x: ip6(28), y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
+        let phoneBackView = UIView(frame: CGRect(x: backViewX, y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
 
         
         let phoneNameLabel : UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(60), height: ip6(15)))
@@ -74,7 +82,7 @@ class LoginView: UIView ,UITextFieldDelegate{
         
         let lineView = UIView()
         let lineViewY = phoneBackView.frame.size.height - 0.5
-        lineView.frame = CGRect(x: 0, y: lineViewY, width: phoneBackView.frame.size.width, height: 0.5)
+        lineView.frame = CGRect(x: backViewX, y: lineViewY, width: backViewWidth, height: 0.5)
         lineView.backgroundColor =  UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
         phoneBackView.addSubview(lineView)
         
@@ -108,28 +116,53 @@ class LoginView: UIView ,UITextFieldDelegate{
 
         let lineView2 = UIView()
         let lineViewY2 = scrBackView.frame.size.height - 0.5
-        lineView2.frame = CGRect(x: 0, y: lineViewY2, width: scrBackView.frame.size.width, height: 0.5)
+        lineView2.frame = CGRect(x: backViewX, y: lineViewY2, width: backViewWidth, height: 0.5)
         lineView2.backgroundColor =  UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
         scrBackView.addSubview(lineView2)
         
         //登陆按钮
         
-        let logBtn = UIButton(type: .custom)
-        logBtn.frame = CGRect(x: 100, y: 200, width: 50, height: 50)
-        logBtn.setTitle("登陆", for: .normal)
-        logBtn.backgroundColor = .red
-        logBtn.addTarget(self, action: #selector(logInClick), for: UIControlEvents.touchUpInside)
-        self.addSubview(logBtn)
+        loginBtn = UIButton(type: .custom)
+        loginBtn.frame = CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35))
+        loginBtn.setTitle("登录", for: .normal)
+        loginBtn.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x6c9ce2)
+        loginBtn.xj_makeRadius(radius: 4)
+        loginBtn.titleLabel?.font = xj_fzFontMedium(ip6(15))
+        loginBtn.addTarget(self, action: #selector(logInClick), for: UIControlEvents.touchUpInside)
+       
+        
+        //忘记密码
+        
+        forgetBtn = UIButton(type: .custom)
+        forgetBtn.frame = CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(5), width: ip6(100), height: ip6(14))
+        forgetBtn.setTitle("忘记密码？", for: .normal)
+        forgetBtn.titleLabel?.font = xj_fzFontMedium(ip6(14))
+        forgetBtn.titleLabel?.textAlignment = .right
+        forgetBtn.backgroundColor = .clear
+        forgetBtn.setTitleColor(UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), for: .normal)
+        forgetBtn.xj_makeRadius(radius: 4)
+        forgetBtn.addTarget(self, action: #selector(forgetClick), for: UIControlEvents.touchUpInside)
+     
+
+        
         
         self.addSubview(titleLabel)
         self.addSubview(titleLabel_sub)
         self.addSubview(phoneBackView)
         self.addSubview(scrBackView)
+        self.addSubview(loginBtn)
+        self.addSubview(forgetBtn)
         
     }
     
     func logInClick() {
-        
+        if self.delegate != nil {
+            self.delegate.login()
+        }
     }
-
+    func forgetClick() {
+        if self.delegate != nil {
+            self.delegate.forgetPassword()
+        }
+    }
 }

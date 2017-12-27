@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: BaseViewController {
+class LogViewController: BaseViewController,LoginViewDelegate {
     var loginView: LoginView!
     
 
@@ -30,11 +30,18 @@ class LogViewController: BaseViewController {
 
     }
     // MARK: - delegate
-    // MARK: - event response
-    func logInClick() {
-        print("登陆")
+    //登陆
+    func login() {
+        XJLog(message: "登陆点击")
     }
-
+    func forgetPassword() {
+        XJLog(message: "忘记密码点击")
+    }
+    // MARK: - event response
+    override func navigationRightBtnClick() {
+        XJLog(message: "注册点击")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
