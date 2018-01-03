@@ -8,9 +8,10 @@
 
 import UIKit
 
-class LogViewController: BaseViewController {
+class LogViewController: BaseViewController,LoginViewDelegate {
     var loginView: LoginView!
-    
+    let requestManger = StudyApiMangerViewController()
+
 
      // MARK: - lifeCircle
     override func viewDidLoad() {
@@ -26,14 +27,19 @@ class LogViewController: BaseViewController {
     func creatUI() {
         self.navigationBar_rightBtn_title(title: "注册新账号")
         loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
+        loginView.delegate = self
         self.view.addSubview(loginView)
 
     }
     // MARK: - delegate
-    // MARK: - event response
-    func logInClick() {
-        print("登陆")
+    func login() {
+        XJLog(message: "登录")
+
+        requestManger.loginRequest()
     }
+
+    // MARK: - event response
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -9,11 +9,20 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+protocol BaseApiMangerViewControllerDelegate: NSObjectProtocol{
+
+func requestSucceed(response :Any) -> Void
+func requestFail(response :Any) -> Void
+func methodName() -> String
+    
+}
+
 
 class BaseApiMangerViewController: UIViewController {
-    
+    weak var delegate :BaseApiMangerViewControllerDelegate!
+
     /// 请求链接
-    var _urlStr: String!
+    var urlStr: String!
 //    var urlStr : String?{
 //        set{
 //            _urlStr = newValue
@@ -27,31 +36,25 @@ class BaseApiMangerViewController: UIViewController {
     var headers : HTTPHeaders!
     //请求参数字典
     var requestMethod : HTTPMethod!
-    
-
 
     func request_api()  {
-        
-        Alamofire.request(_urlStr, method: .get).responseJSON { (returnResult) in
+        let str = self.delegate.methodName()
+        let url = base_api+str
+        XJLog(message: url)
+        Alamofire.request(url, method: .get).responseJSON { (returnResult) in
             print("secondMethod --> get 请求 --> returnResult = \(returnResult)")
- 
-            
+            if let json = returnResult.result.value {
+                if self.delegate != nil {
+                    self.delegate.requestSucceed(response: json)
+                }
+            } else {
+                if self.delegate != nil {
+                    self.delegate.requestFail(response: "请求失败")
+                }
+            }
         }
-//        Alamofire.request(_urlStr, method: requestMethod, parameters: baseParameter, encoding: JSONEncoding.default, headers: headers).responseJSON { (returnResult) in
-//            debugPrint("返回数据：\(returnResult)")
-//            if let json = returnResult.result.value {
-////                model = Mapper<GetmyfeedlistModel>().map(JSON: json as! [String : Any])!
-////                completion(model)
-//                debugPrint(json)
-//            } else {
-////                failure("请求失败")
-//            }
-//
-//        }
         
     }
-    
-    func getHttpHead() {
-        
-    }
+
+
 }

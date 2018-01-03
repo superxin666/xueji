@@ -276,8 +276,8 @@
 		2145A8BB1FE8B7AD005A181B /* DataManger */ = {
 			isa = PBXGroup;
 			children = (
-				214F91191FEA4A4E00D44165 /* StudyApiMangerViewController.swift */,
 				213C36E41FEB877E00140CA2 /* BaseApiMangerViewController.swift */,
+				214F91191FEA4A4E00D44165 /* StudyApiMangerViewController.swift */,
 				2151F6571FF09869007D4FFE /* CategoryApiMangerViewController.swift */,
 				2151F65B1FF09B46007D4FFE /* UserDataManger.swift */,
 			);
