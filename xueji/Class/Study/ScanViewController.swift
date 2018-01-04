@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+
 class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate {
     var  scanSession : AVCaptureSession!
     var scanPane : UIView!//扫描框
@@ -218,8 +219,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
                 scanSession.startRunning()
             }
         } catch {
-            self.showErro(infoStr: "相机不可用")
-            
+            SVPMessageShow.showErro(infoStr: "相机不可用")
         }
         
     }

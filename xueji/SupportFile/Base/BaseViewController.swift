@@ -86,27 +86,7 @@ class BaseViewController: UIViewController {
         print("导航栏右键点击")
     }
     
-    //MARK: 提示
-    func showErro(infoStr:String){
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setMaximumDismissTimeInterval(1)
-        SVProgressHUD.showError(withStatus: infoStr)
 
-    }
-    func showSucess(infoStr:String) {
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setMaximumDismissTimeInterval(1)
-        SVProgressHUD.showSuccess(withStatus: infoStr)
-    }
-    func showLoad() {
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setMinimumDismissTimeInterval(1)
-        SVProgressHUD.show(withStatus: "正在努力加载中")
-    }
-    
-    func dismiss() {
-        SVProgressHUD.dismiss()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

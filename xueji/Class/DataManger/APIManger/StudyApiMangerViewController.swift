@@ -27,15 +27,15 @@ class StudyApiMangerViewController: BaseApiMangerViewController,BaseApiMangerVie
         self.request_api()
     }
 
+    func methodName() -> String {
+        return login_user_api + "id=1"
+    }
     func requestSucceed(response: Any) {
         XJLog(message: response)
     }
-
+    
     func requestFail(response: Any) {
         XJLog(message: response)
-    }
-
-    func methodName() -> String {
-        return login_user_api + "id=1"
+        SVPMessageShow.showErro(infoStr: response as! String)
     }
 }

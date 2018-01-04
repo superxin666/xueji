@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7B1FAFFDD600063A98 /* UserHeadView.swift */; };
 		21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
@@ -78,6 +79,7 @@
 		0A0F7421EED81570BE0C32B7 /* Pods_xueji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xueji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xuejiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194577466803D1F0BD81935E /* Pods-xuejiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		21145B7B1FAFFDD600063A98 /* UserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
 		21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				214F91371FEA4F1800D44165 /* UIButton+Init.swift */,
 				214F91381FEA4F1800D44165 /* UILabel+Init.swift */,
 				214F913B1FEA4F1800D44165 /* View+Clipping.swift */,
+				2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,
+				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
 				216DFEEB1FFD250F002F3EA4 /* CategoryApiMangerViewController.swift in Sources */,
