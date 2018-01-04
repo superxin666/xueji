@@ -10,7 +10,7 @@ import UIKit
 
 class LogViewController: BaseViewController,LoginViewDelegate {
     var loginView: LoginView!
-    let requestManger = StudyApiMangerViewController()
+    let requestManger = LoginApiManger()
 
 
      // MARK: - lifeCircle
@@ -35,6 +35,7 @@ class LogViewController: BaseViewController,LoginViewDelegate {
     //登陆
     func login() {
         XJLog(message: "登陆点击")
+        requestManger.request_api()
     }
     func forgetPassword() {
         XJLog(message: "忘记密码点击")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryApiMangerViewController: UIViewController {
+class CategoryApiManger: BaseApiMangerViewController {
 
 
 }

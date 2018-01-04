@@ -14,6 +14,7 @@ protocol BaseApiMangerViewControllerDelegate: NSObjectProtocol{
 func requestSucceed(response :Any) -> Void
 func requestFail(response :Any) -> Void
 func methodName() -> String
+//func parameterStr() -> String
     
 }
 
