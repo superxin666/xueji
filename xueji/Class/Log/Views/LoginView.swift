@@ -11,6 +11,11 @@ protocol LoginViewDelegate {
     func login()
     func forgetPassword()
 }
+
+protocol LoginViewDelegate: NSObjectProtocol{
+    func login() ->Void
+}
+
 class LoginView: UIView ,UITextFieldDelegate{
 
     var delegate : LoginViewDelegate!
@@ -58,13 +63,7 @@ class LoginView: UIView ,UITextFieldDelegate{
         //手机号码
         let phoneBackView = UIView(frame: CGRect(x: backViewX, y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
 
-        
-        let phoneNameLabel : UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(60), height: ip6(15)))
-        phoneNameLabel.text = "手机号码"
-        phoneNameLabel.font = xj_fzFontMedium(ip6(15))
-        phoneNameLabel.textColor  = UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a)
-        phoneNameLabel.textAlignment = .left
-        phoneNameLabel.adjustsFontSizeToFitWidth = true
+        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(60), height: ip6(15)), fontSize: ip6(15), text: "手机号码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         phoneBackView.addSubview(phoneNameLabel)
         
         
@@ -89,19 +88,13 @@ class LoginView: UIView ,UITextFieldDelegate{
         //账号密码
         let scrBackView = UIView(frame: CGRect(x: ip6(28), y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
 
-        
-        let scrNameLabel : UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(21)))
-        scrNameLabel.text = "密码"
-        scrNameLabel.font = xj_fzFontMedium(ip6(15))
-        scrNameLabel.textColor  = UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a)
-        scrNameLabel.textAlignment = .left
-        scrNameLabel.adjustsFontSizeToFitWidth = true
+        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(21)), fontSize: ip6(15), text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         scrBackView.addSubview(scrNameLabel)
         
         
         passWorldTextFiled = UITextField()
         passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: ip6(3), width: backViewWidth - ip6(60) - ip6(40), height: ip6(15))
-        let str = "密码（6-18位数字或字母组合）".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSzie: 10)
+        let str = "（6-18位数字或字母组合）".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSzie: 10)
         passWorldTextFiled.attributedPlaceholder = str
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textAlignment = .left
@@ -146,6 +139,10 @@ class LoginView: UIView ,UITextFieldDelegate{
 
         
         
+
+        let logBtn = UIButton.getBtn_titleStyle(title_normal: "登陆", title_selected: "登陆", fream: CGRect(x: ip6(28), y:scrBackView.frame.maxY + ip6(28), width: backViewWidth, height: 50), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(logInClick), vc: self, tag: 1)
+        logBtn.xj_makeRadius(radius: 4)
+
         self.addSubview(titleLabel)
         self.addSubview(titleLabel_sub)
         self.addSubview(phoneBackView)
@@ -164,5 +161,10 @@ class LoginView: UIView ,UITextFieldDelegate{
         if self.delegate != nil {
             self.delegate.forgetPassword()
         }
+        self.addSubview(logBtn)
+    }
+    
+    func logInClick() {
+        self.delegate.login()
     }
 }
