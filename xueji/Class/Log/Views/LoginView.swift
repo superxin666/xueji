@@ -7,13 +7,10 @@
 //  登录view
 
 import UIKit
-protocol LoginViewDelegate {
-    func login()
-    func forgetPassword()
-}
 
 protocol LoginViewDelegate: NSObjectProtocol{
     func login() ->Void
+    func forgetPassword() ->Void
 }
 
 class LoginView: UIView ,UITextFieldDelegate{
@@ -81,12 +78,12 @@ class LoginView: UIView ,UITextFieldDelegate{
         
         let lineView = UIView()
         let lineViewY = phoneBackView.frame.size.height - 0.5
-        lineView.frame = CGRect(x: backViewX, y: lineViewY, width: backViewWidth, height: 0.5)
+        lineView.frame = CGRect(x: 0, y: lineViewY, width: backViewWidth, height: 0.5)
         lineView.backgroundColor =  UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
         phoneBackView.addSubview(lineView)
         
         //账号密码
-        let scrBackView = UIView(frame: CGRect(x: ip6(28), y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
+        let scrBackView = UIView(frame: CGRect(x: backViewX, y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
 
         let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(21)), fontSize: ip6(15), text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         scrBackView.addSubview(scrNameLabel)
@@ -109,39 +106,15 @@ class LoginView: UIView ,UITextFieldDelegate{
 
         let lineView2 = UIView()
         let lineViewY2 = scrBackView.frame.size.height - 0.5
-        lineView2.frame = CGRect(x: backViewX, y: lineViewY2, width: backViewWidth, height: 0.5)
+        lineView2.frame = CGRect(x: 0, y: lineViewY2, width: backViewWidth, height: 0.5)
         lineView2.backgroundColor =  UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
         scrBackView.addSubview(lineView2)
         
-        //登陆按钮
-        
-        loginBtn = UIButton(type: .custom)
-        loginBtn.frame = CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35))
-        loginBtn.setTitle("登录", for: .normal)
-        loginBtn.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x6c9ce2)
+  
+        loginBtn = UIButton.getBtn_titleStyle(title_normal: "登陆", title_selected: "登陆", fream: CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35)), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(logInClick), vc: self, tag: 1)
         loginBtn.xj_makeRadius(radius: 4)
-        loginBtn.titleLabel?.font = xj_fzFontMedium(ip6(15))
-        loginBtn.addTarget(self, action: #selector(logInClick), for: UIControlEvents.touchUpInside)
-       
         
-        //忘记密码
-        
-        forgetBtn = UIButton(type: .custom)
-        forgetBtn.frame = CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(5), width: ip6(100), height: ip6(14))
-        forgetBtn.setTitle("忘记密码？", for: .normal)
-        forgetBtn.titleLabel?.font = xj_fzFontMedium(ip6(14))
-        forgetBtn.titleLabel?.textAlignment = .right
-        forgetBtn.backgroundColor = .clear
-        forgetBtn.setTitleColor(UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), for: .normal)
-        forgetBtn.xj_makeRadius(radius: 4)
-        forgetBtn.addTarget(self, action: #selector(forgetClick), for: UIControlEvents.touchUpInside)
-     
-
-        
-        
-
-        let logBtn = UIButton.getBtn_titleStyle(title_normal: "登陆", title_selected: "登陆", fream: CGRect(x: ip6(28), y:scrBackView.frame.maxY + ip6(28), width: backViewWidth, height: 50), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(logInClick), vc: self, tag: 1)
-        logBtn.xj_makeRadius(radius: 4)
+        forgetBtn = UIButton.getBtn_titleStyle(title_normal: "忘记密码？", title_selected: "忘记密码？", fream: CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(5), width: ip6(100), height: ip6(14)), backgroundColor: .clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSize: 15, textAlignment: .right, selector: #selector(logInClick), vc: self, tag: 1)
 
         self.addSubview(titleLabel)
         self.addSubview(titleLabel_sub)
@@ -161,10 +134,6 @@ class LoginView: UIView ,UITextFieldDelegate{
         if self.delegate != nil {
             self.delegate.forgetPassword()
         }
-        self.addSubview(logBtn)
     }
     
-    func logInClick() {
-        self.delegate.login()
-    }
 }
