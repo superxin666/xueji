@@ -10,7 +10,7 @@ import UIKit
 
 class LogViewController: BaseViewController,LoginViewDelegate {
     var loginView: LoginView!
-    let requestManger = LoginApiManger()
+    let requestManger = LoginApiMangerViewController()
 
 
      // MARK: - lifeCircle

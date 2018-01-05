@@ -2,15 +2,22 @@
 //  LoginApiMangerViewController.swift
 //  xueji
 //
-//  Created by lvxin on 2018/1/4.
+//  Created by lvxin on 2018/1/5.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//  登陆api
+//
 
 import UIKit
 
-class LoginApiManger: BaseApiMangerViewController,BaseApiMangerViewControllerDelegate {
-    
+class LoginApiMangerViewController: BaseApiMangerViewController,BaseApiMangerViewControllerDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
     func loginRequest()  {
+        self.urlStr = login_user_api + "id=1"
         self.delegate = self
         self.request_api()
     }
@@ -26,4 +33,5 @@ class LoginApiManger: BaseApiMangerViewController,BaseApiMangerViewControllerDel
         XJLog(message: response)
         SVPMessageShow.showErro(infoStr: response as! String)
     }
+
 }

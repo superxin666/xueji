@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
-		2112D4EE1FFDD8D1008B4500 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4ED1FFDD8D1008B4500 /* LoginApiMangerViewController.swift */; };
+		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7B1FAFFDD600063A98 /* UserHeadView.swift */; };
 		21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
@@ -34,8 +34,6 @@
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */; };
 		215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */; };
-		216DFEEB1FFD250F002F3EA4 /* CategoryApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEE81FFD250F002F3EA4 /* CategoryApiManger.swift */; };
-		216DFEEC1FFD250F002F3EA4 /* StudyApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEE91FFD250F002F3EA4 /* StudyApiManger.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
 		218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */; };
 		21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */; };
@@ -51,6 +49,7 @@
 		21DCA3A91FA724F60094DCFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DCA3A71FA724F60094DCFE /* LaunchScreen.storyboard */; };
 		21DCA3B41FA724F60094DCFE /* xuejiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3B31FA724F60094DCFE /* xuejiTests.swift */; };
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
+		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
 		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
 		21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */; };
 		21F82E771FB57639006DCB22 /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */; };
@@ -81,7 +80,7 @@
 		157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xuejiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194577466803D1F0BD81935E /* Pods-xuejiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
-		2112D4ED1FFDD8D1008B4500 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
+		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		21145B7B1FAFFDD600063A98 /* UserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
 		21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
@@ -109,8 +108,6 @@
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
-		216DFEE81FFD250F002F3EA4 /* CategoryApiManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryApiManger.swift; sourceTree = "<group>"; };
-		216DFEE91FFD250F002F3EA4 /* StudyApiManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiManger.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
 		218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImagesViewController.swift; sourceTree = "<group>"; };
 		21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +129,7 @@
 		21DCA3BA1FA724F60094DCFE /* xuejiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xuejiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xuejiUITests.swift; sourceTree = "<group>"; };
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
 		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
 		21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
 		21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,6 +169,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2112D4EF1FFE5A4E008B4500 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2112D4F01FFE5A63008B4500 /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		21145B7A1FAFFDC500063A98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +221,7 @@
 		214429B41FA7260400004C38 /* Log */ = {
 			isa = PBXGroup;
 			children = (
+				2112D4EF1FFE5A4E008B4500 /* Models */,
 				2122391E1FEBFB1500A2743E /* Views */,
 				214429B51FA7260400004C38 /* LogViewController.swift */,
 			);
@@ -314,9 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */,
-				216DFEE81FFD250F002F3EA4 /* CategoryApiManger.swift */,
-				216DFEE91FFD250F002F3EA4 /* StudyApiManger.swift */,
-				2112D4ED1FFDD8D1008B4500 /* LoginApiMangerViewController.swift */,
+				21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -729,13 +734,13 @@
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
 				21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */,
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
-				216DFEEC1FFD250F002F3EA4 /* StudyApiManger.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
+				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
 				21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
@@ -744,7 +749,6 @@
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
-				2112D4EE1FFDD8D1008B4500 /* LoginApiMangerViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
@@ -762,7 +766,7 @@
 				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
-				216DFEEB1FFD250F002F3EA4 /* CategoryApiManger.swift in Sources */,
+				2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */,

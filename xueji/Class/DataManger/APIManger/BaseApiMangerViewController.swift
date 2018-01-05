@@ -13,8 +13,7 @@ protocol BaseApiMangerViewControllerDelegate: NSObjectProtocol{
 
 func requestSucceed(response :Any) -> Void
 func requestFail(response :Any) -> Void
-func methodName() -> String
-//func parameterStr() -> String
+//func methodName() -> String
     
 }
 
@@ -37,10 +36,11 @@ class BaseApiMangerViewController: UIViewController {
     var headers : HTTPHeaders!
     //请求参数字典
     var requestMethod : HTTPMethod!
-
+    
     func request_api()  {
-        let str = self.delegate.methodName()
-        let url = base_api+str
+
+        
+        let url = base_api + urlStr
         XJLog(message: url)
         Alamofire.request(url, method: .get).responseJSON { (returnResult) in
             print("secondMethod --> get 请求 --> returnResult = \(returnResult)")
