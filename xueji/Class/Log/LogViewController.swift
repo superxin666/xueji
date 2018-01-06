@@ -35,7 +35,7 @@ class LogViewController: BaseViewController,LoginViewDelegate {
     //登陆
     func login() {
         XJLog(message: "登陆点击")
-        requestManger.request_api()
+        requestManger.loginRequest()
     }
     func forgetPassword() {
         XJLog(message: "忘记密码点击")

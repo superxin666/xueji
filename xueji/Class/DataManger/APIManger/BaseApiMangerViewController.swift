@@ -9,12 +9,10 @@
 import UIKit
 import Alamofire
 import ObjectMapper
-protocol BaseApiMangerViewControllerDelegate: NSObjectProtocol{
 
+protocol BaseApiMangerViewControllerDelegate: NSObjectProtocol{
 func requestSucceed(response :Any) -> Void
 func requestFail(response :Any) -> Void
-//func methodName() -> String
-    
 }
 
 
@@ -23,33 +21,31 @@ class BaseApiMangerViewController: UIViewController {
 
     /// 请求链接
     var urlStr: String!
-//    var urlStr : String?{
-//        set{
-//            _urlStr = newValue
-//        }
-//        get {
-//            return _urlStr
-//        }
-//    }
     
     /// 请求头
     var headers : HTTPHeaders!
     //请求参数字典
     var requestMethod : HTTPMethod!
     
-    func request_api()  {
+    func request_api(url : String){
 
-        
-        let url = base_api + urlStr
+        let url = base_api + url
         XJLog(message: url)
         Alamofire.request(url, method: .get).responseJSON { (returnResult) in
             print("secondMethod --> get 请求 --> returnResult = \(returnResult)")
             if let json = returnResult.result.value {
-                if self.delegate != nil {
-                    self.delegate.requestSucceed(response: json)
+                let model = Mapper<CodeData>().map(JSON: json as! [String : Any])!
+                if model.code == 0 {
+                    if self.delegate != nil {
+                        self.delegate.requestSucceed(response: model.data)
+                    }
+                } else {
+                    SVPMessageShow .showErro(infoStr: model.msg)
                 }
+
             } else {
                 if self.delegate != nil {
+                    SVPMessageShow .showErro(infoStr: "请求失败")
                     self.delegate.requestFail(response: "请求失败")
                 }
             }

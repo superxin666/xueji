@@ -7,31 +7,26 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class LoginApiMangerViewController: BaseApiMangerViewController,BaseApiMangerViewControllerDelegate {
+class LoginApiMangerViewController:UIViewController, BaseApiMangerViewControllerDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let request : BaseApiMangerViewController = BaseApiMangerViewController()
 
-        // Do any additional setup after loading the view.
-    }
 
     func loginRequest()  {
-        self.urlStr = login_user_api + "id=1"
-        self.delegate = self
-        self.request_api()
-    }
-    
-    func methodName() -> String {
-        return login_user_api + "id=1"
-    }
-    func requestSucceed(response: Any) {
-        XJLog(message: response)
-    }
-    
-    func requestFail(response: Any) {
-        XJLog(message: response)
-        SVPMessageShow.showErro(infoStr: response as! String)
+        request.delegate = self
+        request.request_api(url: login_user_api + "id=1")
     }
 
+    func requestSucceed(response: Any) {
+        XJLog(message: response)
+        let model = Mapper<LoginModel>().map(JSON: response as! [String : Any])!
+        XJLog(message: model.token)
+    }
+
+    func requestFail(response: Any) {
+        XJLog(message: response)
+        
+    }
 }

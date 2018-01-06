@@ -35,6 +35,8 @@
 		215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */; };
 		215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
+		2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B911200074B40038847E /* StudyApiMangerViewController.swift */; };
+		2185B91420007C200038847E /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B91320007C200038847E /* CodeData.swift */; };
 		218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */; };
 		21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */; };
 		21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */; };
@@ -109,6 +111,8 @@
 		215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
+		2185B911200074B40038847E /* StudyApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiMangerViewController.swift; sourceTree = "<group>"; };
+		2185B91320007C200038847E /* CodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
 		218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImagesViewController.swift; sourceTree = "<group>"; };
 		21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			children = (
 				216DFEE71FFD24FA002F3EA4 /* APIManger */,
 				2151F65B1FF09B46007D4FFE /* UserDataManger.swift */,
+				2185B91320007C200038847E /* CodeData.swift */,
 			);
 			path = DataManger;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */,
+				2185B911200074B40038847E /* StudyApiMangerViewController.swift */,
 				21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */,
 			);
 			path = APIManger;
@@ -751,8 +757,10 @@
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
+				2185B91420007C200038847E /* CodeData.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
 				214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */,
+				2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */,
 				215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */,
 				214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */,
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
