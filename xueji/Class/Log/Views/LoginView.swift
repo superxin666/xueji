@@ -27,6 +27,9 @@ class LoginView: UIView ,UITextFieldDelegate{
     var passWorldTextFiled : UITextField!
     /// 登录  button
     var loginBtn : UIButton!
+
+    /// 提示
+    var noticeLabel : UILabel!
     /// 忘记密码  button
     var forgetBtn : UIButton!
     /// 微信  button
@@ -48,9 +51,9 @@ class LoginView: UIView ,UITextFieldDelegate{
 
     func loadViews() {
         
-        titleLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: ip6(35), width: ip6(80), height: ip6(31)), fontSize: ip6(31), text: "学记", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x070707), textAlignment: .left)
+        titleLabel = UILabel.getLabel(fream: CGRect(x: ip6(28), y: ip6(35), width: ip6(80), height: ip6(31)), fontSize: 31, text: "学记", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x070707), textAlignment: .left)
 
-        titleLabel_sub = UILabel.getLabel(fream: CGRect(x: ip6(28), y: titleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(56), height: ip6(15)), fontSize: ip6(15), text: "加入学记，精细化管理学习", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        titleLabel_sub = UILabel.getLabel(fream: CGRect(x: ip6(28), y: titleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(56), height: ip6(15)), fontSize: 15, text: "加入学记，精细化管理学习", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
 
         let backViewX = ip6(35)
         let backViewWidth = KSCREEN_WIDTH - backViewX * 2
@@ -85,7 +88,7 @@ class LoginView: UIView ,UITextFieldDelegate{
         //账号密码
         let scrBackView = UIView(frame: CGRect(x: backViewX, y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
 
-        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(21)), fontSize: ip6(15), text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(21)), fontSize: 15, text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         scrBackView.addSubview(scrNameLabel)
         
         
@@ -114,7 +117,30 @@ class LoginView: UIView ,UITextFieldDelegate{
         loginBtn = UIButton.getBtn_titleStyle(title_normal: "登陆", title_selected: "登陆", fream: CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35)), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(logInClick), vc: self, tag: 1)
         loginBtn.xj_makeRadius(radius: 4)
         
-        forgetBtn = UIButton.getBtn_titleStyle(title_normal: "忘记密码？", title_selected: "忘记密码？", fream: CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(5), width: ip6(100), height: ip6(14)), backgroundColor: .clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSize: 15, textAlignment: .right, selector: #selector(logInClick), vc: self, tag: 1)
+        forgetBtn = UIButton.getBtn_titleStyle(title_normal: "忘记密码？", title_selected: "忘记密码？", fream: CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(10), width: ip6(100), height: ip6(14)), backgroundColor: .clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSize: 15, textAlignment: .right, selector: #selector(logInClick), vc: self, tag: 1)
+
+        //其他
+        noticeLabel = UILabel.getLabel(fream: CGRect(x: (KSCREEN_WIDTH - ip6(90))/2, y: loginBtn.frame.maxY + ip6(135), width: ip6(90), height: ip6(15)), fontSize: 15, text: "其他方式登录", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .center)
+
+        //其他方式登录
+        let imageArr = [#imageLiteral(resourceName: "base_wechart"),#imageLiteral(resourceName: "base_weibo"),#imageLiteral(resourceName: "base_qq")]
+        let imageW = ip6(35)
+        let imageH = ip6(30)
+        let x = ip6(50)
+        let appad = (KSCREEN_WIDTH - x * 2 - imageW * 3)/2
+
+
+        for i in 0..<3 {
+            let btn = UIButton.getBtn_picStyle(image_normal: imageArr[i], image_selected: imageArr[i], fream: CGRect(x: x + CGFloat(i) * (imageW + appad), y: noticeLabel.frame.maxY + ip6(30), width: imageW, height: imageH), selector: #selector(otherClick(sender:)), vc: self, tag: i)
+            if i == 0 {
+                weCharBtn = btn
+            } else if i == 1 {
+                weiboBtn = btn
+            } else {
+                qqBtn = btn
+            }
+            self.addSubview(btn)
+        }
 
         self.addSubview(titleLabel)
         self.addSubview(titleLabel_sub)
@@ -122,6 +148,7 @@ class LoginView: UIView ,UITextFieldDelegate{
         self.addSubview(scrBackView)
         self.addSubview(loginBtn)
         self.addSubview(forgetBtn)
+        self.addSubview(noticeLabel)
         
     }
     
@@ -134,6 +161,17 @@ class LoginView: UIView ,UITextFieldDelegate{
         if self.delegate != nil {
             self.delegate.forgetPassword()
         }
+    }
+    func otherClick(sender : UIButton) {
+        let btnTag = sender.tag
+        if btnTag == 0 {
+            XJLog(message: "微信")
+        } else if btnTag == 1 {
+            XJLog(message: "微博")
+        }else {
+            XJLog(message: "qq")
+        }
+
     }
     
 }

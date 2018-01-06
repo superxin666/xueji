@@ -26,6 +26,7 @@ class LogViewController: BaseViewController,LoginViewDelegate {
     // MARK: - UI
     func creatUI() {
         self.navigationBar_rightBtn_title(title: "注册新账号")
+        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
         loginView.delegate = self
         self.view.addSubview(loginView)
