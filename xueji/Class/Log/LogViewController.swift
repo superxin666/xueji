@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: BaseViewController,LoginViewDelegate {
+class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegate {
     var loginView: LoginView!
     let requestManger = LoginApiMangerViewController()
 
@@ -29,8 +29,21 @@ class LogViewController: BaseViewController,LoginViewDelegate {
         self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
         loginView.delegate = self
+        loginView.phoneTextFiled.delegate = self
+        loginView.passWorldTextFiled.delegate = self
         self.view.addSubview(loginView)
 
+    }
+    func showNavigationTitle() {
+        self.navigation_title_fontsize(name: "学记", fontsize: 20)
+        loginView.titleLabel.isHidden = true
+        loginView.frame.origin.y = -ip6(66)
+    }
+
+    func showViewTitle() {
+        self.navigation_title_fontsize(name: "", fontsize: 20)
+        loginView.titleLabel.isHidden = false
+        loginView.frame.origin.y = 0
     }
     // MARK: - delegate
     //登陆
@@ -40,6 +53,17 @@ class LogViewController: BaseViewController,LoginViewDelegate {
     }
     func forgetPassword() {
         XJLog(message: "忘记密码点击")
+    }
+    //textView
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        XJLog(message: "开始编辑")
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        XJLog(message: "编辑完成")
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
     // MARK: - event response
     override func navigationRightBtnClick() {

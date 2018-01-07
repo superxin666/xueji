@@ -13,7 +13,7 @@ protocol LoginViewDelegate: NSObjectProtocol{
     func forgetPassword() ->Void
 }
 
-class LoginView: UIView ,UITextFieldDelegate{
+class LoginView: UIView {
 
     var delegate : LoginViewDelegate!
     
@@ -75,7 +75,6 @@ class LoginView: UIView ,UITextFieldDelegate{
         phoneTextFiled.textAlignment = .left
         phoneTextFiled.keyboardType = .numberPad
         phoneTextFiled.returnKeyType = .next
-        phoneTextFiled.delegate = self;
         phoneTextFiled.tag = 100
         phoneBackView.addSubview(phoneTextFiled)
         
@@ -100,7 +99,6 @@ class LoginView: UIView ,UITextFieldDelegate{
         passWorldTextFiled.textAlignment = .left
         passWorldTextFiled.returnKeyType = .done
         passWorldTextFiled.isSecureTextEntry = true
-        passWorldTextFiled.delegate = self
         passWorldTextFiled.tag = 101
         passWorldTextFiled.font =  xj_fzFontMedium(ip6(15))
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
@@ -120,7 +118,14 @@ class LoginView: UIView ,UITextFieldDelegate{
         forgetBtn = UIButton.getBtn_titleStyle(title_normal: "忘记密码？", title_selected: "忘记密码？", fream: CGRect(x: KSCREEN_WIDTH - ip6(35) - ip6(100), y: loginBtn.frame.maxY + ip6(10), width: ip6(100), height: ip6(14)), backgroundColor: .clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSize: 15, textAlignment: .right, selector: #selector(logInClick), vc: self, tag: 1)
 
         //其他
+        let leftViewWidth = (KSCREEN_WIDTH - ip6(210))/2
+        let leftView = UIView(frame: CGRect(x: ip6(50), y: loginBtn.frame.maxY + ip6(141), width: leftViewWidth, height: 1))
+        leftView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
+
         noticeLabel = UILabel.getLabel(fream: CGRect(x: (KSCREEN_WIDTH - ip6(90))/2, y: loginBtn.frame.maxY + ip6(135), width: ip6(90), height: ip6(15)), fontSize: 15, text: "其他方式登录", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .center)
+
+        let rightView = UIView(frame: CGRect(x: noticeLabel.frame.maxX + ip6(10), y: loginBtn.frame.maxY + ip6(141), width: leftViewWidth, height: 1))
+        rightView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
 
         //其他方式登录
         let imageArr = [#imageLiteral(resourceName: "base_wechart"),#imageLiteral(resourceName: "base_weibo"),#imageLiteral(resourceName: "base_qq")]
@@ -148,8 +153,9 @@ class LoginView: UIView ,UITextFieldDelegate{
         self.addSubview(scrBackView)
         self.addSubview(loginBtn)
         self.addSubview(forgetBtn)
+        self.addSubview(leftView)
         self.addSubview(noticeLabel)
-        
+        self.addSubview(rightView)
     }
     
     func logInClick() {

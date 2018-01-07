@@ -23,6 +23,14 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
         XJLog(message: response)
         let model = Mapper<LoginModel>().map(JSON: response as! [String : Any])!
         XJLog(message: model.token)
+        UserDataManger.storeLoginIdAndTokenInUD(loginUserId: "1", token: model.token!) { (result) in
+            let str:String = result as! String
+            if str == "1"{
+                //存储成工
+                let dele: AppDelegate =  UIApplication.shared.delegate as! AppDelegate
+                dele.tabCreat()
+            }
+        }
     }
 
     func requestFail(response: Any) {
