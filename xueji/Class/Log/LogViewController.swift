@@ -53,6 +53,9 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     }
     func forgetPassword() {
         XJLog(message: "忘记密码点击")
+        let vc = ReSetPassWordViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     //textView
     func textFieldDidBeginEditing(_ textField: UITextField) {
