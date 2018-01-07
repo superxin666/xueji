@@ -9,18 +9,29 @@
 import UIKit
 
 class RegistViewController: BaseViewController {
+    var registView : RegistView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = .white
+        self.creatUI()
     }
+    // MARK: - UI
+    func creatUI() {
+        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
+        registView = RegistView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
+//        loginView.delegate = self
+//        loginView.phoneTextFiled.delegate = self
+//        loginView.passWorldTextFiled.delegate = self
+        self.view.addSubview(registView)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
+    // MARK: - event response
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation

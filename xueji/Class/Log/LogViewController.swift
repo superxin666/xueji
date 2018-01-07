@@ -25,7 +25,7 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     }
     // MARK: - UI
     func creatUI() {
-        self.navigationBar_rightBtn_title(title: "注册新账号")
+        self.navigationBar_rightBtn_title(title: "注册")
         self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
         loginView.delegate = self
@@ -68,6 +68,9 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     // MARK: - event response
     override func navigationRightBtnClick() {
         XJLog(message: "注册点击")
+        let vc = RegistViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     override func didReceiveMemoryWarning() {

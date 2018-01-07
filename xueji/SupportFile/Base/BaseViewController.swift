@@ -70,7 +70,7 @@ class BaseViewController: UIViewController {
     //设置导航栏右键_文字
     func navigationBar_rightBtn_title(title:String){
         let btn:UIButton = UIButton(type: UIButtonType.custom)
-        btn.frame = CGRect(x: 0, y: 0, width: 40, height: 44)
+        btn.frame = CGRect(x: 0, y: 0, width: ip6(40), height: ip6(44))
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(black_53, for: .normal)
         btn.addTarget(self, action:#selector(BaseViewController.navigationRightBtnClick), for: .touchUpInside)
