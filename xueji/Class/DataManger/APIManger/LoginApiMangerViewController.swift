@@ -8,9 +8,13 @@
 
 import UIKit
 import ObjectMapper
+protocol LoginApiMangerViewControllerDelegate: NSObjectProtocol{
+    func requestSucceed() -> Void
+    func requestFail() -> Void
+}
 
 class LoginApiMangerViewController:UIViewController, BaseApiMangerViewControllerDelegate {
-
+    weak var delegate :LoginApiMangerViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
 
 
@@ -29,16 +33,16 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
                 //存储成工
 //                let dele: AppDelegate =  UIApplication.shared.delegate as! AppDelegate
 //                dele.tabCreat()
-                SVPMessageShow.showSucess(infoStr: "登录成功")
-                self.dismiss(animated: true, completion: {
-
-                })
+//                SVPMessageShow.showSucess(infoStr: "登录成功")
+                if self.delegate != nil {
+                    self.delegate.requestSucceed()
+                }
             }
         }
     }
 
     func requestFail(response: Any) {
         XJLog(message: response)
-        
+
     }
 }

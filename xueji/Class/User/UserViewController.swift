@@ -24,7 +24,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     var headView : UserHeadView!
     let sectionTitleArr : [String] = ["学习力","本周目标","学习时间","学习量","学习分布",]//
     
-    
+        // MARK: - lifeCirlce
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -41,9 +41,13 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         self.creatHeadUI()
         self.creatTableView()
     }
+        // MARK: - view
     //MARK: 导航栏点击
     override func navigationLeftBtnClick() {
-        
+        let vc = SetInfoViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     override func navigationRightBtnClick() {
         
@@ -76,6 +80,8 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
 
         self.view.addSubview(mainTabelView)
     }
+    // MARK: - delegate
+    // MARK: - TableViewdelegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }

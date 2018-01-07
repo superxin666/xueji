@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegate {
+class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegate,LoginApiMangerViewControllerDelegate {
     var loginView: LoginView!
     let requestManger = LoginApiMangerViewController()
 
@@ -49,8 +49,18 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     //登陆
     func login() {
         XJLog(message: "登陆点击")
+        requestManger.delegate = self
         requestManger.loginRequest()
     }
+    func requestSucceed() {
+        self.dismiss(animated: true) {
+            SVPMessageShow.showSucess(infoStr: "登录成功")
+        }
+    }
+    func requestFail() {
+
+    }
+    
     func forgetPassword() {
         XJLog(message: "忘记密码点击")
         let vc = ReSetPassWordViewController()

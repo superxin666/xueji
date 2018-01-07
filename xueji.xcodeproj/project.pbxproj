@@ -9,13 +9,20 @@
 /* Begin PBXBuildFile section */
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
-		21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7B1FAFFDD600063A98 /* UserHeadView.swift */; };
-		21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
 		2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */; };
 		2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B1202001E8D1000CB24A /* ReSetPWView.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
 		212239201FEBFD2100A2743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122391F1FEBFD2100A2743E /* LoginView.swift */; };
+		212447232002479D0038F204 /* SetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212447222002479D0038F204 /* SetInfoViewController.swift */; };
+		2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244725200247D20038F204 /* StudyAimTableViewCell.swift */; };
+		2124472C200247D30038F204 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244726200247D20038F204 /* UserHeadView.swift */; };
+		2124472D200247D30038F204 /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */; };
+		2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244728200247D30038F204 /* StudyAmountTableViewCell.swift */; };
+		2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244729200247D30038F204 /* StudyValueTableViewCell.swift */; };
+		21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */; };
+		2124473320024BA20038F204 /* SetHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473220024BA20038F204 /* SetHeadView.swift */; };
+		2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473420024BB80038F204 /* SetInfoTableViewCell.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
@@ -35,8 +42,6 @@
 		214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */; };
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
-		215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */; };
-		215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
 		2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B911200074B40038847E /* StudyApiMangerViewController.swift */; };
 		2185B91420007C200038847E /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B91320007C200038847E /* CodeData.swift */; };
@@ -57,8 +62,6 @@
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
 		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
 		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
-		21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */; };
-		21F82E771FB57639006DCB22 /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */; };
 		4798374154E4CA8DCC2CFD55 /* Pods_xuejiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */; };
 		6022D1E7832C34F150C69369 /* Pods_xuejiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1815B015A5B2C4E70823CA /* Pods_xuejiTests.framework */; };
 		7377D8F73D84BC02523D0E77 /* Pods_xueji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0F7421EED81570BE0C32B7 /* Pods_xueji.framework */; };
@@ -87,13 +90,20 @@
 		194577466803D1F0BD81935E /* Pods-xuejiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		21145B7B1FAFFDD600063A98 /* UserHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
-		21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
 		2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPassWordViewController.swift; sourceTree = "<group>"; };
 		2115B1202001E8D1000CB24A /* ReSetPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPWView.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
 		2122391F1FEBFD2100A2743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		212447222002479D0038F204 /* SetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoViewController.swift; sourceTree = "<group>"; };
+		21244725200247D20038F204 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
+		21244726200247D20038F204 /* UserHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
+		21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
+		21244728200247D30038F204 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
+		21244729200247D30038F204 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
+		2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
+		2124473220024BA20038F204 /* SetHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeadView.swift; sourceTree = "<group>"; };
+		2124473420024BB80038F204 /* SetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoTableViewCell.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -115,8 +125,6 @@
 		2151F65B1FF09B46007D4FFE /* UserDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManger.swift; sourceTree = "<group>"; };
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
-		215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
-		215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
 		2185B911200074B40038847E /* StudyApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiMangerViewController.swift; sourceTree = "<group>"; };
 		2185B91320007C200038847E /* CodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
@@ -143,8 +151,6 @@
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
 		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
-		21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
-		21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
 		30E52D3BD459C7C0D47320C4 /* Pods-xuejiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3578FAA0FBCA4889AAA1A633 /* Pods-xueji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xueji.release.xcconfig"; path = "Pods/Target Support Files/Pods-xueji/Pods-xueji.release.xcconfig"; sourceTree = "<group>"; };
 		5FC2A00CA99500FC6D92E836 /* Pods-xuejiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiTests/Pods-xuejiTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,12 +198,8 @@
 		21145B7A1FAFFDC500063A98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				21145B7B1FAFFDD600063A98 /* UserHeadView.swift */,
-				21145B7F1FB0399300063A98 /* StudyValueTableViewCell.swift */,
-				215C4EE51FB151C200ABFEF0 /* StudyAimTableViewCell.swift */,
-				215C4EE31FB150E800ABFEF0 /* StudyTimeTableViewCell.swift */,
-				21F82E741FB57352006DCB22 /* StudyAmountTableViewCell.swift */,
-				21F82E761FB57639006DCB22 /* StudyDistributeTableViewCell.swift */,
+				21244731200248180038F204 /* SetInfoViews */,
+				21244724200247B60038F204 /* UserViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +212,28 @@
 				2115B1202001E8D1000CB24A /* ReSetPWView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		21244724200247B60038F204 /* UserViews */ = {
+			isa = PBXGroup;
+			children = (
+				21244725200247D20038F204 /* StudyAimTableViewCell.swift */,
+				21244728200247D30038F204 /* StudyAmountTableViewCell.swift */,
+				21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */,
+				2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */,
+				21244729200247D30038F204 /* StudyValueTableViewCell.swift */,
+				21244726200247D20038F204 /* UserHeadView.swift */,
+			);
+			path = UserViews;
+			sourceTree = "<group>";
+		};
+		21244731200248180038F204 /* SetInfoViews */ = {
+			isa = PBXGroup;
+			children = (
+				2124473220024BA20038F204 /* SetHeadView.swift */,
+				2124473420024BB80038F204 /* SetInfoTableViewCell.swift */,
+			);
+			path = SetInfoViews;
 			sourceTree = "<group>";
 		};
 		214429B11FA7260400004C38 /* Class */ = {
@@ -286,6 +310,7 @@
 			children = (
 				21145B7A1FAFFDC500063A98 /* Views */,
 				214429BD1FA7260400004C38 /* UserViewController.swift */,
+				212447222002479D0038F204 /* SetInfoViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -748,18 +773,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21F82E771FB57639006DCB22 /* StudyDistributeTableViewCell.swift in Sources */,
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
-				21145B801FB0399300063A98 /* StudyValueTableViewCell.swift in Sources */,
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
+				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
+				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
+				2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
+				2124472D200247D30038F204 /* StudyDistributeTableViewCell.swift in Sources */,
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
-				21145B7C1FAFFDD600063A98 /* UserHeadView.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
@@ -771,13 +797,15 @@
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
 				2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */,
 				2185B91420007C200038847E /* CodeData.swift in Sources */,
+				2124472C200247D30038F204 /* UserHeadView.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
+				2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */,
 				214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */,
 				2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */,
 				2115B11D2001D510000CB24A /* RegistView.swift in Sources */,
-				215C4EE61FB151C200ABFEF0 /* StudyAimTableViewCell.swift in Sources */,
 				214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */,
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
+				2124473320024BA20038F204 /* SetHeadView.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				2185B916200122D70038847E /* RegistViewController.swift in Sources */,
@@ -792,9 +820,9 @@
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
 				2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
+				2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
-				215C4EE41FB150E800ABFEF0 /* StudyTimeTableViewCell.swift in Sources */,
-				21F82E751FB57352006DCB22 /* StudyAmountTableViewCell.swift in Sources */,
+				212447232002479D0038F204 /* SetInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
