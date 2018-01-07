@@ -27,8 +27,12 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
             let str:String = result as! String
             if str == "1"{
                 //存储成工
-                let dele: AppDelegate =  UIApplication.shared.delegate as! AppDelegate
-                dele.tabCreat()
+//                let dele: AppDelegate =  UIApplication.shared.delegate as! AppDelegate
+//                dele.tabCreat()
+                SVPMessageShow.showSucess(infoStr: "登录成功")
+                self.dismiss(animated: true, completion: {
+
+                })
             }
         }
     }

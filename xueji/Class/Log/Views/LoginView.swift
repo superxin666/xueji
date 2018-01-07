@@ -128,7 +128,8 @@ class LoginView: UIView {
         rightView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
 
         //其他方式登录
-        let imageArr = [#imageLiteral(resourceName: "base_wechart"),#imageLiteral(resourceName: "base_weibo"),#imageLiteral(resourceName: "base_qq")]
+        
+        let imageArr = [#imageLiteral(resourceName: "base_weixin"),#imageLiteral(resourceName: "base_weibo"),#imageLiteral(resourceName: "base_QQ")]
         let imageW = ip6(35)
         let imageH = ip6(30)
         let x = ip6(50)

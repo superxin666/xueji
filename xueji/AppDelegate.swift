@@ -16,18 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: life circle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let login = UserDataManger.getLoginIdAndTokenInUD().isHaveLogin
-        let token = UserDataManger.getLoginIdAndTokenInUD().tokenStr
-        print("login\(login)")
-        print("info\(token)")
-        XJLog(message: token)
-        if login == "1" {
-            //显示主页
-            self.tabCreat()
-        } else {
-            //显示登录注册页面
-            self.showLogin()
-        }
+//        let login = UserDataManger.getLoginIdAndTokenInUD().isHaveLogin
+//        let token = UserDataManger.getLoginIdAndTokenInUD().tokenStr
+//        print("login\(login)")
+//        print("info\(token)")
+//        XJLog(message: token)
+//        if login == "1" {
+//            //显示主页
+//            self.tabCreat()
+//        } else {
+//            //显示登录注册页面
+//            self.showLogin()
+//        }
+        self.tabCreat()
         
         return true
     }

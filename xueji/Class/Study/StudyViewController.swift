@@ -150,7 +150,13 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     // MARK: - EvenResponse
     //添加书籍
     override func navigationRightBtnClick() {
-        UserDataManger.delChain()
+        let login = UserDataManger.getLoginIdAndTokenInUD().isHaveLogin
+        print("login\(login)")
+        if login == "0" {
+            //去登录注册
+            self.login()
+            return
+        }
         if isEdit {
             //编辑状态 确定
             XJLog(message: "确定")
@@ -162,6 +168,15 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     }
     //编辑分类
     override func navigationLeftBtnClick() {
+        let login = UserDataManger.getLoginIdAndTokenInUD().isHaveLogin
+        print("login\(login)")
+        if login == "0" {
+            //去登录注册
+            self.login()
+            return
+        }
+        XJLog(message: "继续")
+
         if isEdit {
             //编辑分类 取消
             isEdit = false
@@ -225,7 +240,19 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         XJLog(message: "分类设置点击")
         let vc = EditCategoryViewController()
         self.navigationController?.pushViewController(vc, animated: true)
-        
+
+
+    }
+
+    func login() {
+        let vc = LogViewController()
+//        vc.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(vc, animated: true)
+        let na = UINavigationController(rootViewController: vc)
+        self.present(na, animated: true) {
+
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

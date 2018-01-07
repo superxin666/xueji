@@ -75,6 +75,12 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
+    override func navigationLeftBtnClick() {
+//        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true) {
+
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
