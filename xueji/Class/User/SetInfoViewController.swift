@@ -10,12 +10,12 @@ import UIKit
 let SetInfoViewHeadHeight = ip6(175)
 
 let SetInfoViewControllerCellid = "SetInfoViewControllerCell_id"
-class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,LogoutApiViewControllerDelegate {
     var mainTabelView : UITableView!//
     let nameArr = ["个人资料","账号与安全","学习设置","复习周期","使用教程","关于学记",]
     /// 退出登录
     var logOutBtn : UIButton!
-
+    let requestManger = LogoutApiViewController()
 
         // MARK: - lifeCirlce
     override func viewDidLoad() {
@@ -78,19 +78,23 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
     }
     
+    //网络请求
+    func requestSucceed() {
+        XJLog(message: "退出登录成功")
+        self.navigationController?.popViewController(animated: true)
+    }
+    func requestFail() {
+        
+    }
     // MARK: - EvenResponse
     func logoutClick()  {
         XJLog(message: "退出登录")
-        UserDataManger.setLogout { (data) in
-            let str = data as! String
-            if str == "1"{
-                XJLog(message: "退出登录成功")
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                    
-            }
-
-        }
+        requestManger.logoutRequest()
+        requestManger.delegate = self
+    }
+    
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

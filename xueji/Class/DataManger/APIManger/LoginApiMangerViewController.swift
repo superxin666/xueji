@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2018/1/5.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//
+//  登陆接口
 
 import UIKit
 import ObjectMapper
@@ -18,9 +18,9 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
 
 
-    func loginRequest()  {
+    func loginRequest(name : String, password : String)  {
         request.delegate = self
-        request.request_api(url: login_user_api + "id=1")
+        request.request_api(url: login_user_api + "username=\(name)" + "&key=\(password)")
     }
 
     func requestSucceed(response: Any) {
@@ -31,9 +31,6 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
             let str:String = result as! String
             if str == "1"{
                 //存储成工
-//                let dele: AppDelegate =  UIApplication.shared.delegate as! AppDelegate
-//                dele.tabCreat()
-//                SVPMessageShow.showSucess(infoStr: "登录成功")
                 if self.delegate != nil {
                     self.delegate.requestSucceed()
                 }
@@ -43,6 +40,9 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
 
     func requestFail(response: Any) {
         XJLog(message: response)
+        let model = Mapper<ErrorCodeData>().map(JSON: response as! [String : Any])!
+        XJLog(message: model.msg)
+        SVPMessageShow.showErro(infoStr: model.msg)
 
     }
 }

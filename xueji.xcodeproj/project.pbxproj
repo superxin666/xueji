@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21014B3B20070D8D002CB437 /* LogoutApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */; };
+		21014B3D2007130C002CB437 /* ErrorCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B3C2007130C002CB437 /* ErrorCodeData.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -88,6 +90,8 @@
 		0A0F7421EED81570BE0C32B7 /* Pods_xueji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xueji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xuejiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194577466803D1F0BD81935E /* Pods-xuejiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutApiViewController.swift; sourceTree = "<group>"; };
+		21014B3C2007130C002CB437 /* ErrorCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeData.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 				216DFEE71FFD24FA002F3EA4 /* APIManger */,
 				2151F65B1FF09B46007D4FFE /* UserDataManger.swift */,
 				2185B91320007C200038847E /* CodeData.swift */,
+				21014B3C2007130C002CB437 /* ErrorCodeData.swift */,
 			);
 			path = DataManger;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */,
 				2185B911200074B40038847E /* StudyApiMangerViewController.swift */,
 				21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */,
+				21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -801,7 +807,9 @@
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
 				2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */,
 				214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */,
+				21014B3B20070D8D002CB437 /* LogoutApiViewController.swift in Sources */,
 				2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */,
+				21014B3D2007130C002CB437 /* ErrorCodeData.swift in Sources */,
 				2115B11D2001D510000CB24A /* RegistView.swift in Sources */,
 				214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */,
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,

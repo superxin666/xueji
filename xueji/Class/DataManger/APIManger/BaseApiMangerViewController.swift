@@ -27,6 +27,7 @@ class BaseApiMangerViewController: UIViewController {
     //请求参数字典
     var requestMethod : HTTPMethod!
     
+    
     func request_api(url : String){
 
         let url = base_api + url
@@ -53,5 +54,10 @@ class BaseApiMangerViewController: UIViewController {
         
     }
 
+    func getTokenParameter()->String {
+        let tokenStr = UserDataManger.getLoginIdAndTokenInUD().tokenStr
+        let str = "&token=\(tokenStr)"
+        return str;
+    }
 
 }

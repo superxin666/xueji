@@ -50,7 +50,7 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     func login() {
         XJLog(message: "登陆点击")
         requestManger.delegate = self
-        requestManger.loginRequest()
+        requestManger.loginRequest(name: "liu", password: "123")
     }
     func requestSucceed() {
         self.dismiss(animated: true) {

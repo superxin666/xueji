@@ -10,6 +10,7 @@ import Foundation
 let base_api = "http://47.52.101.29/app1"
 //---------------------------------用户
 let login_user_api = "/user/login?"
+let logout_user_api = "/user/logout?"
 
 //---------------------------------category
 
