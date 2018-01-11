@@ -9,10 +9,17 @@
 import UIKit
 let EditCatyCellID = "EditCatyCell_ID"
 
-class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
+class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,CategoryListApiMangerViewControllerDelegate{
     var mainTabelView : UITableView!//
     var dataArr : [String] = NSArray() as! [String]
     var isEdit : Bool = false//是否为编辑状态
+    let requestManger = CategoryListApiMangerViewController()
+    
+        //MARK: lifecircle
+    override func viewWillAppear(_ animated: Bool) {
+        requestManger.delegate = self
+        requestManger.listRequest()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,25 +36,7 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
     
     }
     
-    override func navigationRightBtnClick() {
-        if isEdit {
-            //取消编辑状态
-            isEdit = false
-            self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
-            mainTabelView.setEditing(false, animated: true)
-            //发送编辑后的结果
-        } else {
-            //不是编辑状态 是添加新分类功能
-            XJLog(message: "添加分类")
-            let vc = AddCategoryViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
-    
-    }
-    override func navigationLeftBtnClick() {
-        self.navigationController?.popViewController(animated: true)
-    }
+      //MARK: UI
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) ), style: .plain)
         mainTabelView.backgroundColor = UIColor.clear
@@ -60,6 +49,8 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         mainTabelView.register(EditCatyTableViewCell.self, forCellReuseIdentifier: EditCatyCellID)
         self.view.addSubview(mainTabelView)
     }
+        //MARK: delegate
+    //tableViewDelegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -98,12 +89,39 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         XJLog(message: "起始位置\(sourceIndexPath)")
         XJLog(message: "重点位置\(destinationIndexPath)")
     }
-    //MARK: 编辑
+    //网络请求
+    func requestSucceed() {
+        
+    }
+    func requestFail() {
+        
+    }
+    //MARK: response click
     func edit_click() {
          isEdit = true
          self.navigationBar_rightBtn_title(title: "确定")
          mainTabelView.setEditing(true, animated: true)
     }
+    override func navigationRightBtnClick() {
+        if isEdit {
+            //取消编辑状态
+            isEdit = false
+            self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
+            mainTabelView.setEditing(false, animated: true)
+            //发送编辑后的结果
+        } else {
+            //不是编辑状态 是添加新分类功能
+            XJLog(message: "添加分类")
+            let vc = AddCategoryViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+    }
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 
 
     override func didReceiveMemoryWarning() {
