@@ -10,6 +10,7 @@
 		21014B3B20070D8D002CB437 /* LogoutApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */; };
 		21014B3D2007130C002CB437 /* ErrorCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B3C2007130C002CB437 /* ErrorCodeData.swift */; };
 		21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */; };
+		21014B512008581E002CB437 /* CategoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B502008581E002CB437 /* CategoryListModel.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -94,6 +95,7 @@
 		21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutApiViewController.swift; sourceTree = "<group>"; };
 		21014B3C2007130C002CB437 /* ErrorCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeData.swift; sourceTree = "<group>"; };
 		21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListApiMangerViewController.swift; sourceTree = "<group>"; };
+		21014B502008581E002CB437 /* CategoryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListModel.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21014B4F2008561F002CB437 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21014B502008581E002CB437 /* CategoryListModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2112D4EF1FFE5A4E008B4500 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		214429B81FA7260400004C38 /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				21014B4F2008561F002CB437 /* Models */,
 				214429B91FA7260400004C38 /* Cells */,
 				21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */,
 				21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */,
@@ -797,6 +808,7 @@
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
+				21014B512008581E002CB437 /* CategoryListModel.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
 				214F914D1FEA5A3C00D44165 /* pch.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,

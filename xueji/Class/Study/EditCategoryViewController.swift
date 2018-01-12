@@ -29,16 +29,11 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         self.navigation_title_fontsize(name: "分类", fontsize: 20)
         self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
         self.navigationBar_leftBtn_title(title: "返回")
-        for i in 1...16 {
-            dataArr.append("分类\(i)")
-        }
-        self.creatTableView()
-    
     }
     
       //MARK: UI
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) ), style: .plain)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y:LNAVIGATION_HEIGHT + ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) - LNAVIGATION_HEIGHT), style: .plain)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -55,7 +50,7 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArr.count
+        return requestManger.getListArrCount()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : EditCatyTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: EditCatyCellID, for: indexPath) as! EditCatyTableViewCell
@@ -65,7 +60,7 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         }
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.edit_click))
         cell.addGestureRecognizer(tap)
-        cell.setData(name: dataArr[indexPath.row] )
+        cell.setData(model: requestManger.getModel(index: indexPath.row))
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,7 +86,11 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
     }
     //网络请求
     func requestSucceed() {
-        
+        if mainTabelView == nil{
+            self.creatTableView()
+        } else {
+            mainTabelView.reloadData()
+        }
     }
     func requestFail() {
         

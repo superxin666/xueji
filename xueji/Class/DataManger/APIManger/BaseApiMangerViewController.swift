@@ -42,12 +42,13 @@ class BaseApiMangerViewController: UIViewController {
                     }
                 } else {
                     SVPMessageShow .showErro(infoStr: model.msg)
+                    self.delegate.requestFail(response:json)
                 }
 
             } else {
                 if self.delegate != nil {
                     SVPMessageShow .showErro(infoStr: "请求失败")
-                    self.delegate.requestFail(response: "请求失败")
+   
                 }
             }
         }

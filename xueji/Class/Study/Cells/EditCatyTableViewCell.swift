@@ -49,7 +49,8 @@ class EditCatyTableViewCell: UITableViewCell {
         self.addSubview(lineView)
     }
     
-    func setData(name : String)  {
-        nameLabel.text = name
+    func setData(model : CategoryListModel_list)  {
+        nameLabel.text = model.name
+        numLabel.text = model.getBookNum()
     }
 }
