@@ -128,7 +128,6 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         if (cell == nil)  {
             cell = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
         }
-        cell.setUpUI()
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
