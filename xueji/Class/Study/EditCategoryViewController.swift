@@ -13,12 +13,18 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
     var mainTabelView : UITableView!//
     var dataArr : [String] = NSArray() as! [String]
     var isEdit : Bool = false//是否为编辑状态
-    let requestManger = CategoryListApiMangerViewController()
+    var requestManger : CategoryListApiMangerViewController!
+
+
+
     
         //MARK: lifecircle
+    override func viewWillDisappear(_ animated: Bool) {
+        requestManger.resetPage()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
-        requestManger.delegate = self
-        requestManger.listRequest()
+        self.getData()
     }
     
     override func viewDidLoad() {
@@ -29,8 +35,13 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         self.navigation_title_fontsize(name: "分类", fontsize: 20)
         self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
         self.navigationBar_leftBtn_title(title: "返回")
+        requestManger = CategoryListApiMangerViewController()
+        requestManger.delegate = self
     }
-    
+         //MARK: net
+    func getData()  {
+        requestManger.listRequest()
+    }
       //MARK: UI
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y:LNAVIGATION_HEIGHT + ip6(25) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(25) - LNAVIGATION_HEIGHT), style: .plain)
@@ -42,6 +53,9 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
         mainTabelView.register(EditCatyTableViewCell.self, forCellReuseIdentifier: EditCatyCellID)
+        let footer = self.getMJRefreshAutoNormalFooter()
+        mainTabelView.mj_footer = footer
+        footer.setRefreshingTarget(self, refreshingAction: #selector(self.getData))
         self.view.addSubview(mainTabelView)
     }
         //MARK: delegate
@@ -91,9 +105,10 @@ class EditCategoryViewController: BaseViewController ,UITableViewDelegate,UITabl
         } else {
             mainTabelView.reloadData()
         }
+        mainTabelView.mj_footer.endRefreshing()
     }
     func requestFail() {
-        
+        mainTabelView.mj_footer.endRefreshing()
     }
     //MARK: response click
     func edit_click() {

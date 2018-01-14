@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class BaseViewController: UIViewController {
 
@@ -85,7 +86,15 @@ class BaseViewController: UIViewController {
     func navigationRightBtnClick(){
         print("导航栏右键点击")
     }
-    
+    //刷新控件
+    func getMJRefreshNormalHeader()-> MJRefreshNormalHeader {
+        let header = MJRefreshNormalHeader() //头部刷新
+        return header
+    }
+    func getMJRefreshAutoNormalFooter() ->MJRefreshAutoNormalFooter {
+        let footer = MJRefreshAutoNormalFooter() // 底部刷新
+        return footer
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

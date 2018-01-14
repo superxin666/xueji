@@ -17,24 +17,35 @@ class CategoryListApiMangerViewController: UIViewController,BaseApiMangerViewCon
 
     weak var delegate :CategoryListApiMangerViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
-    
+    var page = 0
+    let pageNum = 20
+
     /// 模型数组
     var listArr : Array<CategoryListModel_list> = Array()
+
     
+
     //MARK: 请求
     func listRequest()  {
         request.delegate = self
         SVPMessageShow.showLoad()
-        request.request_api(url: category_list_api + request.getTokenParameter())
+        page = page + 1
+        let url = category_list_api + "&page=\(page)" + request.getTokenParameter()
+        request.request_api(url: url)
     }
     
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
         XJLog(message: response)
         let model = Mapper<CategoryListModel>().map(JSON: response as! [String : Any])!
-        self.removeArr()
-        listArr = model.list
-        self.delegate.requestSucceed()
+        if page>1 {
+            listArr = listArr + model.list
+            self.delegate.requestSucceed()
+        } else {
+            self.removeArr()
+            listArr = model.list
+            self.delegate.requestSucceed()
+        }
     }
     
     func requestFail(response: Any) {
@@ -43,6 +54,7 @@ class CategoryListApiMangerViewController: UIViewController,BaseApiMangerViewCon
         let model = Mapper<ErrorCodeData>().map(JSON: response as! [String : Any])!
         XJLog(message: model.msg)
         SVPMessageShow.showErro(infoStr: model.msg)
+        self.delegate.requestFail()
     }
         //MARK: 数据处理
     func getListArrCount()-> Int {
@@ -65,5 +77,9 @@ class CategoryListApiMangerViewController: UIViewController,BaseApiMangerViewCon
         if listArr.count>0 {
             listArr.removeAll()
         }
+    }
+
+    func resetPage()  {
+        page = 0
     }
 }
