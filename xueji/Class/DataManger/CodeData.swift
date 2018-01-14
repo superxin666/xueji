@@ -11,7 +11,7 @@ import ObjectMapper
 
 class CodeData: Mappable {
     var code: Int!
-    var msg: String!
+    var msg: String = ""
     var data:Any!
 
 

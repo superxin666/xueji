@@ -23,7 +23,7 @@ let category_upd_book_api = "/category/upd_book?"
 
 //---------------------------------book
 /// isbn添加
-let book_add_book_api = "/book/add_book?"
+let book_add_book_api = "/book/add?"
 
 /// 自定义添加
 let book_add_custom_api = "/book/add_custom?"

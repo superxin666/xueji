@@ -66,6 +66,7 @@
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
 		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
 		21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */; };
+		21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */; };
 		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
 		4798374154E4CA8DCC2CFD55 /* Pods_xuejiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */; };
 		6022D1E7832C34F150C69369 /* Pods_xuejiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1815B015A5B2C4E70823CA /* Pods_xuejiTests.framework */; };
@@ -160,6 +161,7 @@
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
 		21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddApiViewController.swift; sourceTree = "<group>"; };
+		21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddApiViewController.swift; sourceTree = "<group>"; };
 		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
 		30E52D3BD459C7C0D47320C4 /* Pods-xuejiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3578FAA0FBCA4889AAA1A633 /* Pods-xueji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xueji.release.xcconfig"; path = "Pods/Target Support Files/Pods-xueji/Pods-xueji.release.xcconfig"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */,
 				21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */,
 				21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */,
+				21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
+				21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,
 				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,

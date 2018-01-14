@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 
-class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate {
+class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate,BookAddApiViewControllerDelegate {
     var  scanSession : AVCaptureSession!
     var scanPane : UIView!//扫描框
     var alertView : UIAlertView!//
@@ -19,7 +19,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     var cancleBtn : UIButton!//取消
     var lightBtn : UIButton!//灯光
     var addBookBtn : UIButton!//手动添加
-    
+    var requestManger : BookAddApiViewController!
+
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -33,6 +34,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        requestManger = BookAddApiViewController()
         self.creatUI()
         self.creatScan()
     }
@@ -82,83 +84,10 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         bottomBackView.addSubview(lightBtn)
         
     }
-    //MARK: 手动添加
-    func addBook_click()  {
-        XJLog(message: "手动添加")
-        let vc : AddBookViewController = AddBookViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    //MARK: 灯光
-    func openLight_click(sender : UIButton) {
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        if device == nil {
-            return
-        }
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            //打开
-            XJLog(message: "打开")
-            if device?.torchMode == .on {
-                
-            } else {
-                do {
-                    try device?.lockForConfiguration()
-                } catch {
-                    return
-                }
-                device?.torchMode = .on
-                device?.unlockForConfiguration()
-            }
-            
-        } else {
-            //关闭
-            XJLog(message: "关闭")
-            if device?.torchMode == .off {
-                
-            } else {
-                do {
-                    try device?.lockForConfiguration()
-                } catch {
-                    return
-                }
-                device?.torchMode = .off
-                device?.unlockForConfiguration()
-            }
-            
-        }
-    }
-    
-    //MARK: 退出
-    func cancle_click() {
-        self.dismissVC()
-    }
-    func dismissVC() {
-        self.dismiss(animated: true, completion: {
-            let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-            if device?.torchMode == .off {
-                
-            } else {
-                do {
-                    try device?.lockForConfiguration()
-                } catch {
-                    return
-                }
-                device?.torchMode = .off
-                device?.unlockForConfiguration()
-            }
-        })
-    }
-     //MARK: 相机权限提醒
-    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        XJLog(message: "移除")
-        self.dismissVC()
-    }
-
-    //MARK: 设置捕捉设备
+    //摄像头
     func creatScan() {
-        
-       
+
+
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo.description) == .restricted || AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo.description) == .denied {
             XJLog(message: "没有权限")
             alertView = UIAlertView(title: nil, message: "设置--通用--学记--打开相机", delegate: self, cancelButtonTitle: "确定")
@@ -172,17 +101,17 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             let input = try AVCaptureDeviceInput(device: device)
             let output = AVCaptureMetadataOutput()
             output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            
-            
+
+
             //设置会话
             scanSession = AVCaptureSession()
             scanSession.canSetSessionPreset(AVCaptureSessionPresetHigh)
-            
+
             if scanSession.canAddInput(input)
             {
                 scanSession.addInput(input)
             }
-            
+
             if scanSession.canAddOutput(output)
             {
                 scanSession.addOutput(output)
@@ -201,7 +130,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             let scanPreviewLayer = AVCaptureVideoPreviewLayer(session:scanSession)
             scanPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             scanPreviewLayer?.frame = view.layer.bounds
-            
+
             view.layer.insertSublayer(scanPreviewLayer!, at: 0)
 
             //自动对焦
@@ -214,16 +143,25 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
                 output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: fream))!
             })
-            
+
             if !scanSession.isRunning{
                 scanSession.startRunning()
             }
         } catch {
             SVPMessageShow.showErro(infoStr: "相机不可用")
         }
-        
+
     }
-    
+    //MARK: net
+    func addbookRequest(isbn : Int) {
+        XJLog(message: isbn)
+        requestManger.delegate = self
+        requestManger.addBookRequest(isbn: isbn)
+
+    }
+
+    //MARK: deleghate
+
     func captureOutput(_ output: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         self.scanSession!.stopRunning()
         XJLog(message: "扫描完成")
@@ -231,10 +169,96 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         if metadataObjects.count > 0{
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject{
                 XJLog(message: resultObj.stringValue)
+                self.addbookRequest(isbn: Int(resultObj.stringValue!)!)
+
             }
         } else {
             XJLog(message: "扫描无结果")
+            alertView = UIAlertView(title: nil, message: "对不起，没有扫描出结果，请到首页选择手动添加", delegate: self, cancelButtonTitle: "确定")
+            alertView.delegate = self
+            alertView.show()
         }
+    }
+
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        XJLog(message: "移除")
+        self.dismissVC()
+    }
+
+    func requestSucceed() {
+        self.cancle_click()
+    }
+    func requestFail() {
+        alertView = UIAlertView(title: nil, message: "对不起，没有扫描出结果，请到首页选择手动添加", delegate: self, cancelButtonTitle: "确定")
+        alertView.delegate = self
+        alertView.show()
+    }
+
+    //MARK: event response
+    // 灯光
+    func openLight_click(sender : UIButton) {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if device == nil {
+            return
+        }
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            //打开
+            XJLog(message: "打开")
+            if device?.torchMode == .on {
+
+            } else {
+                do {
+                    try device?.lockForConfiguration()
+                } catch {
+                    return
+                }
+                device?.torchMode = .on
+                device?.unlockForConfiguration()
+            }
+
+        } else {
+            //关闭
+            XJLog(message: "关闭")
+            if device?.torchMode == .off {
+
+            } else {
+                do {
+                    try device?.lockForConfiguration()
+                } catch {
+                    return
+                }
+                device?.torchMode = .off
+                device?.unlockForConfiguration()
+            }
+
+        }
+    }
+    // 手动添加
+    func addBook_click()  {
+        XJLog(message: "手动添加")
+        let vc : AddBookViewController = AddBookViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    //退出
+    func cancle_click() {
+        self.dismissVC()
+    }
+    func dismissVC() {
+        self.dismiss(animated: true, completion: {
+            let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+            if device?.torchMode == .off {
+
+            } else {
+                do {
+                    try device?.lockForConfiguration()
+                } catch {
+                    return
+                }
+                device?.torchMode = .off
+                device?.unlockForConfiguration()
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {
