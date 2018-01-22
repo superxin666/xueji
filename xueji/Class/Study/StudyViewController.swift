@@ -11,7 +11,7 @@ let headHeight = ip6(140)
 let itemWidth :CGFloat = ip6(65)
 let itemHeight :CGFloat = ip6(100)
 let StudyBookCellID = "StudyBookCell_ID"
-class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UITableViewDelegate,UITableViewDataSource{
+class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UITableViewDelegate,UITableViewDataSource,CategoryListApiMangerViewControllerDelegate{
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
     var mainTabelView : UITableView!//
@@ -19,9 +19,13 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     var isEdit : Bool = false//是否为编辑状态
     
     var bottomBtn : UIButton!//底部编辑按钮
-    
+    /// 分类数据请求管理
+    var requestManger : CategoryListApiMangerViewController = CategoryListApiMangerViewController()
     // MARK: - lifeCirlce
-
+    override func viewWillDisappear(_ animated: Bool) {
+        requestManger.resetPage()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,7 +33,9 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.setUpNavigation_normal()
         self.creatHeadView()
         self.creatTableView()
-        
+
+        requestManger.delegate = self
+        self.getData()
     }
     
     // MARK: - view
@@ -118,10 +124,10 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     // MARK: - TableViewdelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return requestManger.getListArrCount();
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return requestManger.getBookArrCount(index: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
@@ -131,14 +137,14 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view : UIView = UIView()
-        
-        let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(12), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: "分类", textColor: black_53, textAlignment: .left)
-        view.addSubview(nameLabel)
+        let view = StudyHeadView()
+        let model = requestManger.getModel(index: section)
+        let name = model.getCatName()
+        view.setUpData(nameStr: name)
         return view
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ip6(42)
+        return StudyHeadViewH
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ip6(216)
@@ -146,6 +152,19 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    //网络代理
+    func requestSucceed() {
+        self.mainTabelView.reloadData()
+    }
+    func requestFail() {
+        
+    }
+    // MARK: - net
+    func getData() {
+        requestManger.listRequest()
+    }
+    
+    
     // MARK: - EvenResponse
     //添加书籍
     override func navigationRightBtnClick() {

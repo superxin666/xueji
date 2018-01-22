@@ -16,6 +16,7 @@
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
 		2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */; };
 		2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B1202001E8D1000CB24A /* ReSetPWView.swift */; };
+		2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117E0B52016189500958EEB /* StudyHeadView.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
 		212239201FEBFD2100A2743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122391F1FEBFD2100A2743E /* LoginView.swift */; };
 		212447232002479D0038F204 /* SetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212447222002479D0038F204 /* SetInfoViewController.swift */; };
@@ -103,6 +104,7 @@
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
 		2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPassWordViewController.swift; sourceTree = "<group>"; };
 		2115B1202001E8D1000CB24A /* ReSetPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPWView.swift; sourceTree = "<group>"; };
+		2117E0B52016189500958EEB /* StudyHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHeadView.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
 		2122391F1FEBFD2100A2743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		212447222002479D0038F204 /* SetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */,
 				215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */,
+				2117E0B52016189500958EEB /* StudyHeadView.swift */,
 				21C989331FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift */,
 				21C436D01FBAC0A00031F2C3 /* AddBookTableViewCell.swift */,
 				21C436D21FBACC240031F2C3 /* AddBook_CatTableViewCell.swift */,
@@ -836,6 +839,7 @@
 				2115B11D2001D510000CB24A /* RegistView.swift in Sources */,
 				214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */,
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
+				2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */,
 				2124473320024BA20038F204 /* SetHeadView.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,

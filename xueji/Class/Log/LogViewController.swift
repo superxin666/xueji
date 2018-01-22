@@ -53,8 +53,11 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
         requestManger.loginRequest(name: "liu", password: "123")
     }
     func requestSucceed() {
+        let dele = AppDelegate()
+       
         self.dismiss(animated: true) {
             SVPMessageShow.showSucess(infoStr: "登录成功")
+             dele.tabCreat()
         }
     }
     func requestFail() {
