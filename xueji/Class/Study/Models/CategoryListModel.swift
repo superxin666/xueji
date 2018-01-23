@@ -76,14 +76,22 @@ class CategoryListModel_list: Mappable {
     ///
     /// - Returns: <#return value description#>
     func getBookNum()->String {
-        return "资料数：\(self.book_count!)"
+        if let count = self.book_count{
+            return "资料数：\(count)"
+        } else {
+            return ""
+        }
     }
     
     /// 获取分类名字
     ///
     /// - Returns: <#return value description#>
     func getCatName() -> String {
-        return self.name!
+        if let name  = self.name {
+            return name
+        } else {
+            return ""
+        }
     }
 }
 

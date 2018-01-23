@@ -63,10 +63,14 @@ class CategoryListApiMangerViewController: UIViewController,BaseApiMangerViewCon
     ///
     /// - Returns: <#return value description#>
     func getListArrCount()-> Int {
-        XJLog(message: self.listArr!.count)
-        if self.listArr!.count > 0 {
-            return listArr.count
-        } else {
+        if let arr = self.listArr{
+            XJLog(message: arr.count)
+            if arr.count > 0 {
+                return arr.count
+            } else {
+                return 0
+            }
+        } else{
             return 0
         }
     }
@@ -76,17 +80,52 @@ class CategoryListApiMangerViewController: UIViewController,BaseApiMangerViewCon
     /// - Parameter index: 第几个分类
     /// - Returns: <#return value description#>
     func getBookArrCount(index : Int) -> Int {
-        if index<self.listArr!.count {
-            let model : CategoryListModel_list = self.listArr[index]
-            if model.book_list.count > 0{
-                XJLog(message: "书个数\(model.book_list.count)")
-                return model.book_list.count
+        if let listarr = self.listArr {
+            if index<listarr.count {
+                let model : CategoryListModel_list = listarr[index]
+                if model.book_list.count > 0{
+                    XJLog(message: "书个数\(model.book_list.count)")
+                    return model.book_list.count
+                } else {
+                    return 0
+                }
             } else {
                 return 0
             }
+            
         } else {
             return 0
         }
+    }
+    
+    /// 获取
+    ///
+    /// - Parameter section: <#section description#>
+    /// - Returns: <#return value description#>
+    func getBookList(section : Int)-> Array<CategoryListModel_list_book_list> {
+
+        if let listarr = self.listArr {
+            if section<listarr.count {
+                let model : CategoryListModel_list = listarr[section]
+                return model.book_list
+            } else {
+                return Array()
+            }
+        } else {
+            return Array()
+        }
+
+    }
+    
+    /// 获取分类下面 书籍行高
+    ///
+    /// - Parameter section: 组 分类位置
+    /// - Returns: <#return value description#>
+    func getRowHeight(section : Int) -> CGFloat {
+        let bookNum = self.getBookArrCount(index: section)
+        let imageH = ip6(100)
+        let height = (CGFloat((bookNum/4))+1) * (imageH + ip6(16))
+        return height
     }
     
     /// 获取分类模型

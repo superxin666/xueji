@@ -33,7 +33,6 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         self.setUpNavigation_normal()
         self.creatHeadView()
         self.creatTableView()
-
         requestManger.delegate = self
         self.getData()
     }
@@ -93,7 +92,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
         //        mainTabelView.mj_footer = footer
         //        mainTabelView.mj_header = header
-        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
+//        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
         //        mainTabelView.register(TeachTableViewCell.self, forCellReuseIdentifier: TEACHCELLID)
         self.view.addSubview(mainTabelView)
     }
@@ -127,13 +126,18 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         return requestManger.getListArrCount();
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return requestManger.getBookArrCount(index: section)
+        return 1
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
-        if (cell == nil)  {
-            cell = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
-        }
+//        var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
+//        if (cell == nil)  {
+          let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
+//        } else {
+//            cell.contentView.subviews.last?.removeFromSuperview()
+//        }
+        let model = requestManger.getModel(index: indexPath.section)
+        cell.setUpUI(model: model)
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -147,7 +151,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         return StudyHeadViewH
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return ip6(216)
+        return requestManger.getRowHeight(section: indexPath.section)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
