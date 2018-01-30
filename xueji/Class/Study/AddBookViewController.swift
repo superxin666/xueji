@@ -12,19 +12,25 @@ let addBook_CatCellHeight = ip6(72)
 let AddBookCellID = "AddBookCell_id"
 let AddBook_CatCellID = "AddBook_CatCellID"
 
-class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AddBook_customViewControllerDelegate {
 
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
-
     var alertController : UIAlertController!
     var pickerView:UIPickerView = UIPickerView()
+    var requestManger:AddBook_customViewController = AddBook_customViewController()
+
+    
+    /// 书籍名字
+    var titleStr: String!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    //MARK:life circle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,101 +41,6 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
         self.creatUI()
     }
 
-     // MARK: - 导航栏
-    override func navigationLeftBtnClick() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    override func navigationRightBtnClick() {
-        XJLog(message: "保存")
-    }
-    
-    func bookIconImageView_click() {
-        alertController  = UIAlertController(title: nil, message: "添加封面", preferredStyle: .alert)
-        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
-            //取消
-            self.alertController.dismiss(animated: true, completion: {
-                
-            })
-        }
-        let systemAction = UIAlertAction(title: "系统封面", style: .default) { (action) in
-            //系统封面
-            let vc = BookImagesViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
-        let takePhotoAction = UIAlertAction(title: "拍照", style: .default) { (action) in
-            //拍照
-            self.openCamera()
-        }
-        let albumAction = UIAlertAction(title: "相册", style: .default) { (action) in
-            //相册
-            self.openAlbum()
-        }
-        
-        alertController.addAction(cancleAction)
-        alertController.addAction(systemAction)
-        alertController.addAction(takePhotoAction)
-        alertController.addAction(albumAction)
-        self.present((alertController)!, animated: true, completion: nil)
-    }
-    
-    //MARK:选择照片
-    func openAlbum() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            //初始化图片控制器
-            let picker = UIImagePickerController()
-            //设置代理
-            picker.delegate = self
-            //指定图片控制器类型
-            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            //设置是否允许编辑
-            picker.allowsEditing = true
-            
-            //弹出控制器，显示界面
-            self.present(picker, animated: true, completion: {
-                () -> Void in
-            })
-        }else{
-            XJLog(message: "读取相册错误")
-        }
-        
-    }
-    func openCamera(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            //创建图片控制器
-            let picker = UIImagePickerController()
-            //设置代理
-            picker.delegate = self
-            //设置来源
-            picker.sourceType = UIImagePickerControllerSourceType.camera
-            //允许编辑
-            picker.allowsEditing = true
-            //打开相机
-            self.present(picker, animated: true, completion: { () -> Void in
-                
-            })
-        }else{
-            XJLog(message: "找不到相机")
-        }
-    }
-    
-    //选择图片成功后代理
-    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
-        //查看info对象
-        XJLog(message: info)
-        
-        //获取选择的编辑后的
-        let  image = info[UIImagePickerControllerEditedImage] as! UIImage
-        //图片控制器退出
-        picker.dismiss(animated: true, completion: {
-            () -> Void in
-            
-            //显示图片
-            self.bookImageView.image = image
-
-        })
-    }
-    
     // MARK: - 创建视图
     func creatUI() {
         bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: LNAVIGATION_HEIGHT + ip6(20), width: ip6(100), height: ip6(150)))
@@ -154,6 +65,7 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
         
         self.view.addSubview(mainTabelView)
     }
+    // MARK: delegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -198,6 +110,107 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
             }
             self.addChildViewController(vc)
             self.view.addSubview(vc.view)
+        }
+    }
+    //选择图片成功后代理
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
+        //查看info对象
+        XJLog(message: info)
+        
+        //获取选择的编辑后的
+        let  image = info[UIImagePickerControllerEditedImage] as! UIImage
+        //图片控制器退出
+        picker.dismiss(animated: true, completion: {
+            () -> Void in
+            
+            //显示图片
+            self.bookImageView.image = image
+            
+        })
+    }
+    //网络代理
+    func requestSucceed() {
+        self.navigationLeftBtnClick()
+    }
+    func requestFail() {
+        
+    }
+    
+    // MARK: event response
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    override func navigationRightBtnClick() {
+        XJLog(message: "保存")
+        requestManger.delegate = self
+        requestManger.addBook(title:"", cid: 0, img: "", author: "", publisher: "", pubdate: "", pages: 1)
+    }
+    
+    func bookIconImageView_click() {
+        alertController  = UIAlertController(title: nil, message: "添加封面", preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            //取消
+            self.alertController.dismiss(animated: true, completion: {
+                
+            })
+        }
+        let systemAction = UIAlertAction(title: "系统封面", style: .default) { (action) in
+            //系统封面
+            let vc = BookImagesViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        let takePhotoAction = UIAlertAction(title: "拍照", style: .default) { (action) in
+            //拍照
+            self.openCamera()
+        }
+        let albumAction = UIAlertAction(title: "相册", style: .default) { (action) in
+            //相册
+            self.openAlbum()
+        }
+        
+        alertController.addAction(cancleAction)
+        alertController.addAction(systemAction)
+        alertController.addAction(takePhotoAction)
+        alertController.addAction(albumAction)
+        self.present((alertController)!, animated: true, completion: nil)
+    }
+    func openAlbum() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            //初始化图片控制器
+            let picker = UIImagePickerController()
+            //设置代理
+            picker.delegate = self
+            //指定图片控制器类型
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            //设置是否允许编辑
+            picker.allowsEditing = true
+            
+            //弹出控制器，显示界面
+            self.present(picker, animated: true, completion: {
+                () -> Void in
+            })
+        }else{
+            XJLog(message: "读取相册错误")
+        }
+        
+    }
+    func openCamera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            //创建图片控制器
+            let picker = UIImagePickerController()
+            //设置代理
+            picker.delegate = self
+            //设置来源
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            //允许编辑
+            picker.allowsEditing = true
+            //打开相机
+            self.present(picker, animated: true, completion: { () -> Void in
+                
+            })
+        }else{
+            XJLog(message: "找不到相机")
         }
     }
     override func didReceiveMemoryWarning() {

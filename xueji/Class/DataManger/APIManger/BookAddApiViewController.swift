@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2018/1/14.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//  添加书本
+//  添加书本 扫码添加
 
 import UIKit
 import ObjectMapper
@@ -18,6 +18,9 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
 
     
+    /// 添加书籍
+    ///
+    /// - Parameter isbn: 分类id
     func addBookRequest(isbn:Int) {
 
         request.delegate = self
