@@ -18,6 +18,7 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     var page = 0
     let pageNum = 20
+    
     /// 书籍模型数组
     var listArr : Array<CategoryListModel_list>!
     
@@ -46,6 +47,7 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
         } else {
             self.removeArr()
             listArr = model.list
+            recent_learnListArr = model.recent_learn
             self.delegate.requestSucceed()
         }
     }
@@ -175,5 +177,16 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     /// 清除 页码
     func resetPage()  {
         page = 0
+    }
+    
+    /// 获取最近学习数据列表
+    ///
+    /// - Returns: 列表
+    func getRecentLearnList() -> Array<CategoryListModel_list_book_list> {
+        if let arr = recent_learnListArr {
+            return arr
+        } else {
+            return Array()
+        }
     }
 }
