@@ -31,6 +31,7 @@
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
+		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
 		214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B31FA7260400004C38 /* BaseViewController.swift */; };
 		214429BF1FA7260400004C38 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429B51FA7260400004C38 /* LogViewController.swift */; };
@@ -120,6 +121,7 @@
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
 		214429B31FA7260400004C38 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		214429B51FA7260400004C38 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				21014B502008581E002CB437 /* CategoryListModel.swift */,
+				21376690203FEDAE000CBCE6 /* StudyListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,8 +441,8 @@
 				2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */,
 				214429C51FA7264900004C38 /* SupportFile */,
 				214429B11FA7260400004C38 /* Class */,
-				21DCA39E1FA724F60094DCFE /* AppDelegate.swift */,
 				21DCA3A01FA724F60094DCFE /* ViewController.swift */,
+				21DCA39E1FA724F60094DCFE /* AppDelegate.swift */,
 				21DCA3A21FA724F60094DCFE /* Main.storyboard */,
 				21DCA3A51FA724F60094DCFE /* Assets.xcassets */,
 				21DCA3A71FA724F60094DCFE /* LaunchScreen.storyboard */,
@@ -858,6 +861,7 @@
 				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
+				21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */,
 				2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
 				2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */,

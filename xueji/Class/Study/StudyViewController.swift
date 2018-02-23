@@ -11,7 +11,7 @@ let headHeight = ip6(140)
 let itemWidth :CGFloat = ip6(65)
 let itemHeight :CGFloat = ip6(100)
 let StudyBookCellID = "StudyBookCell_ID"
-class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UITableViewDelegate,UITableViewDataSource,CategoryListApiMangerViewControllerDelegate{
+class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate{
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
     var mainTabelView : UITableView!//
@@ -20,7 +20,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     
     var bottomBtn : UIButton!//底部编辑按钮
     /// 分类数据请求管理
-    var requestManger : CategoryListApiMangerViewController = CategoryListApiMangerViewController()
+    var requestManger : StudyApiMangerViewController = StudyApiMangerViewController()
     // MARK: - lifeCirlce
     override func viewWillDisappear(_ animated: Bool) {
         requestManger.resetPage()

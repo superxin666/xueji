@@ -55,10 +55,10 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     func requestSucceed() {
         let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
        
-        self.dismiss(animated: true) {
+//        self.dismiss(animated: true) {
             SVPMessageShow.showSucess(infoStr: "登录成功")
-             dele.tabCreat()
-        }
+            dele.tabCreat()
+//        }
     }
     func requestFail() {
 
