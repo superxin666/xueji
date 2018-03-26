@@ -63,19 +63,27 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     
     //MARK: 数据处理
     
-    /// 获取分类数据模型数组
+    /// 获取分类数据模型数组个数
     ///
     /// - Returns: <#return value description#>
     func getListArrCount()-> Int {
+        //最近学习
+        var num = 0
+        if self.getRecentListCount() > 0 {
+            
+            num = 1
+        }
+        XJLog(message: "最近学习个数\(num)")
+        //分类
         if let arr = self.listArr{
             XJLog(message: arr.count)
             if arr.count > 0 {
-                return arr.count
+                return arr.count + num
             } else {
-                return 0
+                return 0 + num
             }
         } else{
-            return 0
+            return 0 + num
         }
     }
     
@@ -164,6 +172,33 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
             }
         } else {
             return CategoryListModel_list_book_list()
+        }
+    }
+    
+    
+    /// 获取最近学习列表个数
+    ///
+    /// - Returns: <#return value description#>
+    func getRecentListCount() -> Int {
+        if let arr = self.recent_learnListArr {
+            if arr.count > 0 {
+                return arr.count
+            } else {
+                return 0
+            }
+        } else {
+            return 0
+        }
+    }
+    
+    /// 获取最近学习数组
+    ///
+    /// - Returns: <#return value description#>
+    func getRecentList() -> Array<CategoryListModel_list_book_list> {
+        if let arr = self.recent_learnListArr {
+            return arr
+        } else {
+            return Array()
         }
     }
     

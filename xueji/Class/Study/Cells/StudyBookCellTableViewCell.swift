@@ -26,6 +26,9 @@ class StudyBookCellTableViewCell: UITableViewCell {
         
     }
 
+    /// 分类列表
+    ///
+    /// - Parameter model: <#model description#>
     func setUpUI(model : CategoryListModel_list) {
         //
         for i in 0..<model.book_list.count {
@@ -33,6 +36,28 @@ class StudyBookCellTableViewCell: UITableViewCell {
             let imageH = ip6(100)
             let imageW = ip6(65)
 //            let x = ip6(21)
+            let appading = (KSCREEN_WIDTH - ip6(42) - imageW * 4)/3
+            let Y = CGFloat((i/4)) * (imageH + ip6(16))
+            let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
+            bookImageView = UIImageView()
+            bookImageView.frame = CGRect(x: X, y: Y, width: imageW, height: imageH)
+            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+            self.contentView.addSubview(bookImageView)
+        }
+        
+    }
+    
+    
+    
+    /// 最近学习
+    ///
+    /// - Parameter arr: <#arr description#>
+    func setUpUI_recent(arr : Array<CategoryListModel_list_book_list>)  {
+        for i in 0..<arr.count {
+            let subModel = arr[i]
+            let imageH = ip6(100)
+            let imageW = ip6(65)
+            //            let x = ip6(21)
             let appading = (KSCREEN_WIDTH - ip6(42) - imageW * 4)/3
             let Y = CGFloat((i/4)) * (imageH + ip6(16))
             let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))

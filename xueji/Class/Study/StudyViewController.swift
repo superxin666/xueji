@@ -11,7 +11,7 @@ let headHeight = ip6(140)
 let itemWidth :CGFloat = ip6(65)
 let itemHeight :CGFloat = ip6(100)
 let StudyBookCellID = "StudyBookCell_ID"
-class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate{
+class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate{
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
     var mainTabelView : UITableView!//
@@ -31,7 +31,7 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
         self.setUpNavigation_normal()
-        self.creatHeadView()
+//        self.creatHeadView()
         self.creatTableView()
         requestManger.delegate = self
         self.getData()
@@ -51,36 +51,36 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     }
     
  
-    func creatHeadView() {
-        XJLog(message: LNAVIGATION_HEIGHT)
-        headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT  + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
-        self.view.addSubview(headBackView)
-        
-        //名字
-        
-        let headTitleLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(10), width: ip6(80), height: ip6(20)), fontSize: 15, text: "最近学习", textColor: black_53, textAlignment: .left)
-        headBackView.addSubview(headTitleLabel)
-        
-        //图片
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = ip6(23)
-        layout.minimumLineSpacing = ip6(23)
-//        layout.sectionInset = UIEdgeInsetsMake(0, ip6(10), 0, ip6(10))
-        colletionView = UICollectionView(frame: CGRect(x: ip6(21), y:  headTitleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(21), height: itemHeight), collectionViewLayout: layout)
-        colletionView.register(HeadBookCollectionViewCell.self, forCellWithReuseIdentifier: "HeadBookCollectionViewCell_id")
-        colletionView.backgroundColor = .clear
-        colletionView.delegate = self
-        colletionView.dataSource = self
-        colletionView.contentSize = CGSize(width: itemWidth * 10, height: itemHeight)
-        headBackView.addSubview(colletionView)
-        
-        
-    }
+//    func creatHeadView() {
+//        XJLog(message: LNAVIGATION_HEIGHT)
+//        headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT  + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
+//        self.view.addSubview(headBackView)
+//
+//        //名字
+//
+//        let headTitleLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(10), width: ip6(80), height: ip6(20)), fontSize: 15, text: "最近学习", textColor: black_53, textAlignment: .left)
+//        headBackView.addSubview(headTitleLabel)
+//
+//        //图片
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//        layout.scrollDirection = .horizontal
+//        layout.minimumInteritemSpacing = ip6(23)
+//        layout.minimumLineSpacing = ip6(23)
+////        layout.sectionInset = UIEdgeInsetsMake(0, ip6(10), 0, ip6(10))
+//        colletionView = UICollectionView(frame: CGRect(x: ip6(21), y:  headTitleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(21), height: itemHeight), collectionViewLayout: layout)
+//        colletionView.register(HeadBookCollectionViewCell.self, forCellWithReuseIdentifier: "HeadBookCollectionViewCell_id")
+//        colletionView.backgroundColor = .clear
+//        colletionView.delegate = self
+//        colletionView.dataSource = self
+//        colletionView.contentSize = CGSize(width: itemWidth * 10, height: itemHeight)
+//        headBackView.addSubview(colletionView)
+//
+//
+//    }
     // MARK: - TableView视图
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headBackView.frame.maxY , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .plain)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .grouped)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -98,28 +98,28 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
     }
     // MARK: - delegate
     // MARK: - UICollectionViewDelegate
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if indexPath.row < imageArr.count {
-            let cell :HeadBookCollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "HeadBookCollectionViewCell_id", for: indexPath) as! HeadBookCollectionViewCell
-            //            var nameStr : String = ""
-            //            var picStr :String = ""
-
-//            cell.setUI(image: imageArr[indexPath.row], name: "")
-            return cell
-//        } else {
-//            return UIView() as! UICollectionViewCell
-//        }
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 15
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+////        if indexPath.row < imageArr.count {
+//            let cell :HeadBookCollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "HeadBookCollectionViewCell_id", for: indexPath) as! HeadBookCollectionViewCell
+//            //            var nameStr : String = ""
+//            //            var picStr :String = ""
+//
+////            cell.setUI(image: imageArr[indexPath.row], name: "")
+//            return cell
+////        } else {
+////            return UIView() as! UICollectionViewCell
+////        }
+//    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//    }
     // MARK: - TableViewdelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -130,21 +130,45 @@ class StudyViewController: BaseViewController,UICollectionViewDelegate,UICollect
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell : StudyBookCellTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: StudyBookCellID, for: indexPath) as! StudyBookCellTableViewCell
-//        if (cell == nil)  {
-          let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
-//        } else {
-//            cell.contentView.subviews.last?.removeFromSuperview()
-//        }
-        let model = requestManger.getModel(index: indexPath.section)
-        cell.setUpUI(model: model)
-        return cell
+        if requestManger.getRecentListCount() > 0 {
+            //有最近学习
+            if indexPath.row == 0 {
+                let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
+                cell.setUpUI_recent(arr: requestManger.recent_learnListArr)
+                return cell
+
+            } else {
+                let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
+                let model = requestManger.getModel(index: indexPath.section)
+                cell.setUpUI(model: model)
+                return cell
+
+            }
+
+        } else {
+            let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
+            let model = requestManger.getModel(index: indexPath.section)
+            cell.setUpUI(model: model)
+            return cell
+        }
+
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = StudyHeadView()
-        let model = requestManger.getModel(index: section)
-        let name = model.getCatName()
-        view.setUpData(nameStr: name)
+        if requestManger.getRecentListCount() > 0 {
+            if section == 0 {
+                view.setUpData(nameStr: "最近学习")
+            } else {
+                let model = requestManger.getModel(index: section-1)
+                let name = model.getCatName()
+                view.setUpData(nameStr: name)
+            }
+        } else {
+            let model = requestManger.getModel(index: section)
+            let name = model.getCatName()
+            view.setUpData(nameStr: name)
+        }
+
         return view
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
