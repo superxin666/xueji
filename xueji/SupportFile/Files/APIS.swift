@@ -13,6 +13,8 @@ let login_user_api = "/user/login?"
 let logout_user_api = "/user/logout?"
 //---------------------------------首页
 let main_index_api = "/main/index?"
+//---------------------------------复习
+let review_range_api = "/review/range?"
 //---------------------------------category
 
 /// 分类列表

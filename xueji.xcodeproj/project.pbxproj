@@ -11,6 +11,8 @@
 		21014B3D2007130C002CB437 /* ErrorCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B3C2007130C002CB437 /* ErrorCodeData.swift */; };
 		21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */; };
 		21014B512008581E002CB437 /* CategoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B502008581E002CB437 /* CategoryListModel.swift */; };
+		210198752069296700907EEC /* ReviewTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210198742069296700907EEC /* ReviewTopView.swift */; };
+		2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -46,10 +48,10 @@
 		214F91411FEA4F1900D44165 /* View+Clipping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F913B1FEA4F1800D44165 /* View+Clipping.swift */; };
 		214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91491FEA5A3C00D44165 /* APIS.swift */; };
 		214F914D1FEA5A3C00D44165 /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914A1FEA5A3C00D44165 /* pch.swift */; };
-		214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */; };
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
+		2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */; };
 		2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B911200074B40038847E /* StudyApiMangerViewController.swift */; };
 		2185B91420007C200038847E /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B91320007C200038847E /* CodeData.swift */; };
 		2185B916200122D70038847E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B915200122D70038847E /* RegistViewController.swift */; };
@@ -101,6 +103,8 @@
 		21014B3C2007130C002CB437 /* ErrorCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeData.swift; sourceTree = "<group>"; };
 		21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListApiMangerViewController.swift; sourceTree = "<group>"; };
 		21014B502008581E002CB437 /* CategoryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListModel.swift; sourceTree = "<group>"; };
+		210198742069296700907EEC /* ReviewTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTopView.swift; sourceTree = "<group>"; };
+		2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApiMangerViewController.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -137,11 +141,11 @@
 		214F91491FEA5A3C00D44165 /* APIS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIS.swift; sourceTree = "<group>"; };
 		214F914A1FEA5A3C00D44165 /* pch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pch.swift; sourceTree = "<group>"; };
 		214F914B1FEA5A3C00D44165 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseMangerViewController.swift; sourceTree = "<group>"; };
 		2151F65B1FF09B46007D4FFE /* UserDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManger.swift; sourceTree = "<group>"; };
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
+		2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		2185B911200074B40038847E /* StudyApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiMangerViewController.swift; sourceTree = "<group>"; };
 		2185B91320007C200038847E /* CodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
 		2185B915200122D70038847E /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 		214429B61FA7260400004C38 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				2182CB4A2078696500BAEBD4 /* Models */,
 				21C436CB1FB992130031F2C3 /* Views */,
 				21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */,
 			);
@@ -400,15 +405,24 @@
 				21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */,
 				21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */,
 				2142C9072020087500ED2104 /* AddBook_customViewController.swift */,
+				2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */,
 			);
 			path = APIManger;
+			sourceTree = "<group>";
+		};
+		2182CB4A2078696500BAEBD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		21C436CB1FB992130031F2C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */,
-				214F914E1FEA5C2900D44165 /* APIBaseMangerViewController.swift */,
+				210198742069296700907EEC /* ReviewTopView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -812,13 +826,14 @@
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
 				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
+				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
-				214F914F1FEA5C2900D44165 /* APIBaseMangerViewController.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
 				2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */,
+				210198752069296700907EEC /* ReviewTopView.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
 				2124472D200247D30038F204 /* StudyDistributeTableViewCell.swift in Sources */,
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
@@ -847,6 +862,7 @@
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
 				2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */,
 				2124473320024BA20038F204 /* SetHeadView.swift in Sources */,
+				2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				2185B916200122D70038847E /* RegistViewController.swift in Sources */,
