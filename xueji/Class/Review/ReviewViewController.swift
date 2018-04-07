@@ -12,7 +12,7 @@ let  ReviewCellID = "ReviewCell_id"
 class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,ReviewApiMangerViewControllerDelegate {
     
     /// 头部视图
-    var headBackView : UIView!
+    var headBackView : ReviewTopView!
     var mainTabelView : UITableView!//
     
     let request : ReviewApiMangerViewController = ReviewApiMangerViewController()
@@ -30,7 +30,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     }
     // MARK: -头部视图
     func creatHeadView() {
-        headBackView = UIView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(46)))
+        headBackView = ReviewTopView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(46)))
         self.view.addSubview(headBackView)
         
 
@@ -109,7 +109,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
 //    }
     
     func requestSucceed() {
-        
+        headBackView.creatUI(arr: request.getListArr())
     }
     
     func requestFail() {

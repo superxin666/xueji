@@ -19,20 +19,37 @@ class ReviewTopView: UIView {
     */
     
     
-    func creatUI()  {
+    func creatUI(arr : Array<ReviewModel>)  {
         let topLine : UIView = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(2)))
         topLine.backgroundColor = black_22
         self.addSubview(topLine)
         
         //日期
-        let subviewW = KSCREEN_WIDTH/8
+        let subviewW = KSCREEN_WIDTH/7
         let subviewH = ip6(42)
         
-        for i in 0..<8 {
-            let subView = UIView(frame: CGRect(x: 0, y: 0, width: subviewW, height: subviewH))
-            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH), fontSize: 10, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x999999), textAlignment: .center)
+        for i in 0..<arr.count {
+            let model : ReviewModel = arr[i]
+            
+            let subView = UIView(frame: CGRect(x: CGFloat(i) * subviewW, y: ip6(2), width: subviewW, height: subviewH))
+            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 10, text: ReviewModel.getTitleStr(num: model.week_seq), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
+      
             subView.addSubview(topLabel)
             
+//            let dateStr = String.xj_getDate_style1(dateStr: "\(model.date!)", style: 3)
+            
+            let midLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3, width: subviewW, height: subviewH/3), fontSize: 15, text: "5", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353 ), textAlignment: .center)
+            subView.addSubview(midLabel)
+            let weekNum = String.getDayIndex()
+            XJLog(message:"星期几" + "\(weekNum)")
+            if i == weekNum {
+                midLabel.textColor = .white
+                subView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
+            }
+            let bottomLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3*2, width: subviewW, height: subviewH/3), fontSize: 6, text: "\(model.review_count!)项", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x88B52D), textAlignment: .center)
+            
+            subView.addSubview(bottomLabel)
+     
             self.addSubview(subView)
             
         }

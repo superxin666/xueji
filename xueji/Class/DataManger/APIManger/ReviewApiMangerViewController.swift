@@ -37,13 +37,25 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
     ///
     /// - Returns: <#return value description#>
     func getListCount() -> Int  {
-        
         if listArr.count > 0 {
             return listArr.count
         } else {
             return 0
         }
         
+    }
+    
+    /// 获取数据模型数组
+    ///
+    /// - Returns: <#return value description#>
+    func getListArr() ->Array<ReviewModel>  {
+        var arr : [ReviewModel] = []
+        for i in 1..<self.listArr.count {
+            let model = self.listArr[i]
+            arr.append(model)
+        }
+        arr.insert(self.listArr[0], at: arr.count)
+        return arr
     }
     
     func getModel(rowNum : Int) -> ReviewModel {
@@ -55,6 +67,9 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
         }
     }
     
+    func getDateArr() {
+        
+    }
     
     //MARK:网络回调
     func requestSucceed(response: Any) {
@@ -62,6 +77,7 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
         XJLog(message: response)
         let arr = Mapper<ReviewModel>().mapArray(JSONArray: response as! [[String : Any]])
         listArr = arr
+        XJLog(message: listArr.count)
         self.delegate.requestSucceed()
     }
     

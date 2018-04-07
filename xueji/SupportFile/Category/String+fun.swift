@@ -123,6 +123,8 @@ extension String {
             styleSty = "HH:mm"
         case 2:
             styleSty = "HH:mm"
+        case 3:
+            styleSty = "MM.dd"
         default:
             styleSty = "yyyy.MM.dd HH:mm"
         }
@@ -130,6 +132,24 @@ extension String {
         let dfmatter2 = DateFormatter()
         dfmatter2.dateFormat = styleSty
         return dfmatter2.string(from: date!)
+    }
+    
+    
+    /// 获取星期几
+    ///
+    /// - Returns: <#return value description#>
+    static func getDayIndex()->Int {
+        let currentDate = Date()
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone(abbreviation: "GMT")! as TimeZone
+        let components =  calendar.dateComponents([.year,.month,.day,.weekday,.weekOfMonth,.weekdayOrdinal,.yearForWeekOfYear,.era], from: currentDate)
+        let weekNum : Int = components.weekday!
+        if weekNum == 1 {
+            return  6
+        } else {
+            return   weekNum - 2
+        }
+        
     }
 
     /// 将str转为attributeStr
