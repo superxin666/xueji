@@ -7,16 +7,14 @@
 //
 
 import UIKit
+protocol ReviewTopViewDelegate {
+    func headDateClick()
+}
 
 class ReviewTopView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    var delegate : ReviewTopViewDelegate!
+    
     
     
     func creatUI(arr : Array<ReviewModel>)  {
@@ -32,8 +30,13 @@ class ReviewTopView: UIView {
             let model : ReviewModel = arr[i]
             
             let subView = UIView(frame: CGRect(x: CGFloat(i) * subviewW, y: ip6(2), width: subviewW, height: subviewH))
+            subView.isUserInteractionEnabled = true
+            subView.tag = i + 1
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapClick(sender:)))
+            subView.addGestureRecognizer(tap)
+            
             let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 10, text: ReviewModel.getTitleStr(num: model.week_seq), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
-      
             subView.addSubview(topLabel)
             
 //            let dateStr = String.xj_getDate_style1(dateStr: "\(model.date!)", style: 3)
@@ -57,6 +60,14 @@ class ReviewTopView: UIView {
         let bottomLine : UIView = UIView(frame: CGRect(x: 0, y: ip6(42), width: KSCREEN_WIDTH, height: ip6(2)))
         bottomLine.backgroundColor = black_22
         self.addSubview(bottomLine)
+    }
+    
+    func tapClick(sender : UITapGestureRecognizer) {
+        let view = sender.view
+//        view?.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x666666)
+        let viewTag : Int = (sender.view?.tag)!
+        XJLog(message: "点击\(viewTag)")
+        
     }
 
 }
