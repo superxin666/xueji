@@ -12,5 +12,9 @@ extension UIImageView {
     func setImage_kf(imageName : String,placeholderImage:UIImage)  {
         self.kf.setImage(with:  URL(string: imageName), placeholder: placeholderImage, options: [.transition(.fade((1)))], progressBlock: nil, completionHandler: nil)
     }
-    
+}
+extension UIButton{
+    func setImage_kf(imageName : String, placeholderImage:UIImage) {
+        self.kf.setImage(with:  URL(string: imageName), for: .normal, placeholder: placeholderImage, options: nil, progressBlock: nil, completionHandler: nil)
+    }
 }

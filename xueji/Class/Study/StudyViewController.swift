@@ -130,17 +130,30 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        weak var weakSelf = self
         if requestManger.getRecentListCount() > 0 {
             //有最近学习
             if indexPath.row == 0 {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
                 cell.setUpUI_recent(arr: requestManger.recent_learnListArr)
+                cell.bookClickBlock = {model in
+                    let vc = LearnViewController()
+                    vc.model = model
+                    vc.hidesBottomBarWhenPushed = true
+                    weakSelf?.navigationController?.pushViewController(vc, animated: true)
+                }
                 return cell
 
             } else {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
                 let model = requestManger.getModel(index: indexPath.section)
                 cell.setUpUI(model: model)
+                cell.bookClickBlock = {model in
+                    let vc = LearnViewController()
+                    vc.model = model
+                    vc.hidesBottomBarWhenPushed = true
+                    weakSelf?.navigationController?.pushViewController(vc, animated: true)
+                }
                 return cell
 
             }
@@ -149,6 +162,12 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
             let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
             let model = requestManger.getModel(index: indexPath.section)
             cell.setUpUI(model: model)
+            cell.bookClickBlock = {model in
+                let vc = LearnViewController()
+                vc.model = model
+                vc.hidesBottomBarWhenPushed = true
+                weakSelf?.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         }
 
