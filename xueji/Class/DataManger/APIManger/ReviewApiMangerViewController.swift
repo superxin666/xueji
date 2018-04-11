@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2018/3/26.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//
+//  复习
 
 import UIKit
 import ObjectMapper
@@ -33,39 +33,49 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
     
     
     
-    ///获取列表模型个数
+ 
+    /// 获取当天复习数据模型个数
     ///
+    /// - Parameter dayNum: 当前周的第几天
     /// - Returns: <#return value description#>
-    func getListCount() -> Int  {
+    func getListCount_day(dayNum : Int) -> Int  {
+        
         if listArr.count > 0 {
-            return listArr.count
+            XJLog(message: listArr[dayNum].content.count)
+            return listArr[dayNum].content.count
         } else {
             return 0
         }
         
     }
     
-    /// 获取数据模型数组
+    /// 获取复习数据模型
+    ///
+    /// - Parameter rowNum: <#rowNum description#>
+    /// - Returns: <#return value description#>
+    func getModel(rowNum : Int,currectDay : Int) -> ReviewModel_content {
+        if listArr.count > 0 {
+            if currectDay < self.listArr.count , rowNum < self.listArr[currectDay].content.count {
+                let model : ReviewModel_content = self.listArr[currectDay].content[rowNum]
+                return model
+            } else {
+                return ReviewModel_content()
+            }
+         
+        } else {
+            return ReviewModel_content()
+        }
+    }
+
+    
+    /// 获取数据模型数组 头部
     ///
     /// - Returns: <#return value description#>
     func getListArr() ->Array<ReviewModel>  {
-        var arr : [ReviewModel] = []
-        for i in 1..<self.listArr.count {
-            let model = self.listArr[i]
-            arr.append(model)
-        }
-        arr.insert(self.listArr[0], at: arr.count)
-        return arr
+        return listArr
     }
     
-    func getModel(rowNum : Int) -> ReviewModel {
-        if listArr.count > 0 {
-            let model = self.listArr[rowNum]
-            return model
-        } else {
-            return ReviewModel()
-        }
-    }
+    
     
     func getDateArr() {
         
@@ -76,7 +86,12 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
         SVPMessageShow.dismissSVP()
         XJLog(message: response)
         let arr = Mapper<ReviewModel>().mapArray(JSONArray: response as! [[String : Any]])
-        listArr = arr
+    
+        for i in 1..<arr.count {
+            let model = arr[i]
+            listArr.append(model)
+        }
+        listArr.insert(arr[0], at: listArr.count)
         XJLog(message: listArr.count)
         self.delegate.requestSucceed()
     }

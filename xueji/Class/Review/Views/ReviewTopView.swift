@@ -8,7 +8,7 @@
 
 import UIKit
 protocol ReviewTopViewDelegate {
-    func headDateClick()
+    func headDateClick(num : Int)
 }
 
 class ReviewTopView: UIView {
@@ -20,7 +20,7 @@ class ReviewTopView: UIView {
     var lastView : UIView!
     
      /// 星期几
-     let weekNum = String.getDayIndex()
+    let weekNum = String.getDayIndex()
     
     func creatUI(arr : Array<ReviewModel>)  {
         let topLine : UIView = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(2)))
@@ -83,7 +83,9 @@ class ReviewTopView: UIView {
         lastView = view
         let viewTag : Int = (sender.view?.tag)!
         XJLog(message: "点击\(viewTag)")
-        
+        if let delegate = self.delegate {
+            self.delegate.headDateClick(num: viewTag)
+        }
     }
 
 }

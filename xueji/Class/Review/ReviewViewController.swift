@@ -9,13 +9,15 @@
 import UIKit
 let  ReviewCellID = "ReviewCell_id"
 
-class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,ReviewApiMangerViewControllerDelegate {
+class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,ReviewApiMangerViewControllerDelegate,ReviewTopViewDelegate {
     
     /// 头部视图
     var headBackView : ReviewTopView!
     var mainTabelView : UITableView!//
     
     let request : ReviewApiMangerViewController = ReviewApiMangerViewController()
+    let weekNum = String.getDayIndex()
+    var currectWeekNum : Int = String.getDayIndex()
     
     
     override func viewDidLoad() {
@@ -31,6 +33,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     // MARK: -头部视图
     func creatHeadView() {
         headBackView = ReviewTopView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(46)))
+        headBackView.delegate = self
         self.view.addSubview(headBackView)
         
 
@@ -54,7 +57,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return request.getListCount_day(dayNum: currectWeekNum)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : ReviewTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: ReviewCellID, for: indexPath) as! ReviewTableViewCell
@@ -63,6 +66,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             cell = ReviewTableViewCell(style: .default, reuseIdentifier: ReviewCellID)
         }
         cell.setUpUI()
+        cell.setData(model: request.getModel(rowNum: indexPath.row, currectDay: currectWeekNum))
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -70,6 +74,10 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         let nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(10), y: ip6(16), width: KSCREEN_WIDTH - ip6(10), height: ip6(20)), fontSize: 15, text: "任务列表", textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        XJLog(message: "点击")
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return ip6(50)
@@ -110,10 +118,16 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     
     func requestSucceed() {
         headBackView.creatUI(arr: request.getListArr())
+        self.mainTabelView.reloadData()
     }
     
     func requestFail() {
         
+    }
+    
+    func headDateClick(num: Int) {
+        self.currectWeekNum = num - 1
+        self.mainTabelView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

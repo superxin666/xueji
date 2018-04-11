@@ -31,9 +31,18 @@ class ReviewTableViewCell: UITableViewCell {
         bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
         self.contentView.addSubview(bookImageView)
         
+        
+        
+        
+        
         let lineView = UIView(frame: CGRect(x: ip6(12), y: ip6(110), width: KSCREEN_WIDTH - ip6(24), height: ip6(1)))
         lineView.backgroundColor = black_e3e3e3
         self.contentView.addSubview(lineView)
+    }
+    
+    func setData(model : ReviewModel_content) {
+        bookImageView.setImage_kf(imageName: model.bookcover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+        XJLog(message: model.booktitle)
     }
 
 }
