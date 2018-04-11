@@ -64,7 +64,7 @@ class ReviewModel_content: Mappable {
 
 class ReviewModel: Mappable {
 
-    var date: Int!
+    var date: String!
     var review_count: Int!
     var week_seq: Int!
     var content: [ReviewModel_content] = []

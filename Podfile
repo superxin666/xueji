@@ -16,6 +16,7 @@ target 'xueji' do
 	pod 'SwiftyJSON'
     	pod 'MJRefresh'
         pod 'KeychainSwift', '~> 10.0'
+        pod 'SnapKit', '~> 4.0.0'
   target 'xuejiTests' do
     inherit! :search_paths
     # Pods for testing

@@ -124,7 +124,7 @@ extension String {
         case 2:
             styleSty = "HH:mm"
         case 3:
-            styleSty = "MM.dd"
+            styleSty = "dd"
         default:
             styleSty = "yyyy.MM.dd HH:mm"
         }
