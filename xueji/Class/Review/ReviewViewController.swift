@@ -16,8 +16,16 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var mainTabelView : UITableView!//
     
     let request : ReviewApiMangerViewController = ReviewApiMangerViewController()
+    
+    /// 当前星期几
     let weekNum = String.getDayIndex()
+    
+    /// 目前头部选项
     var currectWeekNum : Int = String.getDayIndex()
+    
+    
+    /// 具体步骤数组
+    var stepArr : [String] = []
     
     
     override func viewDidLoad() {
@@ -94,6 +102,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let aciton1 :UITableViewRowAction = UITableViewRowAction(style: .default, title: "全部复习阶段") { (action, indexpath) in
             XJLog(message: "全部")
+            self.stepArr = self.request.getReviewStep(rowNum: indexPath.row, currectDay: self.currectWeekNum)
         }
         aciton1.backgroundColor = purple_5657CE
 
@@ -111,10 +120,6 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        XJLog(message: "起始位置\(sourceIndexPath)")
-//        XJLog(message: "重点位置\(destinationIndexPath)")
-//    }
     
     func requestSucceed() {
         headBackView.creatUI(arr: request.getListArr())
@@ -124,11 +129,22 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func requestFail() {
         
     }
+    //MARK: event reponse
     
+    /// 头部点击
+    ///
+    /// - Parameter num: <#num description#>
     func headDateClick(num: Int) {
         self.currectWeekNum = num - 1
         self.mainTabelView.reloadData()
     }
+    
+    
+    /// 展示具体复习步骤
+    func showSteps()  {
+        
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

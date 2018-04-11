@@ -42,7 +42,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     func setData(model : ReviewModel_content) {
         bookImageView.setImage_kf(imageName: model.bookcover_img, placeholderImage: #imageLiteral(resourceName: "book"))
-        XJLog(message: model.booktitle)
+//        XJLog(message: model.booktitle)
     }
 
 }

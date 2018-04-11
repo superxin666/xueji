@@ -76,10 +76,21 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
     }
     
     
-    
-    func getDateArr() {
-        
+    /// 获取复习计划步骤详情
+    ///
+    /// - Parameters:
+    ///   - rowNum: <#rowNum description#>
+    ///   - currectDay: <#currectDay description#>
+    func getReviewStep(rowNum : Int,currectDay : Int) -> [String] {
+        let model : ReviewModel_content  =  self.getModel(rowNum: rowNum, currectDay: currectDay)
+        if model.review.step.count > 0 {
+            return  model.review.step
+        } else {
+            return []
+        }
     }
+    
+    
     
     //MARK:网络回调
     func requestSucceed(response: Any) {
