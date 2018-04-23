@@ -55,11 +55,10 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     //MARK: 头部视图
     func creatHeadUI() {
         headView  = UserHeadView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: headViewHeight))
-    
-        self.view.addSubview(headView)
+//        self.view.addSubview(headView)
     }
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headView.frame.maxY + ip6(10) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headView.frame.maxY - ip6(10)), style: .grouped)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT), style: .grouped)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -76,48 +75,43 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         mainTabelView.register(StudyTimeTableViewCell.self, forCellReuseIdentifier: study_time_cell_ID)
         mainTabelView.register(StudyAmountTableViewCell.self, forCellReuseIdentifier: study_amount_cell_ID)
         mainTabelView.register(StudyDistributeTableViewCell.self, forCellReuseIdentifier: study_distribute_cell_ID)
-  
-
+        self.creatHeadUI()
+        mainTabelView.tableHeaderView = headView
         self.view.addSubview(mainTabelView)
     }
     // MARK: - delegate
     // MARK: - TableViewdelegate
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
-            if (cell == nil)  {
-               cell = StudyValueTableViewCell(style: .default, reuseIdentifier: study_value_cell_ID)
-            }
-            return cell
-            
-        } else if indexPath.section == 1{
+//            var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
+//            if (cell == nil)  {
+//               cell = StudyValueTableViewCell(style: .default, reuseIdentifier: study_value_cell_ID)
+//            }
+//            return cell
             var cell : StudyAimTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_aim_cell_ID, for: indexPath) as! StudyAimTableViewCell
             if (cell == nil)  {
                 cell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
             }
             return cell
-        } else if indexPath.section == 2{
+        } else if indexPath.section == 1{
             var cell : StudyTimeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
             if (cell == nil)  {
                 cell = StudyTimeTableViewCell(style: .default, reuseIdentifier: study_time_cell_ID)
             }
             return cell
-            
-        } else if indexPath.section == 3{
+        } else if indexPath.section == 2{
             var cell : StudyAmountTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
             if (cell == nil)  {
                 cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
             }
             return cell
-//
-//            let  cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
-//            return cell
+            
         } else {
             var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
             if (cell == nil)  {
@@ -143,14 +137,12 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return study_value_sectionHeight
-        } else if indexPath.section == 1 {
             return study_aim_sectionHeight
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 1 {
             return study_time_sectionHeight
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 2 {
             return study_amount_sectionHeight
-        } else if indexPath.section == 4{
+        } else if indexPath.section == 3 {
             return study_distribute_sectionHeight
         } else {
             return 0
