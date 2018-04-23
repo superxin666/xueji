@@ -22,8 +22,10 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     
     /// 目前头部选项
     var currectWeekNum : Int = String.getDayIndex()
-    
-    
+
+    /// 具体步骤
+    var stepView : StepView!
+
     /// 具体步骤数组
     var stepArr : [String] = []
     
@@ -103,6 +105,10 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         let aciton1 :UITableViewRowAction = UITableViewRowAction(style: .default, title: "全部复习阶段") { (action, indexpath) in
             XJLog(message: "全部")
             self.stepArr = self.request.getReviewStep(rowNum: indexPath.row, currectDay: self.currectWeekNum)
+            XJLog(message: self.stepArr)
+            self.stepView = StepView(frame: CGRect(x: 0, y: self.headBackView.frame.maxY, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - self.headBackView.frame.maxY))
+            self.stepView.setData(arr: self.stepArr)
+            self.view.addSubview(self.stepView)
         }
         aciton1.backgroundColor = purple_5657CE
 

@@ -30,6 +30,7 @@
 		21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */; };
 		2124473320024BA20038F204 /* SetHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473220024BA20038F204 /* SetHeadView.swift */; };
 		2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473420024BB80038F204 /* SetInfoTableViewCell.swift */; };
+		2124D729208DC8CD0007B5EE /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D728208DC8CD0007B5EE /* StepView.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
@@ -123,6 +124,7 @@
 		2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		2124473220024BA20038F204 /* SetHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeadView.swift; sourceTree = "<group>"; };
 		2124473420024BB80038F204 /* SetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoTableViewCell.swift; sourceTree = "<group>"; };
+		2124D728208DC8CD0007B5EE /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 			children = (
 				21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */,
 				210198742069296700907EEC /* ReviewTopView.swift */,
+				2124D728208DC8CD0007B5EE /* StepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
+				2124D729208DC8CD0007B5EE /* StepView.swift in Sources */,
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,

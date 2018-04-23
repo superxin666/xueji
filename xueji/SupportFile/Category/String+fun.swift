@@ -141,14 +141,16 @@ extension String {
     static func getDayIndex()->Int {
         let currentDate = Date()
         var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone(abbreviation: "GMT")! as TimeZone
+        calendar.timeZone = NSTimeZone.init(name: "Asia/Shanghai")! as TimeZone
         let components =  calendar.dateComponents([.year,.month,.day,.weekday,.weekOfMonth,.weekdayOrdinal,.yearForWeekOfYear,.era], from: currentDate)
         let weekNum : Int = components.weekday!
+        XJLog(message: "adsfasdf\(weekNum)")
         if weekNum == 1 {
             return  6
         } else {
-            return   weekNum - 2
+            return   weekNum - 1
         }
+
         
     }
 
