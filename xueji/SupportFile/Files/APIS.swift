@@ -15,6 +15,7 @@ let logout_user_api = "/user/logout?"
 let main_index_api = "/main/index?"
 //---------------------------------复习
 let review_range_api = "/review/range?"
+let review_done_api = "/review/done?"
 //---------------------------------category
 
 /// 分类列表

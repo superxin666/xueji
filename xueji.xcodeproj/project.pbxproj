@@ -31,6 +31,7 @@
 		2124473320024BA20038F204 /* SetHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473220024BA20038F204 /* SetHeadView.swift */; };
 		2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473420024BB80038F204 /* SetInfoTableViewCell.swift */; };
 		2124D729208DC8CD0007B5EE /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D728208DC8CD0007B5EE /* StepView.swift */; };
+		2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
@@ -125,6 +126,7 @@
 		2124473220024BA20038F204 /* SetHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeadView.swift; sourceTree = "<group>"; };
 		2124473420024BB80038F204 /* SetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2124D728208DC8CD0007B5EE /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDoneViewController.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */,
 				2142C9072020087500ED2104 /* AddBook_customViewController.swift */,
 				2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */,
+				2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */,
 				2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */,
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
+				2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */,
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,

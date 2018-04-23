@@ -9,14 +9,15 @@
 import UIKit
 let  ReviewCellID = "ReviewCell_id"
 
-class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,ReviewApiMangerViewControllerDelegate,ReviewTopViewDelegate {
+class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,ReviewApiMangerViewControllerDelegate,ReviewTopViewDelegate ,ReviewDoneViewControllerDelegate{
     
     /// 头部视图
     var headBackView : ReviewTopView!
     var mainTabelView : UITableView!//
     
     let request : ReviewApiMangerViewController = ReviewApiMangerViewController()
-    
+    let doneRequest : ReviewDoneViewController = ReviewDoneViewController()
+
     /// 当前星期几
     let weekNum = String.getDayIndex()
     
@@ -38,6 +39,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         self.creatHeadView()
         self.creatTableView()
         request.delegate = self
+        doneRequest.delegate = self
         request.listRequest()
     }
     // MARK: -头部视图
@@ -114,6 +116,9 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
 
         let aciton2 :UITableViewRowAction = UITableViewRowAction(style: .default, title: "完成") { (action, indexpath) in
             XJLog(message: "完成")
+            let model : ReviewModel_content = self.request.getModel(rowNum: indexPath.row, currectDay: self.currectWeekNum)
+            self.doneRequest.doneRequest(id: model.reviewid, step: model.reviewstep)
+
         }
         aciton1.backgroundColor = purple_5657CE
         return [aciton2,aciton1]
@@ -134,6 +139,12 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     
     func requestFail() {
         
+    }
+    func reviewDoneRequestSucceed() {
+        self.request.reloadRequest()
+    }
+    func reviewDoneRequestFail() {
+
     }
     //MARK: event reponse
     

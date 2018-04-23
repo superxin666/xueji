@@ -32,7 +32,10 @@ class ReviewApiMangerViewController: UIViewController,BaseApiMangerViewControlle
     }
     
     
-    
+    func reloadRequest()  {
+        self.listArr.removeAll()
+        self.listRequest()
+    }
  
     /// 获取当天复习数据模型个数
     ///
