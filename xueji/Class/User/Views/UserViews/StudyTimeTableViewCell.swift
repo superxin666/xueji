@@ -151,7 +151,7 @@ class StudyTimeTableViewCell: UITableViewCell {
         for i in 0...xVals_count {
 //            let mult : Int = maxYVal + 1
 //            let val =  5.0
-            let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(2),Double(4),Double(1.5)])
+            let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(2),Double(3),Double(1.5)])
             yVals.append(entry)
             
         }

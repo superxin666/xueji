@@ -197,7 +197,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         return requestManger.getRowHeight(section: indexPath.section)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
     }
     //网络代理
     func requestSucceed() {
