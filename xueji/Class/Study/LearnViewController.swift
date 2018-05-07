@@ -75,6 +75,10 @@ class LearnViewController: BaseViewController {
 
     }
     func doneClick() {
+        let vc = LearnDetailViewController()
+        vc.model = model
+
+        self.navigationController?.pushViewController(vc, animated: true)
 
     }
 

@@ -19,6 +19,10 @@
 		2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */; };
 		2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B1202001E8D1000CB24A /* ReSetPWView.swift */; };
 		2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117E0B52016189500958EEB /* StudyHeadView.swift */; };
+		211A65CB20A0A8A6009CD41A /* LearnDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A65CA20A0A8A6009CD41A /* LearnDetailViewController.swift */; };
+		211A65CD20A0A8F2009CD41A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A65CC20A0A8F2009CD41A /* BaseTableViewController.swift */; };
+		211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A65CE20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift */; };
+		211A65D120A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A65D020A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift */; };
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
 		212239201FEBFD2100A2743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122391F1FEBFD2100A2743E /* LoginView.swift */; };
 		212447232002479D0038F204 /* SetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212447222002479D0038F204 /* SetInfoViewController.swift */; };
@@ -114,6 +118,10 @@
 		2115B11E2001E778000CB24A /* ReSetPassWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPassWordViewController.swift; sourceTree = "<group>"; };
 		2115B1202001E8D1000CB24A /* ReSetPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSetPWView.swift; sourceTree = "<group>"; };
 		2117E0B52016189500958EEB /* StudyHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHeadView.swift; sourceTree = "<group>"; };
+		211A65CA20A0A8A6009CD41A /* LearnDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailViewController.swift; sourceTree = "<group>"; };
+		211A65CC20A0A8F2009CD41A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		211A65CE20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailTitleTableViewCell.swift; sourceTree = "<group>"; };
+		211A65D020A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailPageTableViewCell.swift; sourceTree = "<group>"; };
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
 		2122391F1FEBFD2100A2743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		212447222002479D0038F204 /* SetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				214429B31FA7260400004C38 /* BaseViewController.swift */,
+				211A65CC20A0A8F2009CD41A /* BaseTableViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 				213254691FBC27F80016E1AE /* ScanViewController.swift */,
 				214429BB1FA7260400004C38 /* StudyViewController.swift */,
 				2182CB4D207870A800BAEBD4 /* LearnViewController.swift */,
+				211A65CA20A0A8A6009CD41A /* LearnDetailViewController.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -342,6 +352,8 @@
 				21C436D01FBAC0A00031F2C3 /* AddBookTableViewCell.swift */,
 				21C436D21FBACC240031F2C3 /* AddBook_CatTableViewCell.swift */,
 				21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */,
+				211A65CE20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift */,
+				211A65D020A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -835,6 +847,7 @@
 			files = (
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
+				211A65D120A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift in Sources */,
 				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
@@ -853,6 +866,7 @@
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
 				21014B512008581E002CB437 /* CategoryListModel.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
+				211A65CB20A0A8A6009CD41A /* LearnDetailViewController.swift in Sources */,
 				214F914D1FEA5A3C00D44165 /* pch.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
@@ -874,6 +888,7 @@
 				2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */,
 				2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */,
 				2124473320024BA20038F204 /* SetHeadView.swift in Sources */,
+				211A65CD20A0A8F2009CD41A /* BaseTableViewController.swift in Sources */,
 				2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
@@ -884,6 +899,7 @@
 				2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */,
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
+				211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
 				21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,

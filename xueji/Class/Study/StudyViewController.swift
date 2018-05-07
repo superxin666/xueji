@@ -25,7 +25,13 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     override func viewWillDisappear(_ animated: Bool) {
         requestManger.resetPage()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+
+        self.navigationbar_transparency()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

@@ -29,7 +29,13 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
 
     /// 具体步骤数组
     var stepArr : [String] = []
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+
+        self.navigationbar_transparency()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
