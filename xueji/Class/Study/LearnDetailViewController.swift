@@ -8,12 +8,24 @@
 
 import UIKit
 
-class LearnDetailViewController: BaseTableViewController {
+class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableViewCellDelegate,LearnDetailPageTableViewCellDelegate {
+
+    /// 数据模型
     var model  : CategoryListModel_list_book_list!
 
     /// 学习时间
     var timeNum : Int!
 
+
+
+    /// 是否加入复习
+    var isNotice : Bool = false
+
+    /// 首次学习时间
+    var noticeTimeStr : String = ""
+
+    /// 备注
+    var noticeStr : String = ""
 
 
     override func viewDidLoad() {
@@ -29,6 +41,7 @@ class LearnDetailViewController: BaseTableViewController {
 
     // MARK: - TableView视图
     func creatTableView()  {
+        tableView = UITableView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT), style: .grouped)
         tableView.backgroundColor = .white
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -39,7 +52,7 @@ class LearnDetailViewController: BaseTableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +61,7 @@ class LearnDetailViewController: BaseTableViewController {
         } else if section == 1 {
             return 3
         } else {
-            return 0
+            return 2
         }
     }
 
@@ -69,40 +82,129 @@ class LearnDetailViewController: BaseTableViewController {
             }
 
 
-//        } else if indexPath.section == 1 {
-//
-//
-        } else {
+        } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
                 cell.setData_start(contentStr: "")
+                cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
                 cell.setData_end(contentStr: "")
+                cell.delegate = self
                 return cell
             } else {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
                 cell.setData_tolat(contentStr: "")
+                cell.delegate = self
+                return cell
+            }
+
+        } else {
+            if indexPath.row == 0 {
+                let cell  = LearnDetailTitleTableViewCell(style: .default, reuseIdentifier: LearnDetailTitleTableViewCellID)
+                cell.setData_firstTime(timeStr : noticeTimeStr)
+                
+                if isNotice {
+                    cell.setData_firstTime_enble()
+                } else {
+                    cell.setData_firstTime_unenble()
+                }
+                return cell
+            } else {
+                let cell  = LearnDetailReviewTableViewCell(style: .default, reuseIdentifier: LearnDetailReviewTableViewCellID)
+                cell.setData_notice(contentStr: noticeStr)
+                cell.delegate = self
+                if isNotice {
+                    cell.setData_notice_enble()
+                } else {
+                    cell.setData_notice_unenble()
+                }
                 return cell
             }
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return LearnDetailTitleTableViewCellH
+        if indexPath.section == 2 {
+            if indexPath.row == 1 {
+                return LearnDetailReviewTableViewCellH
+            } else {
+                return LearnDetailTitleTableViewCellH
+            }
+        } else {
+            return LearnDetailTitleTableViewCellH
+        }
+
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ip6(40)
+        if section == 0 {
+            return ip6(40)
+        } else if section == 1 {
+            return ip6(40)
+        } else {
+            return ip6(60)
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(40)))
-        view.backgroundColor = .white
-        return view
+        if section == 0 {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(40)))
+            view.backgroundColor = .white
+            return view
+        } else if section == 1 {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(40)))
+            view.backgroundColor = .white
+            return view
+        } else {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(80)))
+            view.backgroundColor = .white
+
+            let label = UILabel(frame: CGRect(x: ip6(20), y: ip6(40), width: ip6(100), height: ip6(20)))
+            label.text = "是否加入复习"
+            label.textColor = black_53
+            label.font = xj_fzFontMedium(ip6(15))
+            label.textAlignment = .left
+            view.addSubview(label)
+
+            let switchBtn = UISwitch(frame: CGRect(x: KSCREEN_WIDTH - ip6(20) - 47, y: 39, width: 0, height: 0))
+            switchBtn.isOn = isNotice
+            view.addSubview(switchBtn)
+            switchBtn.addTarget(self, action: #selector(switchClick(sender:)), for: .valueChanged)
+
+            return view
+        }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                //时间
+                if isNotice {
+                    XJLog(message: "时间点击")
+                }
+            }
+        }
+    }
+    func switchClick(sender : UISwitch) {
+        if sender.isOn {
+            XJLog(message: "打开")
+            isNotice = true
+        } else {
+            XJLog(message: "关闭")
+            isNotice = false
+        }
+        self.tableView.reloadSections([2], with: .automatic)
+        
+    }
 
+    func endText(contentStr: String, tagNum: Int) {
+
+    }
+
+    func endText_LearnDetailReview(contentStr: String, tagNum: Int) {
+        noticeStr = contentStr
+    }
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)
     }

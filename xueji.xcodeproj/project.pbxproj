@@ -38,6 +38,7 @@
 		2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
+		2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
 		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
@@ -137,6 +138,7 @@
 		2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDoneViewController.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
+		2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */,
 				211A65CE20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift */,
 				211A65D020A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift */,
+				2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
 				2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */,
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
+				2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,

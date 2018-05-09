@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2018/5/7.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//
+//  标题
 
 import UIKit
 let LearnDetailTitleTableViewCellID = "LearnDetailTitleTableViewCell_id"
@@ -49,10 +49,10 @@ class LearnDetailTitleTableViewCell: UITableViewCell {
         backView.backgroundColor = .white
         self.addSubview(backView)
 
-        titleLabel = UILabel.getLabel(fream: CGRect(x: 0, y: ip6(10), width: ip6(60), height: ip6(20)), fontSize: 15, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
+        titleLabel = UILabel.getLabel(fream: CGRect(x: 0, y: ip6(10), width: ip6(90), height: ip6(20)), fontSize: 15, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .left)
         backView.addSubview(titleLabel)
 
-        contentLabel = UILabel.getLabel(fream: CGRect(x: titleLabel.frame.maxX +  ip6(30), y: ip6(10), width: viewW - titleLabel.frame.maxX -  ip6(30) , height: ip6(20)), fontSize: 15, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .left)
+        contentLabel = UILabel.getLabel(fream: CGRect(x: titleLabel.frame.maxX , y: ip6(10), width: viewW - titleLabel.frame.maxX -  ip6(30) , height: ip6(20)), fontSize: 15, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .left)
         backView.addSubview(contentLabel)
 
         let lineView = UIView(frame: CGRect(x: 0, y: viewH - 0.5, width: viewW, height: 0.5))
@@ -75,6 +75,17 @@ class LearnDetailTitleTableViewCell: UITableViewCell {
         contentLabel.text = "3 h 40m"
     }
 
+    func setData_firstTime(timeStr  : String) {
+        contentLabel.frame = CGRect(x: titleLabel.frame.maxX + ip6(10) , y: ip6(10), width: KSCREEN_WIDTH - ip6(40) - titleLabel.frame.maxX -  ip6(40),height: ip6(20))
+        contentLabel.text = timeStr
 
-
+        titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0xE7E5E5)
+        titleLabel.text = "首次学习时间"
+    }
+    func setData_firstTime_enble() {
+        titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
+    }
+    func setData_firstTime_unenble() {
+        titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0xE7E5E5)
+    }
 }

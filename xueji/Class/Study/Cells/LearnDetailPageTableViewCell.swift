@@ -4,12 +4,19 @@
 //
 //  Created by lvxin on 2018/5/8.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//
+//  页码
 
 import UIKit
+
+protocol LearnDetailPageTableViewCellDelegate {
+    func endText(contentStr : String,tagNum : Int)
+}
+
 let LearnDetailPageTableViewCellID = "LearnDetailTitleTableViewCell_id"
 let LearnDetailPageTableViewCellH = CGFloat(32)
 class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
+    var delegate : LearnDetailPageTableViewCellDelegate!
+
     /// 标题
     var titleLabel : UILabel!
 
@@ -23,7 +30,8 @@ class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
     /// 页数
     var textFiled : UITextField!
 
-    
+    var conTent :String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -77,19 +85,29 @@ class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        if let str = textField.text {
+            conTent = str
+            if let delgate = self.delegate {
+                delgate.endText(contentStr: conTent, tagNum: self.textFiled.tag)
+            }
+        }
     }
 
     func setData_start(contentStr : String) {
+        self.textFiled.tag = 10
         titleLabel.text = "开       始"
 
     }
     func setData_end(contentStr : String) {
+        self.textFiled.tag = 11
         titleLabel.text = "结       束"
     }
 
     func setData_tolat(contentStr : String) {
-         titleLabel.text = "页       数"
+        self.textFiled.tag = 12
+        titleLabel.text = "页       数"
+        leftTitleLabel.text = "共"
+        rightTitleLabel.text = "页"
     }
 
 }
