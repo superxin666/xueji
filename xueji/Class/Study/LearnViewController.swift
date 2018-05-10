@@ -29,7 +29,14 @@ class LearnViewController: BaseViewController {
     var statBtn : UIButton!
 
 
+    var time : Timer!
 
+    var timeNum : Int = 0
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        time = nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +46,34 @@ class LearnViewController: BaseViewController {
         self.navigation_title_fontsize(name: "计时", fontsize: 20)
         self.navigationBar_leftBtn_title(title: "取消")
         self.creatUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(backbview), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+
+//        self.addCycleTimer()
+    }
+    func backbview()  {
+        XJLog(message: "进入后台")
+        if statBtn.isSelected  {
+            statBtn.isSelected = false
+            time.fireDate = Date.distantFuture
+        }
+    }
+
+    func addCycleTimer() {
+        time = Timer(timeInterval: 1.0, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: true)
+        RunLoop.main.add(time!, forMode:RunLoopMode.commonModes)
+    }
+
+    func handleTimer (){
+
+        let currentDate = Date(timeIntervalSinceNow: 1)
+
+        //        let currentDate = Date()
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "HH:mm:ss"
+
+        timeLabel.text = dateFormatter.string(from: currentDate)
     }
 
     func creatUI()  {
@@ -48,6 +83,11 @@ class LearnViewController: BaseViewController {
 
         timeLabel = UILabel.getLabel(fream: CGRect(x: ip6(20), y: bookImageView.frame.maxY + ip6(45), width: KSCREEN_WIDTH - ip6(40), height: ip6(90)), fontSize: 64, text: "00:00", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
         self.view.addSubview(timeLabel)
+
+        //60*60*50
+        //6*60
+        //45
+
 
         statBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "play"), image_selected: #imageLiteral(resourceName: "pause"), fream: CGRect(x: (KSCREEN_WIDTH - CGFloat(75))/2, y: timeLabel.frame.maxY + ip6(50), width: CGFloat(75), height:  CGFloat(75)), selector: #selector(statClick(sender:)), vc: self, tag: 0)
 
@@ -66,14 +106,23 @@ class LearnViewController: BaseViewController {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
             XJLog(message: "开始")
+            time = Timer.scheduledTimer(timeInterval: TimeInterval(60), target: self, selector: #selector(timeStart), userInfo: nil, repeats: true)
         } else {
             XJLog(message: "暂定")
+            time.fireDate = Date.distantFuture
         }
+    }
+    func timeStart() {
+//        timeNum = timeNum + 1
+
+        let str = String.getCountTime(sencond: timeNum)
+        timeLabel.text = str
     }
 
     func restClick()  {
-
+        timeNum = 0
     }
+    
     func doneClick() {
         let vc = LearnDetailViewController()
         vc.model = model

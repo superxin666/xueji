@@ -154,6 +154,39 @@ extension String {
         
     }
 
+    static func getCountTime(sencond : Int)->String {
+        let min = 60
+        let hour = 60 * 6
+        var timStr = ""
+
+        var homeTimStr = "00"
+        var minTimStr = "00"
+
+
+        let num = sencond/hour
+        XJLog(message: "\(num)")
+
+        //小时
+        if num > 10 {
+            homeTimStr = "\(num)"
+        } else {
+            homeTimStr = "0\(num)"
+        }
+
+        //分钟
+        let num3 = (sencond - num * hour) / min
+
+        XJLog(message: "\(num3)")
+        if num3 > 10 {
+            minTimStr = "\(num3)"
+        } else {
+            minTimStr = "0\(num3)"
+        }
+
+        timStr = "\(homeTimStr):\(minTimStr)"
+        return timStr
+    }
+
     /// 将str转为attributeStr
     ///
     /// - Parameters:
