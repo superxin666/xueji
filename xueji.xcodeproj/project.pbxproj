@@ -13,6 +13,11 @@
 		21014B512008581E002CB437 /* CategoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21014B502008581E002CB437 /* CategoryListModel.swift */; };
 		210198752069296700907EEC /* ReviewTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210198742069296700907EEC /* ReviewTopView.swift */; };
 		2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */; };
+		210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB520A96943007BACF5 /* WeekAimViewController.swift */; };
+		210ABFB820A977C9007BACF5 /* WeekAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */; };
+		210ABFBA20A97C13007BACF5 /* WeekAimLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */; };
+		210ABFBC20A99FB0007BACF5 /* SymbolsValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */; };
+		210ABFBE20A9A420007BACF5 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -113,6 +118,11 @@
 		21014B502008581E002CB437 /* CategoryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListModel.swift; sourceTree = "<group>"; };
 		210198742069296700907EEC /* ReviewTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTopView.swift; sourceTree = "<group>"; };
 		2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApiMangerViewController.swift; sourceTree = "<group>"; };
+		210ABFB520A96943007BACF5 /* WeekAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimViewController.swift; sourceTree = "<group>"; };
+		210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimTableViewCell.swift; sourceTree = "<group>"; };
+		210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimLineTableViewCell.swift; sourceTree = "<group>"; };
+		210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsValueFormatter.swift; sourceTree = "<group>"; };
+		210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -270,6 +280,10 @@
 				2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */,
 				21244729200247D30038F204 /* StudyValueTableViewCell.swift */,
 				21244726200247D20038F204 /* UserHeadView.swift */,
+				210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */,
+				210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */,
+				210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */,
+				210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -367,6 +381,7 @@
 				21145B7A1FAFFDC500063A98 /* Views */,
 				214429BD1FA7260400004C38 /* UserViewController.swift */,
 				212447222002479D0038F204 /* SetInfoViewController.swift */,
+				210ABFB520A96943007BACF5 /* WeekAimViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -854,6 +869,7 @@
 				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
+				210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */,
 				2124D729208DC8CD0007B5EE /* StepView.swift in Sources */,
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
@@ -867,12 +883,15 @@
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
+				210ABFB820A977C9007BACF5 /* WeekAimTableViewCell.swift in Sources */,
 				21014B512008581E002CB437 /* CategoryListModel.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
+				210ABFBA20A97C13007BACF5 /* WeekAimLineTableViewCell.swift in Sources */,
 				211A65CB20A0A8A6009CD41A /* LearnDetailViewController.swift in Sources */,
 				214F914D1FEA5A3C00D44165 /* pch.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
+				210ABFBE20A9A420007BACF5 /* DateValueFormatter.swift in Sources */,
 				21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */,
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
@@ -917,6 +936,7 @@
 				2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				212447232002479D0038F204 /* SetInfoViewController.swift in Sources */,
+				210ABFBC20A99FB0007BACF5 /* SymbolsValueFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

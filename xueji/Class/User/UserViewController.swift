@@ -8,13 +8,13 @@
 
 import UIKit
 let study_value_sectionHeight = ip6(148)//学习力
-let study_aim_sectionHeight = ip6(126)//学习目标
+
 let study_time_sectionHeight = ip6(236)//学习时间
 let study_amount_sectionHeight = ip6(250)//学习量
 let study_distribute_sectionHeight = ip6(318)//学习分布
 
 let study_value_cell_ID = "study_value_cell_id"
-let study_aim_cell_ID = "study_aim_cell_id"
+
 let study_time_cell_ID = "study_time_cell_id"
 let study_amount_cell_ID = "study_amount_cell_id"
 let study_distribute_cell_ID = "study_distreibute_cell_id"
@@ -22,7 +22,7 @@ let study_distribute_cell_ID = "study_distreibute_cell_id"
 class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
     var headView : UserHeadView!
-    let sectionTitleArr : [String] = ["学习力","本周目标","学习时间","学习量","学习分布",]//
+    let sectionTitleArr : [String] = ["本周目标","学习时间","学习量","学习分布","本周目标"]//
     
         // MARK: - lifeCirlce
     override func viewWillAppear(_ animated: Bool) {
@@ -89,11 +89,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-//            var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
-//            if (cell == nil)  {
-//               cell = StudyValueTableViewCell(style: .default, reuseIdentifier: study_value_cell_ID)
-//            }
-//            return cell
             var cell : StudyAimTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_aim_cell_ID, for: indexPath) as! StudyAimTableViewCell
             if (cell == nil)  {
                 cell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
@@ -112,28 +107,47 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
             return cell
             
-        } else {
+        } else if indexPath.section == 3{
             var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
             if (cell == nil)  {
                 cell = StudyDistributeTableViewCell(style: .default, reuseIdentifier: study_distribute_cell_ID)
             }
             return cell
+        } else {
+            var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
+            if (cell == nil)  {
+                cell = StudyValueTableViewCell(style: .default, reuseIdentifier: study_value_cell_ID)
+            }
+            return cell
         }
 
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view : UIView = UIView()
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let vc = WeekAimViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let view : UIView = UIView()
         let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(19), y: ip6(8), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: sectionTitleArr[section], textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
-        
+
         let lineView = UIView(frame: CGRect(x: ip6(10), y: ip6(34), width: KSCREEN_WIDTH - ip6(20), height: 1))
         lineView.backgroundColor = black_e3e3e3
         view.addSubview(lineView)
         return view
     }
+
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ip6(35)
+         return ip6(35)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
@@ -145,7 +159,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         } else if indexPath.section == 3 {
             return study_distribute_sectionHeight
         } else {
-            return 0
+            return study_value_sectionHeight
         }
     }
     

@@ -1,58 +1,79 @@
 //
-//  StudyValueView.swift
+//  WeekAimLineTableViewCell.swift
 //  xueji
 //
-//  Created by lvxin on 2017/11/6.
-//  Copyright © 2017年 lvxin. All rights reserved.
-//  我的--学习力
+//  Created by lvxin on 2018/5/14.
+//  Copyright © 2018年 lvxin. All rights reserved.
+//  本周目标曲线图cell
 
 import UIKit
 import Charts
-class StudyValueTableViewCell: UITableViewCell {
-    var scoreView : UIView!
-    var scoreLabel : UILabel!
+let WeekAimLineTableViewCellH = ip6(326)
+let WeekAimLineTableViewCellID = "WeekAimLineTableViewCell_ID"
+class WeekAimLineTableViewCell: UITableViewCell {
+    var titleLabel : UILabel!
+
+    var titleBtn : UIButton!
+
+    var leftBtn : UIButton!
+    var rightBtn : UIButton!
+
+    var timeLineView : UIView!
+    var valueLineView :UIView!
+
+    var timeLineLabel : UILabel!
+    var valueLineLabel : UILabel!
+
     var lineChart : LineChartView!
-    
+    /// 横线
+    var lineView : UIView!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.creatUI()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func creatUI() {
+        let Xappading = ip6(19)
 
-        //
-        scoreView = UIView()
-        scoreView.frame = CGRect(x: ip6(20), y: ip6(30), width: ip6(98), height: ip6(98))
-        scoreView.backgroundColor = black_53
-        scoreView.xj_makeRound()
-        self.addSubview(scoreView)
-        
-
-        //分数
-        scoreLabel = UILabel.getLabel(fream: CGRect(x: 0, y: ip6(15), width: ip6(98), height: ip6(47)), fontSize: 47, text: "120", textColor: black_fcf9f9, textAlignment: .center)
-        scoreView.addSubview(scoreLabel)
-        
-        let scoreNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: scoreLabel.frame.maxY, width: ip6(98), height: ip6(21)), fontSize: 21, text: "分", textColor: black_fcf9f9, textAlignment: .center)
-        scoreView.addSubview(scoreNameLabel)
-        
-        //标题
-        let titleLabel = UILabel.getLabel(fream: CGRect(x: scoreView.frame.maxX + ip6(10), y: ip6(8), width: ip6(98), height: ip6(10)), fontSize: 10, text: "学习力增长曲线", textColor: black_53, textAlignment: .left)
+        titleLabel = UILabel.getLabel(fream:  CGRect(x: Xappading, y: ip6(23), width: KSCREEN_WIDTH - Xappading * 2, height: ip6(20)), fontSize: 14, text: "目标完成情况统计曲线", textColor: black_53, textAlignment: .center)
         self.addSubview(titleLabel)
-        
-        //折线
-        lineChart = LineChartView(frame: CGRect(x: scoreView.frame.maxX + ip6(10), y: ip6(37), width: KSCREEN_WIDTH - scoreView.frame.maxX - ip6(10) - ip6 (50), height: ip6(110)))
-        self.addSubview(lineChart)
 
+        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click), vc: self, tag: 0)
+        titleBtn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
+        titleBtn.xj_makeRadius(radius: 3)
+        self.addSubview(titleBtn)
+
+        timeLineView = UIView(frame: CGRect(x: KSCREEN_WIDTH - ip6(100), y:titleBtn.frame.maxY + ip6(40), width: ip6(30), height: ip6(1)))
+        timeLineView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33)
+
+        timeLineLabel = UILabel.getLabel(fream:  CGRect(x: timeLineView.frame.maxX + ip6(2), y: timeLineView.frame.maxY - ip6(6), width: ip6(40), height: ip6(10)), fontSize: 8, text: "学习时间", textColor: black_53, textAlignment: .left)
+
+        self.addSubview(timeLineView)
+        self.addSubview(timeLineLabel)
+
+        valueLineView = UIView(frame: CGRect(x: KSCREEN_WIDTH - ip6(100), y:timeLineView.frame.maxY + ip6(10), width: ip6(30), height: ip6(1)))
+        valueLineView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x4741BD)
+
+        valueLineLabel = UILabel.getLabel(fream:  CGRect(x: valueLineView.frame.maxX + ip6(2), y: valueLineView.frame.maxY - ip6(4), width: ip6(50), height: ip6(10)), fontSize: 8, text: "学习量（页）", textColor: black_53, textAlignment: .left)
+        self.addSubview(valueLineView)
+        self.addSubview(valueLineLabel)
+
+        lineChart = LineChartView(frame: CGRect(x: ip6(15), y: titleBtn.frame.maxY + ip6(85), width: KSCREEN_WIDTH  - ip6(30), height: ip6(125)))
+        self.addSubview(lineChart)
         self.setChart()
+
+        lineView = UIView(frame: CGRect(x: ip6(10), y: WeekAimLineTableViewCellH - 0.5, width: KSCREEN_WIDTH - ip6(20), height:  0.5))
+        lineView.backgroundColor = black_e3e3e3
+        self.addSubview(lineView)
+
     }
-    
+
     func setChart() {
 
         //右下角图标描述
@@ -74,19 +95,19 @@ class StudyValueTableViewCell: UITableViewCell {
         lineChart.xAxis.axisLineColor = black_ebebee
         lineChart.xAxis.labelTextColor = black_53
         lineChart.xAxis.labelCount = 4
-        lineChart.xAxis.axisMinimum = 1
+        lineChart.xAxis.axisMinimum = 0
 
+//        lineChart.xAxis.labelWidth = (KSCREEN_WIDTH  - ip6(100))/4
 
-    
 
         //不显示右侧Y轴
         lineChart.leftAxis.valueFormatter = SymbolsValueFormatter(arr: ["0","20","40","60","80","100","120",])
         lineChart.leftAxis.drawAxisLineEnabled = true
         lineChart.leftAxis.enabled = true
-        
+
         lineChart.rightAxis.drawAxisLineEnabled = false
         lineChart.rightAxis.enabled = false
-        
+
         lineChart.leftAxis.drawZeroLineEnabled = true
         lineChart.leftAxis.axisLineColor = black_ebebee
         lineChart.leftAxis.gridColor = black_53
@@ -96,9 +117,15 @@ class StudyValueTableViewCell: UITableViewCell {
         lineChart.leftAxis.axisMaximum = 160
 
         lineChart.leftAxis.drawZeroLineEnabled = false
+
+        self.setCharData()
+
+    }
+
+    func setCharData() {
         //数据填充
         let xArr = [1,2,3,4]
-        let yArr = [20,40,48,57]
+        let yArr = [20,40,48,0]
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<xArr.count {
             let dataEntry = ChartDataEntry(x: Double(xArr[i]), y: Double(yArr[i]))
@@ -144,6 +171,15 @@ class StudyValueTableViewCell: UITableViewCell {
         lineChart.data = lineChartData
         //添加显示动画
         lineChart.animate(xAxisDuration: 1)
+
     }
+
+
+
+    func click() {
+
+    }
+
+
 
 }
