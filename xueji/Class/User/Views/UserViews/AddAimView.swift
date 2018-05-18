@@ -40,7 +40,10 @@ class AddAimView: UIView,UITextFieldDelegate {
 
 
     func creatUI() {
-        titleLabel = UILabel.getLabel(fream: CGRect(x: ip6(10), y: ip6(60), width: KSCREEN_WIDTH - ip6(20), height: ip6(20)), fontSize: 17, text: "2017-10-23~2017-10-29", textColor: black_53, textAlignment: .center)
+
+        let tittlStr = String.getWeek()
+
+        titleLabel = UILabel.getLabel(fream: CGRect(x: ip6(10), y: ip6(60), width: KSCREEN_WIDTH - ip6(20), height: ip6(20)), fontSize: 17, text: tittlStr, textColor: black_53, textAlignment: .center)
         self.addSubview(titleLabel)
 
         timeBackView = UIView(frame: CGRect(x: ip6(20), y: titleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(40), height: ip6(50)))

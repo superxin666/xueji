@@ -150,8 +150,45 @@ extension String {
         } else {
             return   weekNum - 1
         }
+    }
 
-        
+
+    static func getWeek() -> String {
+        let currentDate = Date()
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.init(name: "Asia/Shanghai")! as TimeZone
+        var components =  calendar.dateComponents([.year,.month,.day,.weekday,.weekOfMonth,.weekdayOrdinal,.yearForWeekOfYear,.era], from: currentDate)
+        let weekDay : Int = components.weekday!
+        let day : Int = components.day!
+
+
+        XJLog(message: weekDay)
+        XJLog(message: day)
+        var firstDiff = 0
+        var lastDiff = 0
+        if weekDay == 1 {
+            firstDiff = -6
+            lastDiff = 0
+        } else {
+            firstDiff = calendar.firstWeekday - weekDay + 1;
+            lastDiff = 8 - weekDay;
+        }
+        XJLog(message: firstDiff)
+        XJLog(message: lastDiff)
+
+
+        components.day = day + firstDiff
+        let firstDayOfWeek = calendar.date(from: components)
+
+        components.day = day + lastDiff
+        let lastDayOfWeek = calendar.date(from: components)
+
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM-dd"
+        let firstDay = dfmatter.string(from: firstDayOfWeek!)
+        let lastDay = dfmatter.string(from: lastDayOfWeek!)
+        let str = firstDay + "~" + lastDay
+        return str
     }
 
     static func getCountTime(sencond : Int)->String {
