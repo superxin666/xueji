@@ -18,6 +18,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "本周目标", fontsize: 20)
+        self.navigationBar_rightBtn_title(title: "添加")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
         
@@ -112,7 +113,11 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)
     }
-
+    override func navigationRightBtnClick() {
+        let vc = AddAimViewController()
+        vc.hidesBottomBarWhenPushed  = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
