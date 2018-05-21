@@ -124,9 +124,19 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        XJLog(message: "did")
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                XJLog(message: "0")
                 let vc = WeekAimViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                XJLog(message: "1")
+                let vc = TimeDetailViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
 

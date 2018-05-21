@@ -44,10 +44,18 @@ class WeekAimLineTableViewCell: UITableViewCell {
         titleLabel = UILabel.getLabel(fream:  CGRect(x: Xappading, y: ip6(23), width: KSCREEN_WIDTH - Xappading * 2, height: ip6(20)), fontSize: 14, text: "目标完成情况统计曲线", textColor: black_53, textAlignment: .center)
         self.addSubview(titleLabel)
 
-        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click), vc: self, tag: 0)
+        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
         titleBtn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
         titleBtn.xj_makeRadius(radius: 3)
         self.addSubview(titleBtn)
+
+        leftBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "base_left"), image_selected: #imageLiteral(resourceName: "base_left"), fream: CGRect(x: 0, y: 0, width: titleBtn.frame.size.width/2, height: titleBtn.frame.size.height), selector: #selector(click(sender:)), vc: self, tag: 1)
+        leftBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -(titleBtn.frame.size.width/2 - 20), bottom: 0, right: 0)
+
+        self.titleBtn.addSubview(leftBtn)
+        rightBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "base_right"), image_selected: #imageLiteral(resourceName: "base_right"), fream: CGRect(x: titleBtn.frame.size.width/2, y: 0, width: titleBtn.frame.size.width/2, height: titleBtn.frame.size.height), selector: #selector(click(sender:)), vc: self, tag: 2)
+        rightBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleBtn.frame.size.width/2 - 20, bottom: 0, right: 0)
+        self.titleBtn.addSubview(rightBtn)
 
         timeLineView = UIView(frame: CGRect(x: KSCREEN_WIDTH - ip6(100), y:titleBtn.frame.maxY + ip6(40), width: ip6(30), height: ip6(1)))
         timeLineView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33)
@@ -176,8 +184,12 @@ class WeekAimLineTableViewCell: UITableViewCell {
 
 
 
-    func click() {
-
+    func click(sender:UIButton) {
+        if sender.tag == 1 {
+            XJLog(message: "左")
+        } else if sender.tag == 2 {
+            XJLog(message: "右")
+        }
     }
 
 

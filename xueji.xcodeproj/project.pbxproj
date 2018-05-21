@@ -71,6 +71,8 @@
 		2185B91420007C200038847E /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B91320007C200038847E /* CodeData.swift */; };
 		2185B916200122D70038847E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B915200122D70038847E /* RegistViewController.swift */; };
 		218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */; };
+		21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */; };
+		21BD1A3A20AEBB68005C649F /* TimeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */; };
 		21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */; };
 		21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */; };
 		21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CE1FBABA8D0031F2C3 /* AddBookViewController.swift */; };
@@ -180,6 +182,8 @@
 		2185B91320007C200038847E /* CodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
 		2185B915200122D70038847E /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
 		218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImagesViewController.swift; sourceTree = "<group>"; };
+		21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetailViewController.swift; sourceTree = "<group>"; };
+		21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		21C436CE1FBABA8D0031F2C3 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				212E6A2220AE686D00158940 /* AddAimView.swift */,
 				210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */,
 				210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */,
+				21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				212447222002479D0038F204 /* SetInfoViewController.swift */,
 				210ABFB520A96943007BACF5 /* WeekAimViewController.swift */,
 				212E6A2020AE66EC00158940 /* AddAimViewController.swift */,
+				21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -882,6 +888,7 @@
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
 				2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
+				21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */,
 				21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */,
 				212E6A2320AE686D00158940 /* AddAimView.swift in Sources */,
 				210198752069296700907EEC /* ReviewTopView.swift in Sources */,
@@ -903,6 +910,7 @@
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
+				21BD1A3A20AEBB68005C649F /* TimeDetailTableViewCell.swift in Sources */,
 				2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */,
 				2185B91420007C200038847E /* CodeData.swift in Sources */,
 				2124472C200247D30038F204 /* UserHeadView.swift in Sources */,
