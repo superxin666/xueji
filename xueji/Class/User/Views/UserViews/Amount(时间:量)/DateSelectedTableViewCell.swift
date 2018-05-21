@@ -7,8 +7,9 @@
 //  日周月
 
 import UIKit
-let DateSelectedTableViewCellH = ip6(60-17)
+let DateSelectedTableViewCellH = ip6(43)
 let DateSelectedTableViewCellID = "DateSelectedTableViewCell_ID"
+
 class DateSelectedTableViewCell: UITableViewCell {
     var leftBtn : UIButton!
     var midBtn : UIButton!

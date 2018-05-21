@@ -8,7 +8,7 @@
 
 import UIKit
 let TimeDetailTableViewCellID = "TimeDetailTableViewCell_id"
-let TimeDetailTableViewCellH = CGFloat(47)
+let TimeDetailTableViewCellH = ip6(47)
 
 class TimeDetailTableViewCell: UITableViewCell {
     var bookImageView : UIImageView!

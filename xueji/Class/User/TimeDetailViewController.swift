@@ -4,7 +4,7 @@
 //
 //  Created by lvxin on 2018/5/18.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//
+//  时间详情
 
 import UIKit
 
@@ -34,7 +34,8 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         mainTabelView.register(DateStepTableViewCell.self, forCellReuseIdentifier: DateStepTableViewCellID)
         mainTabelView.register(TimeDetailTableViewCell.self, forCellReuseIdentifier: TimeDetailTableViewCellID)
         mainTabelView.register(DateSelectedTableViewCell.self, forCellReuseIdentifier: DateSelectedTableViewCellID)
-
+        mainTabelView.register(CateSelectedTableViewCell.self, forCellReuseIdentifier: CateSelectedTableViewCellID)
+        mainTabelView.register(HistogramTableViewCell.self, forCellReuseIdentifier: HistogramTableViewCellID)
         self.view.addSubview(mainTabelView)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +43,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return 4
         }else {
             return 10
         }
@@ -63,9 +64,17 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 }
                 return cell
             } else if indexPath.row == 2 {
-                return UITableViewCell()
+                var cell : CateSelectedTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: CateSelectedTableViewCellID, for: indexPath) as! CateSelectedTableViewCell
+                if (cell == nil)  {
+                    cell = CateSelectedTableViewCell(style: .default, reuseIdentifier: CateSelectedTableViewCellID)
+                }
+                return cell
             } else  {
-                return UITableViewCell()
+                var cell : HistogramTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: HistogramTableViewCellID, for: indexPath) as! HistogramTableViewCell
+                if (cell == nil)  {
+                    cell = HistogramTableViewCell(style: .default, reuseIdentifier: HistogramTableViewCellID)
+                }
+                return cell
             }
 
 
@@ -86,8 +95,10 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 return DateSelectedTableViewCellH
             } else if indexPath.row == 1 {
                 return DateStepTableViewCellH
+            }else if indexPath.row == 2 {
+                return CateSelectedTableViewCellH
             } else {
-                return 0
+                return HistogramTableViewCellH
             }
 
         } else {
