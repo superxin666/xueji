@@ -14,10 +14,6 @@
 		210198752069296700907EEC /* ReviewTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210198742069296700907EEC /* ReviewTopView.swift */; };
 		2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */; };
 		210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB520A96943007BACF5 /* WeekAimViewController.swift */; };
-		210ABFB820A977C9007BACF5 /* WeekAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */; };
-		210ABFBA20A97C13007BACF5 /* WeekAimLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */; };
-		210ABFBC20A99FB0007BACF5 /* SymbolsValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */; };
-		210ABFBE20A9A420007BACF5 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -31,12 +27,8 @@
 		211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */; };
 		212239201FEBFD2100A2743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122391F1FEBFD2100A2743E /* LoginView.swift */; };
 		212447232002479D0038F204 /* SetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212447222002479D0038F204 /* SetInfoViewController.swift */; };
-		2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244725200247D20038F204 /* StudyAimTableViewCell.swift */; };
 		2124472C200247D30038F204 /* UserHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244726200247D20038F204 /* UserHeadView.swift */; };
-		2124472D200247D30038F204 /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */; };
-		2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244728200247D30038F204 /* StudyAmountTableViewCell.swift */; };
 		2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244729200247D30038F204 /* StudyValueTableViewCell.swift */; };
-		21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */; };
 		2124473320024BA20038F204 /* SetHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473220024BA20038F204 /* SetHeadView.swift */; };
 		2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473420024BB80038F204 /* SetInfoTableViewCell.swift */; };
 		2124D729208DC8CD0007B5EE /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D728208DC8CD0007B5EE /* StepView.swift */; };
@@ -45,7 +37,6 @@
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */; };
 		212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E6A2020AE66EC00158940 /* AddAimViewController.swift */; };
-		212E6A2320AE686D00158940 /* AddAimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E6A2220AE686D00158940 /* AddAimView.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
 		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
@@ -54,9 +45,19 @@
 		214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */; };
 		214429C21FA7260400004C38 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BB1FA7260400004C38 /* StudyViewController.swift */; };
 		214429C31FA7260400004C38 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BD1FA7260400004C38 /* UserViewController.swift */; };
-		2146A83120B281A400903B9D /* DateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */; };
-		2146A83320B281DA00903B9D /* CateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */; };
-		2146A83520B2820300903B9D /* DateStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83420B2820300903B9D /* DateStepTableViewCell.swift */; };
+		2146A83C20B2C13F00903B9D /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83720B2C13E00903B9D /* DateValueFormatter.swift */; };
+		2146A83E20B2C13F00903B9D /* WeekAimLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83920B2C13F00903B9D /* WeekAimLineTableViewCell.swift */; };
+		2146A83F20B2C13F00903B9D /* WeekAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83A20B2C13F00903B9D /* WeekAimTableViewCell.swift */; };
+		2146A84020B2C13F00903B9D /* SymbolsValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83B20B2C13F00903B9D /* SymbolsValueFormatter.swift */; };
+		2146A84220B2C1BB00903B9D /* StudyAimTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84120B2C1BA00903B9D /* StudyAimTableViewCell.swift */; };
+		2146A84520B2C2C900903B9D /* AddAimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84420B2C2C900903B9D /* AddAimView.swift */; };
+		2146A84820B2C2D300903B9D /* DateStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84620B2C2D300903B9D /* DateStepTableViewCell.swift */; };
+		2146A84920B2C2D300903B9D /* DateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84720B2C2D300903B9D /* DateSelectedTableViewCell.swift */; };
+		2146A84C20B2C32200903B9D /* StudyDistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84B20B2C32200903B9D /* StudyDistributeTableViewCell.swift */; };
+		2146A84E20B2C36200903B9D /* CateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84D20B2C36200903B9D /* CateSelectedTableViewCell.swift */; };
+		2146A85020B2C3EA00903B9D /* StudyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A84F20B2C3EA00903B9D /* StudyTimeTableViewCell.swift */; };
+		2146A85220B2C40200903B9D /* StudyAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85120B2C40200903B9D /* StudyAmountTableViewCell.swift */; };
+		2146A85420B2C44200903B9D /* TimeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85320B2C44200903B9D /* TimeDetailTableViewCell.swift */; };
 		214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91361FEA4F1800D44165 /* ImageView+loading.swift */; };
 		214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91371FEA4F1800D44165 /* UIButton+Init.swift */; };
 		214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91381FEA4F1800D44165 /* UILabel+Init.swift */; };
@@ -75,7 +76,6 @@
 		2185B916200122D70038847E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B915200122D70038847E /* RegistViewController.swift */; };
 		218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */; };
 		21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */; };
-		21BD1A3A20AEBB68005C649F /* TimeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */; };
 		21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */; };
 		21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */; };
 		21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C436CE1FBABA8D0031F2C3 /* AddBookViewController.swift */; };
@@ -126,10 +126,6 @@
 		210198742069296700907EEC /* ReviewTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTopView.swift; sourceTree = "<group>"; };
 		2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApiMangerViewController.swift; sourceTree = "<group>"; };
 		210ABFB520A96943007BACF5 /* WeekAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimViewController.swift; sourceTree = "<group>"; };
-		210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimTableViewCell.swift; sourceTree = "<group>"; };
-		210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimLineTableViewCell.swift; sourceTree = "<group>"; };
-		210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsValueFormatter.swift; sourceTree = "<group>"; };
-		210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -143,12 +139,8 @@
 		211BFFAB1FBD788D0079FECD /* SelectCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCatViewController.swift; sourceTree = "<group>"; };
 		2122391F1FEBFD2100A2743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		212447222002479D0038F204 /* SetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoViewController.swift; sourceTree = "<group>"; };
-		21244725200247D20038F204 /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
 		21244726200247D20038F204 /* UserHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeadView.swift; sourceTree = "<group>"; };
-		21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
-		21244728200247D30038F204 /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
 		21244729200247D30038F204 /* StudyValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyValueTableViewCell.swift; sourceTree = "<group>"; };
-		2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		2124473220024BA20038F204 /* SetHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHeadView.swift; sourceTree = "<group>"; };
 		2124473420024BB80038F204 /* SetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2124D728208DC8CD0007B5EE /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
@@ -157,7 +149,6 @@
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
 		212E6A2020AE66EC00158940 /* AddAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimViewController.swift; sourceTree = "<group>"; };
-		212E6A2220AE686D00158940 /* AddAimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimView.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
@@ -166,9 +157,19 @@
 		214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		214429BB1FA7260400004C38 /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		214429BD1FA7260400004C38 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectedTableViewCell.swift; sourceTree = "<group>"; };
-		2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateSelectedTableViewCell.swift; sourceTree = "<group>"; };
-		2146A83420B2820300903B9D /* DateStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStepTableViewCell.swift; sourceTree = "<group>"; };
+		2146A83720B2C13E00903B9D /* DateValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
+		2146A83920B2C13F00903B9D /* WeekAimLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekAimLineTableViewCell.swift; sourceTree = "<group>"; };
+		2146A83A20B2C13F00903B9D /* WeekAimTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekAimTableViewCell.swift; sourceTree = "<group>"; };
+		2146A83B20B2C13F00903B9D /* SymbolsValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsValueFormatter.swift; sourceTree = "<group>"; };
+		2146A84120B2C1BA00903B9D /* StudyAimTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAimTableViewCell.swift; sourceTree = "<group>"; };
+		2146A84420B2C2C900903B9D /* AddAimView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAimView.swift; sourceTree = "<group>"; };
+		2146A84620B2C2D300903B9D /* DateStepTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateStepTableViewCell.swift; sourceTree = "<group>"; };
+		2146A84720B2C2D300903B9D /* DateSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		2146A84B20B2C32200903B9D /* StudyDistributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyDistributeTableViewCell.swift; sourceTree = "<group>"; };
+		2146A84D20B2C36200903B9D /* CateSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CateSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		2146A84F20B2C3EA00903B9D /* StudyTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTimeTableViewCell.swift; sourceTree = "<group>"; };
+		2146A85120B2C40200903B9D /* StudyAmountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyAmountTableViewCell.swift; sourceTree = "<group>"; };
+		2146A85320B2C44200903B9D /* TimeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		214F91361FEA4F1800D44165 /* ImageView+loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+loading.swift"; sourceTree = "<group>"; };
 		214F91371FEA4F1800D44165 /* UIButton+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Init.swift"; sourceTree = "<group>"; };
 		214F91381FEA4F1800D44165 /* UILabel+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Init.swift"; sourceTree = "<group>"; };
@@ -189,7 +190,6 @@
 		2185B915200122D70038847E /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
 		218B143F1FC6AD3B0053EFD4 /* BookImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImagesViewController.swift; sourceTree = "<group>"; };
 		21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetailViewController.swift; sourceTree = "<group>"; };
-		21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		21C436C91FB991DF0031F2C3 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		21C436CC1FB9926E0031F2C3 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		21C436CE1FBABA8D0031F2C3 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
@@ -288,21 +288,11 @@
 		21244724200247B60038F204 /* UserViews */ = {
 			isa = PBXGroup;
 			children = (
-				21244725200247D20038F204 /* StudyAimTableViewCell.swift */,
-				21244728200247D30038F204 /* StudyAmountTableViewCell.swift */,
-				21244727200247D20038F204 /* StudyDistributeTableViewCell.swift */,
-				2124472A200247D30038F204 /* StudyTimeTableViewCell.swift */,
+				2146A84A20B2C31400903B9D /* Dis(分布) */,
+				2146A84320B2C20C00903B9D /* Amount(时间:量) */,
+				2146A83620B2BA1800903B9D /* AIM(本周目标) */,
 				21244729200247D30038F204 /* StudyValueTableViewCell.swift */,
 				21244726200247D20038F204 /* UserHeadView.swift */,
-				210ABFB720A977C9007BACF5 /* WeekAimTableViewCell.swift */,
-				210ABFB920A97C13007BACF5 /* WeekAimLineTableViewCell.swift */,
-				212E6A2220AE686D00158940 /* AddAimView.swift */,
-				210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */,
-				210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */,
-				21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */,
-				2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */,
-				2146A83420B2820300903B9D /* DateStepTableViewCell.swift */,
-				2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -426,6 +416,40 @@
 				21014B3C2007130C002CB437 /* ErrorCodeData.swift */,
 			);
 			path = DataManger;
+			sourceTree = "<group>";
+		};
+		2146A83620B2BA1800903B9D /* AIM(本周目标) */ = {
+			isa = PBXGroup;
+			children = (
+				2146A84420B2C2C900903B9D /* AddAimView.swift */,
+				2146A84120B2C1BA00903B9D /* StudyAimTableViewCell.swift */,
+				2146A83720B2C13E00903B9D /* DateValueFormatter.swift */,
+				2146A83B20B2C13F00903B9D /* SymbolsValueFormatter.swift */,
+				2146A83920B2C13F00903B9D /* WeekAimLineTableViewCell.swift */,
+				2146A83A20B2C13F00903B9D /* WeekAimTableViewCell.swift */,
+			);
+			path = "AIM(本周目标)";
+			sourceTree = "<group>";
+		};
+		2146A84320B2C20C00903B9D /* Amount(时间:量) */ = {
+			isa = PBXGroup;
+			children = (
+				2146A84D20B2C36200903B9D /* CateSelectedTableViewCell.swift */,
+				2146A84720B2C2D300903B9D /* DateSelectedTableViewCell.swift */,
+				2146A84620B2C2D300903B9D /* DateStepTableViewCell.swift */,
+				2146A84F20B2C3EA00903B9D /* StudyTimeTableViewCell.swift */,
+				2146A85120B2C40200903B9D /* StudyAmountTableViewCell.swift */,
+				2146A85320B2C44200903B9D /* TimeDetailTableViewCell.swift */,
+			);
+			path = "Amount(时间:量)";
+			sourceTree = "<group>";
+		};
+		2146A84A20B2C31400903B9D /* Dis(分布) */ = {
+			isa = PBXGroup;
+			children = (
+				2146A84B20B2C32200903B9D /* StudyDistributeTableViewCell.swift */,
+			);
+			path = "Dis(分布)";
 			sourceTree = "<group>";
 		};
 		214F91351FEA4F0600D44165 /* Category */ = {
@@ -886,42 +910,39 @@
 			files = (
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
+				2146A83C20B2C13F00903B9D /* DateValueFormatter.swift in Sources */,
 				211A65D120A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift in Sources */,
-				21244730200247D30038F204 /* StudyTimeTableViewCell.swift in Sources */,
+				2146A84920B2C2D300903B9D /* DateSelectedTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
 				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
 				210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */,
 				2124D729208DC8CD0007B5EE /* StepView.swift in Sources */,
+				2146A84C20B2C32200903B9D /* StudyDistributeTableViewCell.swift in Sources */,
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
-				2146A83120B281A400903B9D /* DateSelectedTableViewCell.swift in Sources */,
-				2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */,
 				21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */,
-				212E6A2320AE686D00158940 /* AddAimView.swift in Sources */,
+				2146A83F20B2C13F00903B9D /* WeekAimTableViewCell.swift in Sources */,
 				210198752069296700907EEC /* ReviewTopView.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
-				2124472D200247D30038F204 /* StudyDistributeTableViewCell.swift in Sources */,
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
-				210ABFB820A977C9007BACF5 /* WeekAimTableViewCell.swift in Sources */,
 				21014B512008581E002CB437 /* CategoryListModel.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
-				210ABFBA20A97C13007BACF5 /* WeekAimLineTableViewCell.swift in Sources */,
 				211A65CB20A0A8A6009CD41A /* LearnDetailViewController.swift in Sources */,
 				214F914D1FEA5A3C00D44165 /* pch.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
-				210ABFBE20A9A420007BACF5 /* DateValueFormatter.swift in Sources */,
+				2146A84E20B2C36200903B9D /* CateSelectedTableViewCell.swift in Sources */,
 				21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */,
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
-				21BD1A3A20AEBB68005C649F /* TimeDetailTableViewCell.swift in Sources */,
 				2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */,
+				2146A84220B2C1BB00903B9D /* StudyAimTableViewCell.swift in Sources */,
 				2185B91420007C200038847E /* CodeData.swift in Sources */,
 				2124472C200247D30038F204 /* UserHeadView.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
@@ -938,33 +959,36 @@
 				211A65CD20A0A8F2009CD41A /* BaseTableViewController.swift in Sources */,
 				2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
+				2146A84820B2C2D300903B9D /* DateStepTableViewCell.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				2185B916200122D70038847E /* RegistViewController.swift in Sources */,
 				212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */,
 				2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */,
 				2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */,
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
+				2146A85420B2C44200903B9D /* TimeDetailTableViewCell.swift in Sources */,
 				2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */,
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */,
-				2146A83520B2820300903B9D /* DateStepTableViewCell.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
+				2146A84020B2C13F00903B9D /* SymbolsValueFormatter.swift in Sources */,
 				21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */,
-				2146A83320B281DA00903B9D /* CateSelectedTableViewCell.swift in Sources */,
+				2146A83E20B2C13F00903B9D /* WeekAimLineTableViewCell.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,
 				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,
+				2146A85220B2C40200903B9D /* StudyAmountTableViewCell.swift in Sources */,
 				214429BF1FA7260400004C38 /* LogViewController.swift in Sources */,
 				21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */,
 				2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */,
+				2146A85020B2C3EA00903B9D /* StudyTimeTableViewCell.swift in Sources */,
 				2182CB4E207870A800BAEBD4 /* LearnViewController.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
-				2124472E200247D30038F204 /* StudyAmountTableViewCell.swift in Sources */,
+				2146A84520B2C2C900903B9D /* AddAimView.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				212447232002479D0038F204 /* SetInfoViewController.swift in Sources */,
-				210ABFBC20A99FB0007BACF5 /* SymbolsValueFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
