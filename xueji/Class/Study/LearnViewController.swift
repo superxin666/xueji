@@ -91,9 +91,9 @@ class LearnViewController: BaseViewController {
 
         statBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "play"), image_selected: #imageLiteral(resourceName: "pause"), fream: CGRect(x: (KSCREEN_WIDTH - CGFloat(75))/2, y: timeLabel.frame.maxY + ip6(50), width: CGFloat(75), height:  CGFloat(75)), selector: #selector(statClick(sender:)), vc: self, tag: 0)
 
-        restTimeBtn = UIButton.getBtn_titleStyle(title_normal: "重置", title_selected: "重置", fream: CGRect(x: statBtn.frame.origin.x - ip6(65), y: statBtn.frame.midY - ip6(10), width: ip6(40), height: ip6(20)), backgroundColor: UIColor.clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 19, textAlignment: .center, selector: #selector(restClick), vc: self, tag: 0)
+        restTimeBtn = UIButton.getBtn_titleStyle(title_normal: "重置", title_selected: "重置", fream: CGRect(x: statBtn.frame.origin.x - ip6(65), y: statBtn.frame.midY - ip6(10), width: ip6(40), height: ip6(20)), backgroundColor: UIColor.clear, textColorSelectrd: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 19, textAlignment: .center, selector: #selector(restClick), vc: self, tag: 0)
 
-        doneBtn = UIButton.getBtn_titleStyle(title_normal: "完成", title_selected: "完成", fream: CGRect(x: statBtn.frame.maxX + ip6(25), y: restTimeBtn.frame.origin.y, width: ip6(40), height: ip6(20)), backgroundColor: UIColor.clear, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 19, textAlignment: .center, selector: #selector(doneClick), vc: self, tag: 0)
+        doneBtn = UIButton.getBtn_titleStyle(title_normal: "完成", title_selected: "完成", fream: CGRect(x: statBtn.frame.maxX + ip6(25), y: restTimeBtn.frame.origin.y, width: ip6(40), height: ip6(20)), backgroundColor: UIColor.clear, textColorSelectrd: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 19, textAlignment: .center, selector: #selector(doneClick), vc: self, tag: 0)
         self.view.addSubview(statBtn)
         self.view.addSubview(restTimeBtn)
         self.view.addSubview(doneBtn)

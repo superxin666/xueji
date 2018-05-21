@@ -137,7 +137,7 @@ class RegistView: UIView {
         lineView3.backgroundColor =  UIColor.xj_colorFromRGB(rgbValue: 0xaaaaaa)
         scrBackView.addSubview(lineView3)
 
-        registBtn = UIButton.getBtn_titleStyle(title_normal: "注册", title_selected: "注册", fream: CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35)), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(registClick), vc: self, tag: 1)
+        registBtn = UIButton.getBtn_titleStyle(title_normal: "注册", title_selected: "注册", fream: CGRect(x: backViewX, y: scrBackView.frame.maxY + ip6(20), width: backViewWidth, height: ip6(35)), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), textColorSelectrd: .white, textColor: .white, fontSize: 15, textAlignment: .center, selector: #selector(registClick), vc: self, tag: 1)
         registBtn.xj_makeRadius(radius: 4)
 
         let str = "点击“注册”即表示您同意并愿意遵守学记".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSzie: 10)

@@ -43,13 +43,13 @@ class SelectCatViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.view.addSubview(titleLabel)
         
         
-        addCat = UIButton.getBtn_titleStyle(title_normal: "添加分类", title_selected: "", fream: CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: titleLabel.frame.maxY + ip6(30), width: ip6(60), height: ip6(25)), backgroundColor: .white, textColor: blue_0076f9, fontSize: 12, textAlignment: .center, selector: #selector(self.addCatBtn_click), vc: self,tag: 0)
+        addCat = UIButton.getBtn_titleStyle(title_normal: "添加分类", title_selected: "", fream: CGRect(x: (KSCREEN_WIDTH - ip6(60))/2, y: titleLabel.frame.maxY + ip6(30), width: ip6(60), height: ip6(25)), backgroundColor: .white, textColorSelectrd: blue_0076f9, textColor: blue_0076f9, fontSize: 12, textAlignment: .center, selector: #selector(self.addCatBtn_click), vc: self,tag: 0)
         self.view.addSubview(addCat)
         
-        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(14), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.cancleBtn_click), vc: self,tag: 0)
+        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(14), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.cancleBtn_click), vc: self,tag: 0)
         self.view.addSubview(cancleBtn)
         
-        compleBtn = UIButton.getBtn_titleStyle(title_normal: "完成", title_selected: "", fream: CGRect(x:KSCREEN_WIDTH - ip6(42), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.compleBtn_click), vc: self,tag: 0)
+        compleBtn = UIButton.getBtn_titleStyle(title_normal: "完成", title_selected: "", fream: CGRect(x:KSCREEN_WIDTH - ip6(42), y: ip6(24) , width: ip6(28), height: ip6(20)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 12, textAlignment: .center, selector: #selector(self.compleBtn_click), vc: self,tag: 0)
         self.view.addSubview(compleBtn)
         
         

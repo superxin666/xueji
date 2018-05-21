@@ -54,6 +54,9 @@
 		214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */; };
 		214429C21FA7260400004C38 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BB1FA7260400004C38 /* StudyViewController.swift */; };
 		214429C31FA7260400004C38 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214429BD1FA7260400004C38 /* UserViewController.swift */; };
+		2146A83120B281A400903B9D /* DateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */; };
+		2146A83320B281DA00903B9D /* CateSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */; };
+		2146A83520B2820300903B9D /* DateStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A83420B2820300903B9D /* DateStepTableViewCell.swift */; };
 		214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91361FEA4F1800D44165 /* ImageView+loading.swift */; };
 		214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91371FEA4F1800D44165 /* UIButton+Init.swift */; };
 		214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91381FEA4F1800D44165 /* UILabel+Init.swift */; };
@@ -163,6 +166,9 @@
 		214429BA1FA7260400004C38 /* HeadBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		214429BB1FA7260400004C38 /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		214429BD1FA7260400004C38 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		2146A83420B2820300903B9D /* DateStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStepTableViewCell.swift; sourceTree = "<group>"; };
 		214F91361FEA4F1800D44165 /* ImageView+loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+loading.swift"; sourceTree = "<group>"; };
 		214F91371FEA4F1800D44165 /* UIButton+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Init.swift"; sourceTree = "<group>"; };
 		214F91381FEA4F1800D44165 /* UILabel+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Init.swift"; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				210ABFBB20A99FB0007BACF5 /* SymbolsValueFormatter.swift */,
 				210ABFBD20A9A420007BACF5 /* DateValueFormatter.swift */,
 				21BD1A3920AEBB68005C649F /* TimeDetailTableViewCell.swift */,
+				2146A83020B281A400903B9D /* DateSelectedTableViewCell.swift */,
+				2146A83420B2820300903B9D /* DateStepTableViewCell.swift */,
+				2146A83220B281DA00903B9D /* CateSelectedTableViewCell.swift */,
 			);
 			path = UserViews;
 			sourceTree = "<group>";
@@ -886,6 +895,7 @@
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
+				2146A83120B281A400903B9D /* DateSelectedTableViewCell.swift in Sources */,
 				2124472B200247D30038F204 /* StudyAimTableViewCell.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */,
@@ -939,8 +949,10 @@
 				2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
 				211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */,
+				2146A83520B2820300903B9D /* DateStepTableViewCell.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
 				21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */,
+				2146A83320B281DA00903B9D /* CateSelectedTableViewCell.swift in Sources */,
 				214F914C1FEA5A3C00D44165 /* APIS.swift in Sources */,
 				2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */,
 				214429BE1FA7260400004C38 /* BaseViewController.swift in Sources */,

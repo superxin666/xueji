@@ -43,7 +43,7 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
         self.view.addSubview(mainTabelView)
 
         //退出登录
-        logOutBtn = UIButton.getBtn_titleStyle(title_normal: "退出账号", title_selected: "退出账号", fream: CGRect(x: 0, y: mainTabelView.frame.maxY + ip6(50) , width: KSCREEN_WIDTH, height: ip6(25)), backgroundColor: .clear, textColor:  UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 18, textAlignment: .center, selector: #selector(logoutClick), vc: self, tag: 1)
+        logOutBtn = UIButton.getBtn_titleStyle(title_normal: "退出账号", title_selected: "退出账号", fream: CGRect(x: 0, y: mainTabelView.frame.maxY + ip6(50) , width: KSCREEN_WIDTH, height: ip6(25)), backgroundColor: .clear, textColorSelectrd: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textColor:  UIColor.xj_colorFromRGB(rgbValue: 0x535353), fontSize: 18, textAlignment: .center, selector: #selector(logoutClick), vc: self, tag: 1)
         self.view.addSubview(logOutBtn)
     }
 

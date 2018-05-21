@@ -44,7 +44,7 @@ class WeekAimLineTableViewCell: UITableViewCell {
         titleLabel = UILabel.getLabel(fream:  CGRect(x: Xappading, y: ip6(23), width: KSCREEN_WIDTH - Xappading * 2, height: ip6(20)), fontSize: 14, text: "目标完成情况统计曲线", textColor: black_53, textAlignment: .center)
         self.addSubview(titleLabel)
 
-        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
+        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
         titleBtn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
         titleBtn.xj_makeRadius(radius: 3)
         self.addSubview(titleBtn)

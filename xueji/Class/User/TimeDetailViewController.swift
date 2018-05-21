@@ -31,7 +31,10 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
+        mainTabelView.register(DateStepTableViewCell.self, forCellReuseIdentifier: DateStepTableViewCellID)
         mainTabelView.register(TimeDetailTableViewCell.self, forCellReuseIdentifier: TimeDetailTableViewCellID)
+        mainTabelView.register(DateSelectedTableViewCell.self, forCellReuseIdentifier: DateSelectedTableViewCellID)
+
         self.view.addSubview(mainTabelView)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,7 +42,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 0
+            return 2
         }else {
             return 10
         }
@@ -47,7 +50,24 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            return UITableViewCell()
+            if indexPath.row == 0 {
+                var cell : DateSelectedTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: DateSelectedTableViewCellID, for: indexPath) as! DateSelectedTableViewCell
+                if (cell == nil)  {
+                    cell = DateSelectedTableViewCell(style: .default, reuseIdentifier: DateSelectedTableViewCellID)
+                }
+                return cell
+            } else if indexPath.row == 1 {
+                var cell : DateStepTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: DateStepTableViewCellID, for: indexPath) as! DateStepTableViewCell
+                if (cell == nil)  {
+                    cell = DateStepTableViewCell(style: .default, reuseIdentifier: DateStepTableViewCellID)
+                }
+                return cell
+            } else if indexPath.row == 2 {
+                return UITableViewCell()
+            } else  {
+                return UITableViewCell()
+            }
+
 
         } else {
             var cell : TimeDetailTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: TimeDetailTableViewCellID, for: indexPath) as! TimeDetailTableViewCell
@@ -62,7 +82,14 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 0
+            if indexPath.row == 0 {
+                return DateSelectedTableViewCellH
+            } else if indexPath.row == 1 {
+                return DateStepTableViewCellH
+            } else {
+                return 0
+            }
+
         } else {
             return TimeDetailTableViewCellH
         }
@@ -72,11 +99,9 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 //
 //    }
 //
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 0
-//
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+         return 0
+    }
 
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)

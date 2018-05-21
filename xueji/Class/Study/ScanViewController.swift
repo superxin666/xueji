@@ -69,7 +69,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         self.view.addSubview(bottomView)
         
         
-        addBookBtn = UIButton.getBtn_titleStyle(title_normal: "手动添加", title_selected: "", fream:  CGRect(x: (bottomView.frame.width - ip6(80))/2, y: ip6(18), width: ip6(80), height: ip6(22)), backgroundColor: .clear, textColor: .white, fontSize: 18, textAlignment: .center, selector: #selector(self.addBook_click), vc: self, tag: 0)
+        addBookBtn = UIButton.getBtn_titleStyle(title_normal: "手动添加", title_selected: "", fream:  CGRect(x: (bottomView.frame.width - ip6(80))/2, y: ip6(18), width: ip6(80), height: ip6(22)), backgroundColor: .clear, textColorSelectrd: .white, textColor: .white, fontSize: 18, textAlignment: .center, selector: #selector(self.addBook_click), vc: self, tag: 0)
         bottomView.addSubview(addBookBtn)
         
         bottomBackView  = UIView(frame: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(58), width: KSCREEN_WIDTH, height: ip6(58)))
@@ -77,7 +77,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         bottomBackView.alpha = 0.7
         self.view.addSubview(bottomBackView)
         
-        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(15), y: ip6(18), width: ip6(60), height: ip6(22)), backgroundColor: .clear, textColor: .white, fontSize: 18, textAlignment: .left,selector : #selector(self.cancle_click),vc : self,tag: 0)
+        cancleBtn = UIButton.getBtn_titleStyle(title_normal: "取消", title_selected: "", fream: CGRect(x: ip6(15), y: ip6(18), width: ip6(60), height: ip6(22)), backgroundColor: .clear, textColorSelectrd: .white, textColor: .white, fontSize: 18, textAlignment: .left,selector : #selector(self.cancle_click),vc : self,tag: 0)
         bottomBackView.addSubview(cancleBtn)
         
         lightBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_flashlight_fill"), image_selected: #imageLiteral(resourceName: "study_flashlight_fill"), fream: CGRect(x:KSCREEN_WIDTH -  ip6(30), y: ip6(18), width: ip6(15), height: ip6(18)), selector: #selector(self.openLight_click(sender:)), vc: self, tag: 0)

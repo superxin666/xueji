@@ -24,7 +24,7 @@ extension UIButton {
     ///   - selector: 点击事件
     ///   - vc: 拥有者
     /// - Returns: 按钮
-    static func getBtn_titleStyle(title_normal : String,title_selected : String,fream : CGRect,backgroundColor : UIColor,textColor : UIColor,fontSize : CGFloat,textAlignment : NSTextAlignment,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
+    static func getBtn_titleStyle(title_normal : String,title_selected : String,fream : CGRect,backgroundColor : UIColor,textColorSelectrd : UIColor,textColor : UIColor,fontSize : CGFloat,textAlignment : NSTextAlignment,selector : Selector,vc : Any,tag : Int) ->(UIButton)  {
         let btn = UIButton(type: .custom)
         btn.frame = fream
         btn.tag = tag
@@ -33,6 +33,7 @@ extension UIButton {
         btn.backgroundColor = backgroundColor
         btn.titleLabel?.font = xj_fzFontMedium(ip6(Int(fontSize)))
         btn.setTitleColor(textColor, for: .normal)
+        btn.setTitleColor(textColorSelectrd, for: .selected)
         btn.titleLabel?.textAlignment = textAlignment
         btn.addTarget(vc, action: selector, for: .touchUpInside)
         return btn

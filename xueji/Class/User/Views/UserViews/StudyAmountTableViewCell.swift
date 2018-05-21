@@ -54,7 +54,7 @@ class StudyAmountTableViewCell: UITableViewCell {
             let timeLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabel.frame.maxY + ip6(5), width: backViewW, height: ip6(30)), fontSize: 22, text: "1000页", textColor: black_8c8484, textAlignment: .center)
             backView.addSubview(timeLabel)
             
-            let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
+            let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
             btn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
             btn.xj_makeRadius(radius: 3)
             backView.addSubview(btn)
