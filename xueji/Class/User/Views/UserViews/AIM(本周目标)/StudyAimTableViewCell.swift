@@ -25,7 +25,8 @@ class StudyAimTableViewCell: UITableViewCell {
     /// 横线
     var lineView : UIView!
 
-    
+    var nestBtn : UIButton!
+
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -71,9 +72,17 @@ class StudyAimTableViewCell: UITableViewCell {
         lineView.backgroundColor = black_e3e3e3
         lineView.isHidden = true
         self.addSubview(lineView)
+
+
+        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: 0, width: ip6(20), height: study_aim_sectionHeight), selector: #selector(nestClick), vc: self, tag: 0)
+
+        self.addSubview(nestBtn)
         
     }
 
 
+    func nestClick()   {
+
+    }
 
 }

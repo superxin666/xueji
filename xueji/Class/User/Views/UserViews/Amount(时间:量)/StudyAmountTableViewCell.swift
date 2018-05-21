@@ -8,24 +8,26 @@
 
 import UIKit
 import Charts
-var leftBackView : UIView!
-var leftTitleLabel :UILabel!
-var leftTimeLabel :UILabel!
-var leftBtn : UIButton!
 
-var midBackView : UIView!
-var midTitleLabel :UILabel!
-var midTimeLabel :UILabel!
-var midBtn : UIButton!
-
-var rightBackView : UIView!
-var rightTitleLabel :UILabel!
-var rightTimeLabel :UILabel!
-var rightdBtn : UIButton!
-
-var barCharView : BarChartView!
 
 class StudyAmountTableViewCell: UITableViewCell {
+
+    var leftBackView : UIView!
+    var leftTitleLabel :UILabel!
+    var leftTimeLabel :UILabel!
+    var leftBtn : UIButton!
+
+    var midBackView : UIView!
+    var midTitleLabel :UILabel!
+    var midTimeLabel :UILabel!
+    var midBtn : UIButton!
+
+    var rightBackView : UIView!
+    var rightTitleLabel :UILabel!
+    var rightTimeLabel :UILabel!
+    var rightdBtn : UIButton!
+    var nestBtn : UIButton!
+    var barCharView : BarChartView!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -79,6 +81,8 @@ class StudyAmountTableViewCell: UITableViewCell {
         }
         //表格
         self.creatChart()
+        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: barCharView.frame.origin.y - ip6(20), width: ip6(20), height: barCharView.frame.size.height - ip6(20)), selector: #selector(nestClick), vc: self, tag: 0)
+        self.addSubview(nestBtn)
     }
     func btnClick(sender : UIButton) {
         let tagNum : Int = sender.tag
@@ -97,7 +101,7 @@ class StudyAmountTableViewCell: UITableViewCell {
     }
     
     func creatChart() {
-        barCharView = BarChartView(frame: CGRect(x: ip6(20), y: ip6(97), width: KSCREEN_WIDTH - ip6(40), height: ip6(138)))
+        barCharView = BarChartView(frame: CGRect(x: ip6(40), y: ip6(97), width: KSCREEN_WIDTH - ip6(80), height: ip6(138)))
         self.addSubview(barCharView)
         barCharView.legend.enabled = false
         barCharView.chartDescription?.text = ""//不显示，就设为空字符串即
@@ -187,5 +191,7 @@ class StudyAmountTableViewCell: UITableViewCell {
         
     }
     
-    
+    func nestClick()   {
+
+    }
 }

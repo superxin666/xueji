@@ -14,7 +14,7 @@ let HistogramTableViewCellID = "HistogramTableViewCell_id"
 
 class HistogramTableViewCell: UITableViewCell {
 
-
+    var barCharView : BarChartView!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

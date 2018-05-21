@@ -11,13 +11,13 @@ let study_value_sectionHeight = ip6(148)//学习力
 
 let study_time_sectionHeight = ip6(236)//学习时间
 let study_amount_sectionHeight = ip6(250)//学习量
-let study_distribute_sectionHeight = ip6(318)//学习分布
+
 
 let study_value_cell_ID = "study_value_cell_id"
 
 let study_time_cell_ID = "study_time_cell_id"
 let study_amount_cell_ID = "study_amount_cell_id"
-let study_distribute_cell_ID = "study_distreibute_cell_id"
+
 
 class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
@@ -111,6 +111,15 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
             if (cell == nil)  {
                 cell = StudyDistributeTableViewCell(style: .default, reuseIdentifier: study_distribute_cell_ID)
+            }
+            weak var weakSelf = self
+
+            cell.nestBlock = {(num) in
+
+                let vc = TimeDistributeViewController()
+                vc.hidesBottomBarWhenPushed = true
+                weakSelf?.navigationController?.pushViewController(vc, animated: true)
+
             }
             return cell
         } else {

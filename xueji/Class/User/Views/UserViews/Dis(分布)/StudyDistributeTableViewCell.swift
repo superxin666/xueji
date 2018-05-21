@@ -8,16 +8,23 @@
 
 import UIKit
 import Charts
+let study_distribute_sectionHeight = ip6(318)//学习分布
+let study_distribute_cell_ID = "study_distreibute_cell_id"
 
+typealias StudyDistributeTableViewCellBlock = (_ tagNum : Int) ->()
 class StudyDistributeTableViewCell: UITableViewCell {
-    
+
+     var nestBlock :StudyDistributeTableViewCellBlock!
+
     var topBackView : UIView!
     var bottomView : UIView!
     
     
     var timePieChartView : PieChartView!
     var amountPieChartView : PieChartView!
-    
+
+    var timeNestBtn : UIButton!
+    var valeNestBtn : UIButton!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -130,8 +137,13 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
             lineView.backgroundColor = orange_F46F56
             subBackView.addSubview(lineView)
-            
+
         }
+        timeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(40), y: 0, width: ip6(40), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 0)
+        timeNestBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        self.addSubview(timeNestBtn)
+
+
         
     }
     func setLineData_bottom() {
@@ -148,7 +160,13 @@ class StudyDistributeTableViewCell: UITableViewCell {
             subBackView.addSubview(lineView)
             
         }
-        
+
+        valeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: study_distribute_sectionHeight/2, width: ip6(20), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 1)
+        self.addSubview(valeNestBtn)
+    }
+
+    func nestClick(sender : UIButton) {
+        self.nestBlock(sender.tag)
     }
     
 }

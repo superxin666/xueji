@@ -61,6 +61,8 @@
 		2146A85620B2C9F300903B9D /* CateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85520B2C9F300903B9D /* CateCollectionViewCell.swift */; };
 		2146A85820B2D27C00903B9D /* HistogramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85720B2D27C00903B9D /* HistogramTableViewCell.swift */; };
 		2146A85A20B2D81000903B9D /* HYValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85920B2D81000903B9D /* HYValueFormatter.swift */; };
+		2146A85C20B2E72000903B9D /* TimeDistributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85B20B2E72000903B9D /* TimeDistributeViewController.swift */; };
+		2146A85E20B2EBA300903B9D /* PieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146A85D20B2EBA300903B9D /* PieTableViewCell.swift */; };
 		214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91361FEA4F1800D44165 /* ImageView+loading.swift */; };
 		214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91371FEA4F1800D44165 /* UIButton+Init.swift */; };
 		214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F91381FEA4F1800D44165 /* UILabel+Init.swift */; };
@@ -176,6 +178,8 @@
 		2146A85520B2C9F300903B9D /* CateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateCollectionViewCell.swift; sourceTree = "<group>"; };
 		2146A85720B2D27C00903B9D /* HistogramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramTableViewCell.swift; sourceTree = "<group>"; };
 		2146A85920B2D81000903B9D /* HYValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HYValueFormatter.swift; sourceTree = "<group>"; };
+		2146A85B20B2E72000903B9D /* TimeDistributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDistributeViewController.swift; sourceTree = "<group>"; };
+		2146A85D20B2EBA300903B9D /* PieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieTableViewCell.swift; sourceTree = "<group>"; };
 		214F91361FEA4F1800D44165 /* ImageView+loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+loading.swift"; sourceTree = "<group>"; };
 		214F91371FEA4F1800D44165 /* UIButton+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Init.swift"; sourceTree = "<group>"; };
 		214F91381FEA4F1800D44165 /* UILabel+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Init.swift"; sourceTree = "<group>"; };
@@ -295,8 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				2146A84A20B2C31400903B9D /* Dis(分布) */,
-				2146A84320B2C20C00903B9D /* Amount(时间:量) */,
 				2146A83620B2BA1800903B9D /* AIM(本周目标) */,
+				2146A84320B2C20C00903B9D /* Amount(时间:量) */,
 				21244729200247D30038F204 /* StudyValueTableViewCell.swift */,
 				21244726200247D20038F204 /* UserHeadView.swift */,
 			);
@@ -399,6 +403,7 @@
 				210ABFB520A96943007BACF5 /* WeekAimViewController.swift */,
 				212E6A2020AE66EC00158940 /* AddAimViewController.swift */,
 				21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */,
+				2146A85B20B2E72000903B9D /* TimeDistributeViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				2146A84B20B2C32200903B9D /* StudyDistributeTableViewCell.swift */,
+				2146A85D20B2EBA300903B9D /* PieTableViewCell.swift */,
 			);
 			path = "Dis(分布)";
 			sourceTree = "<group>";
@@ -979,6 +985,7 @@
 				2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */,
 				21C436CA1FB991DF0031F2C3 /* ReviewViewController.swift in Sources */,
 				2146A85420B2C44200903B9D /* TimeDetailTableViewCell.swift in Sources */,
+				2146A85E20B2EBA300903B9D /* PieTableViewCell.swift in Sources */,
 				2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */,
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */,
@@ -997,6 +1004,7 @@
 				2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */,
 				2146A85020B2C3EA00903B9D /* StudyTimeTableViewCell.swift in Sources */,
 				2182CB4E207870A800BAEBD4 /* LearnViewController.swift in Sources */,
+				2146A85C20B2E72000903B9D /* TimeDistributeViewController.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
 				2146A84520B2C2C900903B9D /* AddAimView.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,

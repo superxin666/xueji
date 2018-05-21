@@ -29,6 +29,8 @@ class AddAimView: UIView,UITextFieldDelegate {
     var amountLabel2 : UILabel!
     var amountField : UITextField!
 
+
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.creatUI()
@@ -102,4 +104,5 @@ class AddAimView: UIView,UITextFieldDelegate {
             XJLog(message: "学习量" + textField.text!)
         }
     }
+
 }
