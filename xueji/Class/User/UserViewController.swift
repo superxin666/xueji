@@ -118,6 +118,11 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
 
                 let vc = TimeDistributeViewController()
                 vc.hidesBottomBarWhenPushed = true
+                if num == 0 {
+                    vc.type = .time
+                } else {
+                    vc.type = .amount
+                }
                 weakSelf?.navigationController?.pushViewController(vc, animated: true)
 
             }

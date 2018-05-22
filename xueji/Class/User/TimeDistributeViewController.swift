@@ -7,17 +7,30 @@
 //
 
 import UIKit
-
+enum TimeDistributeViewControllerType {
+    case time
+    case amount
+}
 class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     var mainTabelView : UITableView!//
 
+    /// vc类型
+    var type : TimeDistributeViewControllerType!
+
+    /// 数据类型 0-资料 1-分类
+    var dataType :Int = 0
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigation_title_fontsize(name: "时间分布", fontsize: 20)
+        if self.type == .time {
+            self.navigation_title_fontsize(name: "时间分布", fontsize: 20)
+        } else {
+            self.navigation_title_fontsize(name: "学习量分布", fontsize: 20)
+
+        }
         self.navigationBar_rightBtn_title(title: "切换分类统计")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
@@ -32,7 +45,7 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
         mainTabelView.register(DateStepTableViewCell.self, forCellReuseIdentifier: DateStepTableViewCellID)
-        mainTabelView.register(TimeDetailTableViewCell.self, forCellReuseIdentifier: TimeDetailTableViewCellID)
+        mainTabelView.register(DistributeTableViewCell.self, forCellReuseIdentifier: DistributeTableViewCellID)
         mainTabelView.register(DateSelectedTableViewCell.self, forCellReuseIdentifier: DateSelectedTableViewCellID)
         mainTabelView.register(CateSelectedTableViewCell.self, forCellReuseIdentifier: CateSelectedTableViewCellID)
         mainTabelView.register(PieTableViewCell.self, forCellReuseIdentifier: PieTableViewCellID)
@@ -80,9 +93,9 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
 
 
         } else {
-            var cell : TimeDetailTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: TimeDetailTableViewCellID, for: indexPath) as! TimeDetailTableViewCell
+            var cell : DistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: DistributeTableViewCellID, for: indexPath) as! DistributeTableViewCell
             if (cell == nil)  {
-                cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
+                cell = DistributeTableViewCell(style: .default, reuseIdentifier: DistributeTableViewCellID)
             }
             cell.setData()
             return cell
@@ -103,14 +116,10 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
             }
 
         } else {
-            return TimeDetailTableViewCellH
+            return DistributeTableViewCellH
         }
     }
 
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //    }
-    //
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }

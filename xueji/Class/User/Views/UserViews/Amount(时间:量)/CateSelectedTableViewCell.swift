@@ -18,6 +18,7 @@ class CateSelectedTableViewCell: UITableViewCell,UICollectionViewDelegate,UIColl
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.creatUI()
     }
 

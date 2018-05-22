@@ -73,6 +73,7 @@
 		214F914D1FEA5A3C00D44165 /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914A1FEA5A3C00D44165 /* pch.swift */; };
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
+		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
 		2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */; };
 		2182CB4E207870A800BAEBD4 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4D207870A800BAEBD4 /* LearnViewController.swift */; };
@@ -192,6 +193,7 @@
 		2151F65B1FF09B46007D4FFE /* UserDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManger.swift; sourceTree = "<group>"; };
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
+		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
 		2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		2182CB4D207870A800BAEBD4 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 			children = (
 				2146A84B20B2C32200903B9D /* StudyDistributeTableViewCell.swift */,
 				2146A85D20B2EBA300903B9D /* PieTableViewCell.swift */,
+				215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */,
 			);
 			path = "Dis(分布)";
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
 				21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */,
 				214429C11FA7260400004C38 /* HeadBookCollectionViewCell.swift in Sources */,
+				215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */,
 				214F91401FEA4F1900D44165 /* String+fun.swift in Sources */,
 				21014B512008581E002CB437 /* CategoryListModel.swift in Sources */,
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
