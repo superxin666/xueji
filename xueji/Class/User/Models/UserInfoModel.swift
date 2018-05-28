@@ -24,6 +24,76 @@ class UserInfoModel_weekgoal_timepages: Mappable {
         done <- map["done"]
         rate <- map["rate"]
     }
+
+    func getTimedone() -> NSMutableAttributedString{
+        guard let done = self.done else { return  NSMutableAttributedString(string: "")}
+        if done < 60 {
+
+            let strH = "00".getAttributedStr_color(color: green_84B53E, fontSzie: 12)
+            strH.append(" h ".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0xFE3E3E3), fontSzie: 8))
+
+            let str = "\(done)".getAttributedStr_color(color: green_84B53E, fontSzie: 12)
+            str.append(" m ".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0xFE3E3E3), fontSzie: 8))
+
+            strH.append(str)
+            return strH
+        } else {
+            let h = done/60
+            let strH = "\(h)".getAttributedStr_color(color: green_84B53E, fontSzie: 12)
+            strH.append(" h ".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0xFE3E3E3), fontSzie: 8))
+
+            let M = done%60
+            let strM = "\(M)".getAttributedStr_color(color: green_84B53E, fontSzie: 12)
+            strM.append(" m ".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0xFE3E3E3), fontSzie: 8))
+
+            strH.append(strM)
+            return strH
+        }
+    }
+
+
+    func getTimegoal() -> NSMutableAttributedString {
+
+        guard let goal = self.goal else { return  NSMutableAttributedString(string: "")}
+        if goal < 60 {
+
+            let strH = "00".getAttributedStr_color(color: black_53, fontSzie: 12)
+            strH.append(" h ".getAttributedStr_color(color: black_53, fontSzie: 8))
+
+            let str = "\(goal)".getAttributedStr_color(color: black_53, fontSzie: 12)
+            str.append(" m ".getAttributedStr_color(color: black_53, fontSzie: 8))
+
+            strH.append(str)
+            return strH
+        } else {
+            let h = goal/60
+            let strH = "\(h)".getAttributedStr_color(color: black_53, fontSzie: 12)
+            strH.append(" h ".getAttributedStr_color(color: black_53, fontSzie: 8))
+
+            let M = goal%60
+            let strM = "\(M)".getAttributedStr_color(color: black_53, fontSzie: 12)
+            strM.append(" m ".getAttributedStr_color(color: black_53, fontSzie: 8))
+
+            strH.append(strM)
+            return strH
+        }
+    }
+
+
+    func getPagegoal()-> NSMutableAttributedString {
+        guard let goal = self.goal else { return  NSMutableAttributedString(string: "")}
+        let str = "\(goal)".getAttributedStr_color(color: black_53, fontSzie: 12)
+        str.append(" 页 ".getAttributedStr_color(color: black_53, fontSzie: 8))
+        return str
+    }
+    func getPagedone()-> NSMutableAttributedString {
+
+        guard let done = self.done else { return  NSMutableAttributedString(string: "")}
+        let str = "\(done)".getAttributedStr_color(color: green_84B53E, fontSzie: 12)
+        str.append(" 页 ".getAttributedStr_color(color: black_53, fontSzie: 8))
+        return str
+    }
+
 }
 
 

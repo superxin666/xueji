@@ -23,7 +23,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     var mainTabelView : UITableView!//
     var headView : UserHeadView!
     let sectionTitleArr : [String] = ["本周目标","学习时间","学习量","学习分布","本周目标"]//
-
+    var aimCell : StudyAimTableViewCell!
     let requestVC = MineDataManger()
 
 
@@ -96,12 +96,17 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            var cell : StudyAimTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_aim_cell_ID, for: indexPath) as! StudyAimTableViewCell
-            if (cell == nil)  {
-                cell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
+            aimCell  = tableView.dequeueReusableCell(withIdentifier: study_aim_cell_ID, for: indexPath) as! StudyAimTableViewCell
+            if (aimCell == nil)  {
+                aimCell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
             }
-
-            return cell
+            weak var weakself = self
+            aimCell.nestBlock = {
+                let vc = WeekAimViewController()
+                vc.hidesBottomBarWhenPushed = true
+                weakself?.navigationController?.pushViewController(vc, animated: true)
+            }
+            return aimCell
         } else if indexPath.section == 1{
             var cell : StudyTimeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
             if (cell == nil)  {
@@ -194,9 +199,10 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             return study_value_sectionHeight
         }
     }
-
+    // MARK: - data
     func MineDatarequestSucceed() {
         headView.setData(model:  requestVC.getHeadViewModel())
+        aimCell.setData(model: requestVC.getAimModel())
     }
 
     func MineDataRequestFail() {

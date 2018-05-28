@@ -9,6 +9,8 @@
 import UIKit
 let study_aim_cell_ID = "study_aim_cell_id"
 let study_aim_sectionHeight = ip6(126)//学习目标
+typealias StudyAimTableViewCellBlock = () ->()
+
 class StudyAimTableViewCell: UITableViewCell {
     //左边
     var leftTitleLabel : UILabel!
@@ -26,6 +28,9 @@ class StudyAimTableViewCell: UITableViewCell {
     var lineView : UIView!
 
     var nestBtn : UIButton!
+
+    var nestBlock : StudyAimTableViewCellBlock!
+
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -46,13 +51,13 @@ class StudyAimTableViewCell: UITableViewCell {
         leftTitleLabel = UILabel.getLabel(fream:  CGRect(x: Xappading, y: ip6(30), width: ip6(14)*4, height: ip6(20)), fontSize: 14, text: "学习时间", textColor: black_53, textAlignment: .left)
         self.addSubview(leftTitleLabel)
         
-        leftPreLabel = UILabel.getLabel(fream:CGRect(x: Xappading, y:leftTitleLabel.frame.maxY + ip6(8), width: ip6(30)*3, height: ip6(30)), fontSize: 30, text: "100%", textColor: bluek_0068be, textAlignment: .left)
+        leftPreLabel = UILabel.getLabel(fream:CGRect(x: Xappading, y:leftTitleLabel.frame.maxY + ip6(8), width: ip6(30)*3, height: ip6(30)), fontSize: 30, text: "", textColor: bluek_0068be, textAlignment: .left)
         self.addSubview(leftPreLabel)
         
-        leftAimLabel = UILabel.getLabel(fream:CGRect(x: leftPreLabel.frame.maxX + centerAppading, y:leftTitleLabel.frame.maxY + ip6(8), width: KSCREEN_WIDTH/2 -  leftPreLabel.frame.maxX - centerAppading, height: ip6(10)), fontSize: 10, text: "目标：10h00m", textColor: black_53, textAlignment: .left)
+        leftAimLabel = UILabel.getLabel(fream:CGRect(x: leftPreLabel.frame.maxX + centerAppading, y:leftTitleLabel.frame.maxY + ip6(8), width: KSCREEN_WIDTH/2 -  leftPreLabel.frame.maxX - centerAppading, height: ip6(10)), fontSize: 10, text: "", textColor: black_53, textAlignment: .left)
         self.addSubview(leftAimLabel)
         
-        leftAchieveLabel = UILabel.getLabel(fream:CGRect(x: leftPreLabel.frame.maxX + centerAppading, y:leftAimLabel.frame.maxY + ip6(5), width: KSCREEN_WIDTH/2 -  leftPreLabel.frame.maxX - centerAppading, height: ip6(10)), fontSize: 10, text: "完成：10h00m", textColor: black_53, textAlignment: .left)
+        leftAchieveLabel = UILabel.getLabel(fream:CGRect(x: leftPreLabel.frame.maxX + centerAppading, y:leftAimLabel.frame.maxY + ip6(5), width: KSCREEN_WIDTH/2 -  leftPreLabel.frame.maxX - centerAppading, height: ip6(10)), fontSize: 10, text: "", textColor: black_53, textAlignment: .left)
         self.addSubview(leftAchieveLabel)
         
         //右边部分
@@ -80,9 +85,36 @@ class StudyAimTableViewCell: UITableViewCell {
         
     }
 
+    func setData(model : UserInfoModel_weekgoal) {
+        //时间
+        if let rate = model.time.rate {
+            leftPreLabel.text = "\(rate)%"
+        }
+        let str = "目标 ".getAttributedStr_color(color: black_53, fontSzie: 8)
+        str.append(model.time.getTimegoal())
+        leftAimLabel.attributedText = str
+
+        let str2 = "完成 ".getAttributedStr_color(color: black_53, fontSzie: 8)
+        str2.append(model.time.getTimedone())
+        leftAchieveLabel.attributedText = str2
+
+
+        //学习量
+        if let rate = model.pages.rate {
+            rightPreLabel.text = "\(rate)%"
+        }
+        let str3 = "目标 ".getAttributedStr_color(color: black_53, fontSzie: 8)
+        str3.append(model.pages.getPagegoal())
+        rightAimLabel.attributedText = str3
+
+        let str4 = "完成 ".getAttributedStr_color(color: black_53, fontSzie: 8)
+        str4.append(model.pages.getPagedone())
+        rightAchieveLabel.attributedText = str4
+    }
+
 
     func nestClick()   {
-
+        self.nestBlock()
     }
 
 }

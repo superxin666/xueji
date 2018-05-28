@@ -45,6 +45,14 @@ class MineDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
             return UserInfoModel_head()
         }
     }
+
+    func getAimModel() -> UserInfoModel_weekgoal {
+        if let model = dataModel {
+            return model.week_goal
+        } else {
+            return UserInfoModel_weekgoal()
+        }
+    }
 }
 
 
