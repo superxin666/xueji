@@ -15,7 +15,6 @@ class CateCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.selectionStyle = .none
         self.creatUI()
 
     }

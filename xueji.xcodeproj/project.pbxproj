@@ -33,6 +33,8 @@
 		2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124473420024BB80038F204 /* SetInfoTableViewCell.swift */; };
 		2124D729208DC8CD0007B5EE /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D728208DC8CD0007B5EE /* StepView.swift */; };
 		2124D72B208DDBA00007B5EE /* ReviewDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */; };
+		2125552920BA917000371FDB /* MineDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125552820BA917000371FDB /* MineDataManger.swift */; };
+		2125552B20BAAB6300371FDB /* WeekAimDetailDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */; };
 		21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */; };
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */; };
@@ -96,6 +98,7 @@
 		21DCA3B41FA724F60094DCFE /* xuejiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3B31FA724F60094DCFE /* xuejiTests.swift */; };
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
 		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
+		21EA5C5F20BBF14F00169152 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */; };
 		21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */; };
 		21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */; };
 		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
@@ -151,6 +154,8 @@
 		2124473420024BB80038F204 /* SetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2124D728208DC8CD0007B5EE /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
 		2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDoneViewController.swift; sourceTree = "<group>"; };
+		2125552820BA917000371FDB /* MineDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineDataManger.swift; sourceTree = "<group>"; };
+		2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimDetailDataManger.swift; sourceTree = "<group>"; };
 		21258A9B1FAC0DCF00D34D57 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -222,6 +227,7 @@
 		21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xuejiUITests.swift; sourceTree = "<group>"; };
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
+		21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddApiViewController.swift; sourceTree = "<group>"; };
 		21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddApiViewController.swift; sourceTree = "<group>"; };
 		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
@@ -399,6 +405,7 @@
 		214429BC1FA7260400004C38 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				21EA5C5D20BBF13C00169152 /* Models */,
 				21145B7A1FAFFDC500063A98 /* Views */,
 				214429BD1FA7260400004C38 /* UserViewController.swift */,
 				212447222002479D0038F204 /* SetInfoViewController.swift */,
@@ -507,6 +514,8 @@
 				2142C9072020087500ED2104 /* AddBook_customViewController.swift */,
 				2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */,
 				2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */,
+				2125552820BA917000371FDB /* MineDataManger.swift */,
+				2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -583,6 +592,14 @@
 				21DCA3C01FA724F60094DCFE /* Info.plist */,
 			);
 			path = xuejiUITests;
+			sourceTree = "<group>";
+		};
+		21EA5C5D20BBF13C00169152 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		69173F97AA29FE848EFAB547 /* Frameworks */ = {
@@ -971,6 +988,7 @@
 				2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */,
 				214F913C1FEA4F1900D44165 /* ImageView+loading.swift in Sources */,
 				21014B3B20070D8D002CB437 /* LogoutApiViewController.swift in Sources */,
+				2125552920BA917000371FDB /* MineDataManger.swift in Sources */,
 				2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */,
 				21014B3D2007130C002CB437 /* ErrorCodeData.swift in Sources */,
 				2115B11D2001D510000CB24A /* RegistView.swift in Sources */,
@@ -979,10 +997,12 @@
 				2117E0B62016189500958EEB /* StudyHeadView.swift in Sources */,
 				2124473320024BA20038F204 /* SetHeadView.swift in Sources */,
 				211A65CD20A0A8F2009CD41A /* BaseTableViewController.swift in Sources */,
+				21EA5C5F20BBF14F00169152 /* UserInfoModel.swift in Sources */,
 				2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				2146A84820B2C2D300903B9D /* DateStepTableViewCell.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
+				2125552B20BAAB6300371FDB /* WeekAimDetailDataManger.swift in Sources */,
 				2185B916200122D70038847E /* RegistViewController.swift in Sources */,
 				212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */,
 				2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */,

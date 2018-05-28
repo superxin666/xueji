@@ -19,17 +19,22 @@ let study_time_cell_ID = "study_time_cell_id"
 let study_amount_cell_ID = "study_amount_cell_id"
 
 
-class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,MineDataMangerDelegate {
     var mainTabelView : UITableView!//
     var headView : UserHeadView!
     let sectionTitleArr : [String] = ["本周目标","学习时间","学习量","学习分布","本周目标"]//
-    
+
+    let requestVC = MineDataManger()
+
+
+
         // MARK: - lifeCirlce
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 
         self.navigationbar_transparency()
+
         
     }
     override func viewDidLoad() {
@@ -40,6 +45,9 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "user_send"))
         self.creatHeadUI()
         self.creatTableView()
+        requestVC.delegate = self
+        requestVC.dataRequest()
+
     }
         // MARK: - view
     //MARK: 导航栏点击
@@ -55,7 +63,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     //MARK: 头部视图
     func creatHeadUI() {
         headView  = UserHeadView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: headViewHeight))
-//        self.view.addSubview(headView)
     }
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT), style: .grouped)
@@ -93,6 +100,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             if (cell == nil)  {
                 cell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
             }
+
             return cell
         } else if indexPath.section == 1{
             var cell : StudyTimeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
@@ -185,6 +193,14 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         } else {
             return study_value_sectionHeight
         }
+    }
+
+    func MineDatarequestSucceed() {
+        headView.setData(model:  requestVC.getHeadViewModel())
+    }
+
+    func MineDataRequestFail() {
+        
     }
     
     override func didReceiveMemoryWarning() {

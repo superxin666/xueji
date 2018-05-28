@@ -45,6 +45,7 @@ let blue_tab_selected = UIColor.xj_colorFromRGB(rgbValue: 0x2c73b2)
 //
 let purple_5657CE = UIColor.xj_colorFromRGB(rgbValue: 0x5657CE)
 let orange_F46F56 = UIColor.xj_colorFromRGB(rgbValue: 0xF46F56)
+let green_84B53E = UIColor.xj_colorFromRGB(rgbValue: 0x84B53E)
 //自定义调试信息打印
 func XJLog<T>(message : T, file : String = #file, lineNumber : Int = #line) {
     //#if DEBUG

@@ -125,12 +125,23 @@ extension String {
             styleSty = "HH:mm"
         case 3:
             styleSty = "dd"
+        case 4:
+            styleSty = "yyyy年MM月dd日"
         default:
             styleSty = "yyyy.MM.dd HH:mm"
         }
         
         let dfmatter2 = DateFormatter()
         dfmatter2.dateFormat = styleSty
+        return dfmatter2.string(from: date!)
+    }
+
+    static func xj_getDate_day(dateStr : String) -> String {
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM-dd"
+        let date = dfmatter.date(from: dateStr)
+        let dfmatter2 = DateFormatter()
+        dfmatter2.dateFormat = "dd"
         return dfmatter2.string(from: date!)
     }
     
