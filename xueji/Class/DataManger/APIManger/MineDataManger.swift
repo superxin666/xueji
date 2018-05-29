@@ -53,6 +53,13 @@ class MineDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
             return UserInfoModel_weekgoal()
         }
     }
+    func getreportModel() -> ReportModel {
+        if let model = dataModel {
+            return model.report
+        } else {
+            return ReportModel()
+        }
+    }
 }
 
 

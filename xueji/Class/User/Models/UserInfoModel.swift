@@ -138,6 +138,7 @@ class UserInfoModel_head: Mappable {
     var head : [CategoryListModel_list] = []
 
 
+
     init() {}
     required init?(map: Map){
         mapping(map: map)
@@ -150,19 +151,15 @@ class UserInfoModel_head: Mappable {
         latest_long <- map["latest_long"]
         week_learned_flag <- map["week_learned_flag"]
         head <- map["head"]
+
     }
 }
 
-
-
-
 class UserInfoModel: Mappable {
-    var count: Int!
 
-    /// 数组 分类数据模型
     var head : UserInfoModel_head = UserInfoModel_head()
     var week_goal : UserInfoModel_weekgoal = UserInfoModel_weekgoal()
-
+    var report : ReportModel = ReportModel()
     init() {}
     required init?(map: Map){
         mapping(map: map)
@@ -171,5 +168,6 @@ class UserInfoModel: Mappable {
     func mapping(map: Map) {
         head <- map["head"]
         week_goal <- map["week_goal"]
+        report <- map["report"]
     }
 }

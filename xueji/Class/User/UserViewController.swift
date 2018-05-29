@@ -24,6 +24,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     var headView : UserHeadView!
     let sectionTitleArr : [String] = ["本周目标","学习时间","学习量","学习分布","本周目标"]//
     var aimCell : StudyAimTableViewCell!
+    var timecell : StudyTimeTableViewCell!
     let requestVC = MineDataManger()
 
 
@@ -73,10 +74,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-        //        footer.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.loadMoreData))
-        //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
-        //        mainTabelView.mj_footer = footer
-        //        mainTabelView.mj_header = header
         mainTabelView.register(StudyValueTableViewCell.self, forCellReuseIdentifier: study_value_cell_ID)
         mainTabelView.register(StudyAimTableViewCell.self, forCellReuseIdentifier: study_aim_cell_ID)
         mainTabelView.register(StudyTimeTableViewCell.self, forCellReuseIdentifier: study_time_cell_ID)
@@ -108,11 +105,11 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
             return aimCell
         } else if indexPath.section == 1{
-            var cell : StudyTimeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
-            if (cell == nil)  {
-                cell = StudyTimeTableViewCell(style: .default, reuseIdentifier: study_time_cell_ID)
+            timecell  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
+            if (timecell == nil)  {
+                timecell = StudyTimeTableViewCell(style: .default, reuseIdentifier: study_time_cell_ID)
             }
-            return cell
+            return timecell
         } else if indexPath.section == 2{
             var cell : StudyAmountTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
             if (cell == nil)  {
@@ -203,6 +200,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     func MineDatarequestSucceed() {
         headView.setData(model:  requestVC.getHeadViewModel())
         aimCell.setData(model: requestVC.getAimModel())
+        timecell.setData(model: requestVC.getreportModel())
     }
 
     func MineDataRequestFail() {

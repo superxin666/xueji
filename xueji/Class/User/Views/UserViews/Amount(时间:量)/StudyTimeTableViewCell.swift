@@ -29,6 +29,9 @@ class StudyTimeTableViewCell: UITableViewCell {
 
     var barCharView : BarChartView!
 
+    /// 星期几
+    let weekNum = String.getDayIndex()
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -54,7 +57,7 @@ class StudyTimeTableViewCell: UITableViewCell {
             let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabelY, width: backViewW, height: titleLabelH), fontSize: 10, text: titleNameArr[i], textColor: black_53, textAlignment: .center)
             backView.addSubview(titleLabel)
             
-            let timeLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabel.frame.maxY + ip6(5), width: backViewW, height: ip6(30)), fontSize: 22, text: "1000h", textColor: black_8c8484, textAlignment: .center)
+            let timeLabel = UILabel.getLabel(fream:CGRect(x: 0, y: titleLabel.frame.maxY + ip6(5), width: backViewW, height: ip6(30)), fontSize: 22, text: "", textColor: black_8c8484, textAlignment: .center)
             backView.addSubview(timeLabel)
             
             let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColorSelectrd: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
@@ -198,6 +201,29 @@ class StudyTimeTableViewCell: UITableViewCell {
 
 
     func nestClick()   {
+
+    }
+
+    func setData(model:ReportModel) {
+        if model.day.count > 0 {
+            let dayModel = model.day[weekNum]
+
+            let str = "\(dayModel.sum.time_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
+            self.leftTimeLabel.attributedText = str
+        }
+        if model.month.count > 0 {
+            let dayModel = model.month[weekNum]
+            let str = "\(dayModel.sum.time_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
+            self.midTimeLabel.attributedText = str
+        }
+        if let time =  model.sum.sum.time_count{
+            let str = "\(time)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
+            self.rightTimeLabel.attributedText = str
+        }
+
 
     }
     
