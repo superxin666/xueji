@@ -1203,7 +1203,7 @@
 			baseConfigurationReference = 732B418D69BB48759A284302 /* Pods-xueji.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1226,7 +1226,7 @@
 			baseConfigurationReference = 3578FAA0FBCA4889AAA1A633 /* Pods-xueji.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

@@ -186,7 +186,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     }
 
     func requestSucceed() {
-        self.cancle_click()
+//        self.cancle_click()
+
     }
     func requestFail() {
         alertView = UIAlertView(title: nil, message: "对不起，没有扫描出结果，请到首页选择手动添加", delegate: self, cancelButtonTitle: "确定")

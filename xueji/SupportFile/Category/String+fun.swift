@@ -235,6 +235,11 @@ extension String {
         return timStr
     }
 
+
+    static func getHour(min :Int) -> Float {
+        return Float(min)/Float(60)
+    }
+
     /// 将str转为attributeStr
     ///
     /// - Parameters:

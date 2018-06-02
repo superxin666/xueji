@@ -166,6 +166,52 @@ class StudyTimeTableViewCell: UITableViewCell {
         let xVals_count = 7 //X轴上要显示多少条数据
         //Y轴上面需要显示的数据
         var  yVals :[BarChartDataEntry] = Array()
+        var dataSets : [BarChartDataSet] = Array()
+        for i in 1...xVals_count {
+
+            let model : ReportModel_date!
+            let leftAxis : YAxis = barCharView.leftAxis
+            if viewType == .day {
+                model = reportModel.day[i-1]
+                leftAxis.axisMinimum = 0//设置Y轴的最小值
+                leftAxis.axisMaximum = 12;//设置Y轴的最大值
+            } else if viewType == .week{
+                model = reportModel.week[i-1]
+                leftAxis.axisMinimum = 0//设置Y轴的最小值
+                leftAxis.axisMaximum = 120;//设置Y轴的最大值
+            } else {
+                model = reportModel.month[i-1]
+                leftAxis.axisMinimum = 0//设置Y轴的最小值
+                leftAxis.axisMaximum = 1200;//设置Y轴的最大值
+            }
+            if model.book.count > 0 {
+                XJLog(message: "有学习记录")
+                var bookArr : [Double] = []
+                var colourArr : [UIColor] = []
+
+                for subModel in model.book {
+                    
+                    bookArr.append(Double(String.getHour(min: subModel.time_count)))
+//                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
+
+                }
+                let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: bookArr)
+                yVals.append(entry)
+
+
+                let set =  BarChartDataSet(values: yVals, label: nil)
+                set.drawValuesEnabled = false
+                set.highlightEnabled = false
+                //书本颜色
+                set.setColors(colourArr, alpha: 1)
+                dataSets.append(set)
+
+            } else {
+                XJLog(message: "没有学习记录")
+            }
+            
+        }
+         //创建BarChartDataSet对象，其中包含有Y轴数据信息，以及可以设置柱形样式
         for i in 1...xVals_count {
 
             let model : ReportModel_date!
@@ -176,25 +222,27 @@ class StudyTimeTableViewCell: UITableViewCell {
             } else {
                 model = reportModel.month[i-1]
             }
+
+
             if model.book.count > 0 {
-                XJLog(message: "有学习记录")
-                let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(2),Double(3),Double(1.5)])
-                yVals.append(entry)
-                
+                var colourArr : [UIColor] = []
+                for subModel in model.book {
+                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
+                }
+                let set =  BarChartDataSet(values: yVals, label: nil)
+                set.drawValuesEnabled = false
+                set.highlightEnabled = false
+                //书本颜色
+                XJLog(message: colourArr.count)
+                set.setColors(colourArr, alpha: 1)
+                dataSets.append(set)
+
             } else {
                 XJLog(message: "没有学习记录")
             }
-            
-        }
-         //创建BarChartDataSet对象，其中包含有Y轴数据信息，以及可以设置柱形样式
-        let set1 =  BarChartDataSet(values: yVals, label: nil)
-        set1.drawValuesEnabled = false
-        set1.highlightEnabled = false
 
-        //书本颜色
-        set1.setColors(bluek_0068be,orange_F46F56,UIColor.red)
-        var dataSets : [BarChartDataSet] = Array()
-        dataSets.append(set1)
+        }
+
 
         //创建BarChartData对象, 此对象就是barChartView需要最终数据对象
         

@@ -11,6 +11,8 @@ import ObjectMapper
 class ReportModel_date_sum: Mappable {
     var page_count: Int!
     var time_count: Int!
+    var book_color : String!
+    var id : Int!
 
 
     init() {}
@@ -21,12 +23,17 @@ class ReportModel_date_sum: Mappable {
     func mapping(map: Map) {
         page_count <- map["page_count"]
         time_count <- map["time_count"]
+        book_color <- map["book_color"]
+        id <- map["id"]
+
     }
 }
 class ReportModel_date_book: Mappable {
     var page_count: Int!
     var time_count: Int!
     var id: Int!
+    var book_color : String!
+
 
     init() {}
     required init?(map: Map){
@@ -37,6 +44,7 @@ class ReportModel_date_book: Mappable {
         page_count <- map["page_count"]
         time_count <- map["time_count"]
         id <- map["id"]
+        book_color <- map["book_color"]
     }
 }
 
