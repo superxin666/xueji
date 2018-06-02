@@ -64,9 +64,9 @@ class UserHeadView: UIView {
 
     func setData(model : UserInfoModel_head){
         //头像
-        iconImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
+        iconImageView.setImage_kf(imageName: base_image_api + model.avatar, placeholderImage: #imageLiteral(resourceName: "book"))
         //姓名
-        nameLabel.text = "妇女之友"
+        nameLabel.text = model.username
         //连续天数
         if let days = model.continuous_days {
             let str = "\(days)".getAttributedStr_color(color: bluek_0068be, fontSzie: 30)

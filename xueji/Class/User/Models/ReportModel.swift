@@ -72,6 +72,8 @@ class ReportModel_date: Mappable {
     // Mappable
     func mapping(map: Map) {
         day <- map["day"]
+        week <- map["week"]
+        month <- map["month"]
         sum <- map["sum"]
         book <- map["book"]
     }

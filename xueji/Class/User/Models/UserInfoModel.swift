@@ -134,8 +134,10 @@ class UserInfoModel_head: Mappable {
     var beg_long:String!
     var latest:String!
     var latest_long:String!
+    var username:String!
+    var avatar:String!
     var week_learned_flag:[UserInfoModel_head_week_learned_flag] = []
-    var head : [CategoryListModel_list] = []
+//    var head : [CategoryListModel_list] = []
 
 
 
@@ -150,7 +152,10 @@ class UserInfoModel_head: Mappable {
         latest <- map["latest"]
         latest_long <- map["latest_long"]
         week_learned_flag <- map["week_learned_flag"]
-        head <- map["head"]
+//        head <- map["head"]
+        username <- map["username"]
+        avatar <- map["avatar"]
+
 
     }
 }

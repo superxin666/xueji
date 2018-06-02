@@ -8,6 +8,11 @@
 
 import UIKit
 import Charts
+enum StudyTimeTableViewCellType {
+    case day
+    case week
+    case month
+}
 
 class StudyTimeTableViewCell: UITableViewCell {
     var leftBackView : UIView!
@@ -28,9 +33,14 @@ class StudyTimeTableViewCell: UITableViewCell {
 
 
     var barCharView : BarChartView!
+    var viewType :StudyTimeTableViewCellType = .day
+
 
     /// 星期几
     let weekNum = String.getDayIndex()
+
+    var reportModel :ReportModel!
+
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -123,11 +133,12 @@ class StudyTimeTableViewCell: UITableViewCell {
         xAxis.spaceMin = 1//设置label间隔，若设置为1，则如果能全部显示，则每个柱形下面都会显示label
         xAxis.axisMinimum = 1
         xAxis.axisMaximum = 7
-//        xAxis.labelCount = 7
+
         
         //Y轴
         barCharView.rightAxis.enabled = false
         let leftAxis : YAxis = barCharView.leftAxis
+        leftAxis.valueFormatter = HYValueFormatter()
         leftAxis.forceLabelsEnabled = false//不强制绘制制定数量的label
 //        leftAxis.showOnlyMinMaxEnabled = false//是否只显示最大值和最小值
         leftAxis.inverted = false//是否将Y轴进行上下翻转
@@ -147,9 +158,7 @@ class StudyTimeTableViewCell: UITableViewCell {
         leftAxis.labelPosition = .outsideChart//label位置
         leftAxis.labelTextColor = black_53//文字颜色
         leftAxis.labelFont = xj_fzFontMedium(10)
-        
-        self.setChartData()
-        
+
     }
     
     
@@ -157,27 +166,40 @@ class StudyTimeTableViewCell: UITableViewCell {
         let xVals_count = 7 //X轴上要显示多少条数据
         //Y轴上面需要显示的数据
         var  yVals :[BarChartDataEntry] = Array()
-        for i in 0...xVals_count {
-//            let mult : Int = maxYVal + 1
-//            let val =  5.0
-            let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(2),Double(3),Double(1.5)])
-            yVals.append(entry)
+        for i in 1...xVals_count {
+
+            let model : ReportModel_date!
+            if viewType == .day {
+                model = reportModel.day[i-1]
+            } else if viewType == .week{
+                model = reportModel.week[i-1]
+            } else {
+                model = reportModel.month[i-1]
+            }
+            if model.book.count > 0 {
+                XJLog(message: "有学习记录")
+                let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(2),Double(3),Double(1.5)])
+                yVals.append(entry)
+                
+            } else {
+                XJLog(message: "没有学习记录")
+            }
             
         }
          //创建BarChartDataSet对象，其中包含有Y轴数据信息，以及可以设置柱形样式
         let set1 =  BarChartDataSet(values: yVals, label: nil)
         set1.drawValuesEnabled = false
         set1.highlightEnabled = false
+
+        //书本颜色
         set1.setColors(bluek_0068be,orange_F46F56,UIColor.red)
         var dataSets : [BarChartDataSet] = Array()
         dataSets.append(set1)
-        
-        
+
         //创建BarChartData对象, 此对象就是barChartView需要最终数据对象
         
         let data : BarChartData = BarChartData(dataSets: dataSets)
         data.barWidth = Double(0.4)
-    
         barCharView.data = data
         barCharView.animate(yAxisDuration: 1)
         
@@ -187,24 +209,27 @@ class StudyTimeTableViewCell: UITableViewCell {
         let tagNum : Int = sender.tag
         sender.backgroundColor = black_8c8484
         if tagNum == 0 {
-           midBtn.backgroundColor = .white
-           rightdBtn.backgroundColor = .white
+            midBtn.backgroundColor = .white
+            rightdBtn.backgroundColor = .white
+            viewType = .day
         } else if tagNum == 1 {
             leftBtn.backgroundColor = .white
             rightdBtn.backgroundColor = .white
+            viewType = .week
         } else {
             leftBtn.backgroundColor = .white
             midBtn.backgroundColor = .white
+            viewType = .month
         }
-        
+        self.setChartData()
     }
-
 
     func nestClick()   {
 
     }
 
     func setData(model:ReportModel) {
+        reportModel = model
         if model.day.count > 0 {
             let dayModel = model.day[weekNum]
 
@@ -224,7 +249,8 @@ class StudyTimeTableViewCell: UITableViewCell {
             self.rightTimeLabel.attributedText = str
         }
 
-
+        //柱形图
+        self.setChartData()
     }
     
 }
