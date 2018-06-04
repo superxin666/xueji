@@ -17,7 +17,7 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     weak var delegate :StudyApiMangerViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     var page = 0
-    let pageNum = 20
+    let pageNum = 2
     
     /// 书籍模型数组
     var listArr : Array<CategoryListModel_list>!

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,WeekAimDetailDataMangerDelegate    {
     var mainTabelView : UITableView!//
 
+    let request = WeekAimDetailDataManger()
 
 
     override func viewDidLoad() {
@@ -21,6 +22,9 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         self.navigationBar_rightBtn_title(title: "添加")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
+        request.delegate = self
+        request.dataRequest()
+
         
     }
 
@@ -41,15 +45,13 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         self.view.addSubview(mainTabelView)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return request.getSectionNum()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
-        } else if section == 1 {
-            return 3
         } else {
-            return 4
+            return request.getRowsInSection(sectionNum: section)
         }
     }
 
@@ -60,6 +62,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
                 if (cell == nil)  {
                     cell = WeekAimTableViewCell(style: .default, reuseIdentifier: WeekAimTableViewCellID)
                 }
+                cell.setData(model: request.currectWeakModel)
                 return cell
             } else {
                 var cell : WeekAimLineTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: WeekAimLineTableViewCellID, for: indexPath) as! WeekAimLineTableViewCell
@@ -73,6 +76,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
             if (cell == nil)  {
                 cell = WeekAimTableViewCell(style: .default, reuseIdentifier: WeekAimTableViewCellID)
             }
+            cell.setData(model: request.getModel(indexPath: indexPath))
             return cell
         }
 
@@ -95,7 +99,8 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         } else {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(50)))
 
-            let titleLabel = UILabel.getLabel(fream:  CGRect(x: ip6(20), y: ip6(30), width: ip6(200), height: ip6(20)), fontSize: 14, text: "2017-10", textColor: black_53, textAlignment: .left)
+            let titleLabel = UILabel.getLabel(fream:  CGRect(x: ip6(20), y: ip6(30), width: ip6(200), height: ip6(20)), fontSize: 14, text: "", textColor: black_53, textAlignment: .left)
+            titleLabel.text = request.getSectionTitle(sectionNum: section)
             view.addSubview(titleLabel)
             return view
         }
@@ -108,6 +113,13 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         } else {
             return ip6(50)
         }
+    }
+
+    func WeekAimDetailDataSucceed() {
+        mainTabelView.reloadData()
+    }
+    func WeekAimDetailDataFail() {
+
     }
 
     override func navigationLeftBtnClick() {

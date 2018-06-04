@@ -13,7 +13,7 @@ let base_image_api = "http://47.52.101.29"
 let login_user_api = "/user/login?"
 let logout_user_api = "/user/logout?"
 let user_data_api = "/main/my?"
-
+let week_report_api = "/report/week_report?"
 //---------------------------------首页
 let main_index_api = "/main/index?"
 //---------------------------------复习
@@ -31,7 +31,6 @@ let category_upd_book_api = "/category/upd_book?"
 //---------------------------------book
 /// isbn添加
 let book_add_book_api = "/book/add?"
-
 /// 自定义添加
 let book_add_custom_api = "/book/add_custom?"
 /// 详情
