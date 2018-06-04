@@ -136,6 +136,10 @@ extension String {
         return dfmatter2.string(from: date!)
     }
 
+    /// 获取日期dd
+    ///
+    /// - Parameter dateStr: <#dateStr description#>
+    /// - Returns: <#return value description#>
     static func xj_getDate_day(dateStr : String) -> String {
         let dfmatter = DateFormatter()
         dfmatter.dateFormat="yyyy-MM-dd"
@@ -143,6 +147,52 @@ extension String {
         let dfmatter2 = DateFormatter()
         dfmatter2.dateFormat = "dd"
         return dfmatter2.string(from: date!)
+    }
+
+
+    /// 获取月份
+    ///
+    /// - Parameter dateStr: <#dateStr description#>
+    /// - Returns: <#return value description#>
+    static func xj_getDate_month(dateStr : String) -> String {
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM"
+        let date = dfmatter.date(from: dateStr)
+        let dfmatter2 = DateFormatter()
+        dfmatter2.dateFormat = "MM"
+        return dfmatter2.string(from: date!)
+    }
+
+
+    /// 获取月/日
+    ///
+    /// - Parameter dateStr: <#dateStr description#>
+    /// - Returns: <#return value description#>
+    static func xj_getDate_dayMonth(dateStr : String) -> String {
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM-dd"
+        let date = dfmatter.date(from: dateStr)
+        let dfmatter2 = DateFormatter()
+        dfmatter2.dateFormat = "MM/dd"
+        return dfmatter2.string(from: date!)
+    }
+
+    /// 获取月
+    ///
+    /// - Parameter dateStr: <#dateStr description#>
+    /// - Returns: <#return value description#>
+    static func xj_getDate_Month(dateStr : String) -> String {
+
+       var index = dateStr.index(of: "-")
+        index = dateStr.index(index!, offsetBy: 1)
+        let str = dateStr.suffix(from: index!)
+        return String(str)
+//        let dfmatter = DateFormatter()
+//        dfmatter.dateFormat="yyyy-MM"
+//        let date = dfmatter.date(from: dateStr)
+//        let dfmatter2 = DateFormatter()
+//        dfmatter2.dateFormat = "MM"
+//        return dfmatter2.string(from: date!)
     }
     
     
@@ -164,6 +214,9 @@ extension String {
     }
 
 
+    /// 获取一周日期
+    ///
+    /// - Returns: <#return value description#>
     static func getWeek() -> String {
         let currentDate = Date()
         var calendar = Calendar.current
@@ -202,6 +255,10 @@ extension String {
         return str
     }
 
+    /// 时间计时器
+    ///
+    /// - Parameter sencond: <#sencond description#>
+    /// - Returns: <#return value description#>
     static func getCountTime(sencond : Int)->String {
         let min = 60
         let hour = 60 * 6
@@ -236,9 +293,15 @@ extension String {
     }
 
 
+    /// 分钟转换小时
+    ///
+    /// - Parameter min: <#min description#>
+    /// - Returns: <#return value description#>
     static func getHour(min :Int) -> Float {
         return Float(min)/Float(60)
     }
+
+
 
     /// 将str转为attributeStr
     ///

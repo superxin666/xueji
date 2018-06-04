@@ -41,6 +41,7 @@ class StudyTimeTableViewCell: UITableViewCell {
 
     var reportModel :ReportModel!
 
+    var colourArrs : [[UIColor]] = []
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -165,7 +166,6 @@ class StudyTimeTableViewCell: UITableViewCell {
     func setChartData()  {
         let xVals_count = 7 //X轴上要显示多少条数据
         //Y轴上面需要显示的数据
-        var  yVals :[BarChartDataEntry] = Array()
         var dataSets : [BarChartDataSet] = Array()
         for i in 1...xVals_count {
 
@@ -173,16 +173,43 @@ class StudyTimeTableViewCell: UITableViewCell {
             let leftAxis : YAxis = barCharView.leftAxis
             if viewType == .day {
                 model = reportModel.day[i-1]
+                //Y轴
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
                 leftAxis.axisMaximum = 12;//设置Y轴的最大值
+                //X轴
+                var dateArr : [String] = []
+                dateArr.append("")
+                for model in reportModel.day {
+                    dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
+                }
+                let xAxis : XAxis = barCharView.xAxis
+                xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
+
+
             } else if viewType == .week{
                 model = reportModel.week[i-1]
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
                 leftAxis.axisMaximum = 120;//设置Y轴的最大值
+
+                var dateArr : [String] = []
+                dateArr.append("")
+                for model in reportModel.week {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.week))
+                }
+                let xAxis : XAxis = barCharView.xAxis
+                xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             } else {
                 model = reportModel.month[i-1]
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 1200;//设置Y轴的最大值
+                leftAxis.axisMaximum = 120;//设置Y轴的最大值
+
+                var dateArr : [String] = []
+                dateArr.append("")
+                for model in reportModel.month {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.month))
+                }
+                let xAxis : XAxis = barCharView.xAxis
+                xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             }
             if model.book.count > 0 {
                 XJLog(message: "有学习记录")
@@ -190,14 +217,13 @@ class StudyTimeTableViewCell: UITableViewCell {
                 var colourArr : [UIColor] = []
 
                 for subModel in model.book {
-                    
                     bookArr.append(Double(String.getHour(min: subModel.time_count)))
-//                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
-
+                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
                 }
+                XJLog(message: colourArr.count)
+                var  yVals :[BarChartDataEntry] = []
                 let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: bookArr)
                 yVals.append(entry)
-
 
                 let set =  BarChartDataSet(values: yVals, label: nil)
                 set.drawValuesEnabled = false
@@ -205,42 +231,12 @@ class StudyTimeTableViewCell: UITableViewCell {
                 //书本颜色
                 set.setColors(colourArr, alpha: 1)
                 dataSets.append(set)
+
 
             } else {
                 XJLog(message: "没有学习记录")
             }
             
-        }
-         //创建BarChartDataSet对象，其中包含有Y轴数据信息，以及可以设置柱形样式
-        for i in 1...xVals_count {
-
-            let model : ReportModel_date!
-            if viewType == .day {
-                model = reportModel.day[i-1]
-            } else if viewType == .week{
-                model = reportModel.week[i-1]
-            } else {
-                model = reportModel.month[i-1]
-            }
-
-
-            if model.book.count > 0 {
-                var colourArr : [UIColor] = []
-                for subModel in model.book {
-                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
-                }
-                let set =  BarChartDataSet(values: yVals, label: nil)
-                set.drawValuesEnabled = false
-                set.highlightEnabled = false
-                //书本颜色
-                XJLog(message: colourArr.count)
-                set.setColors(colourArr, alpha: 1)
-                dataSets.append(set)
-
-            } else {
-                XJLog(message: "没有学习记录")
-            }
-
         }
 
 
