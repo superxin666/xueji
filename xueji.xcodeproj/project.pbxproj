@@ -102,6 +102,7 @@
 		21EF37FA20C512940015EF7F /* HYValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF37F920C512940015EF7F /* HYValueFormatter.swift */; };
 		21EF37FC20C512C30015EF7F /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF37FB20C512C30015EF7F /* DateValueFormatter.swift */; };
 		21EF37FE20C5150F0015EF7F /* MonthDayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF37FD20C5150F0015EF7F /* MonthDayFormatter.swift */; };
+		21EF380020C528B10015EF7F /* PageFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EF37FF20C528B10015EF7F /* PageFormatter.swift */; };
 		21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */; };
 		21F5C4BC20BD1C6E00E40058 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F5C4BB20BD1C6E00E40058 /* ReportModel.swift */; };
 		4798374154E4CA8DCC2CFD55 /* Pods_xuejiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157188AD09E06B889CA0859F /* Pods_xuejiUITests.framework */; };
@@ -233,6 +234,7 @@
 		21EF37F920C512940015EF7F /* HYValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYValueFormatter.swift; sourceTree = "<group>"; };
 		21EF37FB20C512C30015EF7F /* DateValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		21EF37FD20C5150F0015EF7F /* MonthDayFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDayFormatter.swift; sourceTree = "<group>"; };
+		21EF37FF20C528B10015EF7F /* PageFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageFormatter.swift; sourceTree = "<group>"; };
 		21F42A371FBEBBEF000789AD /* SelectedCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCatTableViewCell.swift; sourceTree = "<group>"; };
 		21F5C4BB20BD1C6E00E40058 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		30E52D3BD459C7C0D47320C4 /* Pods-xuejiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xuejiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xuejiUITests/Pods-xuejiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 			children = (
 				21EF37FB20C512C30015EF7F /* DateValueFormatter.swift */,
 				21EF37F920C512940015EF7F /* HYValueFormatter.swift */,
+				21EF37FF20C528B10015EF7F /* PageFormatter.swift */,
 				21EF37FD20C5150F0015EF7F /* MonthDayFormatter.swift */,
 			);
 			path = Formatter;
@@ -958,6 +961,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21C436D11FBAC0A00031F2C3 /* AddBookTableViewCell.swift in Sources */,
+				21EF380020C528B10015EF7F /* PageFormatter.swift in Sources */,
 				21F42A381FBEBBEF000789AD /* SelectedCatTableViewCell.swift in Sources */,
 				211A65D120A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift in Sources */,
 				2146A84920B2C2D300903B9D /* DateSelectedTableViewCell.swift in Sources */,

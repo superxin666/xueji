@@ -268,9 +268,7 @@ class StudyTimeTableViewCell: UITableViewCell {
         self.setChartData()
     }
 
-    func nestClick()   {
 
-    }
 
     func setData(model:ReportModel) {
         reportModel = model
@@ -295,6 +293,10 @@ class StudyTimeTableViewCell: UITableViewCell {
 
         //柱形图
         self.setChartData()
+    }
+
+    func nestClick()   {
+
     }
     
 }

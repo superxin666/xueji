@@ -25,6 +25,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     let sectionTitleArr : [String] = ["本周目标","学习时间","学习量","学习分布","本周目标"]//
     var aimCell : StudyAimTableViewCell!
     var timecell : StudyTimeTableViewCell!
+    var amountcell : StudyAmountTableViewCell!
     let requestVC = MineDataManger()
 
 
@@ -111,11 +112,11 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
             return timecell
         } else if indexPath.section == 2{
-            var cell : StudyAmountTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
-            if (cell == nil)  {
-                cell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
+            amountcell  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
+            if (amountcell == nil)  {
+                amountcell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
             }
-            return cell
+            return amountcell
             
         } else if indexPath.section == 3{
             var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
@@ -201,6 +202,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         headView.setData(model:  requestVC.getHeadViewModel())
         aimCell.setData(model: requestVC.getAimModel())
         timecell.setData(model: requestVC.getreportModel())
+        amountcell.setData(model: requestVC.getreportModel())
     }
 
     func MineDataRequestFail() {

@@ -1,17 +1,18 @@
 //
-//  HYValueFormatter.swift
+//  PageFormatter.swift
 //  xueji
 //
-//  Created by lvxin on 2018/5/21.
+//  Created by lvxin on 2018/6/4.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//  Y轴 h转换
+//
 
 import UIKit
 import Charts
-class HYValueFormatter: NSObject,IAxisValueFormatter {
+
+class PageFormatter: NSObject,IAxisValueFormatter {
 
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return "\(Int(value))h"
+        return "\(Int(value))p"
     }
 }
