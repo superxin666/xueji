@@ -60,6 +60,14 @@ class MineDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
             return ReportModel()
         }
     }
+
+    func getreportSumModel() -> ReportModel_sum {
+        if let model = dataModel {
+            return model.report.sum
+        } else {
+            return ReportModel_sum()
+        }
+    }
 }
 
 

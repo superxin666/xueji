@@ -26,6 +26,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     var aimCell : StudyAimTableViewCell!
     var timecell : StudyTimeTableViewCell!
     var amountcell : StudyAmountTableViewCell!
+    var distributecell : StudyDistributeTableViewCell!
     let requestVC = MineDataManger()
 
 
@@ -119,13 +120,13 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             return amountcell
             
         } else if indexPath.section == 3{
-            var cell : StudyDistributeTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
-            if (cell == nil)  {
-                cell = StudyDistributeTableViewCell(style: .default, reuseIdentifier: study_distribute_cell_ID)
+            distributecell  = tableView.dequeueReusableCell(withIdentifier: study_distribute_cell_ID, for: indexPath) as! StudyDistributeTableViewCell
+            if (distributecell == nil)  {
+                distributecell = StudyDistributeTableViewCell(style: .default, reuseIdentifier: study_distribute_cell_ID)
             }
             weak var weakSelf = self
 
-            cell.nestBlock = {(num) in
+            distributecell.nestBlock = {(num) in
 
                 let vc = TimeDistributeViewController()
                 vc.hidesBottomBarWhenPushed = true
@@ -137,7 +138,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
                 weakSelf?.navigationController?.pushViewController(vc, animated: true)
 
             }
-            return cell
+            return distributecell
         } else {
             var cell : StudyValueTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: study_value_cell_ID, for: indexPath) as! StudyValueTableViewCell
             if (cell == nil)  {
@@ -203,6 +204,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         aimCell.setData(model: requestVC.getAimModel())
         timecell.setData(model: requestVC.getreportModel())
         amountcell.setData(model: requestVC.getreportModel())
+        distributecell.setData(model: requestVC.getreportSumModel())
     }
 
     func MineDataRequestFail() {

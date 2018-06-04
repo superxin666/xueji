@@ -26,6 +26,9 @@ class StudyDistributeTableViewCell: UITableViewCell {
     var timeNestBtn : UIButton!
     var valeNestBtn : UIButton!
 
+    var dataModel : ReportModel_sum = ReportModel_sum()
+
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -82,12 +85,24 @@ class StudyDistributeTableViewCell: UITableViewCell {
     
     func setPieData() {
        
-        let count = 5//饼状图总共有几块组成
-         //每个区块的数据
+        let count = dataModel.book.count//饼状图总共有几块组成
+         //时间
         var yVals : [BarChartDataEntry] = Array()
+        var colors : [UIColor] = Array()
         for i in 0..<count {
-            let entry = BarChartDataEntry(x:Double(i) , y: Double(10))
+            let bookModel = dataModel.book[i]
+            let entry = BarChartDataEntry(x:Double(i) , y: Double(bookModel.time_count))
             yVals.append(entry)
+            colors.append(UIColor.xj_colorFromString(hexColor: bookModel.color))
+        }
+        //页数
+        var yVals2 : [BarChartDataEntry] = Array()
+        var colors2 : [UIColor] = Array()
+        for i in 0..<count {
+            let bookModel = dataModel.book[i]
+            let entry = BarChartDataEntry(x:Double(i) , y: Double(bookModel.page_count))
+            yVals2.append(entry)
+            colors2.append(UIColor.xj_colorFromString(hexColor: bookModel.color))
         }
         
         //每个区块的名称或描述
@@ -99,43 +114,53 @@ class StudyDistributeTableViewCell: UITableViewCell {
         //dataSet
         let dataSet = PieChartDataSet(values: yVals, label: "")
         dataSet.drawValuesEnabled = true
-        
-        var colors : [UIColor] = Array()
-        colors.append(UIColor.green)
-        colors.append(UIColor.darkGray)
-        colors.append(UIColor.red)
-        colors.append(UIColor.purple)
-        colors.append(UIColor.brown)
-        
         dataSet.colors = colors
         dataSet.sliceSpace = 0
         dataSet.selectionShift = 8
         dataSet.drawIconsEnabled  = false
         dataSet.xValuePosition = .outsideSlice
         dataSet.yValuePosition = .insideSlice
-        
         dataSet.valueLineWidth = 0
         dataSet.valueLinePart1Length = 0
         dataSet.valueLinePart2Length = 0
         let data = PieChartData(dataSet: dataSet)
         data.setValueFont(xj_fontThin(ip6(10)))
-        
+
+
+        let dataSet2 = PieChartDataSet(values: yVals2, label: "")
+        dataSet2.drawValuesEnabled = true
+        dataSet2.colors = colors2
+        dataSet2.sliceSpace = 0
+        dataSet2.selectionShift = 8
+        dataSet2.drawIconsEnabled  = false
+        dataSet2.xValuePosition = .outsideSlice
+        dataSet2.yValuePosition = .insideSlice
+        dataSet2.valueLineWidth = 0
+        dataSet2.valueLinePart1Length = 0
+        dataSet2.valueLinePart2Length = 0
+        let data2 = PieChartData(dataSet: dataSet2)
+        data2.setValueFont(xj_fontThin(ip6(10)))
+
         timePieChartView.data = data
-        amountPieChartView.data = data
+        amountPieChartView.data = data2
     }
+
+
     
     func setLineData_top() {
         //画线赋值
         
-        for i in 0..<5 {
+        for i in 0..<dataModel.first5_time.count {
+            let model = dataModel.first5_time[i]
+
             let subBackView = UIView(frame: CGRect(x: self.timePieChartView.frame.maxX + ip6(15), y:self.timePieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.topBackView.addSubview(subBackView)
     
-            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: "母猪的产后护理", textColor: black_53, textAlignment: .left)
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: model.title, textColor: black_53, textAlignment: .left)
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
-            lineView.backgroundColor = orange_F46F56
+            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: model.book_color)
             subBackView.addSubview(lineView)
 
         }
@@ -148,21 +173,32 @@ class StudyDistributeTableViewCell: UITableViewCell {
     }
     func setLineData_bottom() {
         //画线赋值
-        for i in 0..<5 {
+        for i in 0..<dataModel.first5_page.count{
+            let model = dataModel.first5_page[i]
             let subBackView = UIView(frame: CGRect(x: self.amountPieChartView.frame.maxX + ip6(15), y:self.amountPieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.bottomView.addSubview(subBackView)
             
-            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: "母猪的产后护理", textColor: black_53, textAlignment: .left)
+            let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: model.title, textColor: black_53, textAlignment: .left)
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
-            lineView.backgroundColor = orange_F46F56
+            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: model.book_color)
             subBackView.addSubview(lineView)
             
         }
 
         valeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: study_distribute_sectionHeight/2, width: ip6(20), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 1)
         self.addSubview(valeNestBtn)
+    }
+
+    /// 赋值
+    ///
+    /// - Parameter model: <#model description#>
+    func setData(model : ReportModel_sum) {
+        dataModel = model
+        self.setLineData_top()
+        self.setLineData_bottom()
+        self.setPieData()
     }
 
     func nestClick(sender : UIButton) {

@@ -33,7 +33,7 @@ class ReportModel_date_book: Mappable {
     var time_count: Int!
     var id: Int!
     var book_color : String!
-
+    var color : String!
 
     init() {}
     required init?(map: Map){
@@ -45,12 +45,28 @@ class ReportModel_date_book: Mappable {
         time_count <- map["time_count"]
         id <- map["id"]
         book_color <- map["book_color"]
+        color <- map["color"]
     }
 }
+class ReportModel_sum_first5: Mappable {
+    var id: Int!
+    var book_color : String!
+    var title : String!
+    init() {}
+    required init?(map: Map){
+        mapping(map: map)
+    }
+    // Mappable
+    func mapping(map: Map) {
+        id <- map["id"]
+        book_color <- map["book_color"]
+        title <- map["title"]
 
+    }
+}
 class ReportModel_sum: Mappable {
-    var first5_time: [Int] = []
-    var first5_page: [Int] = []
+    var first5_time: [ReportModel_sum_first5] = []
+    var first5_page: [ReportModel_sum_first5] = []
     var sum: ReportModel_date_sum!
     var book: [ReportModel_date_book] = []
 
