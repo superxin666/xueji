@@ -25,7 +25,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
 
         request.delegate = self
         SVPMessageShow.showLoad()
-        let url  = book_add_book_api + "isbn=\(isbn)" + "cid=\(0)" + request.getTokenParameter()
+        let url  = book_add_book_api + "isbn=\(isbn)" + "&cid=\(0)" + request.getTokenParameter()
         request.request_api(url: url)
 
     }

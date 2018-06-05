@@ -46,7 +46,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     // MARK: - view
     func setUpNavigation_normal() {
         self.navigation_title_fontsize(name: "学习", fontsize: 20)
-        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "study_setup"))
+//        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "study_setup"))
         self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_scan"))
     }
     
@@ -57,33 +57,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     }
     
  
-//    func creatHeadView() {
-//        XJLog(message: LNAVIGATION_HEIGHT)
-//        headBackView.frame = CGRect(x: 0, y: LNAVIGATION_HEIGHT  + ip6(5), width: KSCREEN_WIDTH, height: headHeight)
-//        self.view.addSubview(headBackView)
-//
-//        //名字
-//
-//        let headTitleLabel = UILabel.getLabel(fream:CGRect(x: ip6(16), y: ip6(10), width: ip6(80), height: ip6(20)), fontSize: 15, text: "最近学习", textColor: black_53, textAlignment: .left)
-//        headBackView.addSubview(headTitleLabel)
-//
-//        //图片
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-//        layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = ip6(23)
-//        layout.minimumLineSpacing = ip6(23)
-////        layout.sectionInset = UIEdgeInsetsMake(0, ip6(10), 0, ip6(10))
-//        colletionView = UICollectionView(frame: CGRect(x: ip6(21), y:  headTitleLabel.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(21), height: itemHeight), collectionViewLayout: layout)
-//        colletionView.register(HeadBookCollectionViewCell.self, forCellWithReuseIdentifier: "HeadBookCollectionViewCell_id")
-//        colletionView.backgroundColor = .clear
-//        colletionView.delegate = self
-//        colletionView.dataSource = self
-//        colletionView.contentSize = CGSize(width: itemWidth * 10, height: itemHeight)
-//        headBackView.addSubview(colletionView)
-//
-//
-//    }
+
     // MARK: - TableView视图
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .grouped)
@@ -94,38 +68,9 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-        //        footer.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.loadMoreData))
-        //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
-        //        mainTabelView.mj_footer = footer
-        //        mainTabelView.mj_header = header
-//        mainTabelView.register(StudyBookCellTableViewCell.self, forCellReuseIdentifier: StudyBookCellID)
-        //        mainTabelView.register(TeachTableViewCell.self, forCellReuseIdentifier: TEACHCELLID)
         self.view.addSubview(mainTabelView)
     }
-    // MARK: - delegate
-    // MARK: - UICollectionViewDelegate
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 15
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-////        if indexPath.row < imageArr.count {
-//            let cell :HeadBookCollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "HeadBookCollectionViewCell_id", for: indexPath) as! HeadBookCollectionViewCell
-//            //            var nameStr : String = ""
-//            //            var picStr :String = ""
-//
-////            cell.setUI(image: imageArr[indexPath.row], name: "")
-//            return cell
-////        } else {
-////            return UIView() as! UICollectionViewCell
-////        }
-//    }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//    }
+
     // MARK: - TableViewdelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {

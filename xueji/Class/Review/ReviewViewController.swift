@@ -41,7 +41,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "复习", fontsize: 20)
-        self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "review_more"))
+//        self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "review_more"))
         self.creatHeadView()
         self.creatTableView()
         request.delegate = self
