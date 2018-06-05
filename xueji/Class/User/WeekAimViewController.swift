@@ -14,6 +14,9 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
     let request = WeekAimDetailDataManger()
 
 
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,8 +40,6 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-
-
         mainTabelView.register(WeekAimTableViewCell.self, forCellReuseIdentifier: WeekAimTableViewCellID)
         mainTabelView.register(WeekAimLineTableViewCell.self, forCellReuseIdentifier: WeekAimLineTableViewCellID)
 

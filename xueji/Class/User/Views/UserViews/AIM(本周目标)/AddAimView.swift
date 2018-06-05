@@ -29,6 +29,10 @@ class AddAimView: UIView,UITextFieldDelegate {
     var amountLabel2 : UILabel!
     var amountField : UITextField!
 
+    var pages = 0
+    var times = 0
+
+
 
 
     override init(frame: CGRect) {
@@ -73,7 +77,7 @@ class AddAimView: UIView,UITextFieldDelegate {
         amountField.textColor = black_e3e0e0
         amountField.placeholder = "非必填"
         amountField.tag = 100
-
+        amountField.keyboardType = .numberPad
 
         amountLabel2 = UILabel.getLabel(fream: CGRect(x: amountField.frame.maxX, y: ip6(22), width: ip6(80), height: ip6(25)), fontSize: 18, text: "页（p）", textColor: black_53, textAlignment: .center)
 
@@ -97,11 +101,14 @@ class AddAimView: UIView,UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        let str = textField.text!
 
         if textField.tag == 10 {
-            XJLog(message: "时间" + textField.text!)
+            XJLog(message: "时间" + str)
+            times = Int(str)!
         } else {
-            XJLog(message: "学习量" + textField.text!)
+            XJLog(message: "学习量" + str)
+            pages = Int(str)!
         }
     }
 

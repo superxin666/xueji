@@ -9,8 +9,9 @@
 
 import UIKit
 
-class AddAimViewController: BaseViewController {
+class AddAimViewController: BaseViewController,AddAimDataMangerDelegate {
     var backView : AddAimView!
+    var requestVC = AddAimDataManger()
 
 
     override func viewDidLoad() {
@@ -20,9 +21,21 @@ class AddAimViewController: BaseViewController {
         self.navigation_title_fontsize(name: "本周目标", fontsize: 20)
         self.navigationBar_rightBtn_title(title: "保存")
         self.navigationBar_leftBtn_title(title: "返回")
+        requestVC.delegate = self
         backView = AddAimView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(210)))
         backView.backgroundColor = .white
         self.view.addSubview(backView)
+
+    }
+
+
+
+
+    func AddAimDataSucceed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    func AddAimDataFail() {
 
     }
 
@@ -31,6 +44,8 @@ class AddAimViewController: BaseViewController {
     }
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
+        self.view.endEditing(true)
+        requestVC.addWeekAimRequest(pages: backView.pages, time: backView.times)
 
     }
 

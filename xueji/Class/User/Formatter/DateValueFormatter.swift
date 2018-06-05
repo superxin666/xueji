@@ -12,7 +12,6 @@ class DateValueFormatter: NSObject,IAxisValueFormatter{
 
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        XJLog(message: NSInteger(value))
         return "第\(NSInteger(value))周"
 
     }

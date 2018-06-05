@@ -15,6 +15,7 @@
 		2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */; };
 		210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ABFB520A96943007BACF5 /* WeekAimViewController.swift */; };
 		210ADD4F20C6A52D005A3B96 /* SymbolsValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ADD4E20C6A52D005A3B96 /* SymbolsValueFormatter.swift */; };
+		210ADD5120C6B691005A3B96 /* AddAimDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210ADD5020C6B691005A3B96 /* AddAimDataManger.swift */; };
 		2112D4EA1FFDCFFD008B4500 /* SVPMessageShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */; };
 		2112D4F11FFE5A63008B4500 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D4F01FFE5A63008B4500 /* LoginModel.swift */; };
 		2115B11D2001D510000CB24A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2115B11C2001D510000CB24A /* RegistView.swift */; };
@@ -140,6 +141,7 @@
 		2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewApiMangerViewController.swift; sourceTree = "<group>"; };
 		210ABFB520A96943007BACF5 /* WeekAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimViewController.swift; sourceTree = "<group>"; };
 		210ADD4E20C6A52D005A3B96 /* SymbolsValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsValueFormatter.swift; sourceTree = "<group>"; };
+		210ADD5020C6B691005A3B96 /* AddAimDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimDataManger.swift; sourceTree = "<group>"; };
 		2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVPMessageShow.swift; sourceTree = "<group>"; };
 		2112D4F01FFE5A63008B4500 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2115B11C2001D510000CB24A /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */,
 				2125552820BA917000371FDB /* MineDataManger.swift */,
 				2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */,
+				210ADD5020C6B691005A3B96 /* AddAimDataManger.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
 				21BD1A3820AEB2C0005C649F /* TimeDetailViewController.swift in Sources */,
 				21EF37FE20C5150F0015EF7F /* MonthDayFormatter.swift in Sources */,
+				210ADD5120C6B691005A3B96 /* AddAimDataManger.swift in Sources */,
 				21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */,
 				2146A83F20B2C13F00903B9D /* WeekAimTableViewCell.swift in Sources */,
 				210198752069296700907EEC /* ReviewTopView.swift in Sources */,
