@@ -18,6 +18,7 @@ class MonthDayFormatter: NSObject,IAxisValueFormatter {
 
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+
         return nameArr[Int(value)]
     }
 }

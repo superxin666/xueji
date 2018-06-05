@@ -66,7 +66,7 @@ class StudyValueTableViewCell: UITableViewCell {
         lineChart.scaleXEnabled = false
 
         //设置X轴坐标
-        lineChart.xAxis.valueFormatter = DateValueFormatter(arr: ["1","2","3","4",])
+        lineChart.xAxis.valueFormatter = DateValueFormatter()
         lineChart.xAxis.granularity = 0.0
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.drawGridLinesEnabled = false
@@ -80,7 +80,7 @@ class StudyValueTableViewCell: UITableViewCell {
     
 
         //不显示右侧Y轴
-        lineChart.leftAxis.valueFormatter = SymbolsValueFormatter(arr: ["0","20","40","60","80","100","120",])
+        lineChart.leftAxis.valueFormatter = SymbolsValueFormatter()
         lineChart.leftAxis.drawAxisLineEnabled = true
         lineChart.leftAxis.enabled = true
         

@@ -44,7 +44,7 @@ class WeekAimLineTableViewCell: UITableViewCell {
         titleLabel = UILabel.getLabel(fream:  CGRect(x: Xappading, y: ip6(23), width: KSCREEN_WIDTH - Xappading * 2, height: ip6(20)), fontSize: 14, text: "目标完成情况统计曲线", textColor: black_53, textAlignment: .center)
         self.addSubview(titleLabel)
 
-        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
+        titleBtn = UIButton.getBtn_titleStyle(title_normal: "", title_selected: "", fream: CGRect(x: ip6(15), y: titleLabel.frame.maxY + ip6(20), width: KSCREEN_WIDTH - ip6(30), height: ip6(25)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
         titleBtn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
         titleBtn.xj_makeRadius(radius: 3)
         self.addSubview(titleBtn)
@@ -95,21 +95,22 @@ class WeekAimLineTableViewCell: UITableViewCell {
         lineChart.scaleXEnabled = false
 
         //设置X轴坐标
-        lineChart.xAxis.valueFormatter = DateValueFormatter(arr: ["1","2","3","4",])
+        lineChart.xAxis.valueFormatter = DateValueFormatter()
         lineChart.xAxis.granularity = 0.0
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.drawGridLinesEnabled = false
 
         lineChart.xAxis.axisLineColor = black_ebebee
         lineChart.xAxis.labelTextColor = black_53
-        lineChart.xAxis.labelCount = 4
+        lineChart.xAxis.labelCount = 2
         lineChart.xAxis.axisMinimum = 0
+        lineChart.xAxis.axisMaximum = 1
 
-//        lineChart.xAxis.labelWidth = (KSCREEN_WIDTH  - ip6(100))/4
+        lineChart.xAxis.granularityEnabled = true
 
 
         //不显示右侧Y轴
-        lineChart.leftAxis.valueFormatter = SymbolsValueFormatter(arr: ["0","20","40","60","80","100","120",])
+        lineChart.leftAxis.valueFormatter = SymbolsValueFormatter()
         lineChart.leftAxis.drawAxisLineEnabled = true
         lineChart.leftAxis.enabled = true
 
@@ -131,30 +132,32 @@ class WeekAimLineTableViewCell: UITableViewCell {
     }
 
     func setCharData() {
-        //数据填充
-        let xArr = [1,2,3,4]
-        let yArr = [20,40,48,0]
+        //数据填充 学习时间
+        let xCont = 2
+
+        let yArr = [20,40,48,46]
         var dataEntries: [ChartDataEntry] = []
-        for i in 0..<xArr.count {
-            let dataEntry = ChartDataEntry(x: Double(xArr[i]), y: Double(yArr[i]))
+        for i in 0..<xCont {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(yArr[i]))
             dataEntries.append(dataEntry)
         }
 
-
+        //学习量
         let yArr2 = [45,35,23,56]
         var dataEntries2: [ChartDataEntry] = []
-        for i in 0..<xArr.count {
-            let dataEntry = ChartDataEntry(x: Double(xArr[i]), y: Double(yArr2[i]))
+        for i in 0..<xCont {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(yArr2[i]))
             dataEntries2.append(dataEntry)
         }
 
+
+
+        //学习时间
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "")
         //设置双击坐标轴是否能缩放
         lineChart.scaleXEnabled = false
         lineChart.scaleYEnabled = false
-
         //设置折线线条
-
         lineChartDataSet.lineWidth = 1
 
         //画外圆
@@ -164,7 +167,7 @@ class WeekAimLineTableViewCell: UITableViewCell {
         //显示
         lineChartDataSet.drawValuesEnabled = false
 
-
+        //学习量
         let lineChartDataSet2 : LineChartDataSet =  LineChartDataSet()
         lineChartDataSet2.values = dataEntries2
         //设置折线线条
@@ -175,6 +178,8 @@ class WeekAimLineTableViewCell: UITableViewCell {
         //显示
         lineChartDataSet2.drawValuesEnabled = false
         lineChartDataSet2.colors = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD)]
+
+
         let lineChartData = LineChartData(dataSets: [lineChartDataSet,lineChartDataSet2])
         lineChart.data = lineChartData
         //添加显示动画
@@ -182,13 +187,24 @@ class WeekAimLineTableViewCell: UITableViewCell {
 
     }
 
+    func setData(model : WeekAimDetailModel) {
+        //
+        if let month = model.month {
+            titleBtn.setTitle(month, for: .normal)
+        }
+        //表格
+
+
+    }
 
 
     func click(sender:UIButton) {
         if sender.tag == 1 {
             XJLog(message: "左")
+
         } else if sender.tag == 2 {
             XJLog(message: "右")
+
         }
     }
 

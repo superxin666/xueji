@@ -27,6 +27,10 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
     /// 当前周的数据模型
     var currectWeakModel : WeekAimDetailModel_report = WeekAimDetailModel_report()
 
+    /// 当前月
+    var currectMonthModel : WeekAimDetailModel = WeekAimDetailModel()
+
+
     func dataRequest() {
         SVPMessageShow.showLoad()
         request.delegate = self
@@ -99,6 +103,16 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
             }
         }
     }
+
+
+    func getCurrectMonthModel() -> WeekAimDetailModel {
+        if listArr.count > 0 {
+            return listArr[0]
+        } else {
+            return WeekAimDetailModel()
+        }
+    }
+    
 
     func getSectionTitle(sectionNum : Int) -> String {
         if  listArr.count > 0 {

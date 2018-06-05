@@ -69,6 +69,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
                 if (cell == nil)  {
                     cell = WeekAimLineTableViewCell(style: .default, reuseIdentifier: WeekAimLineTableViewCellID)
                 }
+                cell.setData(model: request.getCurrectMonthModel())
                 return cell
             }
         } else {

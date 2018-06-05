@@ -1,5 +1,5 @@
 //
-//  DateValueFormatter.swift
+//  SymbolsValueFormatter.swift
 //  xueji
 //
 //  Created by lvxin on 2018/5/14.
@@ -8,12 +8,10 @@
 
 import UIKit
 import Charts
-class DateValueFormatter: NSObject,IAxisValueFormatter{
+class SymbolsValueFormatter: NSObject,IAxisValueFormatter {
 
-
+    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        XJLog(message: NSInteger(value))
-        return "第\(NSInteger(value))周"
-
+        return "\(Int(value))%"
     }
 }
