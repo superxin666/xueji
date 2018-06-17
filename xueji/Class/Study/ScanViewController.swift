@@ -156,7 +156,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     func addbookRequest(isbn : Int) {
         XJLog(message: isbn)
         requestManger.delegate = self
-        requestManger.addBookRequest(isbn: isbn)
+        requestManger.getBookInfoByIsbn(isbn: isbn)
 
     }
 
@@ -180,6 +180,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         }
     }
 
+
+
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         XJLog(message: "移除")
         self.dismissVC()
@@ -187,6 +189,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
 
     func requestSucceed() {
 //        self.cancle_click()
+
+
 
     }
     func requestFail() {

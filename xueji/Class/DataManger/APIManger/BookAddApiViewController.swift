@@ -22,12 +22,22 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     ///
     /// - Parameter isbn: 分类id
     func addBookRequest(isbn:Int) {
-
         request.delegate = self
         SVPMessageShow.showLoad()
-        let url  = book_add_book_api + "isbn=\(isbn)" + "&cid=\(0)" + request.getTokenParameter()
+        let url  = book_add_book_api + "isbn=\(isbn)" + request.getTokenParameter()
         request.request_api(url: url)
 
+    }
+
+
+    /// 扫描获取书籍信息
+    ///
+    /// - Parameter isbn: <#isbn description#>
+    func getBookInfoByIsbn(isbn : Int) {
+        request.delegate = self
+        SVPMessageShow.showLoad()
+        let url  = book_add_book_api + "type=isbn" + "&isbn=\(isbn)" + "&add=N" + request.getTokenParameter()
+        request.request_api(url: url)
     }
 
     func requestSucceed(response: Any) {
