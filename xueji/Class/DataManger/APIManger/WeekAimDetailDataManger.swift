@@ -62,11 +62,16 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
         }
     }
 
-    func getRowsInSection(sectionNum : Int) -> Int {
+    func getRowsInSection(sectionNum: Int) -> Int {
+
         if listArr.count > 0 {
             let model = listArr[sectionNum - 1]
             if model.report.count > 0   {
-                return model.report.count
+                if sectionNum == 1 {
+                    return model.report.count - 1
+                } else {
+                    return model.report.count
+                }
             } else {
                 return 0
             }
@@ -81,8 +86,11 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
                 let model = listArr[indexPath.section - 1]
                 XJLog(message: model.report.count)
                 if model.report.count > 0 {
-
-                    return model.report[indexPath.row]
+                    if indexPath.section == 1 {
+                        return model.report[indexPath.row+1]
+                    } else {
+                        return model.report[indexPath.row]
+                    }
                 } else {
                    return WeekAimDetailModel_report()
                 }
@@ -99,7 +107,7 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
             let model = listArr[0]
             if model.report.count > 0 {
                 currectWeakModel = model.report[0]
-                model.report.remove(at: 0)
+//                model.report.remove(at: 0)
             }
         }
     }

@@ -76,6 +76,7 @@
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
+		2180726120D6435B00CB9904 /* WeekAimValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */; };
 		2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */; };
 		2182CB4E207870A800BAEBD4 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4D207870A800BAEBD4 /* LearnViewController.swift */; };
 		2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B911200074B40038847E /* StudyApiMangerViewController.swift */; };
@@ -204,6 +205,7 @@
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
+		2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimValueFormatter.swift; sourceTree = "<group>"; };
 		2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		2182CB4D207870A800BAEBD4 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		2185B911200074B40038847E /* StudyApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiMangerViewController.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				21EF37F920C512940015EF7F /* HYValueFormatter.swift */,
 				21EF37FF20C528B10015EF7F /* PageFormatter.swift */,
 				21EF37FD20C5150F0015EF7F /* MonthDayFormatter.swift */,
+				2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				2146A84220B2C1BB00903B9D /* StudyAimTableViewCell.swift in Sources */,
 				2185B91420007C200038847E /* CodeData.swift in Sources */,
 				21EF37FA20C512940015EF7F /* HYValueFormatter.swift in Sources */,
+				2180726120D6435B00CB9904 /* WeekAimValueFormatter.swift in Sources */,
 				2124472C200247D30038F204 /* UserHeadView.swift in Sources */,
 				211BFFAC1FBD788D0079FECD /* SelectCatViewController.swift in Sources */,
 				2124472F200247D30038F204 /* StudyValueTableViewCell.swift in Sources */,

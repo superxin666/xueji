@@ -28,6 +28,9 @@ class WeekAimLineTableViewCell: UITableViewCell {
     /// 横线
     var lineView : UIView!
 
+    var dataModel : WeekAimDetailModel!
+
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -95,17 +98,16 @@ class WeekAimLineTableViewCell: UITableViewCell {
         lineChart.scaleXEnabled = false
 
         //设置X轴坐标
-        lineChart.xAxis.valueFormatter = DateValueFormatter()
+        lineChart.xAxis.valueFormatter = WeekAimValueFormatter()
         lineChart.xAxis.granularity = 0.0
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.drawGridLinesEnabled = false
 
         lineChart.xAxis.axisLineColor = black_ebebee
         lineChart.xAxis.labelTextColor = black_53
-        lineChart.xAxis.labelCount = 2
+        lineChart.xAxis.labelCount = 4
         lineChart.xAxis.axisMinimum = 0
-        lineChart.xAxis.axisMaximum = 1
-
+        lineChart.xAxis.axisMaximum = 4
         lineChart.xAxis.granularityEnabled = true
 
 
@@ -127,15 +129,26 @@ class WeekAimLineTableViewCell: UITableViewCell {
 
         lineChart.leftAxis.drawZeroLineEnabled = false
 
-        self.setCharData()
+
 
     }
 
     func setCharData() {
         //数据填充 学习时间
-        let xCont = 2
+        let xCont = 4
 
-        let yArr = [20,40,48,46]
+        var yArr : [Int] = []
+        for model in dataModel.report {
+            yArr.append(model.time_rate)
+        }
+        let dataCount = yArr.count
+
+        if yArr.count<4 {
+            for i in 0..<4 - yArr.count {
+                yArr.append(0)
+            }
+        }
+
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<xCont {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(yArr[i]))
@@ -163,7 +176,20 @@ class WeekAimLineTableViewCell: UITableViewCell {
         //画外圆
         lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.lineDashPhase = 0.5
-        lineChartDataSet.colors = [UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33)]
+
+
+        var colourArr : [UIColor] = []
+        switch dataCount {
+        case 2:
+            colourArr = [UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33), .clear,UIColor.clear]
+        case 3:
+            colourArr = [UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33),UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33),UIColor.clear]
+        case 4:
+            colourArr = [UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33)]
+        default:
+            colourArr = [UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33)]
+        }
+        lineChartDataSet.colors = colourArr
         //显示
         lineChartDataSet.drawValuesEnabled = false
 
@@ -177,8 +203,19 @@ class WeekAimLineTableViewCell: UITableViewCell {
         lineChartDataSet2.lineDashPhase = 0.5
         //显示
         lineChartDataSet2.drawValuesEnabled = false
-        lineChartDataSet2.colors = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD)]
 
+        var colourArr2 : [UIColor] = []
+        switch dataCount {
+        case 2:
+            colourArr2 = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD), .clear,UIColor.clear]
+        case 3:
+            colourArr2 = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD),UIColor.xj_colorFromRGB(rgbValue: 0xBC2D33),UIColor.clear]
+        case 4:
+            colourArr2 = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD)]
+        default:
+            colourArr2 = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD)]
+        }
+        lineChartDataSet2.colors = colourArr2
 
         let lineChartData = LineChartData(dataSets: [lineChartDataSet,lineChartDataSet2])
         lineChart.data = lineChartData
@@ -188,12 +225,17 @@ class WeekAimLineTableViewCell: UITableViewCell {
     }
 
     func setData(model : WeekAimDetailModel) {
+        dataModel = model;
         //
         if let month = model.month {
             titleBtn.setTitle(month, for: .normal)
         }
         //表格
-
+        if model.report.count > 1 {
+            self.setCharData()
+        } else {
+            //只有一周时 此模型书当前周 不显示
+        }
 
     }
 
