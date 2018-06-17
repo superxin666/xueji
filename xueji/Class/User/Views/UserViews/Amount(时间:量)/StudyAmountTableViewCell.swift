@@ -169,6 +169,8 @@ class StudyAmountTableViewCell: UITableViewCell {
         let xVals_count = 7 //X轴上要显示多少条数据
         //Y轴上面需要显示的数据
         var dataSets : [BarChartDataSet] = Array()
+        let maxModel = reportModel.max
+        
         for i in 1...xVals_count {
 
             let model : ReportModel_date!
@@ -176,8 +178,11 @@ class StudyAmountTableViewCell: UITableViewCell {
             if viewType == .day {
                 model = reportModel.day[i-1]
                 //Y轴
+                let pageNum = maxModel?.page.day
+                XJLog(message: pageNum)
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 140;//设置Y轴的最大值
+                leftAxis.axisMaximum = String.getPage(page: pageNum!);//设置Y轴的最大值
+
                 //X轴
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -190,8 +195,14 @@ class StudyAmountTableViewCell: UITableViewCell {
 
             } else if viewType == .week{
                 model = reportModel.week[i-1]
+
+                //Y轴
+                let pageNum = maxModel?.page.week
+                XJLog(message: pageNum)
+
+
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 1400;//设置Y轴的最大值
+                leftAxis.axisMaximum =  String.getPage(page: pageNum!)//设置Y轴的最大值
 
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -202,8 +213,12 @@ class StudyAmountTableViewCell: UITableViewCell {
                 xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             } else {
                 model = reportModel.month[i-1]
+
+                let pageNum = maxModel?.page.month
+                XJLog(message: pageNum)
+
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 14000;//设置Y轴的最大值
+                leftAxis.axisMaximum =  String.getPage(page: pageNum!)//设置Y轴的最大值
 
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -213,6 +228,7 @@ class StudyAmountTableViewCell: UITableViewCell {
                 let xAxis : XAxis = barCharView.xAxis
                 xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             }
+
             if model.book.count > 0 {
                 XJLog(message: "有学习记录")
                 var bookArr : [Double] = []

@@ -167,6 +167,8 @@ class StudyTimeTableViewCell: UITableViewCell {
         let xVals_count = 7 //X轴上要显示多少条数据
         //Y轴上面需要显示的数据
         var dataSets : [BarChartDataSet] = Array()
+        let maxModel = reportModel.max
+
         for i in 1...xVals_count {
 
             let model : ReportModel_date!
@@ -174,8 +176,10 @@ class StudyTimeTableViewCell: UITableViewCell {
             if viewType == .day {
                 model = reportModel.day[i-1]
                 //Y轴
+                let dayNum = maxModel?.time.day
+                XJLog(message: dayNum)
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 12;//设置Y轴的最大值
+                leftAxis.axisMaximum = Double(String.getHour_more(min: dayNum!));//设置Y轴的最大值
                 //X轴
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -188,8 +192,10 @@ class StudyTimeTableViewCell: UITableViewCell {
 
             } else if viewType == .week{
                 model = reportModel.week[i-1]
+                let dayNum = maxModel?.time.week
+                XJLog(message: dayNum)
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 120;//设置Y轴的最大值
+                leftAxis.axisMaximum = Double(String.getHour_more(min: dayNum!));//设置Y轴的最大值
 
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -200,8 +206,11 @@ class StudyTimeTableViewCell: UITableViewCell {
                 xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             } else {
                 model = reportModel.month[i-1]
+                let dayNum = maxModel?.time.month
+                XJLog(message: dayNum)
+
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
-                leftAxis.axisMaximum = 120;//设置Y轴的最大值
+                leftAxis.axisMaximum = Double(String.getHour_more(min: dayNum!));//设置Y轴的最大值
 
                 var dateArr : [String] = []
                 dateArr.append("")
@@ -272,9 +281,9 @@ class StudyTimeTableViewCell: UITableViewCell {
 
     func setData(model:ReportModel) {
         reportModel = model
+
         if model.day.count > 0 {
             let dayModel = model.day[weekNum]
-
             let str = "\(dayModel.sum.time_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.leftTimeLabel.attributedText = str

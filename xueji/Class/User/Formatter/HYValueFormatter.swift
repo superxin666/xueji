@@ -12,6 +12,6 @@ class HYValueFormatter: NSObject,IAxisValueFormatter {
 
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return "\(Int(value))h"
+        return "\(value)h"
     }
 }

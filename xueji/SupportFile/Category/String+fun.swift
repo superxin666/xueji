@@ -301,6 +301,29 @@ extension String {
         return Float(min)/Float(60)
     }
 
+    static func getHour_more(min : Int) -> Float {
+        if min < 60 {
+            //一小时之内
+            return 1
+        } else if min < 60 * 10 {
+            //10小时之内
+            return Float(min/60) + 1
+        } else {
+            return Float(min/60) + 10
+        }
+    }
+
+    static func getPage(page : Int) -> Double{
+        if page  < 10 {
+            return 10
+        } else if page < 100 {
+            return Double(page) + 10
+        } else if page < 1000 {
+            return Double(page) + 100
+        } else {
+            return Double(page)
+        }
+    }
 
 
     /// 将str转为attributeStr

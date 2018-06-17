@@ -8,6 +8,45 @@
 
 import UIKit
 import ObjectMapper
+
+
+class ReportModel_max_amount: Mappable {
+    var day: Int!
+    var week: Int!
+    var month: Int!
+
+
+    init() {}
+    required init?(map: Map){
+        mapping(map: map)
+    }
+    // Mappable
+    func mapping(map: Map) {
+        day <- map["day"]
+        week <- map["week"]
+        month <- map["month"]
+    }
+}
+
+
+class ReportModel_max: Mappable {
+    var time: ReportModel_max_amount = ReportModel_max_amount()
+    var page: ReportModel_max_amount = ReportModel_max_amount()
+
+
+    init() {}
+    required init?(map: Map){
+        mapping(map: map)
+    }
+    // Mappable
+    func mapping(map: Map) {
+        page <- map["page"]
+        time <- map["time"]
+    }
+}
+
+
+
 class ReportModel_date_sum: Mappable {
     var page_count: Int!
     var time_count: Int!
@@ -111,6 +150,8 @@ class ReportModel: Mappable {
     var week : [ReportModel_date] = []
     var month : [ReportModel_date] = []
     var sum : ReportModel_sum!
+    var max : ReportModel_max!
+
 
 
     init() {}
@@ -123,5 +164,7 @@ class ReportModel: Mappable {
         week <- map["week"]
         month <- map["month"]
         sum <- map["sum"]
+        max <- map["max"]
+
     }
 }
