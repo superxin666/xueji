@@ -33,7 +33,12 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
         page = page + 1
         let url = main_index_api + "page=\(page)" + request.getTokenParameter()
         request.request_api(url: url)
-        
+    }
+
+    func reflishData() {
+        self.removeArr()
+        self.resetPage()
+        self.listRequest()
 
     }
 
@@ -70,15 +75,14 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
         //最近学习
         var num = 0
         if self.getRecentListCount() > 0 {
-            
             num = 1
         }
-        XJLog(message: "最近学习个数\(num)")
         //分类
         if let arr = self.listArr{
             XJLog(message: arr.count)
             if arr.count > 0 {
                 return arr.count + num
+
             } else {
                 return 0 + num
             }
@@ -96,7 +100,6 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
             if index<listarr.count {
                 let model : CategoryListModel_list = listarr[index]
                 if model.book_list.count > 0{
-                    XJLog(message: "书个数\(model.book_list.count)")
                     return model.book_list.count
                 } else {
                     return 0
@@ -110,12 +113,11 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
         }
     }
     
-    /// 获取
+    /// 获取一组书籍
     ///
     /// - Parameter section: <#section description#>
     /// - Returns: <#return value description#>
     func getBookList(section : Int)-> Array<CategoryListModel_list_book_list> {
-        
         if let listarr = self.listArr {
             if section<listarr.count {
                 let model : CategoryListModel_list = listarr[section]
@@ -126,7 +128,6 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
         } else {
             return Array()
         }
-        
     }
     
     /// 获取分类下面 书籍行高
@@ -135,6 +136,18 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     /// - Returns: <#return value description#>
     func getRowHeight(section : Int) -> CGFloat {
         let bookNum = self.getBookArrCount(index: section)
+        let imageH = ip6(100)
+        let height = (CGFloat((bookNum/4))+1) * (imageH + ip6(16))
+        return height
+    }
+
+
+
+    /// 最近学习cell高度
+    ///
+    /// - Returns: <#return value description#>
+    func getRecentRowHeight() -> CGFloat {
+        let bookNum = self.recent_learnListArr.count
         let imageH = ip6(100)
         let height = (CGFloat((bookNum/4))+1) * (imageH + ip6(16))
         return height
@@ -204,8 +217,15 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     
     /// 清除数据
     func removeArr() {
-        if listArr.count>0 {
-            listArr.removeAll()
+        if var arr = listArr {
+            if arr.count > 0 {
+                arr.removeAll()
+            }
+        }
+        if var arr2 = recent_learnListArr {
+            if arr2.count > 0 {
+                arr2.removeAll()
+            }
         }
     }
     

@@ -170,7 +170,6 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject{
                 XJLog(message: resultObj.stringValue)
                 self.addbookRequest(isbn: Int(resultObj.stringValue!)!)
-
             }
         } else {
             XJLog(message: "扫描无结果")
@@ -188,9 +187,11 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     }
 
     func requestSucceed() {
-//        self.cancle_click()
-
-
+        let vc = AddBookViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = .addBook_scan
+        vc.bookModel = requestManger.bookModel
+        self.navigationController?.pushViewController(vc, animated: true)
 
     }
     func requestFail() {
@@ -243,6 +244,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     func addBook_click()  {
         XJLog(message: "手动添加")
         let vc : AddBookViewController = AddBookViewController()
+        vc.type = .addBook_custom
         self.navigationController?.pushViewController(vc, animated: true)
     }
     //退出

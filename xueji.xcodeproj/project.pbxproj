@@ -77,6 +77,7 @@
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
 		2180726120D6435B00CB9904 /* WeekAimValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */; };
+		2180726320D668DD00CB9904 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180726220D668DD00CB9904 /* BookModel.swift */; };
 		2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */; };
 		2182CB4E207870A800BAEBD4 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182CB4D207870A800BAEBD4 /* LearnViewController.swift */; };
 		2185B912200074B40038847E /* StudyApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185B911200074B40038847E /* StudyApiMangerViewController.swift */; };
@@ -206,6 +207,7 @@
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
 		2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimValueFormatter.swift; sourceTree = "<group>"; };
+		2180726220D668DD00CB9904 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		2182CB4B2078699F00BAEBD4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		2182CB4D207870A800BAEBD4 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		2185B911200074B40038847E /* StudyApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyApiMangerViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				21014B502008581E002CB437 /* CategoryListModel.swift */,
 				21376690203FEDAE000CBCE6 /* StudyListModel.swift */,
+				2180726220D668DD00CB9904 /* BookModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */,
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
 				218B14401FC6AD3B0053EFD4 /* BookImagesViewController.swift in Sources */,
+				2180726320D668DD00CB9904 /* BookModel.swift in Sources */,
 				214F913E1FEA4F1900D44165 /* UILabel+Init.swift in Sources */,
 				2115B11F2001E778000CB24A /* ReSetPassWordViewController.swift in Sources */,
 				2146A84220B2C1BB00903B9D /* StudyAimTableViewCell.swift in Sources */,

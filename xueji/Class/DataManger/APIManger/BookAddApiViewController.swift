@@ -8,6 +8,9 @@
 
 import UIKit
 import ObjectMapper
+enum BookAddApiType {
+    case getBookInfo,add_isbn,add_custom
+}
 protocol BookAddApiViewControllerDelegate: NSObjectProtocol{
     func requestSucceed() -> Void
     func requestFail() -> Void
@@ -16,25 +19,55 @@ protocol BookAddApiViewControllerDelegate: NSObjectProtocol{
 class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDelegate {
     weak var delegate :BookAddApiViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
+    var bookModel : BookModel!
+    var type : BookAddApiType!
+
 
     
-    /// 添加书籍
+
+    /// 添加书籍 扫描
     ///
-    /// - Parameter isbn: 分类id
-    func addBookRequest(isbn:Int) {
+    /// - Parameters:
+    ///   - isbn: 书本号
+    ///   - cid: 分类id
+    func addBookRequestByIsbn(isbn:Int,cid:Int) {
         request.delegate = self
+        self.type = .getBookInfo
         SVPMessageShow.showLoad()
-        let url  = book_add_book_api + "isbn=\(isbn)" + request.getTokenParameter()
+        let url  = book_add_book_api + "type=isbn" + "&isbn=\(isbn)" + "&add=Y" + "&cid=\(cid)" + request.getTokenParameter()
         request.request_api(url: url)
 
     }
 
 
+    /// 添加书籍 手动
+    ///
+    /// - Parameter bookInfo: 参数元
+    func addBookByCustom(bookInfo : (cid : Int,title:String,img:String,author:String,publisher:String,pubdate:String,pages:Int)) {
+        if bookInfo.title.count > 0 {
+            SVPMessageShow.showErro(infoStr: "请输入标题")
+            return
+        }
+        let titleStr = bookInfo.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imgStr = bookInfo.img.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let authorStr = bookInfo.author.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let publisherStr = bookInfo.publisher.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let pubdateStr = bookInfo.pubdate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+
+        request.delegate = self
+        self.type = .getBookInfo
+        SVPMessageShow.showLoad()
+        let url  = book_add_book_api + "type=custom"  + "&add=Y" + "&cid=\(bookInfo.cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(bookInfo.pages)" + request.getTokenParameter()
+        request.request_api(url: url)
+    }
+
+
     /// 扫描获取书籍信息
     ///
-    /// - Parameter isbn: <#isbn description#>
+    /// - Parameter isbn: 书籍号
     func getBookInfoByIsbn(isbn : Int) {
         request.delegate = self
+        self.type = .add_isbn
         SVPMessageShow.showLoad()
         let url  = book_add_book_api + "type=isbn" + "&isbn=\(isbn)" + "&add=N" + request.getTokenParameter()
         request.request_api(url: url)
@@ -42,8 +75,8 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
 
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
-        XJLog(message: response)
-        SVPMessageShow.showSucess(infoStr: "添加成功")
+        bookModel = Mapper<BookModel>().map(JSON: response as! [String : Any])!
+        SVPMessageShow.showSucess(infoStr: "扫描成功")
         if self.delegate != nil {
             self.delegate.requestSucceed()
         }

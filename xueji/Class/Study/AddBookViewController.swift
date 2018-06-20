@@ -9,21 +9,29 @@
 import UIKit
 let addBookCellHeight = ip6(42)
 let addBook_CatCellHeight = ip6(72)
-let AddBookCellID = "AddBookCell_id"
-let AddBook_CatCellID = "AddBook_CatCellID"
 
-class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AddBook_customViewControllerDelegate {
+
+enum AddBookViewController_type {
+    case detail
+    case addBook_custom
+    case addBook_scan
+}
+
+class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BookAddApiViewControllerDelegate {
 
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
     var alertController : UIAlertController!
     var pickerView:UIPickerView = UIPickerView()
-    var requestManger:AddBook_customViewController = AddBook_customViewController()
+    var requestManger:BookAddApiViewController = BookAddApiViewController()
 
-    
     /// 书籍名字
     var titleStr: String!
-    
+    /// 默认为 详情
+    var type : AddBookViewController_type = .detail
+    /// 书的数据模型  扫描添加
+    var bookModel : BookModel!
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,15 +44,25 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "添加资料", fontsize: 20)
-        self.navigationBar_rightBtn_title(title: "保存")
-        self.navigationBar_leftBtn_title(title: "取消")
+        if self.type == .addBook_custom || self.type == .addBook_scan {
+            self.navigationBar_rightBtn_title(title: "保存")
+            self.navigationBar_leftBtn_title(title: "取消")
+        } else {
+            self.navigationBar_leftBtn_title(title: "返回")
+        }
+
         self.creatUI()
     }
 
     // MARK: - 创建视图
     func creatUI() {
         bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: LNAVIGATION_HEIGHT + ip6(20), width: ip6(100), height: ip6(150)))
-        bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
+        if self.type == .addBook_scan {
+            bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+        } else {
+            bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
+        }
+
         bookImageView.isUserInteractionEnabled = true
         self.view.addSubview(bookImageView)
         
@@ -78,7 +96,13 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
             if (cell == nil)  {
                 cell = AddBookTableViewCell(style: .default, reuseIdentifier: AddBookCellID)
             }
-            cell.setData(rowNum: indexPath.row)
+            if type == .addBook_custom {
+                cell.setData(rowNum: indexPath.row)
+            } else if type == .addBook_scan {
+                cell.setData_scan(model: bookModel, rowNum: indexPath.row)
+            } else {
+                cell.setData(rowNum: indexPath.row)
+            }
             return cell
         } else {
             var cell : AddBook_CatTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: AddBook_CatCellID, for: indexPath) as! AddBook_CatTableViewCell
@@ -138,12 +162,22 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     
     // MARK: event response
     override func navigationLeftBtnClick() {
-        self.navigationController?.popViewController(animated: true)
+        if self.type == .addBook_scan {
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
         requestManger.delegate = self
-        requestManger.addBook(title:"", cid: 0, img: "", author: "", publisher: "", pubdate: "", pages: 1)
+        if self.type == .addBook_scan {
+            requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: 0)
+        } else if self.type == .addBook_custom {
+
+        } else {
+
+        }
     }
     
     func bookIconImageView_click() {

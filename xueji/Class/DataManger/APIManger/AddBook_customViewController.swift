@@ -18,7 +18,8 @@ class AddBook_customViewController: UIViewController, BaseApiMangerViewControlle
     weak var delegate :AddBook_customViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     
-    
+    var bookModel  : BookModel!
+
     /// 添加书籍 自定义
     ///
     /// - Parameters:
@@ -50,6 +51,8 @@ class AddBook_customViewController: UIViewController, BaseApiMangerViewControlle
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
         XJLog(message: response)
+        let model = Mapper<BookModel>().map(JSON: response as! [String : Any])!
+        bookModel = model
         SVPMessageShow.showSucess(infoStr: "添加成功")
     }
     func requestFail(response: Any) {

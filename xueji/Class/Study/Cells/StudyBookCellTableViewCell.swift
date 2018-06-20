@@ -37,13 +37,17 @@ class StudyBookCellTableViewCell: UITableViewCell {
     func setUpUI(model : CategoryListModel_list) {
         //
         currectModel = model
+        let bookCount_line = 4
+        let boardW = ip6(21)
+        XJLog(message: "数据个数\(model.book_list.count)")
         for i in 0..<model.book_list.count {
             
             let subModel = model.book_list[i]
             let imageH = ip6(100)
             let imageW = ip6(65)
-            let appading = (KSCREEN_WIDTH - ip6(42) - imageW * 4)/3
-            let Y = CGFloat((i/4)) * (imageH + ip6(16))
+            let appading = (KSCREEN_WIDTH - boardW * CGFloat(2) - imageW * CGFloat(bookCount_line))/CGFloat((bookCount_line - 1))
+
+            let Y = CGFloat((i/bookCount_line)) * (imageH + ip6(16))
             let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
             bookImageView = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
             bookImageView.tag = i

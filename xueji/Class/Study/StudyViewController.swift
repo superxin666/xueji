@@ -27,8 +27,6 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-
         self.navigationbar_transparency()
 
     }
@@ -37,7 +35,6 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
         self.setUpNavigation_normal()
-//        self.creatHeadView()
         self.creatTableView()
         requestManger.delegate = self
         self.getData()
@@ -60,7 +57,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
     // MARK: - TableView视图
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .grouped)
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY - LNAVIGATION_HEIGHT), style: .grouped)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -77,6 +74,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         return requestManger.getListArrCount();
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return 1
         
     }
@@ -84,7 +82,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         weak var weakSelf = self
         if requestManger.getRecentListCount() > 0 {
             //有最近学习
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
                 cell.setUpUI_recent(arr: requestManger.recent_learnListArr)
                 cell.bookClickBlock = {model in
@@ -97,8 +95,9 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
             } else {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
-                let model = requestManger.getModel(index: indexPath.section)
+                let model = requestManger.getModel(index: indexPath.section - 1)
                 cell.setUpUI(model: model)
+
                 cell.bookClickBlock = {model in
                     let vc = LearnViewController()
                     vc.model = model
@@ -129,7 +128,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
             if section == 0 {
                 view.setUpData(nameStr: "最近学习")
             } else {
-                let model = requestManger.getModel(index: section-1)
+                let model = requestManger.getModel(index: section - 1)
                 let name = model.getCatName()
                 view.setUpData(nameStr: name)
             }
@@ -145,7 +144,12 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         return StudyHeadViewH
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return requestManger.getRowHeight(section: indexPath.section)
+        if indexPath.section == 0 {
+            return requestManger.getRecentRowHeight()
+        } else {
+            return requestManger.getRowHeight(section: indexPath.section - 1)
+        }
+
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -232,12 +236,13 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         let scanAction = UIAlertAction(title: "扫码添加", style: .default) { (action) in
             //扫码添加
             let vc : ScanViewController = ScanViewController()
-            let nv = UINavigationController(rootViewController: vc)
-            
-            self.present(nv, animated: true, completion: {
-                
-            })
-            
+//            let nv = UINavigationController(rootViewController: vc)
+            vc.hidesBottomBarWhenPushed = true
+            weakSelf?.navigationController?.pushViewController(vc, animated: true)
+//            self.present(nv, animated: true, completion: {
+//
+//            })
+
         }
         let selfAction = UIAlertAction(title: "手动添加", style: .default) { (action) in
             //手动添加

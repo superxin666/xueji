@@ -61,6 +61,10 @@ class BookImagesViewController: BaseViewController,UICollectionViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
+
+    override func navigationLeftBtnClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
