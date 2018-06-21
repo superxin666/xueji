@@ -186,7 +186,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         self.dismissVC()
     }
 
-    func requestSucceed() {
+    func requestSucceed(type : BookAddApiType) {
         let vc = AddBookViewController()
         vc.hidesBottomBarWhenPushed = true
         vc.type = .addBook_scan
@@ -194,7 +194,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
-    func requestFail() {
+    func requestFail(type : BookAddApiType) {
         alertView = UIAlertView(title: nil, message: "对不起，没有扫描出结果，请到首页选择手动添加", delegate: self, cancelButtonTitle: "确定")
         alertView.delegate = self
         alertView.show()

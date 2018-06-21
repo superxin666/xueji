@@ -11,7 +11,6 @@ import SVProgressHUD
 import MJRefresh
 class BaseTableViewController: UITableViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,4 +94,10 @@ class BaseTableViewController: UITableViewController {
         let footer = MJRefreshAutoNormalFooter() // 底部刷新
         return footer
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }

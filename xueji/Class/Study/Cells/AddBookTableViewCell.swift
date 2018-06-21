@@ -54,8 +54,6 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
     func setData_scan(model : BookModel,rowNum : Int) {
         titleLabel.text = titleNameArr[rowNum]
         self.textTextField.tag = rowNum
-
-        self.isUserInteractionEnabled = false
         switch rowNum {
         case 0:
             //

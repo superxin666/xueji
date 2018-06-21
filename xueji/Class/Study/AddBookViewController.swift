@@ -12,12 +12,14 @@ let addBook_CatCellHeight = ip6(72)
 
 
 enum AddBookViewController_type {
-    case detail
-    case addBook_custom
-    case addBook_scan
+    case detail//详情
+    case addBook_custom//自定义添加
+    case addBook_scan//扫描添加(isbn)
+    case editBook_custom//编辑 自定义添加的书籍
+    case editBook_scan//编辑 扫描添加(isbn)的书籍
 }
 
-class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BookAddApiViewControllerDelegate {
+class AddBookViewController: BaseTableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BookAddApiViewControllerDelegate {
 
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
@@ -25,12 +27,25 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     var pickerView:UIPickerView = UIPickerView()
     var requestManger:BookAddApiViewController = BookAddApiViewController()
 
+    var bookCell :AddBookTableViewCell!
+    var catCell :AddBook_CatTableViewCell!
+
+
     /// 书籍名字
     var titleStr: String!
     /// 默认为 详情
     var type : AddBookViewController_type = .detail
     /// 书的数据模型  扫描添加
     var bookModel : BookModel!
+    /// 书籍id  查看详情
+    var bookID : Int!
+
+    /// 选择分类模型
+    var catModel : CategoryListModel_list!
+
+    /// 分类id 添加书籍（默认为0）  编辑书籍
+    var catID = 0
+
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +59,17 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "添加资料", fontsize: 20)
+        requestManger.delegate = self
         if self.type == .addBook_custom || self.type == .addBook_scan {
             self.navigationBar_rightBtn_title(title: "保存")
             self.navigationBar_leftBtn_title(title: "取消")
-        } else {
+        } else if self.type == .editBook_custom || self.type == .editBook_scan{
+
+        } else if self.type == .detail {
             self.navigationBar_leftBtn_title(title: "返回")
+            self.navigationBar_rightBtn_title(title: "编辑")
+            requestManger.getBookInfoByBookID(bookID: self.bookID)
+
         }
 
         self.creatUI()
@@ -56,65 +77,91 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
     // MARK: - 创建视图
     func creatUI() {
-        bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: LNAVIGATION_HEIGHT + ip6(20), width: ip6(100), height: ip6(150)))
-        if self.type == .addBook_scan {
-            bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
-        } else {
-            bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
-        }
 
-        bookImageView.isUserInteractionEnabled = true
-        self.view.addSubview(bookImageView)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
-        bookImageView.addGestureRecognizer(tap)
-        
-        
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: bookImageView.frame.maxY + ip6(30) , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - bookImageView.frame.maxY - ip6(30)), style: .plain)
-        mainTabelView.backgroundColor = UIColor.clear
-        mainTabelView.delegate = self;
-        mainTabelView.dataSource = self;
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: 0 , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT), style: .grouped)
+        mainTabelView.backgroundColor = .white
         mainTabelView.tableFooterView = UIView()
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
         mainTabelView.register(AddBookTableViewCell.self, forCellReuseIdentifier: AddBookCellID)
         mainTabelView.register(AddBook_CatTableViewCell.self, forCellReuseIdentifier: AddBook_CatCellID)
+        if self.type == .detail {
+            self.mainTabelView.isUserInteractionEnabled = false
+        }
+        self.tableView = mainTabelView
         
-        self.view.addSubview(mainTabelView)
+
     }
     // MARK: delegate
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < 4 {
-            var cell : AddBookTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: AddBookCellID, for: indexPath) as! AddBookTableViewCell
-            if (cell == nil)  {
-                cell = AddBookTableViewCell(style: .default, reuseIdentifier: AddBookCellID)
+            bookCell  = tableView.dequeueReusableCell(withIdentifier: AddBookCellID, for: indexPath) as! AddBookTableViewCell
+            if (bookCell == nil)  {
+                bookCell = AddBookTableViewCell(style: .default, reuseIdentifier: AddBookCellID)
             }
             if type == .addBook_custom {
-                cell.setData(rowNum: indexPath.row)
+                //手动添加
+                bookCell.setData(rowNum: indexPath.row)
+
             } else if type == .addBook_scan {
-                cell.setData_scan(model: bookModel, rowNum: indexPath.row)
-            } else {
-                cell.setData(rowNum: indexPath.row)
+                //扫描添加
+                bookCell.setData_scan(model: bookModel, rowNum: indexPath.row)
+
+            } else if type == .detail{
+                //详情
+                bookCell.setData_scan(model: requestManger.getBookModel(), rowNum: indexPath.row)
+
             }
-            return cell
+
+            return bookCell
         } else {
-            var cell : AddBook_CatTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: AddBook_CatCellID, for: indexPath) as! AddBook_CatTableViewCell
-            if (cell == nil)  {
-                cell = AddBook_CatTableViewCell(style: .default, reuseIdentifier: AddBook_CatCellID)
+            catCell  = tableView.dequeueReusableCell(withIdentifier: AddBook_CatCellID, for: indexPath) as! AddBook_CatTableViewCell
+            if (catCell == nil)  {
+                catCell = AddBook_CatTableViewCell(style: .default, reuseIdentifier: AddBook_CatCellID)
             }
-            return cell
+            if type == .detail {
+                catCell.isUserInteractionEnabled = false
+
+            } else if type == .addBook_scan {
+                catCell.setTitle(name: "默认分类")
+            }
+            return catCell
         }
 
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_HEIGHT, height: ip6(180)))
+        bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: ip6(20), width: ip6(100), height: ip6(150)))
+        if self.type == .addBook_scan {
+            bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+        } else if type == .detail {
+            if let url = requestManger.getBookModel().cover_img {
+                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
+            }
+
+        }
+        bookImageView.isUserInteractionEnabled = true
+        self.view.addSubview(bookImageView)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
+        bookImageView.addGestureRecognizer(tap)
+        view.addSubview(bookImageView)
+        return view
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return ip6(180)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < 4 {
             return addBookCellHeight
         } else {
@@ -122,15 +169,19 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
         }
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 4 {
+            self.view.endEditing(true)
             XJLog(message: "选择分类")
             XJLog(message: mainTabelView.frame)
             let vc = SelectCatViewController()
-            vc.fream = mainTabelView.frame
-            vc.selectedCatBlock = {(catName) in
+            vc.fream = CGRect(x: 0, y: ip6(180), width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - ip6(180))
+            weak var weakself = self
+            vc.selectedCatBlock = {(model) in
+                weakself?.catModel = model
+                weakself?.catID = model.id
                 let cell : AddBook_CatTableViewCell = self.mainTabelView.cellForRow(at: IndexPath.init(row: 4, section: 0)) as! AddBook_CatTableViewCell
-                cell.catLabel.text = catName
+                cell.setTitle(name: model.name!)
             }
             self.addChildViewController(vc)
             self.view.addSubview(vc.view)
@@ -153,10 +204,17 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
         })
     }
     //网络代理
-    func requestSucceed() {
-        self.navigationLeftBtnClick()
+    func requestSucceed(type : BookAddApiType) {
+        if type == .add_custom {
+            self.navigationLeftBtnClick()
+        } else if type == .add_isbn{
+            self.navigationLeftBtnClick()
+        } else if type == .getBookInfo{
+
+            self.mainTabelView.reloadData()
+        }
     }
-    func requestFail() {
+    func requestFail(type : BookAddApiType) {
         
     }
     
@@ -170,12 +228,33 @@ class AddBookViewController: BaseViewController,UITableViewDelegate,UITableViewD
     }
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
-        requestManger.delegate = self
         if self.type == .addBook_scan {
-            requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: 0)
+            requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: catID)
+
+
         } else if self.type == .addBook_custom {
 
-        } else {
+        } else if type == .detail {
+            if requestManger.bookModel.douban_id > 0 {
+                //扫描（isbn）书籍
+                self.type = .editBook_scan
+                self.navigationBar_rightBtn_title(title: "确定")
+                self.tableView.isUserInteractionEnabled = true
+                catCell.isUserInteractionEnabled = true
+
+            } else {
+                //自定义添加
+                self.type = .editBook_custom
+                self.navigationBar_rightBtn_title(title: "确定")
+                self.tableView.isUserInteractionEnabled = true
+                catCell.isUserInteractionEnabled = true
+            }
+        } else if type == .editBook_scan {
+            requestManger.addBookRequestByIsbn(isbn: requestManger.getBookModel().isbn, cid: catID)
+
+
+        } else if type == .editBook_custom {
+
 
         }
     }

@@ -12,6 +12,7 @@ typealias StudyBookCellTableViewCellBlock = (_ model : CategoryListModel_list_bo
 class StudyBookCellTableViewCell: UITableViewCell {
     var bookImageView : UIButton!
     var bookClickBlock : StudyBookCellTableViewCellBlock!
+    var bookPresBlock : StudyBookCellTableViewCellBlock!
     var currectModel : CategoryListModel_list!
     var currectModelArr : [CategoryListModel_list_book_list]!
     
@@ -39,7 +40,7 @@ class StudyBookCellTableViewCell: UITableViewCell {
         currectModel = model
         let bookCount_line = 4
         let boardW = ip6(21)
-        XJLog(message: "数据个数\(model.book_list.count)")
+//        XJLog(message: "数据个数\(model.book_list.count)")
         for i in 0..<model.book_list.count {
             
             let subModel = model.book_list[i]
@@ -53,6 +54,11 @@ class StudyBookCellTableViewCell: UITableViewCell {
             bookImageView.tag = i
             bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
             bookImageView.addTarget(self, action: #selector(bookClick(sender:)), for: .touchUpInside)
+
+            let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(ges:)))
+            bookImageView.addGestureRecognizer(tap)
+
+
             self.contentView.addSubview(bookImageView)
         }
         
@@ -82,9 +88,9 @@ class StudyBookCellTableViewCell: UITableViewCell {
         
     }
     func bookClick(sender : UIButton) {
-        XJLog(message: "点击")
         let tagNum = sender.tag
         let model : CategoryListModel_list_book_list = currectModel.book_list[tagNum]
+        XJLog(message: "点击\(tagNum)"+model.title)
         self.bookClickBlock(model)
     }
     
@@ -93,6 +99,12 @@ class StudyBookCellTableViewCell: UITableViewCell {
         let tagNum = sender.tag
         let model : CategoryListModel_list_book_list = currectModelArr[tagNum]
         self.bookClickBlock(model)
+    }
+
+    func longPress(ges : UILongPressGestureRecognizer) {
+        let viewTag = ges.view?.tag
+        let model : CategoryListModel_list_book_list = currectModel.book_list[viewTag!]
+        self.bookPresBlock(model)
     }
     override func prepareForReuse() {
         super.prepareForReuse()

@@ -9,11 +9,11 @@
 import UIKit
 import ObjectMapper
 enum BookAddApiType {
-    case getBookInfo,add_isbn,add_custom
+    case getBookInfo,getBookInfo_ID,add_isbn,add_custom
 }
 protocol BookAddApiViewControllerDelegate: NSObjectProtocol{
-    func requestSucceed() -> Void
-    func requestFail() -> Void
+    func requestSucceed(type : BookAddApiType) -> Void
+    func requestFail(type : BookAddApiType) -> Void
 }
 
 class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDelegate {
@@ -32,7 +32,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     ///   - cid: 分类id
     func addBookRequestByIsbn(isbn:Int,cid:Int) {
         request.delegate = self
-        self.type = .getBookInfo
+        self.type = .add_isbn
         SVPMessageShow.showLoad()
         let url  = book_add_book_api + "type=isbn" + "&isbn=\(isbn)" + "&add=Y" + "&cid=\(cid)" + request.getTokenParameter()
         request.request_api(url: url)
@@ -55,7 +55,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
         let pubdateStr = bookInfo.pubdate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 
         request.delegate = self
-        self.type = .getBookInfo
+        self.type = .add_custom
         SVPMessageShow.showLoad()
         let url  = book_add_book_api + "type=custom"  + "&add=Y" + "&cid=\(bookInfo.cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(bookInfo.pages)" + request.getTokenParameter()
         request.request_api(url: url)
@@ -67,18 +67,45 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     /// - Parameter isbn: 书籍号
     func getBookInfoByIsbn(isbn : Int) {
         request.delegate = self
-        self.type = .add_isbn
+        self.type = .getBookInfo
         SVPMessageShow.showLoad()
         let url  = book_add_book_api + "type=isbn" + "&isbn=\(isbn)" + "&add=N" + request.getTokenParameter()
         request.request_api(url: url)
     }
 
+
+
+    /// 书本详情
+    ///
+    /// - Parameter bookID: 书id
+    func getBookInfoByBookID(bookID : Int) {
+        request.delegate = self
+        self.type = .getBookInfo
+        SVPMessageShow.showLoad()
+        let url  = book_detail_api + "id=\(bookID)"  + request.getTokenParameter()
+        request.request_api(url: url)
+    }
+
+
+    /// 返回书模型
+    ///
+    /// - Returns: <#return value description#>
+    func getBookModel() -> BookModel{
+        if let model = bookModel {
+            return model
+        } else {
+            return BookModel()
+        }
+    }
+
+
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
-        bookModel = Mapper<BookModel>().map(JSON: response as! [String : Any])!
-        SVPMessageShow.showSucess(infoStr: "扫描成功")
+        if self.type ==  .getBookInfo{
+            bookModel = Mapper<BookModel>().map(JSON: response as! [String : Any])!
+        }
         if self.delegate != nil {
-            self.delegate.requestSucceed()
+            self.delegate.requestSucceed(type: self.type)
         }
 
     }

@@ -104,6 +104,11 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
                     vc.hidesBottomBarWhenPushed = true
                     weakSelf?.navigationController?.pushViewController(vc, animated: true)
                 }
+                cell.bookPresBlock = {model in
+
+                    weakSelf?.showBookAleart(model: model)
+
+                }
                 return cell
 
             }
@@ -221,6 +226,35 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         self.tabBarController?.tabBar.isHidden = false
         mainTabelView.frame.size.height = KSCREEN_HEIGHT - headBackView.frame.maxY
         
+    }
+
+
+    func showBookAleart(model : CategoryListModel_list_book_list) {
+        weak var weakSelf = self
+        alertController  = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            //取消
+            weakSelf?.alertController.dismiss(animated: true, completion: {
+
+            })
+        }
+        let delAction = UIAlertAction(title: "删除此书", style: .default) { (action) in
+            //删除此书
+
+        }
+        let lookAction = UIAlertAction(title: "查看详情", style: .default) { (action) in
+            //手动添加
+            let vc : AddBookViewController = AddBookViewController()
+            vc.type = .detail
+            vc.bookID = model.id
+            vc.hidesBottomBarWhenPushed = true
+            weakSelf?.navigationController?.pushViewController(vc, animated: true)
+        }
+
+        weakSelf?.alertController.addAction(cancleAction)
+        weakSelf?.alertController.addAction(delAction)
+        weakSelf?.alertController.addAction(lookAction)
+        self.present((weakSelf?.alertController)!, animated: true, completion: nil)
     }
 
     //添加书籍提示

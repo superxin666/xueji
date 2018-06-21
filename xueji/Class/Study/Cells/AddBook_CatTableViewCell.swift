@@ -40,13 +40,21 @@ class AddBook_CatTableViewCell: UITableViewCell {
         backView.addSubview(arroImageView)
 //
         
-        catLabel = UILabel.getLabel(fream: CGRect(x: titleLabel.frame.maxX, y: ip6(16), width: viewW - titleLabel.frame.maxX - ip6(10), height: ip6(25)), fontSize: 18, text: "分类1", textColor: black_53, textAlignment: .right)
+        catLabel = UILabel.getLabel(fream: CGRect(x: titleLabel.frame.maxX, y: ip6(16), width: viewW - titleLabel.frame.maxX - ip6(10), height: ip6(25)), fontSize: 18, text: "", textColor: black_53, textAlignment: .right)
         backView.addSubview(catLabel)
         
 
         let lineView : UIView = UIView(frame: CGRect(x: 0, y: addBookCellHeight - 1, width: viewW, height: 1))
         lineView.backgroundColor = black_e3e0e0
         backView.addSubview(lineView)
+    }
+
+
+    /// 分类名字赋值
+    ///
+    /// - Parameter name: <#name description#>
+    func setTitle(name : String) {
+        catLabel.text = name
     }
 
 }
