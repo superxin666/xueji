@@ -36,3 +36,5 @@ let book_add_book_api = "/book/add?"
 let book_add_custom_api = "/book/add_custom?"
 /// 详情
 let book_detail_api = "/book/detail?"
+/// 书籍详情 包括分类等信息
+let book_my_detail_api = "/book/my_detail?"

@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 enum BookAddApiType {
-    case getBookInfo,getBookInfo_ID,add_isbn,add_custom
+    case getBookInfo,getMyBookInfo,getBookInfo_ID,add_isbn,add_custom
 }
 protocol BookAddApiViewControllerDelegate: NSObjectProtocol{
     func requestSucceed(type : BookAddApiType) -> Void
@@ -20,6 +20,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     weak var delegate :BookAddApiViewControllerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     var bookModel : BookModel!
+    var myBookModel : MyBookDetailModel!
     var type : BookAddApiType!
 
 
@@ -87,6 +88,18 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     }
 
 
+    /// 我的书本详情
+    ///
+    /// - Parameter bookID: <#bookID description#>
+    func getMyBookInfoByBookID(bookID : Int) {
+        request.delegate = self
+        self.type = .getMyBookInfo
+        SVPMessageShow.showLoad()
+        let url  = book_my_detail_api + "id=\(bookID)"  + request.getTokenParameter()
+        request.request_api(url: url)
+    }
+
+
     /// 返回书模型
     ///
     /// - Returns: <#return value description#>
@@ -99,10 +112,24 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     }
 
 
+    /// 返回我的书据模型
+    ///
+    /// - Returns: <#return value description#>
+    func getMyBookModel() -> MyBookDetailModel {
+        if let model = myBookModel {
+            return model
+        } else {
+            return MyBookDetailModel()
+        }
+    }
+
+
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
         if self.type ==  .getBookInfo{
             bookModel = Mapper<BookModel>().map(JSON: response as! [String : Any])!
+        } else if type == .getMyBookInfo{
+            myBookModel = Mapper<MyBookDetailModel>().map(JSON: response as! [String : Any])!
         }
         if self.delegate != nil {
             self.delegate.requestSucceed(type: self.type)

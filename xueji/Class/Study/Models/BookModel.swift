@@ -21,6 +21,8 @@ class BookModel: Mappable {
     var pubdate: String!
     var publisher: String!
     var title: String!
+    var color: String!
+
 
     init() {}
     required init?(map: Map){
@@ -40,7 +42,7 @@ class BookModel: Mappable {
         pubdate <- map["pubdate"]
         publisher <- map["publisher"]
         title <- map["title"]
-
+        color <- map["color"]
     }
 
 }

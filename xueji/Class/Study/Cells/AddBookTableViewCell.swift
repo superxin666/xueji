@@ -47,10 +47,49 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
         titleLabel.text = titleNameArr[rowNum]
     }
 
-    func setData_custom(model : BookModel,rowNum : Int) {
+    func setData_custom(model : MyBookDetailModel,rowNum : Int) {
 
     }
 
+    /// 详情
+    ///
+    /// - Parameters:
+    ///   - model: <#model description#>
+    ///   - rowNum: <#rowNum description#>
+    func setData_detail(model : MyBookDetailModel,rowNum : Int) {
+        titleLabel.text = titleNameArr[rowNum]
+        self.textTextField.tag = rowNum
+        switch rowNum {
+        case 0:
+            //
+            if let title = model.book.title {
+                self.textTextField.text = title
+            }
+        case 1:
+            //
+            if let author_first = model.book.author_first {
+                self.textTextField.text = author_first
+            }
+        case 2:
+            //
+            if let pages = model.book.pages {
+                self.textTextField.text = "\(pages)"
+            }
+        case 3:
+            //
+            if let publisher = model.book.publisher {
+                self.textTextField.text = publisher
+            }
+        default:
+            XJLog(message: "暂无")
+        }
+    }
+
+    /// 扫描
+    ///
+    /// - Parameters:
+    ///   - model: <#model description#>
+    ///   - rowNum: <#rowNum description#>
     func setData_scan(model : BookModel,rowNum : Int) {
         titleLabel.text = titleNameArr[rowNum]
         self.textTextField.tag = rowNum

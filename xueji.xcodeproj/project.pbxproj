@@ -41,6 +41,8 @@
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */; };
 		212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E6A2020AE66EC00158940 /* AddAimViewController.swift */; };
+		2130809120DB5AB400FD323C /* MyBookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809020DB5AB400FD323C /* MyBookDetailModel.swift */; };
+		2130809320DB5B4D00FD323C /* CategoryMolde.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809220DB5B4D00FD323C /* CategoryMolde.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
 		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
@@ -169,6 +171,8 @@
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
 		212E6A2020AE66EC00158940 /* AddAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimViewController.swift; sourceTree = "<group>"; };
+		2130809020DB5AB400FD323C /* MyBookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookDetailModel.swift; sourceTree = "<group>"; };
+		2130809220DB5B4D00FD323C /* CategoryMolde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMolde.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				21014B502008581E002CB437 /* CategoryListModel.swift */,
 				21376690203FEDAE000CBCE6 /* StudyListModel.swift */,
 				2180726220D668DD00CB9904 /* BookModel.swift */,
+				2130809020DB5AB400FD323C /* MyBookDetailModel.swift */,
+				2130809220DB5B4D00FD323C /* CategoryMolde.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1035,6 +1041,7 @@
 				2101987720692BFC00907EEC /* ReviewApiMangerViewController.swift in Sources */,
 				21DCA39F1FA724F60094DCFE /* AppDelegate.swift in Sources */,
 				2146A84820B2C2D300903B9D /* DateStepTableViewCell.swift in Sources */,
+				2130809320DB5B4D00FD323C /* CategoryMolde.swift in Sources */,
 				21EF380220C54A150015EF7F /* WeekAimDetailModel.swift in Sources */,
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				2125552B20BAAB6300371FDB /* WeekAimDetailDataManger.swift in Sources */,
@@ -1069,6 +1076,7 @@
 				2146A84520B2C2C900903B9D /* AddAimView.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				212447232002479D0038F204 /* SetInfoViewController.swift in Sources */,
+				2130809120DB5AB400FD323C /* MyBookDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -68,7 +68,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         } else if self.type == .detail {
             self.navigationBar_leftBtn_title(title: "返回")
             self.navigationBar_rightBtn_title(title: "编辑")
-            requestManger.getBookInfoByBookID(bookID: self.bookID)
+            requestManger.getMyBookInfoByBookID(bookID: self.bookID)
 
         }
 
@@ -116,10 +116,9 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
 
             } else if type == .detail{
                 //详情
-                bookCell.setData_scan(model: requestManger.getBookModel(), rowNum: indexPath.row)
+                bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
 
             }
-
             return bookCell
         } else {
             catCell  = tableView.dequeueReusableCell(withIdentifier: AddBook_CatCellID, for: indexPath) as! AddBook_CatTableViewCell
@@ -128,7 +127,10 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             }
             if type == .detail {
                 catCell.isUserInteractionEnabled = false
-
+                if let name = self.requestManger.getMyBookModel().category.name {
+                    catCell.setTitle(name: name)
+                }
+                
             } else if type == .addBook_scan {
                 catCell.setTitle(name: "默认分类")
             }
@@ -143,7 +145,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         if self.type == .addBook_scan {
             bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
         } else if type == .detail {
-            if let url = requestManger.getBookModel().cover_img {
+            if let url = requestManger.getMyBookModel().book.cover_img {
                 bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
             }
 
@@ -180,6 +182,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             vc.selectedCatBlock = {(model) in
                 weakself?.catModel = model
                 weakself?.catID = model.id
+                XJLog(message: "选择分类id---\(weakself?.catID)")
                 let cell : AddBook_CatTableViewCell = self.mainTabelView.cellForRow(at: IndexPath.init(row: 4, section: 0)) as! AddBook_CatTableViewCell
                 cell.setTitle(name: model.name!)
             }
@@ -208,8 +211,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         if type == .add_custom {
             self.navigationLeftBtnClick()
         } else if type == .add_isbn{
+
             self.navigationLeftBtnClick()
-        } else if type == .getBookInfo{
+        } else if type == .getMyBookInfo{
+            if let id = self.requestManger.getMyBookModel().category.id {
+                catID = id
+            }
 
             self.mainTabelView.reloadData()
         }
@@ -235,7 +242,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         } else if self.type == .addBook_custom {
 
         } else if type == .detail {
-            if requestManger.bookModel.douban_id > 0 {
+            if requestManger.getMyBookModel().book.douban_id > 0 {
                 //扫描（isbn）书籍
                 self.type = .editBook_scan
                 self.navigationBar_rightBtn_title(title: "确定")
@@ -250,7 +257,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 catCell.isUserInteractionEnabled = true
             }
         } else if type == .editBook_scan {
-            requestManger.addBookRequestByIsbn(isbn: requestManger.getBookModel().isbn, cid: catID)
+            requestManger.addBookRequestByIsbn(isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
 
 
         } else if type == .editBook_custom {
