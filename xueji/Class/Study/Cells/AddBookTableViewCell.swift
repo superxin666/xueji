@@ -14,7 +14,20 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
     var textTextField : UITextField!
     var textStr : String!
     let titleNameArr : [String] = ["标 题","作 者","页 数","出版社"]
-    
+
+    /// 标题名字
+    var titleStr = ""
+
+    /// 作者名字
+    var publisher = ""
+
+    /// 页数
+    var pages = ""
+
+    /// 出版社
+    var publish = ""
+
+
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,7 +45,6 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
         self.contentView.addSubview(titleLabel)
         
         textTextField = UITextField(frame: CGRect(x: titleLabel.frame.maxX + ip6(30), y: ip6(17), width: KSCREEN_WIDTH - ip6(36) - titleLabel.frame.maxX  - ip6 (30), height: ip6(25)))
-        textTextField.placeholder = "必填"
         textTextField.font = xj_fzFontMedium(ip6(18))
         textTextField.textColor = black_53
         textTextField.delegate = self
@@ -42,15 +54,50 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
         lineView.backgroundColor = black_e3e0e0
         self.contentView.addSubview(lineView)
     }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textTextField.tag == 0 {
+            //标题
+            if let str = textTextField.text {
+                titleStr = str
+            }
+            XJLog(message: titleStr)
+        } else if textTextField.tag == 1 {
+            //作者
+            if let str = textTextField.text {
+                publisher = str
+            }
+            XJLog(message: publisher)
+
+        } else if textTextField.tag == 2 {
+            //页数
+            if let str = textTextField.text {
+                pages = str
+            }
+            XJLog(message: pages)
+
+        } else {
+            //出版社
+            if let str = textTextField.text {
+                publish = str
+            }
+            XJLog(message: publish)
+        }
+        
+    }
+
+
+
     func setData(rowNum : Int)  {
         titleLabel.text = titleNameArr[rowNum]
+        textTextField.tag = rowNum
+        if rowNum == 0 {
+            textTextField.placeholder = "必填"
+        } else if rowNum == 2 {
+            textTextField.keyboardType = .numberPad
+        } else {
+            textTextField.keyboardType = .default
+        }
     }
-
-    func setData_custom(model : MyBookDetailModel,rowNum : Int) {
-
-    }
-
     /// 详情
     ///
     /// - Parameters:

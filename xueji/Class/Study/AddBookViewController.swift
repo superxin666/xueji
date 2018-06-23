@@ -51,6 +51,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+
     }
     
     //MARK:life circle
@@ -86,9 +87,6 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         mainTabelView.showsHorizontalScrollIndicator = false
         mainTabelView.register(AddBookTableViewCell.self, forCellReuseIdentifier: AddBookCellID)
         mainTabelView.register(AddBook_CatTableViewCell.self, forCellReuseIdentifier: AddBook_CatCellID)
-        if self.type == .detail {
-            self.mainTabelView.isUserInteractionEnabled = false
-        }
         self.tableView = mainTabelView
         
 
@@ -118,6 +116,14 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 //详情
                 bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
 
+            } else if type == .editBook_custom {
+                //手动 编辑
+                bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
+                bookCell.isUserInteractionEnabled = true
+            } else if type == .editBook_scan {
+                //扫描 编辑
+                bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
+                bookCell.isUserInteractionEnabled = false
             }
             return bookCell
         } else {
@@ -130,9 +136,10 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 if let name = self.requestManger.getMyBookModel().category.name {
                     catCell.setTitle(name: name)
                 }
-                
             } else if type == .addBook_scan {
                 catCell.setTitle(name: "默认分类")
+            } else if type == .editBook_scan || type == .editBook_custom {
+                catCell.isUserInteractionEnabled = true
             }
             return catCell
         }
@@ -148,14 +155,17 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             if let url = requestManger.getMyBookModel().book.cover_img {
                 bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
             }
-
+        } else if type == .addBook_custom {
+            bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "addbookcover"))
         }
         bookImageView.isUserInteractionEnabled = true
         self.view.addSubview(bookImageView)
+        if self.type == .addBook_custom {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
+            bookImageView.addGestureRecognizer(tap)
+            view.addSubview(bookImageView)
+        }
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
-        bookImageView.addGestureRecognizer(tap)
-        view.addSubview(bookImageView)
         return view
     }
 
@@ -182,7 +192,6 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             vc.selectedCatBlock = {(model) in
                 weakself?.catModel = model
                 weakself?.catID = model.id
-                XJLog(message: "选择分类id---\(weakself?.catID)")
                 let cell : AddBook_CatTableViewCell = self.mainTabelView.cellForRow(at: IndexPath.init(row: 4, section: 0)) as! AddBook_CatTableViewCell
                 cell.setTitle(name: model.name!)
             }
@@ -209,10 +218,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     //网络代理
     func requestSucceed(type : BookAddApiType) {
         if type == .add_custom {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: FLISHDATA), object: nil)
             self.navigationLeftBtnClick()
         } else if type == .add_isbn{
-
+            NotificationCenter.default.post(name: Notification.Name(rawValue: FLISHDATA), object: nil)
             self.navigationLeftBtnClick()
+
         } else if type == .getMyBookInfo{
             if let id = self.requestManger.getMyBookModel().category.id {
                 catID = id
@@ -228,8 +239,10 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     // MARK: event response
     override func navigationLeftBtnClick() {
         if self.type == .addBook_scan {
+            
             self.navigationController?.popToRootViewController(animated: true)
         } else {
+
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -240,25 +253,27 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
 
 
         } else if self.type == .addBook_custom {
+            self.view.endEditing(true)
+            XJLog(message: bookCell.titleStr)
+            
+            requestManger.addBookByCustom(cid: catID, title: bookCell.titleStr, img: "", author: bookCell.publisher, publisher: bookCell.publish, pubdate: "", pages: bookCell.pages)
 
         } else if type == .detail {
             if requestManger.getMyBookModel().book.douban_id > 0 {
                 //扫描（isbn）书籍
                 self.type = .editBook_scan
                 self.navigationBar_rightBtn_title(title: "确定")
-                self.tableView.isUserInteractionEnabled = true
-                catCell.isUserInteractionEnabled = true
+                mainTabelView.reloadData()
+
 
             } else {
                 //自定义添加
                 self.type = .editBook_custom
                 self.navigationBar_rightBtn_title(title: "确定")
-                self.tableView.isUserInteractionEnabled = true
-                catCell.isUserInteractionEnabled = true
+                mainTabelView.reloadData()
             }
         } else if type == .editBook_scan {
             requestManger.addBookRequestByIsbn(isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
-
 
         } else if type == .editBook_custom {
 

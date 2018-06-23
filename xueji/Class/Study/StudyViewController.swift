@@ -11,6 +11,7 @@ let headHeight = ip6(140)
 let itemWidth :CGFloat = ip6(65)
 let itemHeight :CGFloat = ip6(100)
 let StudyBookCellID = "StudyBookCell_ID"
+let FLISHDATA = "flishdata"
 class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate,BookDelApiMangerDelegate{
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
@@ -43,6 +44,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        NotificationCenter.default.addObserver(self, selector: #selector(reflishData), name: NSNotification.Name(rawValue: FLISHDATA), object: nil)
         self.setUpNavigation_normal()
         self.creatTableView()
         requestManger.delegate = self
@@ -188,8 +190,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
     /// 刷新页面
     func reflishData() {
-        
-
+        requestManger.reflishData()
     }
     
     
@@ -311,6 +312,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
             //手动添加
             let vc : AddBookViewController = AddBookViewController()
             vc.hidesBottomBarWhenPushed = true
+            vc.type = .addBook_custom
             weakSelf?.navigationController?.pushViewController(vc, animated: true)
             
         }

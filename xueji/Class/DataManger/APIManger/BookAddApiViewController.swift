@@ -44,21 +44,21 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     /// 添加书籍 手动
     ///
     /// - Parameter bookInfo: 参数元
-    func addBookByCustom(bookInfo : (cid : Int,title:String,img:String,author:String,publisher:String,pubdate:String,pages:Int)) {
-        if bookInfo.title.count > 0 {
+    func addBookByCustom(cid : Int,title:String,img:String,author:String,publisher:String,pubdate:String,pages:String) {
+        if !(title.count > 0) {
             SVPMessageShow.showErro(infoStr: "请输入标题")
             return
         }
-        let titleStr = bookInfo.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let imgStr = bookInfo.img.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let authorStr = bookInfo.author.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let publisherStr = bookInfo.publisher.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let pubdateStr = bookInfo.pubdate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let titleStr = title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imgStr = img.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let authorStr = author.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let publisherStr = publisher.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let pubdateStr = pubdate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 
         request.delegate = self
         self.type = .add_custom
         SVPMessageShow.showLoad()
-        let url  = book_add_book_api + "type=custom"  + "&add=Y" + "&cid=\(bookInfo.cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(bookInfo.pages)" + request.getTokenParameter()
+        let url  = book_add_book_api + "type=custom"  + "&add=Y" + "&cid=\(cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(pages)" + request.getTokenParameter()
         request.request_api(url: url)
     }
 
