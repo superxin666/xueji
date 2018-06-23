@@ -136,8 +136,9 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     /// - Returns: <#return value description#>
     func getRowHeight(section : Int) -> CGFloat {
         let bookNum = self.getBookArrCount(index: section)
+        XJLog(message: "获取高度\(bookNum)")
         let imageH = ip6(100)
-        let height = (CGFloat((bookNum/4))+1) * (imageH + ip6(16))
+        let height = (CGFloat((bookNum/5))+1) * (imageH + ip6(16))
         return height
     }
 
@@ -203,6 +204,13 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
             return 0
         }
     }
+
+
+    func removeBookModel(model : CategoryListModel_list_book_list) {
+        
+    }
+
+
     
     /// 获取最近学习数组
     ///

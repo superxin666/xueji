@@ -38,3 +38,5 @@ let book_add_custom_api = "/book/add_custom?"
 let book_detail_api = "/book/detail?"
 /// 书籍详情 包括分类等信息
 let book_my_detail_api = "/book/my_detail?"
+/// 删除书籍
+let book_remove_api = "/book/remove?"

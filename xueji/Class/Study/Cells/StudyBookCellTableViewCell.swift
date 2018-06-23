@@ -7,7 +7,9 @@
 //  studyVC tableViewcell
 
 import UIKit
-typealias StudyBookCellTableViewCellBlock = (_ model : CategoryListModel_list_book_list)->()
+typealias StudyBookCellTableViewCellBlock = (_ model : CategoryListModel_list_book_list,_ catModel:CategoryListModel_list)->()
+typealias DelBookCellTableViewCellBlock = (_ tag : Int,_ indexPath:IndexPath)->()
+
 
 class StudyBookCellTableViewCell: UITableViewCell {
     var bookImageView : UIButton!
@@ -15,7 +17,8 @@ class StudyBookCellTableViewCell: UITableViewCell {
     var bookPresBlock : StudyBookCellTableViewCellBlock!
     var currectModel : CategoryListModel_list!
     var currectModelArr : [CategoryListModel_list_book_list]!
-    
+
+
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
        super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,7 +38,7 @@ class StudyBookCellTableViewCell: UITableViewCell {
     /// 分类列表
     ///
     /// - Parameter model: <#model description#>
-    func setUpUI(model : CategoryListModel_list) {
+    func setUpUI(model: CategoryListModel_list,indexPath : IndexPath) {
         //
         currectModel = model
         let bookCount_line = 4
@@ -91,21 +94,23 @@ class StudyBookCellTableViewCell: UITableViewCell {
         let tagNum = sender.tag
         let model : CategoryListModel_list_book_list = currectModel.book_list[tagNum]
         XJLog(message: "点击\(tagNum)"+model.title)
-        self.bookClickBlock(model)
+        self.bookClickBlock(model,currectModel)
     }
     
     func bookClick_recent(sender : UIButton) {
         XJLog(message: "点击")
         let tagNum = sender.tag
         let model : CategoryListModel_list_book_list = currectModelArr[tagNum]
-        self.bookClickBlock(model)
+        self.bookClickBlock(model,currectModel)
     }
 
     func longPress(ges : UILongPressGestureRecognizer) {
         let viewTag = ges.view?.tag
         let model : CategoryListModel_list_book_list = currectModel.book_list[viewTag!]
-        self.bookPresBlock(model)
+        self.bookPresBlock(model,currectModel)
+
     }
+
     override func prepareForReuse() {
         super.prepareForReuse()
     }

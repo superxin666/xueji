@@ -11,7 +11,7 @@ let headHeight = ip6(140)
 let itemWidth :CGFloat = ip6(65)
 let itemHeight :CGFloat = ip6(100)
 let StudyBookCellID = "StudyBookCell_ID"
-class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate{
+class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,StudyApiMangerViewControllerDelegate,BookDelApiMangerDelegate{
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
     var mainTabelView : UITableView!//
@@ -21,6 +21,15 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     var bottomBtn : UIButton!//底部编辑按钮
     /// 分类数据请求管理
     var requestManger : StudyApiMangerViewController = StudyApiMangerViewController()
+
+    /// 删除书籍请求
+    var delBookReuqestManger : BookDelApiManger = BookDelApiManger()
+    var catModel_del : CategoryListModel_list!
+    var bookModel_del : CategoryListModel_list_book_list!
+
+
+
+
     // MARK: - lifeCirlce
     override func viewWillDisappear(_ animated: Bool) {
         requestManger.resetPage()
@@ -37,6 +46,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         self.setUpNavigation_normal()
         self.creatTableView()
         requestManger.delegate = self
+        delBookReuqestManger.delegate = self
         self.getData()
     }
     
@@ -85,7 +95,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
             if indexPath.section == 0 {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
                 cell.setUpUI_recent(arr: requestManger.recent_learnListArr)
-                cell.bookClickBlock = {model in
+                cell.bookClickBlock = {model,catModel in
                     let vc = LearnViewController()
                     vc.model = model
                     vc.hidesBottomBarWhenPushed = true
@@ -95,19 +105,17 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
             } else {
                 let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
-                let model = requestManger.getModel(index: indexPath.section - 1)
-                cell.setUpUI(model: model)
-
-                cell.bookClickBlock = {model in
+                let model  = requestManger.getModel(index:indexPath.section - 1)
+                cell.setUpUI(model: model, indexPath: indexPath)
+                
+                cell.bookClickBlock = {model,catModel in
                     let vc = LearnViewController()
                     vc.model = model
                     vc.hidesBottomBarWhenPushed = true
                     weakSelf?.navigationController?.pushViewController(vc, animated: true)
                 }
-                cell.bookPresBlock = {model in
-
-                    weakSelf?.showBookAleart(model: model)
-
+                cell.bookPresBlock = {model,catModel in
+                    weakSelf?.showBookAleart(model: model, catModel: catModel)
                 }
                 return cell
 
@@ -115,9 +123,9 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
         } else {
             let cell  = StudyBookCellTableViewCell(style: .default, reuseIdentifier: StudyBookCellID)
-            let model = requestManger.getModel(index: indexPath.section)
-            cell.setUpUI(model: model)
-            cell.bookClickBlock = {model in
+            let model  = requestManger.getModel(index:indexPath.section)
+            cell.setUpUI(model: model, indexPath: indexPath)
+            cell.bookClickBlock = {model,catModel in
                 let vc = LearnViewController()
                 vc.model = model
                 vc.hidesBottomBarWhenPushed = true
@@ -166,9 +174,22 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     func requestFail() {
         
     }
+    func requestSucceed_BookDelApi() {
+        requestManger.reflishData()
+    }
+    
+    func requestFail_BookDelApi() {
+
+    }
     // MARK: - net
     func getData() {
         requestManger.listRequest()
+    }
+
+    /// 刷新页面
+    func reflishData() {
+        
+
     }
     
     
@@ -229,7 +250,11 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     }
 
 
-    func showBookAleart(model : CategoryListModel_list_book_list) {
+    /// 长按书籍
+    ///
+    /// - Parameter model: <#model description#>
+    func showBookAleart(model : CategoryListModel_list_book_list,catModel : CategoryListModel_list) {
+
         weak var weakSelf = self
         alertController  = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancleAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
@@ -240,22 +265,26 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         }
         let delAction = UIAlertAction(title: "删除此书", style: .default) { (action) in
             //删除此书
+            weakSelf?.delBookReuqestManger.delRequest(id: model.id)
+
 
         }
         let lookAction = UIAlertAction(title: "查看详情", style: .default) { (action) in
-            //手动添加
+            //查看详情
             let vc : AddBookViewController = AddBookViewController()
             vc.type = .detail
             vc.bookID = model.id
             vc.hidesBottomBarWhenPushed = true
             weakSelf?.navigationController?.pushViewController(vc, animated: true)
+
         }
 
-        weakSelf?.alertController.addAction(cancleAction)
-        weakSelf?.alertController.addAction(delAction)
-        weakSelf?.alertController.addAction(lookAction)
+        self.alertController.addAction(cancleAction)
+        self.alertController.addAction(delAction)
+        self.alertController.addAction(lookAction)
         self.present((weakSelf?.alertController)!, animated: true, completion: nil)
     }
+
 
     //添加书籍提示
     func addBookAleart() {
@@ -301,13 +330,10 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
 
     func login() {
         let vc = LogViewController()
-//        vc.hidesBottomBarWhenPushed = true
-//        self.navigationController?.pushViewController(vc, animated: true)
         let na = UINavigationController(rootViewController: vc)
         self.present(na, animated: true) {
 
         }
-
     }
 
     override func didReceiveMemoryWarning() {
