@@ -9,23 +9,30 @@
 import UIKit
 let AddBookCellID = "AddBookCell_id"
 let AddBook_CatCellID = "AddBook_CatCellID"
+
+protocol AddBookTableViewCellDelegate : NSObjectProtocol {
+    func endInput(contentStr : String,tagNum : Int)
+}
+
+
 class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
+    weak var delegate: AddBookTableViewCellDelegate!
     var titleLabel : UILabel!
     var textTextField : UITextField!
     var textStr : String!
     let titleNameArr : [String] = ["标 题","作 者","页 数","出版社"]
 
-    /// 标题名字
-    var titleStr = ""
-
-    /// 作者名字
-    var publisher = ""
-
-    /// 页数
-    var pages = ""
-
-    /// 出版社
-    var publish = ""
+//    /// 标题名字
+//    var titleStr = ""
+//
+//    /// 作者名字
+//    var publisher = ""
+//
+//    /// 页数
+//    var pages = ""
+//
+//    /// 出版社
+//    var publish = ""
 
 
     
@@ -55,34 +62,42 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
         self.contentView.addSubview(lineView)
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textTextField.tag == 0 {
-            //标题
-            if let str = textTextField.text {
-                titleStr = str
+        if (delegate != nil) {
+            if let ste = textField.text {
+                self.delegate.endInput(contentStr: textField.text!, tagNum: textField.tag)
+            } else {
+                self.delegate.endInput(contentStr: "", tagNum: textField.tag)
             }
-            XJLog(message: titleStr)
-        } else if textTextField.tag == 1 {
-            //作者
-            if let str = textTextField.text {
-                publisher = str
-            }
-            XJLog(message: publisher)
 
-        } else if textTextField.tag == 2 {
-            //页数
-            if let str = textTextField.text {
-                pages = str
-            }
-            XJLog(message: pages)
-
-        } else {
-            //出版社
-            if let str = textTextField.text {
-                publish = str
-            }
-            XJLog(message: publish)
         }
-        
+//        if textTextField.tag == 0 {
+//            //标题
+//            if let str = textTextField.text {
+//                titleStr = str
+//            }
+//            XJLog(message: titleStr)
+//        } else if textTextField.tag == 1 {
+//            //作者
+//            if let str = textTextField.text {
+//                publisher = str
+//            }
+//            XJLog(message: publisher)
+//
+//        } else if textTextField.tag == 2 {
+//            //页数
+//            if let str = textTextField.text {
+//                pages = str
+//            }
+//            XJLog(message: pages)
+//
+//        } else {
+//            //出版社
+//            if let str = textTextField.text {
+//                publish = str
+//            }
+//            XJLog(message: publish)
+//        }
+
     }
 
 
@@ -92,6 +107,7 @@ class AddBookTableViewCell: UITableViewCell,UITextFieldDelegate {
         textTextField.tag = rowNum
         if rowNum == 0 {
             textTextField.placeholder = "必填"
+            textTextField.keyboardType = .default
         } else if rowNum == 2 {
             textTextField.keyboardType = .numberPad
         } else {

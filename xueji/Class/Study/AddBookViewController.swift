@@ -19,7 +19,7 @@ enum AddBookViewController_type {
     case editBook_scan//编辑 扫描添加(isbn)的书籍
 }
 
-class AddBookViewController: BaseTableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BookAddApiViewControllerDelegate {
+class AddBookViewController: BaseTableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BookAddApiViewControllerDelegate,AddBookTableViewCellDelegate {
 
     var bookImageView : UIImageView!//书封面
     var mainTabelView : UITableView!//
@@ -32,7 +32,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
 
 
     /// 书籍名字
-    var titleStr: String!
+//    var titleStr: String!
     /// 默认为 详情
     var type : AddBookViewController_type = .detail
     /// 书的数据模型  扫描添加
@@ -46,6 +46,18 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     /// 分类id 添加书籍（默认为0）  编辑书籍
     var catID = 0
 
+
+    /// 标题名字
+    var titleStr = ""
+
+    /// 作者名字
+    var publisher = ""
+
+    /// 页数
+    var pages = ""
+
+    /// 出版社
+    var publish = ""
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +113,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < 4 {
             bookCell  = tableView.dequeueReusableCell(withIdentifier: AddBookCellID, for: indexPath) as! AddBookTableViewCell
+            bookCell.delegate = self
             if (bookCell == nil)  {
                 bookCell = AddBookTableViewCell(style: .default, reuseIdentifier: AddBookCellID)
             }
@@ -235,6 +248,28 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     func requestFail(type : BookAddApiType) {
         
     }
+
+    func endInput(contentStr: String, tagNum: Int) {
+        if tagNum == 0 {
+            //标题
+            titleStr = contentStr
+            XJLog(message: titleStr)
+        } else if tagNum == 1 {
+            //作者
+            publisher = contentStr
+            XJLog(message: publisher)
+
+        } else if tagNum == 2 {
+            //页数
+            pages = contentStr
+            XJLog(message: pages)
+
+        } else {
+            //出版社
+            publish = contentStr
+            XJLog(message: publish)
+        }
+    }
     
     // MARK: event response
     override func navigationLeftBtnClick() {
@@ -254,9 +289,8 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
 
         } else if self.type == .addBook_custom {
             self.view.endEditing(true)
-            XJLog(message: bookCell.titleStr)
-            
-            requestManger.addBookByCustom(cid: catID, title: bookCell.titleStr, img: "", author: bookCell.publisher, publisher: bookCell.publish, pubdate: "", pages: bookCell.pages)
+
+            requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
 
         } else if type == .detail {
             if requestManger.getMyBookModel().book.douban_id > 0 {
