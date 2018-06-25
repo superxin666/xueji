@@ -76,15 +76,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         if self.type == .addBook_custom || self.type == .addBook_scan {
             self.navigationBar_rightBtn_title(title: "保存")
             self.navigationBar_leftBtn_title(title: "取消")
-        } else if self.type == .editBook_custom || self.type == .editBook_scan{
-
-        } else if self.type == .detail {
+        }  else if self.type == .detail {
             self.navigationBar_leftBtn_title(title: "返回")
             self.navigationBar_rightBtn_title(title: "编辑")
             requestManger.getMyBookInfoByBookID(bookID: self.bookID)
 
         }
-
         self.creatUI()
     }
 
@@ -128,7 +125,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             } else if type == .detail{
                 //详情
                 bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
-
+                bookCell.isUserInteractionEnabled = false
             } else if type == .editBook_custom {
                 //手动 编辑
                 bookCell.setData_detail(model: requestManger.getMyBookModel(), rowNum: indexPath.row)
@@ -283,13 +280,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     }
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
+        self.view.endEditing(true)
         if self.type == .addBook_scan {
             requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: catID)
 
 
         } else if self.type == .addBook_custom {
-            self.view.endEditing(true)
-
             requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
 
         } else if type == .detail {
@@ -304,13 +300,19 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 //自定义添加
                 self.type = .editBook_custom
                 self.navigationBar_rightBtn_title(title: "确定")
+                titleStr = requestManger.getMyBookModel().book.title!
+                publisher = requestManger.getMyBookModel().book.author_first!
+                publish = requestManger.getMyBookModel().book.publisher!
+                pages = "\(requestManger.getMyBookModel().book.pages!)"
+                catID = requestManger.getMyBookModel().category.id!
+
                 mainTabelView.reloadData()
             }
         } else if type == .editBook_scan {
             requestManger.addBookRequestByIsbn(isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
 
         } else if type == .editBook_custom {
-
+            requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
 
         }
     }
