@@ -149,6 +149,20 @@ extension String {
         return dfmatter2.string(from: date!)
     }
 
+    /// 获取当前时间
+    ///
+    /// - Returns: <#return value description#>
+    static func xj_getDate_now() -> (time1 : String,time2 : String) {
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM-dd"
+        let str = dfmatter.string(from: Date())
+
+        
+        dfmatter.dateFormat="HH:mm"
+        let str2 = dfmatter.string(from: Date())
+        return (str,str2)
+    }
+
 
     /// 获取月份
     ///
@@ -259,25 +273,25 @@ extension String {
     ///
     /// - Parameter sencond: <#sencond description#>
     /// - Returns: <#return value description#>
-    static func getCountTime(sencond : Int)->String {
+    static func getCountTime(sencond : Int)->(timeStr : String,timeStr2 : String) {
         let min = 60
         let hour = 60 * 6
-        var timStr = ""
 
+
+
+        var timStr = ""
         var homeTimStr = "00"
         var minTimStr = "00"
-
+        var sencondTimStr = "00"
 
         let num = sencond/hour
         XJLog(message: "\(num)")
-
         //小时
-        if num > 10 {
+        if num >= 10 {
             homeTimStr = "\(num)"
         } else {
             homeTimStr = "0\(num)"
         }
-
         //分钟
         let num3 = (sencond - num * hour) / min
 
@@ -288,8 +302,20 @@ extension String {
             minTimStr = "0\(num3)"
         }
 
-        timStr = "\(homeTimStr):\(minTimStr)"
-        return timStr
+        //秒钟
+        let num4 = (sencond - num * hour - num3 * min)
+
+        XJLog(message: "\(num4)")
+        if num4 >= 10 {
+            sencondTimStr = "\(num4)"
+        } else {
+            sencondTimStr = "0\(num4)"
+        }
+
+        timStr = "\(homeTimStr):\(minTimStr):\(sencondTimStr)"
+        let timeStr2 = "\(homeTimStr)h\(minTimStr)m"
+
+        return (timStr,timeStr2)
     }
 
 

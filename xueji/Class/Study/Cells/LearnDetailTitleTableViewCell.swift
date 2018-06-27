@@ -66,26 +66,29 @@ class LearnDetailTitleTableViewCell: UITableViewCell {
         contentLabel.text = contentStr
     }
 
-    func setData_date() {
+    func setData_date(timeStr : String) {
         titleLabel.text = "日       期"
-        contentLabel.text = "2017-09-01"
+        contentLabel.text = timeStr
     }
-    func setData_time()  {
+    func setData_time(timeStr : String)  {
         titleLabel.text = "学习时间"
-        contentLabel.text = "3 h 40m"
+        contentLabel.text = timeStr
     }
 
     func setData_firstTime(timeStr  : String) {
         contentLabel.frame = CGRect(x: titleLabel.frame.maxX + ip6(10) , y: ip6(10), width: KSCREEN_WIDTH - ip6(40) - titleLabel.frame.maxX -  ip6(40),height: ip6(20))
         contentLabel.text = timeStr
+        contentLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
 
         titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0xE7E5E5)
         titleLabel.text = "首次学习时间"
     }
     func setData_firstTime_enble() {
         titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
+        contentLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
     }
     func setData_firstTime_unenble() {
         titleLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0xE7E5E5)
+        contentLabel.textColor = UIColor.xj_colorFromRGB(rgbValue: 0xE7E5E5)
     }
 }

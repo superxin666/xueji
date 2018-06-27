@@ -78,6 +78,7 @@
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
+		2160FF3320E09ACD00739A45 /* LearnLogDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
 		2180726120D6435B00CB9904 /* WeekAimValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */; };
 		2180726320D668DD00CB9904 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180726220D668DD00CB9904 /* BookModel.swift */; };
@@ -211,6 +212,7 @@
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
+		2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLogDataManger.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
 		2180726020D6435B00CB9904 /* WeekAimValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAimValueFormatter.swift; sourceTree = "<group>"; };
 		2180726220D668DD00CB9904 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 				2125552820BA917000371FDB /* MineDataManger.swift */,
 				2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */,
 				210ADD5020C6B691005A3B96 /* AddAimDataManger.swift */,
+				2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */,
 			);
 			path = APIManger;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */,
 				2125552B20BAAB6300371FDB /* WeekAimDetailDataManger.swift in Sources */,
 				2185B916200122D70038847E /* RegistViewController.swift in Sources */,
+				2160FF3320E09ACD00739A45 /* LearnLogDataManger.swift in Sources */,
 				212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */,
 				2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */,
 				2115B1212001E8D1000CB24A /* ReSetPWView.swift in Sources */,

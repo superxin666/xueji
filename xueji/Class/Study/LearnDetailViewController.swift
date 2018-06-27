@@ -8,24 +8,37 @@
 
 import UIKit
 
-class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableViewCellDelegate,LearnDetailPageTableViewCellDelegate {
+class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableViewCellDelegate,LearnDetailPageTableViewCellDelegate,LearnLogDataMangerDelegate {
 
     /// 数据模型
     var model  : CategoryListModel_list_book_list!
 
+    var request : LearnLogDataManger = LearnLogDataManger()
+
+
     /// 学习时间
     var timeNum : Int!
-
-
+    /// 时间显示
+    var timeStr : String!
 
     /// 是否加入复习
     var isNotice : Bool = false
 
     /// 首次学习时间
-    var noticeTimeStr : String = ""
+    var noticeTimeStrTuple : (time1 : String,time2 : String)!
 
     /// 备注
     var noticeStr : String = ""
+
+    var bPage : String!
+
+    var ePage : String!
+
+    var totlePage : String!
+
+    var tolPage : Int!
+
+
 
 
     override func viewDidLoad() {
@@ -33,6 +46,7 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        request.delegate = self
         self.navigation_title_fontsize(name: "学习详情", fontsize: 20)
         self.navigationBar_leftBtn_title(title: "取消")
         self.navigationBar_rightBtn_title(title: "保存")
@@ -73,11 +87,11 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
                 return cell
             } else if indexPath.row == 1 {
                 let cell  = LearnDetailTitleTableViewCell(style: .default, reuseIdentifier: LearnDetailTitleTableViewCellID)
-                cell.setData_date()
+                cell.setData_date(timeStr: noticeTimeStrTuple.time1)
                 return cell
             } else {
                 let cell  = LearnDetailTitleTableViewCell(style: .default, reuseIdentifier: LearnDetailTitleTableViewCellID)
-                cell.setData_time()
+                cell.setData_time(timeStr : timeStr)
                 return cell
             }
 
@@ -85,17 +99,29 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
-                cell.setData_start(contentStr: "")
+                if let str = bPage {
+                    cell.setData_start(contentStr: "\(str)")
+                } else {
+                    cell.setData_start(contentStr: "")
+                }
                 cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
-                cell.setData_end(contentStr: "")
+                if let str = ePage {
+                    cell.setData_end(contentStr: "\(str)")
+                } else {
+                    cell.setData_end(contentStr: "")
+                }
                 cell.delegate = self
                 return cell
             } else {
                 let cell  = LearnDetailPageTableViewCell(style: .default, reuseIdentifier: LearnDetailPageTableViewCellID)
-                cell.setData_tolat(contentStr: "")
+                if let str = totlePage {
+                    cell.setData_tolat(contentStr: "\(str)")
+                } else {
+                    cell.setData_tolat(contentStr: "")
+                }
                 cell.delegate = self
                 return cell
             }
@@ -103,7 +129,7 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
         } else {
             if indexPath.row == 0 {
                 let cell  = LearnDetailTitleTableViewCell(style: .default, reuseIdentifier: LearnDetailTitleTableViewCellID)
-                cell.setData_firstTime(timeStr : noticeTimeStr)
+                cell.setData_firstTime(timeStr : noticeTimeStrTuple.time2)
                 
                 if isNotice {
                     cell.setData_firstTime_enble()
@@ -200,17 +226,68 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
 
     func endText(contentStr: String, tagNum: Int) {
 
+        if tagNum == 10 {
+            bPage = contentStr
+            XJLog(message: "输入开始页数" + bPage)
+        } else if tagNum == 11 {
+            ePage = contentStr
+            XJLog(message: "输入结束页数" + ePage)
+        }
+        if let e = ePage, let b = bPage, e.count > 0,b.count > 0 {
+            pageCalculate()
+        }
+
+
     }
 
     func endText_LearnDetailReview(contentStr: String, tagNum: Int) {
         noticeStr = contentStr
     }
+
+    func LearnLogDataSucceed() {
+        self.navigationLeftBtnClick()
+    }
+
+    func LearnLogDataFail() {
+
+    }
+
+    /// 页数计算
+    func pageCalculate() {
+        let cell2 : LearnDetailPageTableViewCell = self.tableView.cellForRow(at:NSIndexPath(row: 2, section: 1) as IndexPath) as! LearnDetailPageTableViewCell
+        var eNum = 0
+        if let str =  ePage,str.count > 0 {
+            eNum = Int(str)!
+        }
+        var bNum = 0
+        if let str =  bPage,str.count > 0 {
+            bNum = Int(str)!
+        }
+
+        tolPage = eNum - bNum + 1
+        cell2.textFiled.text = "\(tolPage!)"
+    }
+
     override func navigationLeftBtnClick() {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
+        self.view.endEditing(true)
+
+        if let e = ePage, let b = bPage, e.count > 0,b.count > 0 {
+            if tolPage > 0 {
+                request.learnRequest(bid: model.id, etime: noticeTimeStrTuple.time1 + " " + noticeTimeStrTuple.time2, mins_count: timeNum/60, bpage: bPage, epage: ePage, review: isNotice,reminder: noticeStr)
+            } else {
+                SVPMessageShow.showErro(infoStr: "请输入正确开始结束页码")
+            }
+
+        } else {
+            SVPMessageShow.showErro(infoStr: "请输入开始或结束页码")
+            return
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

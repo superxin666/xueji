@@ -33,9 +33,11 @@ class LearnViewController: BaseViewController {
 
     var timeNum : Int = 0
 
+    var timeTuple : (timeStr : String,timeStr2 : String)!
+
     deinit {
         NotificationCenter.default.removeObserver(self)
-        time = nil
+        time.invalidate()
     }
 
     override func viewDidLoad() {
@@ -53,35 +55,35 @@ class LearnViewController: BaseViewController {
     func backbview()  {
         XJLog(message: "进入后台")
         if statBtn.isSelected  {
-            statBtn.isSelected = false
-            time.fireDate = Date.distantFuture
+//            statBtn.isSelected = false
+//            time.fireDate = Date.distantFuture
         }
     }
 
-    func addCycleTimer() {
-        time = Timer(timeInterval: 1.0, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: true)
-        RunLoop.main.add(time!, forMode:RunLoopMode.commonModes)
-    }
-
-    func handleTimer (){
-
-        let currentDate = Date(timeIntervalSinceNow: 1)
-
-        //        let currentDate = Date()
-
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateFormat = "HH:mm:ss"
-
-        timeLabel.text = dateFormatter.string(from: currentDate)
-    }
+//    func addCycleTimer() {
+//        time = Timer(timeInterval: 1.0, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: true)
+//        RunLoop.main.add(time!, forMode:RunLoopMode.commonModes)
+//    }
+//
+//    func handleTimer (){
+//
+//        let currentDate = Date(timeIntervalSinceNow: 1)
+//
+//        //        let currentDate = Date()
+//
+//        let dateFormatter = DateFormatter()
+//
+//        dateFormatter.dateFormat = "HH:mm:ss"
+//
+//        timeLabel.text = dateFormatter.string(from: currentDate)
+//    }
 
     func creatUI()  {
         bookImageView = UIImageView(frame: CGRect(x: (KSCREEN_WIDTH - ip6(130))/2, y:LNAVIGATION_HEIGHT + ip6(40), width: ip6(130), height: ip6(200)))
         bookImageView.setImage_kf(imageName: model.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
         self.view.addSubview(bookImageView)
 
-        timeLabel = UILabel.getLabel(fream: CGRect(x: ip6(20), y: bookImageView.frame.maxY + ip6(45), width: KSCREEN_WIDTH - ip6(40), height: ip6(90)), fontSize: 64, text: "00:00", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
+        timeLabel = UILabel.getLabel(fream: CGRect(x: ip6(20), y: bookImageView.frame.maxY + ip6(45), width: KSCREEN_WIDTH - ip6(40), height: ip6(90)), fontSize: 64, text: "00:00:00", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
         self.view.addSubview(timeLabel)
 
         //60*60*50
@@ -106,28 +108,48 @@ class LearnViewController: BaseViewController {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
             XJLog(message: "开始")
-            time = Timer.scheduledTimer(timeInterval: TimeInterval(60), target: self, selector: #selector(timeStart), userInfo: nil, repeats: true)
+            time = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(timeStart), userInfo: nil, repeats: true)
         } else {
             XJLog(message: "暂定")
             time.fireDate = Date.distantFuture
         }
     }
-    func timeStart() {
-//        timeNum = timeNum + 1
 
-        let str = String.getCountTime(sencond: timeNum)
-        timeLabel.text = str
+    /// 开始计时
+    func timeStart() {
+        timeNum = timeNum + 1
+        timeTuple = String.getCountTime(sencond: timeNum)
+        timeLabel.text = timeTuple.timeStr
+    }
+
+
+    /// 结束
+    func stopTimeimg() {
+        time.fireDate = Date.distantFuture
+        time.invalidate()
     }
 
     func restClick()  {
-        timeNum = 0
-    }
-    
-    func doneClick() {
-        let vc = LearnDetailViewController()
-        vc.model = model
+        //
 
-        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+
+    func doneClick() {
+
+        if timeNum < 60 {
+            SVPMessageShow.showErro(infoStr: "记录最短时间为60s")
+            return
+        } else {
+
+            self.stopTimeimg()
+            let vc = LearnDetailViewController()
+            vc.model = model
+            vc.timeNum = timeNum
+            vc.timeStr = timeTuple.timeStr2
+            vc.noticeTimeStrTuple = String.xj_getDate_now()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
 
     }
 

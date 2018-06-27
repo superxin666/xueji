@@ -32,6 +32,12 @@ class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     var conTent :String = ""
 
+//    var bPage : String!
+//
+//    var ePage : String!
+//
+//    var totlePage : String!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -71,6 +77,7 @@ class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
         textFiled = UITextField(frame: CGRect(x: leftTitleLabel.frame.maxX, y: ip6(10), width: ip6(60), height: ip6(20)))
         textFiled.textColor = black_53
         textFiled.delegate = self
+        textFiled.textAlignment = .center
         textFiled.font = xj_fontThin(15)
         backView.addSubview(textFiled)
 
@@ -82,24 +89,51 @@ class LearnDetailPageTableViewCell: UITableViewCell,UITextFieldDelegate {
         lineView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xcccccc)
         backView.addSubview(lineView)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(textInput), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let str = textField.text {
-            conTent = str
-            if let delgate = self.delegate {
-                delgate.endText(contentStr: conTent, tagNum: self.textFiled.tag)
-            }
+    func textInput() {
+
+//        if textFiled.tag == 10 {
+//            bPage = textFiled.text
+//            XJLog(message: "输入开始页数" + textFiled.text!)
+//        } else if textFiled.tag == 11 {
+//            ePage = textFiled.text
+//            XJLog(message: "输入结束页数" + textFiled.text!)
+//        }
+        conTent = textFiled.text!
+        if let delgate = self.delegate {
+            delgate.endText(contentStr: conTent, tagNum: self.textFiled.tag)
         }
+//        self.pageCalculate()
+
     }
+
+
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if let str = textField.text {
+//            conTent = str
+//
+//        } else {
+//            conTent = ""
+//        }
+//        if let delgate = self.delegate {
+//            delgate.endText(contentStr: conTent, tagNum: self.textFiled.tag)
+//        }
+//    }
 
     func setData_start(contentStr : String) {
         self.textFiled.tag = 10
+        self.textFiled.text = contentStr
+        self.textFiled.keyboardType = .numberPad
         titleLabel.text = "开       始"
 
     }
     func setData_end(contentStr : String) {
         self.textFiled.tag = 11
+        self.textFiled.text = contentStr
+        self.textFiled.keyboardType = .numberPad
         titleLabel.text = "结       束"
     }
 
