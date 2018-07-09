@@ -59,6 +59,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     /// 出版社
     var publish = ""
 
+    /// 封皮
+    var bookImageData : Data!
+
+    /// 封皮url
+    var bookImageUrl : String!
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -216,13 +222,14 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         
         //获取选择的编辑后的
         let  image = info[UIImagePickerControllerEditedImage] as! UIImage
+        bookImageData = UIImageJPEGRepresentation(image, 0.1)
+
         //图片控制器退出
         picker.dismiss(animated: true, completion: {
             () -> Void in
             
             //显示图片
             self.bookImageView.image = image
-            
         })
     }
     //网络代理
@@ -240,6 +247,9 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             }
 
             self.mainTabelView.reloadData()
+        } else {
+             NotificationCenter.default.post(name: Notification.Name(rawValue: FLISHDATA), object: nil)
+            self.navigationLeftBtnClick()
         }
     }
     func requestFail(type : BookAddApiType) {
@@ -286,7 +296,31 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
 
 
         } else if self.type == .addBook_custom {
-            requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
+            if bookImageData.count > 0 {
+                //有图片
+                weak var weakself = self
+
+                BaseApiMangerViewController.uploadfile(imgageData: bookImageData, completion: { (data) in
+                    let model : ImageData  = data as! ImageData
+                    if model.code == 0 {
+                        if let urlStr = model.data.url{
+                            weakself?.bookImageUrl = urlStr
+                        } else {
+                            SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                            weakself?.bookImageUrl = ""
+                        }
+                    } else {
+                        SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                        weakself?.bookImageUrl = ""
+                    }
+
+                }) { (erro) in
+                     SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                }
+
+            }
+//            weakself?.requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
+
 
         } else if type == .detail {
             if requestManger.getMyBookModel().book.douban_id > 0 {
@@ -309,10 +343,10 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 mainTabelView.reloadData()
             }
         } else if type == .editBook_scan {
-            requestManger.addBookRequestByIsbn(isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
+            requestManger.editBookRequestByIsbn(bid: bookID, isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
 
         } else if type == .editBook_custom {
-            requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
+            requestManger.editeBookByCustom(bid: bookID, cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
 
         }
     }

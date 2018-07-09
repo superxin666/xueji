@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 enum BookAddApiType {
-    case getBookInfo,getMyBookInfo,getBookInfo_ID,add_isbn,add_custom
+    case getBookInfo,getMyBookInfo,getBookInfo_ID,add_isbn,add_custom,editeBook
 }
 protocol BookAddApiViewControllerDelegate: NSObjectProtocol{
     func requestSucceed(type : BookAddApiType) -> Void
@@ -41,6 +41,21 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     }
 
 
+    /// 编辑书籍 isbn
+    ///
+    /// - Parameters:
+    ///   - isbn: <#isbn description#>
+    ///   - cid: <#cid description#>
+    func editBookRequestByIsbn(bid : Int ,isbn:Int,cid:Int) {
+        request.delegate = self
+        self.type = .editeBook
+        SVPMessageShow.showLoad()
+        let url  = book_add_book_api + "bid=\(bid)" + "&type=isbn" + "&isbn=\(isbn)" + "&add=Y" + "&cid=\(cid)" + request.getTokenParameter()
+        request.request_api(url: url)
+
+    }
+
+
     /// 添加书籍 手动
     ///
     /// - Parameter bookInfo: 参数元
@@ -61,6 +76,36 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
         let url  = book_add_book_api + "type=custom"  + "&add=Y" + "&cid=\(cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(pages)" + request.getTokenParameter()
         request.request_api(url: url)
     }
+
+
+    /// 编辑书籍 手动添加
+    ///
+    /// - Parameters:
+    ///   - cid: <#cid description#>
+    ///   - title: <#title description#>
+    ///   - img: <#img description#>
+    ///   - author: <#author description#>
+    ///   - publisher: <#publisher description#>
+    ///   - pubdate: <#pubdate description#>
+    ///   - pages: <#pages description#>
+    func editeBookByCustom(bid : Int ,cid : Int,title:String,img:String,author:String,publisher:String,pubdate:String,pages:String) {
+        if !(title.count > 0) {
+            SVPMessageShow.showErro(infoStr: "请输入标题")
+            return
+        }
+        let titleStr = title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imgStr = img.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let authorStr = author.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let publisherStr = publisher.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let pubdateStr = pubdate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+
+        request.delegate = self
+        self.type = .editeBook
+        SVPMessageShow.showLoad()
+        let url  = book_add_book_api + "bid=\(bid)" + "&type=custom"  + "&add=Y" + "&cid=\(cid)" + "&title=\(titleStr)" + "&img=\(imgStr)" + "&author=\(authorStr)" + "&publisher=\(publisherStr)" + "&pubdate=\(pubdateStr)" + "&pages=\(pages)" + request.getTokenParameter()
+        request.request_api(url: url)
+    }
+
 
 
     /// 扫描获取书籍信息

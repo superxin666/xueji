@@ -55,6 +55,49 @@ class BaseApiMangerViewController: UIViewController {
         
     }
 
+    static func uploadfile(imgageData:Data, completion : @escaping (_ data : Any) ->(), failure : @escaping (_ error : Any)->()) {
+        //
+
+        XJLog(message:  "上传文件开始")
+        XJLog(message: imgageData.count)
+        let tokenStr = UserDataManger.getLoginIdAndTokenInUD().tokenStr
+        let str = "token=\(tokenStr)"
+        let urlStr = base_api + upload_api + str
+
+
+        var model:ImageData = ImageData()
+
+        let headers = ["content-type":"multipart/form-data"]
+
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imgageData, withName: "img", fileName: "img1", mimeType: "image/jpeg")
+
+        },
+            to: urlStr,headers: headers,
+            encodingCompletion: { encodingResult in
+                XJLog(message: encodingResult)
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        if let json = response.result.value {
+                            XJLog(message: json)
+                            model = Mapper<ImageData>().map(JSON: json as! [String : Any])!
+                            completion(model)
+                        } else {
+                            failure("请求失败")
+                        }
+                    }
+                case .failure(let encodingError):
+                    failure("请求失败")
+                    print(encodingError)
+                }
+        }
+        )
+    }
+
+
+
     func getTokenParameter()->String {
         let tokenStr = UserDataManger.getLoginIdAndTokenInUD().tokenStr
         let str = "&token=\(tokenStr)"

@@ -9,6 +9,8 @@
 import Foundation
 let base_api = "http://47.52.101.29/app1"
 let base_image_api = "http://47.52.101.29"
+
+let upload_api = "/upload/index?"
 //---------------------------------用户
 let login_user_api = "/user/login?"
 let logout_user_api = "/user/logout?"
@@ -16,6 +18,9 @@ let user_data_api = "/main/my?"
 let week_report_api = "/report/week_report?"
 let learn_week_goal_api = "/learn/week_goal?"
 let learn_log_api = "/learn/log?"
+
+
+
 //---------------------------------首页
 let main_index_api = "/main/index?"
 //---------------------------------复习

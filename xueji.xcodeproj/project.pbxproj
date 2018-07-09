@@ -44,6 +44,7 @@
 		212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E6A2020AE66EC00158940 /* AddAimViewController.swift */; };
 		2130809120DB5AB400FD323C /* MyBookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809020DB5AB400FD323C /* MyBookDetailModel.swift */; };
 		2130809320DB5B4D00FD323C /* CategoryMolde.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809220DB5B4D00FD323C /* CategoryMolde.swift */; };
+		2130E90A20F35FCA001A087D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130E90920F35FCA001A087D /* ImageData.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
 		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
@@ -176,6 +177,7 @@
 		212E6A2020AE66EC00158940 /* AddAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimViewController.swift; sourceTree = "<group>"; };
 		2130809020DB5AB400FD323C /* MyBookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookDetailModel.swift; sourceTree = "<group>"; };
 		2130809220DB5B4D00FD323C /* CategoryMolde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMolde.swift; sourceTree = "<group>"; };
+		2130E90920F35FCA001A087D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				2151F65B1FF09B46007D4FFE /* UserDataManger.swift */,
 				2185B91320007C200038847E /* CodeData.swift */,
 				21014B3C2007130C002CB437 /* ErrorCodeData.swift */,
+				2130E90920F35FCA001A087D /* ImageData.swift */,
 			);
 			path = DataManger;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				214429C31FA7260400004C38 /* UserViewController.swift in Sources */,
 				211A65CB20A0A8A6009CD41A /* LearnDetailViewController.swift in Sources */,
 				214F914D1FEA5A3C00D44165 /* pch.swift in Sources */,
+				2130E90A20F35FCA001A087D /* ImageData.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				2146A85820B2D27C00903B9D /* HistogramTableViewCell.swift in Sources */,
 				2146A85620B2C9F300903B9D /* CateCollectionViewCell.swift in Sources */,

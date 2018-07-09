@@ -37,7 +37,9 @@ class LearnViewController: BaseViewController {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-        time.invalidate()
+        if (time != nil) {
+            time.invalidate()
+        }
     }
 
     override func viewDidLoad() {
