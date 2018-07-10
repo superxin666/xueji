@@ -12,6 +12,10 @@ let SetInfoViewHeadHeight = ip6(175)
 let SetInfoViewControllerCellid = "SetInfoViewControllerCell_id"
 class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,LogoutApiViewControllerDelegate {
     var mainTabelView : UITableView!//
+
+    /// 个人数据
+    var model : UserInfoModel_head!
+
     let nameArr = ["个人资料","账号与安全","学习设置","复习周期","使用教程","关于学记",]
     /// 退出登录
     var logOutBtn : UIButton!
@@ -35,10 +39,6 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
         mainTabelView.separatorStyle = .none
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
-        //        footer.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.loadMoreData))
-        //        header.setRefreshingTarget(self, refreshingAction: #selector(HomeViewController.freshData))
-        //        mainTabelView.mj_footer = footer
-        //        mainTabelView.mj_header = header
         mainTabelView.register(SetInfoTableViewCell.self, forCellReuseIdentifier: SetInfoViewControllerCellid)
         self.view.addSubview(mainTabelView)
 
@@ -54,7 +54,7 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : SetInfoTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: SetInfoViewControllerCellid, for: indexPath) as! SetInfoTableViewCell
@@ -66,6 +66,7 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view : SetHeadView = SetHeadView()
+        view.setData(model: model)
         return view
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -75,7 +76,12 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
         return SetInfoCellHeight
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let vc = PersionInfoViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
 
+        }
     }
     
     //网络请求

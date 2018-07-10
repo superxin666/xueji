@@ -45,6 +45,7 @@
 		2130809120DB5AB400FD323C /* MyBookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809020DB5AB400FD323C /* MyBookDetailModel.swift */; };
 		2130809320DB5B4D00FD323C /* CategoryMolde.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809220DB5B4D00FD323C /* CategoryMolde.swift */; };
 		2130E90A20F35FCA001A087D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130E90920F35FCA001A087D /* ImageData.swift */; };
+		2130E90C20F48091001A087D /* PersionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130E90B20F48090001A087D /* PersionInfoViewController.swift */; };
 		2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213254691FBC27F80016E1AE /* ScanViewController.swift */; };
 		21376691203FEDAE000CBCE6 /* StudyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21376690203FEDAE000CBCE6 /* StudyListModel.swift */; };
 		2142C9082020087500ED2104 /* AddBook_customViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142C9072020087500ED2104 /* AddBook_customViewController.swift */; };
@@ -178,6 +179,7 @@
 		2130809020DB5AB400FD323C /* MyBookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookDetailModel.swift; sourceTree = "<group>"; };
 		2130809220DB5B4D00FD323C /* CategoryMolde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMolde.swift; sourceTree = "<group>"; };
 		2130E90920F35FCA001A087D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		2130E90B20F48090001A087D /* PersionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionInfoViewController.swift; sourceTree = "<group>"; };
 		213254691FBC27F80016E1AE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		21376690203FEDAE000CBCE6 /* StudyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyListModel.swift; sourceTree = "<group>"; };
 		2142C9072020087500ED2104 /* AddBook_customViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook_customViewController.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				21145B7A1FAFFDC500063A98 /* Views */,
 				214429BD1FA7260400004C38 /* UserViewController.swift */,
 				212447222002479D0038F204 /* SetInfoViewController.swift */,
+				2130E90B20F48090001A087D /* PersionInfoViewController.swift */,
 				210ABFB520A96943007BACF5 /* WeekAimViewController.swift */,
 				212E6A2020AE66EC00158940 /* AddAimViewController.swift */,
 				21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */,
@@ -1085,6 +1088,7 @@
 				210ADD4F20C6A52D005A3B96 /* SymbolsValueFormatter.swift in Sources */,
 				2146A85C20B2E72000903B9D /* TimeDistributeViewController.swift in Sources */,
 				21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */,
+				2130E90C20F48091001A087D /* PersionInfoViewController.swift in Sources */,
 				2146A84520B2C2C900903B9D /* AddAimView.swift in Sources */,
 				21C436CD1FB9926E0031F2C3 /* ReviewTableViewCell.swift in Sources */,
 				212447232002479D0038F204 /* SetInfoViewController.swift in Sources */,

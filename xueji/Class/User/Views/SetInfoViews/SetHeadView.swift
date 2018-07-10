@@ -30,11 +30,16 @@ class SetHeadView: UIView {
 
     func creatUI()  {
         iconImageView = UIImageView(frame: CGRect(x: (KSCREEN_WIDTH - ip6(115))/2, y: ip6(30), width: ip6(115), height: ip6(115)))
-        iconImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
         iconImageView.xj_makeRound()
         self.addSubview(iconImageView)
 
-        nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(25), y: iconImageView.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(50), height: ip6(20)), fontSize: 15, text: "赵四", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
+        nameLabel = UILabel.getLabel(fream: CGRect(x: ip6(25), y: iconImageView.frame.maxY + ip6(10), width: KSCREEN_WIDTH - ip6(50), height: ip6(20)), fontSize: 15, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)
         self.addSubview(nameLabel)
+    }
+
+    func setData(model : UserInfoModel_head) {
+        iconImageView.setImage_kf(imageName: base_image_api + model.avatar, placeholderImage: #imageLiteral(resourceName: "book"))
+        nameLabel.text = model.username
+
     }
 }

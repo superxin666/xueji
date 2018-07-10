@@ -57,6 +57,7 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     override func navigationLeftBtnClick() {
         let vc = SetInfoViewController()
         vc.hidesBottomBarWhenPushed = true
+        vc.model = requestVC.getHeadViewModel()
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
