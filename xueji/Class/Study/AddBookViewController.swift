@@ -63,7 +63,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     var bookImageData : Data!
 
     /// 封皮url
-    var bookImageUrl : String!
+    var bookImageUrl : String = ""
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,21 +166,29 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         let view = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_HEIGHT, height: ip6(180)))
         bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: ip6(20), width: ip6(100), height: ip6(150)))
         if self.type == .addBook_scan {
+            bookImageView.isUserInteractionEnabled = false
             bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
-        } else if type == .detail {
+        } else if type == .detail || type == .editBook_scan {
+            bookImageView.isUserInteractionEnabled = false
             if let url = requestManger.getMyBookModel().book.cover_img {
                 bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
             }
         } else if type == .addBook_custom {
+            bookImageView.isUserInteractionEnabled = true
             bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "addbookcover"))
+        } else if type == .editBook_custom{
+            bookImageView.isUserInteractionEnabled = true
+            if let url = requestManger.getMyBookModel().book.cover_img {
+                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
+            }
         }
-        bookImageView.isUserInteractionEnabled = true
+
         self.view.addSubview(bookImageView)
-        if self.type == .addBook_custom {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
-            bookImageView.addGestureRecognizer(tap)
-            view.addSubview(bookImageView)
-        }
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bookIconImageView_click))
+        bookImageView.addGestureRecognizer(tap)
+        view.addSubview(bookImageView)
+
 
         return view
     }
@@ -299,28 +307,19 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             if bookImageData.count > 0 {
                 //有图片
                 weak var weakself = self
-                SVPMessageShow.showLoad(infoStr: "正在上传中~~")
+                SVPMessageShow.showLoad(infoStr: "正在保存中~~")
                 BaseApiMangerViewController.uploadfile(imgageData: bookImageData, completion: { (data) in
-                    let model : ImageData  = data as! ImageData
-                    if model.code == 0 {
-                        if let urlStr = model.data.url{
-                            weakself?.bookImageUrl = urlStr
-                            weakself?.requestManger.addBookByCustom(cid: (weakself?.catID)!, title: (weakself?.titleStr)!, img: (weakself?.bookImageUrl)!, author: (weakself?.publisher)!, publisher: (weakself?.publish)!, pubdate: "", pages: (weakself?.pages)!)
-                        } else {
-                            SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
-                            weakself?.bookImageUrl = ""
-                        }
-                    } else {
-                        SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
-                        weakself?.bookImageUrl = ""
-                    }
+                    let url : String = data as! String
+                    weakself?.bookImageUrl = url
+                    weakself?.requestManger.addBookByCustom(cid: (weakself?.catID)!, title: (weakself?.titleStr)!, img: (weakself?.bookImageUrl)!, author: (weakself?.publisher)!, publisher: (weakself?.publish)!, pubdate: "", pages: (weakself?.pages)!)
 
                 }) { (erro) in
                      SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
                 }
+            } else {
+                requestManger.addBookByCustom(cid: catID, title: titleStr, img: bookImageUrl, author: publisher, publisher: publish, pubdate: "", pages: pages)
 
             }
-
 
 
         } else if type == .detail {
@@ -340,17 +339,34 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 publish = requestManger.getMyBookModel().book.publisher!
                 pages = "\(requestManger.getMyBookModel().book.pages!)"
                 catID = requestManger.getMyBookModel().category.id!
-
+                bookImageUrl = requestManger.getMyBookModel().book.cover_img
                 mainTabelView.reloadData()
             }
         } else if type == .editBook_scan {
             requestManger.editBookRequestByIsbn(bid: bookID, isbn: requestManger.getMyBookModel().book.isbn, cid: catID)
 
         } else if type == .editBook_custom {
-            requestManger.editeBookByCustom(bid: bookID, cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
 
+            if bookImageData.count > 0 {
+                //有图片
+                weak var weakself = self
+                SVPMessageShow.showLoad(infoStr: "正在保存中~~")
+                BaseApiMangerViewController.uploadfile(imgageData: bookImageData, completion: { (data) in
+                    let url : String = data as! String
+                    weakself?.bookImageUrl = url
+                    weakself?.requestManger.editeBookByCustom(bid: (weakself?.bookID)!,cid: (weakself?.catID)!, title: (weakself?.titleStr)!, img: (weakself?.bookImageUrl)!, author: (weakself?.publisher)!, publisher: (weakself?.publish)!, pubdate: "", pages: (weakself?.pages)!)
+
+                }) { (erro) in
+                    SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                }
+            } else {
+                requestManger.editeBookByCustom(bid: bookID, cid: catID, title: titleStr, img: bookImageUrl, author: publisher, publisher: publish, pubdate: "", pages: pages)
+            }
         }
     }
+
+
+
     
     func bookIconImageView_click() {
         alertController  = UIAlertController(title: nil, message: "添加封面", preferredStyle: .alert)
@@ -360,12 +376,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 
             })
         }
-        let systemAction = UIAlertAction(title: "系统封面", style: .default) { (action) in
-            //系统封面
-            let vc = BookImagesViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
+//        let systemAction = UIAlertAction(title: "系统封面", style: .default) { (action) in
+//            //系统封面
+//            let vc = BookImagesViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        }
         let takePhotoAction = UIAlertAction(title: "拍照", style: .default) { (action) in
             //拍照
             self.openCamera()
@@ -376,7 +392,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         }
         
         alertController.addAction(cancleAction)
-        alertController.addAction(systemAction)
+//        alertController.addAction(systemAction)
         alertController.addAction(takePhotoAction)
         alertController.addAction(albumAction)
         self.present((alertController)!, animated: true, completion: nil)

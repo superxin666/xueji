@@ -68,6 +68,7 @@ class BaseApiMangerViewController: UIViewController {
         var model:ImageData = ImageData()
 
         let headers = ["content-type":"multipart/form-data"]
+        var bookImageUrl = ""
 
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -83,7 +84,16 @@ class BaseApiMangerViewController: UIViewController {
                         if let json = response.result.value {
                             XJLog(message: json)
                             model = Mapper<ImageData>().map(JSON: json as! [String : Any])!
-                            completion(model)
+                            if model.code == 0 {
+                                if let urlStr = model.data.url{
+                                    bookImageUrl = urlStr
+                                    completion(bookImageUrl)
+                                } else {
+                                    SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                                }
+                            } else {
+                                SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                            }
                         } else {
                             failure("请求失败")
                         }
