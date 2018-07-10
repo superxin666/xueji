@@ -86,6 +86,10 @@ class StudyBookCellTableViewCell: UITableViewCell {
             bookImageView.tag = i
             bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
             bookImageView.addTarget(self, action: #selector(bookClick_recent(sender:)), for: .touchUpInside)
+
+            let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress_recent(ges:)))
+            bookImageView.addGestureRecognizer(tap)
+
             self.contentView.addSubview(bookImageView)
         }
         
@@ -96,18 +100,26 @@ class StudyBookCellTableViewCell: UITableViewCell {
         XJLog(message: "点击\(tagNum)"+model.title)
         self.bookClickBlock(model,currectModel)
     }
-    
-    func bookClick_recent(sender : UIButton) {
-        XJLog(message: "点击")
-        let tagNum = sender.tag
-        let model : CategoryListModel_list_book_list = currectModelArr[tagNum]
-        self.bookClickBlock(model,currectModel)
-    }
 
     func longPress(ges : UILongPressGestureRecognizer) {
         let viewTag = ges.view?.tag
         let model : CategoryListModel_list_book_list = currectModel.book_list[viewTag!]
         self.bookPresBlock(model,currectModel)
+
+    }
+
+    func bookClick_recent(sender : UIButton) {
+        XJLog(message: "点击")
+        let tagNum = sender.tag
+        let model : CategoryListModel_list_book_list = currectModelArr[tagNum]
+        self.bookClickBlock(model,CategoryListModel_list())
+    }
+
+    func longPress_recent(ges : UILongPressGestureRecognizer) {
+         XJLog(message: "长按~~~")
+        let viewTag = ges.view?.tag
+        let model : CategoryListModel_list_book_list = currectModelArr[viewTag!]
+        self.bookPresBlock(model,CategoryListModel_list())
 
     }
 

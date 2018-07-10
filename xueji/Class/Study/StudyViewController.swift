@@ -103,6 +103,9 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
                     vc.hidesBottomBarWhenPushed = true
                     weakSelf?.navigationController?.pushViewController(vc, animated: true)
                 }
+                cell.bookPresBlock = {model,catModel in
+                    weakSelf?.showBookAleart(model: model, catModel: catModel)
+                }
                 return cell
 
             } else {

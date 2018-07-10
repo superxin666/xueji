@@ -299,12 +299,13 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             if bookImageData.count > 0 {
                 //有图片
                 weak var weakself = self
-
+                SVPMessageShow.showLoad(infoStr: "正在上传中~~")
                 BaseApiMangerViewController.uploadfile(imgageData: bookImageData, completion: { (data) in
                     let model : ImageData  = data as! ImageData
                     if model.code == 0 {
                         if let urlStr = model.data.url{
                             weakself?.bookImageUrl = urlStr
+                            weakself?.requestManger.addBookByCustom(cid: (weakself?.catID)!, title: (weakself?.titleStr)!, img: (weakself?.bookImageUrl)!, author: (weakself?.publisher)!, publisher: (weakself?.publish)!, pubdate: "", pages: (weakself?.pages)!)
                         } else {
                             SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
                             weakself?.bookImageUrl = ""
@@ -319,7 +320,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                 }
 
             }
-//            weakself?.requestManger.addBookByCustom(cid: catID, title: titleStr, img: "", author: publisher, publisher: publish, pubdate: "", pages: pages)
+
 
 
         } else if type == .detail {
