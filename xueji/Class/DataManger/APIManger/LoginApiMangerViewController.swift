@@ -9,8 +9,8 @@
 import UIKit
 import ObjectMapper
 protocol LoginApiMangerViewControllerDelegate: NSObjectProtocol{
-    func requestSucceed() -> Void
-    func requestFail() -> Void
+    func requestSucceed_login() -> Void
+    func requestFail_login() -> Void
 }
 
 class LoginApiMangerViewController:UIViewController, BaseApiMangerViewControllerDelegate {
@@ -32,7 +32,7 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
             if str == "1"{
                 //存储成工
                 if self.delegate != nil {
-                    self.delegate.requestSucceed()
+                    self.delegate.requestSucceed_login()
                 }
             }
         }

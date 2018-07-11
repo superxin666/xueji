@@ -18,10 +18,7 @@ class SmsCodeApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
 
 
     func getCode(phone:String) {
-        if  !(String.xj_isMobileNumber(phoneNum: phone)) {
-            SVPMessageShow.showErro(infoStr: "请输入正确的手机号~")
-            return
-        }
+
         request.delegate = self
         request.request_api(url: get_sms_code_api + "phone=\(phone)")
     }

@@ -51,12 +51,13 @@ class LogViewController: BaseViewController,LoginViewDelegate,LoginApiMangerView
         requestManger.loginRequest(name: loginView.phoneStr, password: loginView.keyStr)
 
     }
-    func requestSucceed() {
+
+    func requestSucceed_login() {
         let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
         SVPMessageShow.showSucess(infoStr: "登录成功")
         dele.tabCreat()
     }
-    func requestFail() {
+    func requestFail_login() {
 
     }
     

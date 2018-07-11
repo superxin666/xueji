@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate {
+class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiMangerDelegate {
     /// 标题
     var titleLabel : UILabel!
     /// 副标题
@@ -37,6 +37,7 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate {
     var codeBackView : UIView!
 
     var codeRequest = SmsCodeApiManger()
+    var registRequest = RegistApiManger()
 
     var codeSt = ""
     var phoneStr = ""
@@ -238,21 +239,28 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate {
             SVPMessageShow.showErro(infoStr: "请输入密码")
             return
         }
-
-
-
+        registRequest.delegate = self
+        registRequest.registRequest(phone: phoneStr, sms_code: codeSt, key: keyStr)
 
     }
 
     func getCode()  {
-        codeRequest.delegate = self
+
         if self.phoneTextFiled.isFirstResponder {
             self.phoneTextFiled.resignFirstResponder()
         }
         if let str = phoneTextFiled.text {
+            if  !(String.xj_isMobileNumber(phoneNum: str)) {
+                SVPMessageShow.showErro(infoStr: "请输入正确的手机号~")
+                return
+            }
+            codeRequest.delegate = self
             codeRequest.getCode(phone: str)
-            getCodeLabel.text = "发送中"
+
+            time = Timer(timeInterval: 1, target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
             getCodeLabel.isUserInteractionEnabled = false
+
+
         } else {
             SVPMessageShow.showErro(infoStr: "输入手机号")
         }
@@ -262,17 +270,34 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate {
 
     func requestSucceed_code() {
         SVPMessageShow.showSucess(infoStr: "已发送")
-        getCodeLabel.isUserInteractionEnabled = true
 
     }
 
     func requestFail_code() {
         getCodeLabel.isUserInteractionEnabled = true
         SVPMessageShow.showErro(infoStr: "发送失败")
+        timeNum = 60
         getCodeLabel.text = "重新获取"
 
+    }
+    func requestSucceed_regist() {
 
     }
 
+    func requestFail_regist() {
+
+    }
+
+    func timeCount() {
+        timeNum = timeNum - 1
+        if timeNum == 0 {
+            timeNum = 60
+            time.invalidate()
+            getCodeLabel.isUserInteractionEnabled = true
+            getCodeLabel.text = "重新发送"
+        } else {
+            getCodeLabel.text = "\(timeNum)"
+        }
+    }
 
 }

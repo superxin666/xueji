@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistViewController: BaseViewController,UITextFieldDelegate {
+class RegistViewController: BaseViewController {
     var registView : RegistView!
 
     override func viewDidLoad() {
@@ -28,6 +28,9 @@ class RegistViewController: BaseViewController,UITextFieldDelegate {
 
     // MARK: - event response
     override func navigationLeftBtnClick() {
+        if (registView.time != nil) {
+            registView.time.invalidate()
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
