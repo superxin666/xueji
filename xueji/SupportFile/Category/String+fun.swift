@@ -53,11 +53,11 @@ extension String {
     /// 获取版本号
     ///
     /// - returns: 版本号
-    func xj_getAppVersion() -> String  {
+    static func xj_getAppVersion() -> String  {
         let infoDict = Bundle.main.infoDictionary
         if let info = infoDict {
-            let appVersion = info["CFBundleShortVersionString"] as! String!
-            return ("ios" + appVersion!)
+            let appVersion = info["CFBundleShortVersionString"] as! String?
+            return appVersion!
         } else {
             return ""
         }
@@ -97,7 +97,7 @@ extension String {
     ///
     /// - returns: 是或者不是
     static func xj_isMobileNumber(phoneNum : String) -> Bool {
-        let predicateStr = "^((13[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\\d{8}$"
+        let predicateStr = "1[0-9]{10}"
         let currObject = phoneNum
         let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
         return predicate.evaluate(with: currObject)

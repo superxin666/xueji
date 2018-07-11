@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegate,LoginApiMangerViewControllerDelegate {
+class LogViewController: BaseViewController,LoginViewDelegate,LoginApiMangerViewControllerDelegate {
     var loginView: LoginView!
     let requestManger = LoginApiMangerViewController()
 
@@ -26,11 +26,9 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
     // MARK: - UI
     func creatUI() {
         self.navigationBar_rightBtn_title(title: "注册")
-        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
+//        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         loginView = LoginView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
         loginView.delegate = self
-        loginView.phoneTextFiled.delegate = self
-        loginView.passWorldTextFiled.delegate = self
         self.view.addSubview(loginView)
 
     }
@@ -46,19 +44,17 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
         loginView.frame.origin.y = 0
     }
     // MARK: - delegate
-    //登陆
+    //登陆  13910510356   1234
     func login() {
         XJLog(message: "登陆点击")
         requestManger.delegate = self
-        requestManger.loginRequest(name: "liu", password: "123")
+        requestManger.loginRequest(name: loginView.phoneStr, password: loginView.keyStr)
+
     }
     func requestSucceed() {
         let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
-       
-//        self.dismiss(animated: true) {
-            SVPMessageShow.showSucess(infoStr: "登录成功")
-            dele.tabCreat()
-//        }
+        SVPMessageShow.showSucess(infoStr: "登录成功")
+        dele.tabCreat()
     }
     func requestFail() {
 
@@ -70,17 +66,7 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
-    //textView
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        XJLog(message: "开始编辑")
-    }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        XJLog(message: "编辑完成")
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
     // MARK: - event response
     override func navigationRightBtnClick() {
         XJLog(message: "注册点击")
@@ -89,7 +75,6 @@ class LogViewController: BaseViewController,LoginViewDelegate,UITextFieldDelegat
 
     }
     override func navigationLeftBtnClick() {
-//        self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true) {
 
         }

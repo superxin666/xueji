@@ -236,7 +236,10 @@ class StudyAmountTableViewCell: UITableViewCell {
 
                 for subModel in model.book {
                     bookArr.append(Double(subModel.page_count))
-                    colourArr.append(UIColor.xj_colorFromString(hexColor: subModel.book_color))
+                    if let str = subModel.book_color {
+                        colourArr.append(UIColor.xj_colorFromString(hexColor: str))
+                    }
+
                 }
                 XJLog(message: colourArr.count)
                 var  yVals :[BarChartDataEntry] = []

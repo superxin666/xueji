@@ -28,7 +28,9 @@ class LogoutApiViewController: UIViewController,BaseApiMangerViewControllerDeleg
         UserDataManger.setLogout { (data) in
             let str = data as! String
             if str == "1"{
-                self.delegate.requestSucceed()
+                let aple = AppDelegate()
+                aple.showLogin()
+//                self.delegate.reget_sms_code_apiquestSucceed()
             } else {
                 
             }

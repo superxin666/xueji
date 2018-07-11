@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistView: UIView {
+class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate {
     /// 标题
     var titleLabel : UILabel!
     /// 副标题
@@ -35,6 +35,17 @@ class RegistView: UIView {
     var scrBackView : UIView!
     /// 验证码 背景
     var codeBackView : UIView!
+
+    var codeRequest = SmsCodeApiManger()
+
+    var codeSt = ""
+    var phoneStr = ""
+    var keyStr = ""
+
+
+
+
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -72,6 +83,7 @@ class RegistView: UIView {
         phoneTextFiled.keyboardType = .numberPad
         phoneTextFiled.returnKeyType = .next
         phoneTextFiled.tag = 100
+        phoneTextFiled.delegate = self
         phoneBackView.addSubview(phoneTextFiled)
 
         let lineView = UIView()
@@ -95,7 +107,8 @@ class RegistView: UIView {
         codeWorldTextFiled.textAlignment = .left
         codeWorldTextFiled.keyboardType = .numberPad
         codeWorldTextFiled.returnKeyType = .next
-        codeWorldTextFiled.tag = 100
+        codeWorldTextFiled.tag = 101
+        codeWorldTextFiled.delegate = self
         codeBackView.addSubview(codeWorldTextFiled)
 
         //获取验证码
@@ -103,6 +116,11 @@ class RegistView: UIView {
         getCodeLabel.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2)
         getCodeLabel.xj_makeRadius(radius: 4)
         codeBackView.addSubview(getCodeLabel)
+
+
+        getCodeLabel.isUserInteractionEnabled = true
+        let ges : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(getCode))
+        getCodeLabel.addGestureRecognizer(ges)
 
 
         let lineView2 = UIView()
@@ -125,11 +143,14 @@ class RegistView: UIView {
         passWorldTextFiled.textAlignment = .left
         passWorldTextFiled.returnKeyType = .done
         passWorldTextFiled.isSecureTextEntry = true
-        passWorldTextFiled.tag = 101
+        passWorldTextFiled.tag = 102
+        passWorldTextFiled.delegate = self
         passWorldTextFiled.font =  xj_fzFontMedium(ip6(15))
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         scrBackView.addSubview(passWorldTextFiled)
+
+
 
         let lineView3 = UIView()
         let lineViewY3 = scrBackView.frame.size.height - 0.5
@@ -160,7 +181,98 @@ class RegistView: UIView {
         self.addSubview(noticeLabel)
     }
 
+    // MARK: - delegate
+
+    //textView
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        XJLog(message: "开始编辑")
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        XJLog(message: "编辑完成")
+        if textField.tag == 100 {
+            //手机号
+            if let str = textField.text {
+                phoneStr = str
+            }
+
+        } else if textField.tag == 101  {
+            //验证码
+            if let str = textField.text {
+                codeSt = str
+            }
+
+        } else {
+            //密码
+            if let str = textField.text {
+                keyStr = str
+            }
+        }
+
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+
     func registClick() {
         XJLog(message: "注册")
+        if phoneTextFiled.isFirstResponder {
+            phoneTextFiled.resignFirstResponder()
+        }
+        if codeWorldTextFiled.isFirstResponder {
+            codeWorldTextFiled.resignFirstResponder()
+        }
+        if passWorldTextFiled.isFirstResponder {
+            passWorldTextFiled.resignFirstResponder()
+        }
+
+        if !(String.xj_isMobileNumber(phoneNum: phoneStr)) {
+            SVPMessageShow.showErro(infoStr: "请输入正确的手机号")
+            return
+        }
+        if !(codeSt.count > 0) {
+            SVPMessageShow.showErro(infoStr: "请输入验证码")
+            return
+        }
+        if !(keyStr.count > 0) {
+            SVPMessageShow.showErro(infoStr: "请输入密码")
+            return
+        }
+
+
+
+
     }
+
+    func getCode()  {
+        codeRequest.delegate = self
+        if self.phoneTextFiled.isFirstResponder {
+            self.phoneTextFiled.resignFirstResponder()
+        }
+        if let str = phoneTextFiled.text {
+            codeRequest.getCode(phone: str)
+            getCodeLabel.text = "发送中"
+            getCodeLabel.isUserInteractionEnabled = false
+        } else {
+            SVPMessageShow.showErro(infoStr: "输入手机号")
+        }
+
+    }
+
+
+    func requestSucceed_code() {
+        SVPMessageShow.showSucess(infoStr: "已发送")
+        getCodeLabel.isUserInteractionEnabled = true
+
+    }
+
+    func requestFail_code() {
+        getCodeLabel.isUserInteractionEnabled = true
+        SVPMessageShow.showErro(infoStr: "发送失败")
+        getCodeLabel.text = "重新获取"
+
+
+    }
+
+
 }

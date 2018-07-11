@@ -22,28 +22,10 @@ class RegistViewController: BaseViewController,UITextFieldDelegate {
     func creatUI() {
         self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         registView = RegistView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
-//        loginView.delegate = self
-        registView.phoneTextFiled.delegate = self
-        registView.passWorldTextFiled.delegate = self
-        registView.codeWorldTextFiled.delegate = self
         self.view.addSubview(registView)
 
     }
-    // MARK: - delegate
-    func forgetPassword() {
-        XJLog(message: "忘记密码点击")
-    }
-    //textView
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        XJLog(message: "开始编辑")
-    }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        XJLog(message: "编辑完成")
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
     // MARK: - event response
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)

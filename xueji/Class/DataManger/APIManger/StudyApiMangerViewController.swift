@@ -150,7 +150,8 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     func getRecentRowHeight() -> CGFloat {
         let bookNum = self.recent_learnListArr.count
         let imageH = ip6(100)
-        let height = (CGFloat((bookNum/4))+1) * (imageH + ip6(16))
+        let height = (CGFloat((bookNum/5))+1) * (imageH + ip6(16))
+
         return height
     }
     

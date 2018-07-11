@@ -93,7 +93,10 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let bookModel = dataModel.book[i]
             let entry = BarChartDataEntry(x:Double(i) , y: Double(bookModel.time_count))
             yVals.append(entry)
-            colors.append(UIColor.xj_colorFromString(hexColor: bookModel.color))
+            if let str =  bookModel.color {
+                colors.append(UIColor.xj_colorFromString(hexColor: str))
+            }
+
         }
         //页数
         var yVals2 : [BarChartDataEntry] = Array()
@@ -102,7 +105,10 @@ class StudyDistributeTableViewCell: UITableViewCell {
             let bookModel = dataModel.book[i]
             let entry = BarChartDataEntry(x:Double(i) , y: Double(bookModel.page_count))
             yVals2.append(entry)
-            colors2.append(UIColor.xj_colorFromString(hexColor: bookModel.color))
+            if let str =  bookModel.color {
+                colors2.append(UIColor.xj_colorFromString(hexColor: str))
+            }
+
         }
         
         //每个区块的名称或描述
@@ -160,7 +166,11 @@ class StudyDistributeTableViewCell: UITableViewCell {
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
-            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: model.book_color)
+            if let str = model.book_color {
+
+                lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
+            }
+
             subBackView.addSubview(lineView)
 
         }
@@ -182,7 +192,10 @@ class StudyDistributeTableViewCell: UITableViewCell {
             subBackView.addSubview(titleLabel)
             
             let lineView : UIView = UIView(frame: CGRect(x: 0, y: ip6(11), width: ip6(140), height: ip6(1)))
-            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: model.book_color)
+
+            if let str = model.book_color {
+                lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
+            }
             subBackView.addSubview(lineView)
             
         }

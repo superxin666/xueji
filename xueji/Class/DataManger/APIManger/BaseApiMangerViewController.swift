@@ -29,8 +29,9 @@ class BaseApiMangerViewController: UIViewController {
     
     
     func request_api(url : String){
+        let uuidStr : String = (UIDevice.current.identifierForVendor?.uuidString)!
 
-        let url = base_api + url
+        let url = base_api + url + "&version=\(String.xj_getAppVersion())" + "&platform=ios" + "&uuid=\(uuidStr)"
         XJLog(message: url)
         Alamofire.request(url, method: .get).responseJSON { (returnResult) in
             print("secondMethod --> get 请求 --> returnResult = \(returnResult)")

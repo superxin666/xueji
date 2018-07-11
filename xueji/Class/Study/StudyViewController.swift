@@ -161,14 +161,23 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return StudyHeadViewH
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return requestManger.getRecentRowHeight()
+        if requestManger.getRecentListCount() > 0 {
+
+            if indexPath.section == 0 {
+                return requestManger.getRecentRowHeight()
+            } else {
+                return requestManger.getRowHeight(section: indexPath.section - 1)
+            }
+
         } else {
-            return requestManger.getRowHeight(section: indexPath.section - 1)
+           return requestManger.getRowHeight(section: indexPath.section)
         }
 
     }
+
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }

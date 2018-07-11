@@ -13,7 +13,7 @@ protocol LoginViewDelegate: NSObjectProtocol{
     func forgetPassword() ->Void
 }
 
-class LoginView: UIView {
+class LoginView: UIView,UITextFieldDelegate {
 
     var delegate : LoginViewDelegate!
     
@@ -39,6 +39,12 @@ class LoginView: UIView {
     /// qq  button
     var qqBtn : UIButton!
 
+
+    var phoneStr = ""
+    var keyStr = ""
+
+
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
@@ -63,12 +69,12 @@ class LoginView: UIView {
         //手机号码
         let phoneBackView = UIView(frame: CGRect(x: backViewX, y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
 
-        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(60), height: ip6(15)), fontSize: ip6(15), text: "手机号码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(70), height: ip6(15)), fontSize: ip6(15), text: "手机号码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         phoneBackView.addSubview(phoneNameLabel)
         
         
         phoneTextFiled = UITextField()
-        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(80), height: ip6(15))
+        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(10), y: 0, width: backViewWidth - ip6(80), height: ip6(15))
         phoneTextFiled.font = xj_fzFontMedium(ip6(15))
         phoneTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         phoneTextFiled.adjustsFontSizeToFitWidth = true
@@ -76,6 +82,7 @@ class LoginView: UIView {
         phoneTextFiled.keyboardType = .numberPad
         phoneTextFiled.returnKeyType = .next
         phoneTextFiled.tag = 100
+        phoneTextFiled.delegate = self
         phoneBackView.addSubview(phoneTextFiled)
         
         let lineView = UIView()
@@ -102,6 +109,7 @@ class LoginView: UIView {
         passWorldTextFiled.tag = 101
         passWorldTextFiled.font =  xj_fzFontMedium(ip6(15))
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
+        passWorldTextFiled.delegate = self
         passWorldTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         scrBackView.addSubview(passWorldTextFiled)
 
@@ -145,7 +153,7 @@ class LoginView: UIView {
             } else {
                 qqBtn = btn
             }
-            self.addSubview(btn)
+//            self.addSubview(btn)
         }
 
         self.addSubview(titleLabel)
@@ -154,12 +162,19 @@ class LoginView: UIView {
         self.addSubview(scrBackView)
         self.addSubview(loginBtn)
         self.addSubview(forgetBtn)
-        self.addSubview(leftView)
-        self.addSubview(noticeLabel)
-        self.addSubview(rightView)
+//        self.addSubview(leftView)
+//        self.addSubview(noticeLabel)
+//        self.addSubview(rightView)
     }
     
     func logInClick() {
+        if self.phoneTextFiled.isFirstResponder {
+            self.phoneTextFiled.resignFirstResponder()
+        }
+        if self.passWorldTextFiled.isFirstResponder {
+            self.passWorldTextFiled.resignFirstResponder()
+        }
+
         if self.delegate != nil {
             self.delegate.login()
         }
@@ -169,6 +184,23 @@ class LoginView: UIView {
             self.delegate.forgetPassword()
         }
     }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        XJLog(message: textField.text)
+        if textField.tag == 100 {
+            //手机号
+            if let str = textField.text {
+                phoneStr = str
+            }
+        } else {
+            //密码
+            if let str = textField.text {
+                keyStr = str
+            }
+        }
+    }
+
+
     func otherClick(sender : UIButton) {
         let btnTag = sender.tag
         if btnTag == 0 {

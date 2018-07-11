@@ -18,7 +18,7 @@ let user_data_api = "/main/my?"
 let week_report_api = "/report/week_report?"
 let learn_week_goal_api = "/learn/week_goal?"
 let learn_log_api = "/learn/log?"
-
+let get_sms_code_api = "/user/get_sms_code?"
 
 
 //---------------------------------首页
