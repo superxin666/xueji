@@ -80,6 +80,7 @@
 		214F914D1FEA5A3C00D44165 /* pch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F914A1FEA5A3C00D44165 /* pch.swift */; };
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
+		215BB5FF20F7061A000EDBD4 /* ResetPasswordApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */; };
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
 		215EE03320F5F95F0093DDD5 /* SmsCodeApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */; };
 		2160FF3320E09ACD00739A45 /* LearnLogDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */; };
@@ -218,6 +219,7 @@
 		2151F65B1FF09B46007D4FFE /* UserDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManger.swift; sourceTree = "<group>"; };
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
+		215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiManger.swift; sourceTree = "<group>"; };
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
 		215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsCodeApiManger.swift; sourceTree = "<group>"; };
 		2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLogDataManger.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				2140061F20F668E9009E606A /* RegistApiManger.swift */,
 				215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */,
 				21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */,
+				215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */,
 				21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */,
 				21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */,
 				21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */,
@@ -1029,6 +1032,7 @@
 				2130E90A20F35FCA001A087D /* ImageData.swift in Sources */,
 				21DCA3A11FA724F60094DCFE /* ViewController.swift in Sources */,
 				2146A85820B2D27C00903B9D /* HistogramTableViewCell.swift in Sources */,
+				215BB5FF20F7061A000EDBD4 /* ResetPasswordApiManger.swift in Sources */,
 				2146A85620B2C9F300903B9D /* CateCollectionViewCell.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
 				2146A84E20B2C36200903B9D /* CateSelectedTableViewCell.swift in Sources */,

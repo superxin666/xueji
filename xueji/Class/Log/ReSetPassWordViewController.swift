@@ -24,9 +24,6 @@ class ReSetPassWordViewController: BaseViewController {
         self.navigation_title_fontsize(name: "重置密码", fontsize: 20)
         self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "base_arrow_<"))
         pwView = ReSetPWView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT))
-        //        loginView.delegate = self
-        //        loginView.phoneTextFiled.delegate = self
-        //        loginView.passWorldTextFiled.delegate = self
         self.view.addSubview(pwView)
 
     }

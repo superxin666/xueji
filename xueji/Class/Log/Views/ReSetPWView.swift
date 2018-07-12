@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReSetPWView: UIView {
+class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApiMangerDelegate {
     /// 手机号 UITextField
     var phoneTextFiled : UITextField!
     /// 验证码 UITextField
@@ -31,6 +31,14 @@ class ReSetPWView: UIView {
     var scrBackView : UIView!
     /// 验证码 背景
     var codeBackView : UIView!
+
+    var codeRequest = SmsCodeApiManger()
+    var registRequest = RegistApiManger()
+
+
+    var codeSt = ""
+    var phoneStr = ""
+    var keyStr = ""
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,6 +69,7 @@ class ReSetPWView: UIView {
         phoneTextFiled.keyboardType = .numberPad
         phoneTextFiled.returnKeyType = .next
         phoneTextFiled.tag = 100
+        phoneTextFiled.delegate = self
         phoneBackView.addSubview(phoneTextFiled)
 
         let lineView = UIView()
@@ -84,7 +93,8 @@ class ReSetPWView: UIView {
         codeWorldTextFiled.textAlignment = .left
         codeWorldTextFiled.keyboardType = .numberPad
         codeWorldTextFiled.returnKeyType = .next
-        codeWorldTextFiled.tag = 100
+        codeWorldTextFiled.tag = 101
+        codeWorldTextFiled.delegate = self
         codeBackView.addSubview(codeWorldTextFiled)
 
         //获取验证码
@@ -92,6 +102,10 @@ class ReSetPWView: UIView {
         getCodeLabel.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2)
         getCodeLabel.xj_makeRadius(radius: 4)
         codeBackView.addSubview(getCodeLabel)
+
+        getCodeLabel.isUserInteractionEnabled = true
+        let ges : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(getCode))
+        getCodeLabel.addGestureRecognizer(ges)
 
         let lineView2 = UIView()
         let lineViewY2 = codeBackView.frame.size.height - 0.5
@@ -113,7 +127,7 @@ class ReSetPWView: UIView {
         passWorldTextFiled.textAlignment = .left
         passWorldTextFiled.returnKeyType = .done
         passWorldTextFiled.isSecureTextEntry = true
-        passWorldTextFiled.tag = 101
+        passWorldTextFiled.tag = 102
         passWorldTextFiled.font =  xj_fzFontMedium(ip6(15))
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
@@ -136,8 +150,112 @@ class ReSetPWView: UIView {
 
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 100 {
+            //手机号
+            if let str = textField.text {
+                phoneStr = str
+            }
+
+        } else if textField.tag == 101  {
+            //验证码
+            if let str = textField.text {
+                codeSt = str
+            }
+
+        } else {
+            //密码
+            if let str = textField.text {
+                keyStr = str
+            }
+        }
+
+
+    }
+
+    func getCode() {
+        if self.phoneTextFiled.isFirstResponder {
+            self.phoneTextFiled.resignFirstResponder()
+        }
+        if let str = phoneTextFiled.text {
+            if  !(String.xj_isMobileNumber(phoneNum: str)) {
+                SVPMessageShow.showErro(infoStr: "请输入正确的手机号~")
+                return
+            }
+            codeRequest.delegate = self
+            codeRequest.getCode(phone: str)
+
+            time = Timer(timeInterval: 1, target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
+            getCodeLabel.isUserInteractionEnabled = false
+
+
+        } else {
+            SVPMessageShow.showErro(infoStr: "输入手机号")
+        }
+    }
+
     func doneClick() {
         XJLog(message: "完成")
+        XJLog(message: "注册")
+        if phoneTextFiled.isFirstResponder {
+            phoneTextFiled.resignFirstResponder()
+        }
+        if codeWorldTextFiled.isFirstResponder {
+            codeWorldTextFiled.resignFirstResponder()
+        }
+        if passWorldTextFiled.isFirstResponder {
+            passWorldTextFiled.resignFirstResponder()
+        }
+
+        if !(String.xj_isMobileNumber(phoneNum: phoneStr)) {
+            SVPMessageShow.showErro(infoStr: "请输入正确的手机号")
+            return
+        }
+        if !(codeSt.count > 0) {
+            SVPMessageShow.showErro(infoStr: "请输入验证码")
+            return
+        }
+        if !(keyStr.count > 0) {
+            SVPMessageShow.showErro(infoStr: "请输新密码入密码")
+            return
+        }
+        registRequest.delegate = self
+        registRequest.registRequest(phone: phoneStr, sms_code: codeSt, key: keyStr)
+        
+    }
+
+    func requestSucceed_regist() {
+        let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        SVPMessageShow.showSucess(infoStr: "修改成功")
+        dele.showLogin()
+    }
+    func requestFail_regist() {
+
+    }
+
+    func requestSucceed_code() {
+        SVPMessageShow.showSucess(infoStr: "已发送")
+
+    }
+
+    func requestFail_code() {
+        getCodeLabel.isUserInteractionEnabled = true
+        SVPMessageShow.showErro(infoStr: "发送失败")
+        timeNum = 60
+        getCodeLabel.text = "重新获取"
+
+    }
+
+    func timeCount() {
+        timeNum = timeNum - 1
+        if timeNum == 0 {
+            timeNum = 60
+            time.invalidate()
+            getCodeLabel.isUserInteractionEnabled = true
+            getCodeLabel.text = "重新发送"
+        } else {
+            getCodeLabel.text = "\(timeNum)"
+        }
     }
 
 }

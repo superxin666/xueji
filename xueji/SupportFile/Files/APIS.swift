@@ -20,6 +20,8 @@ let learn_week_goal_api = "/learn/week_goal?"
 let learn_log_api = "/learn/log?"
 let get_sms_code_api = "/user/get_sms_code?"
 let sign_up_api = "/user/sign_up?"
+let reset_password_api = "/user/reset_password?"
+
 
 //---------------------------------首页
 let main_index_api = "/main/index?"

@@ -18,7 +18,6 @@ class SmsCodeApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
 
 
     func getCode(phone:String) {
-
         request.delegate = self
         request.request_api(url: get_sms_code_api + "phone=\(phone)")
     }

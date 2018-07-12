@@ -87,7 +87,7 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
     //网络请求
     func requestSucceed() {
         XJLog(message: "退出登录成功")
-        self.navigationController?.popViewController(animated: true)
+
     }
     func requestFail() {
         
@@ -95,8 +95,9 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
     // MARK: - EvenResponse
     func logoutClick()  {
         XJLog(message: "退出登录")
-        requestManger.logoutRequest()
         requestManger.delegate = self
+        requestManger.logoutRequest()
+
     }
     
     override func navigationLeftBtnClick() {

@@ -256,8 +256,7 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
             }
             codeRequest.delegate = self
             codeRequest.getCode(phone: str)
-
-            time = Timer(timeInterval: 1, target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
+            time = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
             getCodeLabel.isUserInteractionEnabled = false
 
 
@@ -281,7 +280,9 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
 
     }
     func requestSucceed_regist() {
-
+        let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        SVPMessageShow.showSucess(infoStr: "登录成功")
+        dele.tabCreat()
     }
 
     func requestFail_regist() {
