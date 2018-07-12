@@ -27,15 +27,13 @@ class RegistApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
 
     func requestSucceed(response: Any) {
         XJLog(message: response)
-        let model = Mapper<LoginModel>().map(JSON: response as! [String : Any])!
-        XJLog(message: model.token)
-        UserDataManger.storeLoginIdAndTokenInUD(loginUserId: "1", token: model.token!) { (result) in
-            let str:String = result as! String
+        UserDataManger.setLogout { (data) in
+            let str = data as! String
             if str == "1"{
-                //存储成工
-                if self.delegate != nil {
-                    self.delegate.requestSucceed_regist()
-                }
+                let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                dele.showLogin()
+            } else {
+
             }
         }
     }
