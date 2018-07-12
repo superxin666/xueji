@@ -30,6 +30,9 @@ class ReSetPassWordViewController: BaseViewController {
     
     // MARK: - event response
     override func navigationLeftBtnClick() {
+        if (pwView.time != nil) {
+            pwView.time.invalidate()
+        }
         self.navigationController?.popViewController(animated: true)
     }
 

@@ -21,7 +21,7 @@ class RegistApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
 
 
         request.delegate = self
-        request.request_api(url: sign_up_api + "phone=\(phone)&sms_code=\(sms_code)&key=\(key)")
+        request.request_api(url: reset_password_api + "phone=\(phone)&sms_code=\(sms_code)&key=\(key)")
 
     }
 

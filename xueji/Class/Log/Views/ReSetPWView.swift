@@ -125,6 +125,7 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
         passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: ip6(3), width: backViewWidth - ip6(60) - ip6(40), height: ip6(15))
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textAlignment = .left
+        passWorldTextFiled.delegate = self
         passWorldTextFiled.returnKeyType = .done
         passWorldTextFiled.isSecureTextEntry = true
         passWorldTextFiled.tag = 102
@@ -132,6 +133,7 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         scrBackView.addSubview(passWorldTextFiled)
+
 
         let lineView3 = UIView()
         let lineViewY3 = scrBackView.frame.size.height - 0.5
@@ -185,7 +187,7 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
             codeRequest.delegate = self
             codeRequest.getCode(phone: str)
 
-            time = Timer(timeInterval: 1, target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
+            time = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(timeCount), userInfo: nil, repeats: true)
             getCodeLabel.isUserInteractionEnabled = false
 
 
@@ -221,7 +223,7 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
         }
         registRequest.delegate = self
         registRequest.registRequest(phone: phoneStr, sms_code: codeSt, key: keyStr)
-        
+
     }
 
     func requestSucceed_regist() {
@@ -230,8 +232,12 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
         dele.showLogin()
     }
     func requestFail_regist() {
-
+        getCodeLabel.isUserInteractionEnabled = true
+        SVPMessageShow.showErro(infoStr: "发送失败")
+        timeNum = 60
+        getCodeLabel.text = "重新获取"
     }
+
 
     func requestSucceed_code() {
         SVPMessageShow.showSucess(infoStr: "已发送")

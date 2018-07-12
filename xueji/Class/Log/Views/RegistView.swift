@@ -286,6 +286,10 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
     }
 
     func requestFail_regist() {
+        getCodeLabel.isUserInteractionEnabled = true
+        SVPMessageShow.showErro(infoStr: "发送失败")
+        timeNum = 60
+        getCodeLabel.text = "重新获取"
 
     }
 
