@@ -64,7 +64,7 @@ class UserHeadView: UIView {
 
     func setData(model : UserInfoModel_head){
         //头像
-        iconImageView.setImage_kf(imageName: base_image_api + model.avatar, placeholderImage: #imageLiteral(resourceName: "book"))
+        iconImageView.setImage_kf(imageName:  model.avatar, placeholderImage: #imageLiteral(resourceName: "book"))
         //姓名
         nameLabel.text = model.username
         //连续天数
