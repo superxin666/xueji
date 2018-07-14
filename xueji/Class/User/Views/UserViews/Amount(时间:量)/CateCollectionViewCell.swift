@@ -12,6 +12,8 @@ let CateCollectionViewCellID = "CateCollectionViewCell_id"
 class CateCollectionViewCell: UICollectionViewCell {
 
     var btn : UIButton!
+    var label : UILabel!
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,13 +26,24 @@ class CateCollectionViewCell: UICollectionViewCell {
     }
 
     func creatUI() {
-        btn = UIButton.getBtn_titleStyle(title_normal: "分类", title_selected: "分类", fream: CGRect(x: 0, y: 0, width: itemW, height: itemH), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0xefefef), textColorSelectrd: .white, textColor: black_53, fontSize: 11, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
-        btn.xj_makeRadius(radius: ip6(16))
-        self.addSubview(btn)
+//        btn = UIButton.getBtn_titleStyle(title_normal: "", title_selected: "", fream: CGRect(x: 0, y: 0, width: itemW, height: itemH), backgroundColor: UIColor.xj_colorFromRGB(rgbValue: 0xefefef), textColorSelectrd: .white, textColor: black_53, fontSize: 11, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
+//        btn.xj_makeRadius(radius: ip6(16))
+//        self.addSubview(btn)
+
+        label = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: itemW, height: itemH), fontSize: 11, text: "", textColor: black_53, textAlignment: .center)
+        label.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xefefef)
+        label.xj_makeRadius(radius: ip6(16))
+        self.addSubview(label)
+
     }
 
     func click(sender : UIButton) {
 
+    }
+
+    func setData(title : String) {
+//        btn.setTitle(title, for: .normal)
+        label.text = title
     }
     
 }

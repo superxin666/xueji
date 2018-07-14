@@ -327,6 +327,26 @@ extension String {
         return Float(min)/Float(60)
     }
 
+    /// 获取时间转换
+    ///
+    /// - Parameter min: <#min description#>
+    /// - Returns: <#return value description#>
+    static func getHoreMin(min : Int) -> String{
+        if min == 0 {
+            return "0"
+        } else if min < 60 {
+            return "\(min)m"
+        } else {
+            let h = min/60
+            let m = min - h * 60
+            if m == 0 {
+                return "\(h)h"
+            } else {
+                return "\(h)h\(m)m"
+            }
+        }
+    }
+
     static func getHour_more(min : Int) -> Float {
         if min < 60 {
             //一小时之内

@@ -8,12 +8,23 @@
 
 import UIKit
 
-class PersionInfoViewController: UIViewController {
+class PersionInfoViewController: BaseViewController {
+
+    var iconImageView = UIImageView()
+
+    
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigation_title_fontsize(name: "个人资料", fontsize: 20)
+        self.navigationBar_rightBtn_title(title: "保存")
+        self.navigationBar_leftBtn_title(title: "取消")
+
+        
     }
 
     override func didReceiveMemoryWarning() {

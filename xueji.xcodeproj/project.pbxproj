@@ -81,7 +81,9 @@
 		2151F65C1FF09B46007D4FFE /* UserDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151F65B1FF09B46007D4FFE /* UserDataManger.swift */; };
 		215A31351FA850C800450C1B /* StudyBookCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */; };
 		215BB5FF20F7061A000EDBD4 /* ResetPasswordApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */; };
+		215BB60120F86BB2000EDBD4 /* DetailApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BB60020F86BB2000EDBD4 /* DetailApiManger.swift */; };
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
+		215E401A20FA325500D939B9 /* MyDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215E401920FA325500D939B9 /* MyDetailModel.swift */; };
 		215EE03320F5F95F0093DDD5 /* SmsCodeApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */; };
 		2160FF3320E09ACD00739A45 /* LearnLogDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
@@ -220,7 +222,9 @@
 		2151F65D1FF0E3D3007D4FFE /* xueji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueji.entitlements; sourceTree = "<group>"; };
 		215A31341FA850C800450C1B /* StudyBookCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBookCellTableViewCell.swift; sourceTree = "<group>"; };
 		215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiManger.swift; sourceTree = "<group>"; };
+		215BB60020F86BB2000EDBD4 /* DetailApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailApiManger.swift; sourceTree = "<group>"; };
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
+		215E401920FA325500D939B9 /* MyDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailModel.swift; sourceTree = "<group>"; };
 		215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsCodeApiManger.swift; sourceTree = "<group>"; };
 		2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLogDataManger.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
@@ -553,6 +557,7 @@
 				2142C9072020087500ED2104 /* AddBook_customViewController.swift */,
 				2101987620692BFC00907EEC /* ReviewApiMangerViewController.swift */,
 				2124D72A208DDBA00007B5EE /* ReviewDoneViewController.swift */,
+				215BB60020F86BB2000EDBD4 /* DetailApiManger.swift */,
 				2125552820BA917000371FDB /* MineDataManger.swift */,
 				2125552A20BAAB6300371FDB /* WeekAimDetailDataManger.swift */,
 				210ADD5020C6B691005A3B96 /* AddAimDataManger.swift */,
@@ -641,6 +646,7 @@
 				21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */,
 				21F5C4BB20BD1C6E00E40058 /* ReportModel.swift */,
 				21EF380120C54A150015EF7F /* WeekAimDetailModel.swift */,
+				215E401920FA325500D939B9 /* MyDetailModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1010,6 +1016,7 @@
 				2124D729208DC8CD0007B5EE /* StepView.swift in Sources */,
 				2146A84C20B2C32200903B9D /* StudyDistributeTableViewCell.swift in Sources */,
 				2124473520024BB80038F204 /* SetInfoTableViewCell.swift in Sources */,
+				215BB60120F86BB2000EDBD4 /* DetailApiManger.swift in Sources */,
 				21C436D31FBACC240031F2C3 /* AddBook_CatTableViewCell.swift in Sources */,
 				21258A9C1FAC0DCF00D34D57 /* AddCategoryViewController.swift in Sources */,
 				214F913D1FEA4F1900D44165 /* UIButton+Init.swift in Sources */,
@@ -1082,6 +1089,7 @@
 				212239201FEBFD2100A2743E /* LoginView.swift in Sources */,
 				2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */,
 				216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */,
+				215E401A20FA325500D939B9 /* MyDetailModel.swift in Sources */,
 				211A65CF20A0AC8C009CD41A /* LearnDetailTitleTableViewCell.swift in Sources */,
 				214F913F1FEA4F1900D44165 /* Color+fun.swift in Sources */,
 				21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */,

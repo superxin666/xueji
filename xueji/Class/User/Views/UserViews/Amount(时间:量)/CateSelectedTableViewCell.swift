@@ -11,9 +11,11 @@ let CateSelectedTableViewCellH = ip6(60)
 let CateSelectedTableViewCellID = "CateSelectedTableViewCell_id"
 let itemW :CGFloat = ip6(58)
 let itemH :CGFloat = ip6(26)
+
 class CateSelectedTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
     var colletionView : UICollectionView!
 
+    var dataArr : [MyDetailModel_category_list] = []
 
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -50,19 +52,30 @@ class CateSelectedTableViewCell: UITableViewCell,UICollectionViewDelegate,UIColl
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return dataArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell :CateCollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: CateCollectionViewCellID, for: indexPath) as! CateCollectionViewCell
+        if dataArr.count > 0 {
+            let model:MyDetailModel_category_list = self.dataArr[indexPath.row]
+            cell.setData(title: model.name)
+        }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         XJLog(message: indexPath.row)
+        if dataArr.count > 0 {
+            let model:MyDetailModel_category_list = self.dataArr[indexPath.row]
+            XJLog(message: model.name)
+        }
     }
 
-
+    func setData(arr:[MyDetailModel_category_list]) {
+        dataArr = arr
+        colletionView.reloadData()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

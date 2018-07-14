@@ -28,7 +28,7 @@ class DateStepTableViewCell: UITableViewCell {
     }
 
     func creatUI()  {
-        titleBtn = UIButton.getBtn_titleStyle(title_normal: "2017-10", title_selected: "2017-10", fream: CGRect(x: ip6(20), y:  ip6(15), width: KSCREEN_WIDTH - ip6(40), height: ip6(25)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
+        titleBtn = UIButton.getBtn_titleStyle(title_normal: "", title_selected: "", fream: CGRect(x: ip6(20), y:  ip6(15), width: KSCREEN_WIDTH - ip6(40), height: ip6(25)), backgroundColor: .white, textColorSelectrd: black_53, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(click(sender:)), vc: self, tag: 0)
         titleBtn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
         titleBtn.xj_makeRadius(radius: 3)
         self.addSubview(titleBtn)
@@ -47,6 +47,10 @@ class DateStepTableViewCell: UITableViewCell {
         } else if sender.tag == 2 {
             XJLog(message: "右")
         }
+    }
+
+    func setData(str : String) {
+        titleBtn.setTitle(str, for: .normal)
     }
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,10 +8,19 @@
 
 import UIKit
 
-class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
-     var mainTabelView : UITableView!//
+class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate {
+    var mainTabelView : UITableView!//
 
+    var request = DetailApiManger()
 
+    /// 分来id 默认为全部
+    var cidInt = 0
+    /// BOOK:书籍(默认) CATEGORY:分类
+    var calc_typeStr = "BOOK"
+    /// DAY:日(默认) WEEK:周 MONTH:月
+    var time_dim = "DAY"
+    /// 默认为0，步长位7(天周月)
+    var page = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +30,8 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         self.navigationBar_rightBtn_title(title: "切换分类统计")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
+        request.delegate = self
+        request.listRequest(calc_type: calc_typeStr, cid: cidInt, time_dim: time_dim, page: page)
     }
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT), style: .grouped)
@@ -45,7 +56,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         if section == 0 {
             return 4
         }else {
-            return 10
+            return request.getCatListCount()
         }
     }
 
@@ -62,18 +73,21 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = DateStepTableViewCell(style: .default, reuseIdentifier: DateStepTableViewCellID)
                 }
+                cell.setData(str: request.getDayTitle())
                 return cell
             } else if indexPath.row == 2 {
                 var cell : CateSelectedTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: CateSelectedTableViewCellID, for: indexPath) as! CateSelectedTableViewCell
                 if (cell == nil)  {
                     cell = CateSelectedTableViewCell(style: .default, reuseIdentifier: CateSelectedTableViewCellID)
                 }
+                cell.setData(arr: request.getCatArr())
                 return cell
             } else  {
                 var cell : HistogramTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: HistogramTableViewCellID, for: indexPath) as! HistogramTableViewCell
                 if (cell == nil)  {
                     cell = HistogramTableViewCell(style: .default, reuseIdentifier: HistogramTableViewCellID)
                 }
+                cell.setData(model: request.getDataModel(), type: 0)
                 return cell
             }
 
@@ -83,7 +97,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
             if (cell == nil)  {
                 cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
             }
-            cell.setData()
+            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row))
             return cell
         }
 
@@ -106,12 +120,18 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         }
     }
 
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//    }
-//
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
          return 0
+    }
+
+
+    func requestSucceed_Detail() {
+        self.mainTabelView.reloadData()
+    }
+
+    func requestFail_Detail() {
+
     }
 
     override func navigationLeftBtnClick() {

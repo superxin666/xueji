@@ -21,7 +21,7 @@ let learn_log_api = "/learn/log?"
 let get_sms_code_api = "/user/get_sms_code?"
 let sign_up_api = "/user/sign_up?"
 let reset_password_api = "/user/reset_password?"
-
+let my_detail_api = "/main/my_detail?"
 
 //---------------------------------首页
 let main_index_api = "/main/index?"
