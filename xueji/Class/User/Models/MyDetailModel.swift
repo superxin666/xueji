@@ -44,6 +44,8 @@ class MyDetailModel_btm_list: Mappable {
     var category_id : Int!
     var book_id : Int!
     var color : String!
+    var name : String!
+    var pic : String!
     var day : [MyDetailModel_day] = []
 
 
@@ -57,6 +59,8 @@ class MyDetailModel_btm_list: Mappable {
         book_id <- map["book_id"]
         color <- map["color"]
         day <- map["day"]
+        name <- map["name"]
+        pic <- map["pic"]
     }
 }
 

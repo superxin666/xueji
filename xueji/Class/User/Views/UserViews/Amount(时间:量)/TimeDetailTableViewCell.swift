@@ -15,6 +15,9 @@ class TimeDetailTableViewCell: UITableViewCell {
     var bookNameLabel : UILabel!
     var lineView : UIView!
 
+    var catCirle : UIView!
+
+
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,13 +34,16 @@ class TimeDetailTableViewCell: UITableViewCell {
 
         bookImageView = UIImageView(frame: CGRect(x: ip6(25), y: ip6(10), width: ip6(23), height: ip6(37)))
 
+        catCirle = UIView(frame: CGRect(x: ip6(19), y: ip6(28), width: ip6(10), height: ip6(10)))
+        catCirle.xj_makeRound()
+
 
         bookNameLabel = UILabel.getLabel(fream: CGRect(x: bookImageView.frame.maxX + ip6(12), y:ip6(10), width: viewW - ip6(12) -  bookImageView.frame.size.width, height: ip6(14)), fontSize: 10, text: "", textColor: black_53, textAlignment: .left)
 
 
         lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 0.5))
 
-
+        self.addSubview(catCirle)
         self.addSubview(bookImageView)
         self.addSubview(bookNameLabel)
         self.addSubview(lineView)
@@ -48,12 +54,22 @@ class TimeDetailTableViewCell: UITableViewCell {
     /// 赋值
     ///
     /// - Parameter model: <#model description#>
-    func setData(model : MyDetailModel_btm_list)  {
+    func setData(model : MyDetailModel_btm_list,type : String)  {
+        if type == CALC_BOOK {
+            catCirle.isHidden  = true
+            bookImageView.isHidden = false
+            bookImageView.setImage_kf(imageName: model.pic, placeholderImage: #imageLiteral(resourceName: "book"))
+        } else {
+            catCirle.isHidden  = false
+            bookImageView.isHidden = true
+            if let str = model.color {
+                catCirle.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
+            }
 
+        }
         //缺少名字 色值返回不对 图片链接
         let labelW = (lineView.frame.width)/7
-        bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
-        bookNameLabel.text = "123"
+        bookNameLabel.text = model.name
         if let str = model.color {
            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
         }

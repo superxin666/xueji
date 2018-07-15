@@ -39,34 +39,30 @@ extension UIColor {
 
     
     static func xj_colorFromString(hexColor: String) -> UIColor {
-        if hexColor.count == 6 {
-            // 存储转换后的数值
-            var red:UInt32 = 0, green:UInt32 = 0, blue:UInt32 = 0
-            // 分别转换进行转换
-            let startIndex = hexColor.index(hexColor.startIndex, offsetBy:0)//获取d的索引
-            let endIndex = hexColor.index(startIndex, offsetBy:2)//的索引开始往后两个,即获取f的索引
-            let redStr = hexColor.substring(with: startIndex..<endIndex)
 
-            let startIndex2 = hexColor.index(hexColor.startIndex, offsetBy:2)//获取d的索引
-            let endIndex2 = hexColor.index(startIndex2, offsetBy:2)//的索引开始往后两个,即获取f的索引
-            let greenStr = hexColor.substring(with: startIndex2..<endIndex2)
+        // 存储转换后的数值
+        var red:UInt32 = 0, green:UInt32 = 0, blue:UInt32 = 0
+        // 分别转换进行转换
+        let startIndex = hexColor.index(hexColor.startIndex, offsetBy:1)//获取d的索引
+        let endIndex = hexColor.index(startIndex, offsetBy:2)//的索引开始往后两个,即获取f的索引
+        let redStr = hexColor.substring(with: startIndex..<endIndex)
 
-            let startIndex3 = hexColor.index(hexColor.startIndex, offsetBy:4)//获取d的索引
-            let endIndex3 = hexColor.index(startIndex3, offsetBy:2)//的索引开始往后两个,即获取f的索引
-            let blueStr = hexColor.substring(with: startIndex3..<endIndex3)
-            XJLog(message: hexColor)
-            XJLog(message: redStr)
-            XJLog(message: greenStr)
-            XJLog(message: blueStr)
+        let startIndex2 = hexColor.index(hexColor.startIndex, offsetBy:3)//获取d的索引
+        let endIndex2 = hexColor.index(startIndex2, offsetBy:2)//的索引开始往后两个,即获取f的索引
+        let greenStr = hexColor.substring(with: startIndex2..<endIndex2)
 
-            Scanner(string: redStr).scanHexInt32(&red)
-            Scanner(string: greenStr).scanHexInt32(&green)
-            Scanner(string: blueStr).scanHexInt32(&blue)
-            return UIColor.xj_ColorFromInt(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
-        } else {
-            return red
-        }
+        let startIndex3 = hexColor.index(hexColor.startIndex, offsetBy:5)//获取d的索引
+        let endIndex3 = hexColor.index(startIndex3, offsetBy:2)//的索引开始往后两个,即获取f的索引
+        let blueStr = hexColor.substring(with: startIndex3..<endIndex3)
+        XJLog(message: hexColor)
+        XJLog(message: redStr)
+        XJLog(message: greenStr)
+        XJLog(message: blueStr)
 
+        Scanner(string: redStr).scanHexInt32(&red)
+        Scanner(string: greenStr).scanHexInt32(&green)
+        Scanner(string: blueStr).scanHexInt32(&blue)
+        return UIColor.xj_ColorFromInt(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
     }
 
 }

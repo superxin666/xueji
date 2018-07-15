@@ -10,11 +10,16 @@ import UIKit
 let DateSelectedTableViewCellH = ip6(43)
 let DateSelectedTableViewCellID = "DateSelectedTableViewCell_ID"
 
+protocol DateSelectedTableViewCellDelegate {
+    func dateTypeSlected(type : Int)
+}
+
 class DateSelectedTableViewCell: UITableViewCell {
     var leftBtn : UIButton!
     var midBtn : UIButton!
     var rightdBtn : UIButton!
     var lastBtn : UIButton!
+    var delegate : DateSelectedTableViewCellDelegate!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -61,18 +66,9 @@ class DateSelectedTableViewCell: UITableViewCell {
         sender.isSelected = !sender.isSelected
         lastBtn = sender
         XJLog(message: tagNum)
-
-//        if tagNum == 0 {
-//
-//            midBtn.backgroundColor = .white
-//            rightdBtn.backgroundColor = .white
-//        } else if tagNum == 1 {
-//            leftBtn.backgroundColor = .white
-//            rightdBtn.backgroundColor = .white
-//        } else {
-//            leftBtn.backgroundColor = .white
-//            midBtn.backgroundColor = .white
-//        }
+        if delegate != nil {
+            self.delegate.dateTypeSlected(type: tagNum)
+        }
     }
 
     override func awakeFromNib() {

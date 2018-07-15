@@ -28,11 +28,10 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
         request.delegate = self
         let url = my_detail_api + "calc_type=\(calc_type)" + "&cid=\(cid)" + "&time_dim=\(time_dim)" + "&page=\(page)" + request.getTokenParameter()
         request.request_api(url: url)
-
     }
 
-    func requestSucceed(response: Any) {
 
+    func requestSucceed(response: Any) {
         dataModel = Mapper<MyDetailModel>().map(JSON: response as! [String : Any])!
         self.delegate.requestSucceed_Detail()
     }
@@ -63,14 +62,22 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
     ///
     /// - Returns: <#return value description#>
     func getCatArr() -> [MyDetailModel_category_list] {
+        let holeModel : MyDetailModel_category_list = MyDetailModel_category_list()
+        holeModel.name = "全部"
+        holeModel.id = 0
+        var arr : [MyDetailModel_category_list] = []
+        arr.append(holeModel)
+
+
         if let model = dataModel {
             if model.category_list.count > 0 {
-                return model.category_list
+                arr = arr + model.category_list
+                return arr
             } else {
-                return []
+                return arr
             }
         } else {
-            return []
+            return arr
         }
     }
 

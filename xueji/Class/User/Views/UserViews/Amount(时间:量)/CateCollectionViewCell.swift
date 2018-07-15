@@ -34,16 +34,23 @@ class CateCollectionViewCell: UICollectionViewCell {
         label.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xefefef)
         label.xj_makeRadius(radius: ip6(16))
         self.addSubview(label)
-
-    }
-
-    func click(sender : UIButton) {
-
     }
 
     func setData(title : String) {
-//        btn.setTitle(title, for: .normal)
         label.text = title
+    }
+
+    func setNormal() {
+        label.textColor = black_53
+        label.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0xefefef)
+
+
+    }
+
+    func setSlected() {
+        label.textColor = .white
+        label.backgroundColor = black_53
+
     }
     
 }

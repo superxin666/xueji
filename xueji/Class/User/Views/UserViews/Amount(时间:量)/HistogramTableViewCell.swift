@@ -19,7 +19,7 @@ class HistogramTableViewCell: UITableViewCell {
 
 
     ///0 教材  1分类
-    var typeNum = 0
+    var typeNum : String = CALC_BOOK
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -119,7 +119,7 @@ class HistogramTableViewCell: UITableViewCell {
             let xAxis : XAxis = barCharView.xAxis
             xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             var arr : [ReportModel_date_book] = []
-            if typeNum == 0 {
+            if typeNum == CALC_BOOK {
                 arr = model.book
             } else {
                 arr = model.category
@@ -167,10 +167,10 @@ class HistogramTableViewCell: UITableViewCell {
     /// - Parameters:
     ///   - model: <#model description#>
     ///   - model2: <#model2 description#>
-    ///   - type: 0 教材  1分类
-    func setData(model:MyDetailModel,type : Int) {
+    ///   - type:
+    func setData(model:MyDetailModel,type : String) {
         reportModel = model
-
+        typeNum = type
         //柱形图
         if reportModel.report.count > 0 {
             self.setChartData()

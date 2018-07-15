@@ -4,11 +4,15 @@
 //
 //  Created by lvxin on 2018/5/18.
 //  Copyright © 2018年 lvxin. All rights reserved.
-//  时间详情
+//  时间分布详情  学习量分布详情
 
 import UIKit
+let CALC_BOOK = "BOOK"
+let CALC_CATEGORY = "CATEGORY"
 
-class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate {
+
+
+class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate,cateSelectedTableViewCellDelegate,DateSelectedTableViewCellDelegate {
     var mainTabelView : UITableView!//
 
     var request = DetailApiManger()
@@ -16,7 +20,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
     /// 分来id 默认为全部
     var cidInt = 0
     /// BOOK:书籍(默认) CATEGORY:分类
-    var calc_typeStr = "BOOK"
+    var calc_typeStr = CALC_BOOK
     /// DAY:日(默认) WEEK:周 MONTH:月
     var time_dim = "DAY"
     /// 默认为0，步长位7(天周月)
@@ -31,7 +35,8 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
         request.delegate = self
-        request.listRequest(calc_type: calc_typeStr, cid: cidInt, time_dim: time_dim, page: page)
+        self.requestList()
+
     }
     func creatTableView()  {
         mainTabelView = UITableView.init(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - LNAVIGATION_HEIGHT), style: .grouped)
@@ -67,6 +72,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = DateSelectedTableViewCell(style: .default, reuseIdentifier: DateSelectedTableViewCellID)
                 }
+                cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 var cell : DateStepTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: DateStepTableViewCellID, for: indexPath) as! DateStepTableViewCell
@@ -80,6 +86,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = CateSelectedTableViewCell(style: .default, reuseIdentifier: CateSelectedTableViewCellID)
                 }
+                cell.delegate = self
                 cell.setData(arr: request.getCatArr())
                 return cell
             } else  {
@@ -87,7 +94,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = HistogramTableViewCell(style: .default, reuseIdentifier: HistogramTableViewCellID)
                 }
-                cell.setData(model: request.getDataModel(), type: 0)
+                cell.setData(model: request.getDataModel(), type: calc_typeStr)
                 return cell
             }
 
@@ -97,7 +104,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
             if (cell == nil)  {
                 cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
             }
-            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row))
+            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), type: calc_typeStr)
             return cell
         }
 
@@ -125,6 +132,23 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
          return 0
     }
 
+    func catClick(_ model: MyDetailModel_category_list) {
+        cidInt = model.id
+        self.requestList()
+        
+    }
+
+    func dateTypeSlected(type: Int) {
+        if type == 0 {
+            time_dim = "DAY"
+        } else if type == 1 {
+            time_dim = "WEEK"
+        } else {
+            time_dim = "MONTH"
+
+        }
+        self.requestList()
+    }
 
     func requestSucceed_Detail() {
         self.mainTabelView.reloadData()
@@ -134,11 +158,28 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 
     }
 
+    func requestList() {
+        request.listRequest(calc_type: calc_typeStr, cid: cidInt, time_dim: time_dim, page: page)
+    }
+
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)
     }
     override func navigationRightBtnClick() {
         XJLog(message: "切换")
+        if calc_typeStr == CALC_BOOK {
+            //
+            calc_typeStr = CALC_CATEGORY
+            self.navigationBar_rightBtn_title(title: "切换资料统计")
+
+        } else {
+            calc_typeStr = CALC_BOOK
+            self.navigationBar_rightBtn_title(title: "切换分类统计")
+
+        }
+        self.requestList()
+
+
     }
 
     override func didReceiveMemoryWarning() {
