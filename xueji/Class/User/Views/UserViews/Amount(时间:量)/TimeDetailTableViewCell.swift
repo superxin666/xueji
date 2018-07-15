@@ -17,6 +17,8 @@ class TimeDetailTableViewCell: UITableViewCell {
 
     var catCirle : UIView!
 
+    var label : UILabel!
+    var labelArr : [UILabel] = []
 
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -42,6 +44,17 @@ class TimeDetailTableViewCell: UITableViewCell {
 
 
         lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 0.5))
+        let labelW = (lineView.frame.width)/7
+        if labelArr.count > 0 {
+            labelArr.removeAll()
+        }
+        for i in 0..<7 {
+            label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(18)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
+            label.xj_makeBorderWithBorderWidth(width: 0.5, color: black_53)
+            self.addSubview(label)
+            labelArr.append(label)
+
+        }
 
         self.addSubview(catCirle)
         self.addSubview(bookImageView)
@@ -54,7 +67,7 @@ class TimeDetailTableViewCell: UITableViewCell {
     /// 赋值
     ///
     /// - Parameter model: <#model description#>
-    func setData(model : MyDetailModel_btm_list,type : String)  {
+    func setData(model : MyDetailModel_btm_list,type : String,time_dimType:String)  {
         if type == CALC_BOOK {
             catCirle.isHidden  = true
             bookImageView.isHidden = false
@@ -68,20 +81,30 @@ class TimeDetailTableViewCell: UITableViewCell {
 
         }
         //缺少名字 色值返回不对 图片链接
-        let labelW = (lineView.frame.width)/7
         bookNameLabel.text = model.name
         if let str = model.color {
            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
         }
 
-        let arr = model.day
-        for i in 0..<arr.count {
+        var arr : [MyDetailModel_day] = []
+        if time_dimType == "DAY" {
+            arr = model.day
+        } else if time_dimType == "WEEK" {
+            arr = model.week
+        } else {
+            arr = model.month
+        }
+        for i in 0..<7 {
             let model : MyDetailModel_day = arr[i]
             let str = String.getHoreMin(min: model.time_count)
-            let label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(18)), fontSize: 10, text: str, textColor: black_53, textAlignment: .center)
-            label.xj_makeBorderWithBorderWidth(width: 0.5, color: black_53)
-            self.addSubview(label)
+            let label1 = labelArr[i]
+            label1.text = str
         }
+
+
+
+
+
     }
 
 

@@ -43,13 +43,25 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
     /// 获取时间标题
     ///
     /// - Returns: <#return value description#>
-    func getDayTitle() ->String {
+    func getDayTitle(type : String) ->String {
         if let model = dataModel {
             if model.report.count > 0 {
                 let model1 : MyDetailModel_report = model.report[0]
                 let model2 : MyDetailModel_report = model.report[5]
-                let str = model2.day + "~" + model1.day
-                return str
+
+                if type == "DAY" {
+                    let str = model2.day + "~" + model1.day
+                    return str
+
+                } else if type == "WEEK" {
+                    let str = model2.week + "~" + model1.week
+                    return str
+
+                } else {
+                    let str = model2.month + "~" + model1.month
+                    return str
+                }
+
             }  else {
                 return ""
             }

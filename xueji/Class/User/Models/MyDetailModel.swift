@@ -47,6 +47,8 @@ class MyDetailModel_btm_list: Mappable {
     var name : String!
     var pic : String!
     var day : [MyDetailModel_day] = []
+    var week : [MyDetailModel_day] = []
+    var month : [MyDetailModel_day] = []
 
 
     init() {}
@@ -59,6 +61,8 @@ class MyDetailModel_btm_list: Mappable {
         book_id <- map["book_id"]
         color <- map["color"]
         day <- map["day"]
+        week <- map["week"]
+        month <- map["month"]
         name <- map["name"]
         pic <- map["pic"]
     }
@@ -83,6 +87,9 @@ class MyDetailModel_max: Mappable {
 class MyDetailModel_report: Mappable {
 
     var day : String!
+    var week : String!
+    var month : String!
+
     var sum : ReportModel_date_sum = ReportModel_date_sum()
     var category : [ReportModel_date_book] = []
     var book : [ReportModel_date_book] = []
@@ -95,6 +102,9 @@ class MyDetailModel_report: Mappable {
     // Mappable
     func mapping(map: Map) {
         day <- map["day"]
+        week <- map["week"]
+        month <- map["month"]
+
         sum <- map["sum"]
         category <- map["category"]
         book <- map["book"]

@@ -10,10 +10,20 @@ import UIKit
 let DateStepTableViewCellH = ip6(40)
 let DateStepTableViewCellID = "DateStepTableViewCell_id"
 
+protocol DateStepTableViewCellDelegate {
+    func dateStepClick(stpeNum : Int)
+}
+
 class DateStepTableViewCell: UITableViewCell {
     var titleBtn : UIButton!
     var leftBtn : UIButton!
     var rightBtn : UIButton!
+
+    /// 当前位置 左加 右减
+    var stepNum = 0
+
+    var delegate : DateStepTableViewCellDelegate!
+
 
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -44,14 +54,29 @@ class DateStepTableViewCell: UITableViewCell {
     func click(sender:UIButton) {
         if sender.tag == 1 {
             XJLog(message: "左")
+            stepNum = stepNum + 1
+
         } else if sender.tag == 2 {
             XJLog(message: "右")
+            stepNum = stepNum - 1
+            if stepNum < 0 {
+                stepNum = 0
+                SVPMessageShow.showErro(infoStr: "暂无数据")
+                return
+            } else {
+
+            }
+        }
+
+        if delegate != nil  {
+            self.delegate.dateStepClick(stpeNum: stepNum)
         }
     }
 
     func setData(str : String) {
         titleBtn.setTitle(str, for: .normal)
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

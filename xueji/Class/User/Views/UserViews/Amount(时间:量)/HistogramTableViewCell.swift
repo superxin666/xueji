@@ -12,6 +12,13 @@ import Charts
 let HistogramTableViewCellH = ip6(160)
 let HistogramTableViewCellID = "HistogramTableViewCell_id"
 
+enum HistogramTableViewCellType {
+    case day
+    case week
+    case month
+}
+
+
 class HistogramTableViewCell: UITableViewCell {
 
     var barCharView : BarChartView!
@@ -20,6 +27,9 @@ class HistogramTableViewCell: UITableViewCell {
 
     ///0 教材  1分类
     var typeNum : String = CALC_BOOK
+
+    var type : HistogramTableViewCellType!
+
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -112,13 +122,30 @@ class HistogramTableViewCell: UITableViewCell {
             leftAxis.axisMaximum = Double(String.getHour_more(min: dayNum!));//设置Y轴的最大值
             //X轴
             var dateArr : [String] = []
-            dateArr.append("")
-            for model in reportModel.report {
-                dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
+
+            if type == .day {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
+                }
+
+            } else if type == .week {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.week))                }
+
+            } else {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.month))
+                }
+
             }
+
             let xAxis : XAxis = barCharView.xAxis
             xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             var arr : [ReportModel_date_book] = []
+
             if typeNum == CALC_BOOK {
                 arr = model.book
             } else {
@@ -168,9 +195,17 @@ class HistogramTableViewCell: UITableViewCell {
     ///   - model: <#model description#>
     ///   - model2: <#model2 description#>
     ///   - type:
-    func setData(model:MyDetailModel,type : String) {
+    func setData(model:MyDetailModel,calc_type : String,time_dim : String) {
         reportModel = model
-        typeNum = type
+        typeNum = calc_type
+        if time_dim == "DAY" {
+            type = .day
+        } else if time_dim == "WEEK" {
+            type = .week
+        } else {
+            type = .month
+        }
+
         //柱形图
         if reportModel.report.count > 0 {
             self.setChartData()

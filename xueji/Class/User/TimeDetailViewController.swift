@@ -12,7 +12,7 @@ let CALC_CATEGORY = "CATEGORY"
 
 
 
-class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate,cateSelectedTableViewCellDelegate,DateSelectedTableViewCellDelegate {
+class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate,cateSelectedTableViewCellDelegate,DateSelectedTableViewCellDelegate,DateStepTableViewCellDelegate {
     var mainTabelView : UITableView!//
 
     var request = DetailApiManger()
@@ -79,7 +79,9 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = DateStepTableViewCell(style: .default, reuseIdentifier: DateStepTableViewCellID)
                 }
-                cell.setData(str: request.getDayTitle())
+                cell.delegate = self
+                cell.setData(str: request.getDayTitle(type: time_dim))
+                
                 return cell
             } else if indexPath.row == 2 {
                 var cell : CateSelectedTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: CateSelectedTableViewCellID, for: indexPath) as! CateSelectedTableViewCell
@@ -94,17 +96,17 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = HistogramTableViewCell(style: .default, reuseIdentifier: HistogramTableViewCellID)
                 }
-                cell.setData(model: request.getDataModel(), type: calc_typeStr)
+                cell.setData(model: request.getDataModel(), calc_type: calc_typeStr, time_dim: time_dim)
                 return cell
             }
 
 
         } else {
-            var cell : TimeDetailTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: TimeDetailTableViewCellID, for: indexPath) as! TimeDetailTableViewCell
-            if (cell == nil)  {
-                cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
-            }
-            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), type: calc_typeStr)
+            let cell : TimeDetailTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: TimeDetailTableViewCellID, for: indexPath) as! TimeDetailTableViewCell
+//            if (cell == nil)  {
+//                cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
+//            }
+            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), type: calc_typeStr, time_dimType: time_dim)
             return cell
         }
 
@@ -149,6 +151,12 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         }
         self.requestList()
     }
+
+    func dateStepClick(stpeNum: Int) {
+        page = stpeNum
+        self.requestList()
+    }
+    
 
     func requestSucceed_Detail() {
         self.mainTabelView.reloadData()
