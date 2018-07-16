@@ -49,40 +49,43 @@ class PieTableViewCell: UITableViewCell {
 
     }
 
-    func setPieData(model:MyDetailModel) {
+    func setPieData(model:MyDetailModel,type : TimeDistributeViewControllerType) {
 
-        let count = 5//饼状图总共有几块组成
-        //每个区块的数据
+
+        //时间
         var yVals : [BarChartDataEntry] = Array()
-        for i in 0..<count {
-            let entry = BarChartDataEntry(x:Double(i) , y: Double(10))
-            yVals.append(entry)
+        var colors : [UIColor] = Array()
+
+        if type == .time {
+            for i in 0..<model.btm_list.count {
+                let model = model.btm_list[i]
+                let entry = BarChartDataEntry(x:Double(i) , y: Double(model.timeTotla))
+                yVals.append(entry)
+                if let str =  model.color {
+                    colors.append(UIColor.xj_colorFromString(hexColor: str))
+                }
+            }
+
+        } else {
+            for i in 0..<model.btm_list.count {
+                let model = model.btm_list[i]
+                let entry = BarChartDataEntry(x:Double(i) , y: Double(model.timeTotla))
+                yVals.append(entry)
+                if let str =  model.color {
+                    colors.append(UIColor.xj_colorFromString(hexColor: str))
+                }
+            }
         }
 
-        //每个区块的名称或描述
-        var xVals : [String] = Array()
-        for i in 0..<count {
-            let title = "\(i+1)"
-            xVals.append(title)
-        }
-        //dataSet
+
         let dataSet = PieChartDataSet(values: yVals, label: "")
         dataSet.drawValuesEnabled = true
-
-        var colors : [UIColor] = Array()
-        colors.append(UIColor.green)
-        colors.append(UIColor.darkGray)
-        colors.append(UIColor.red)
-        colors.append(UIColor.purple)
-        colors.append(UIColor.brown)
-
         dataSet.colors = colors
         dataSet.sliceSpace = 0
         dataSet.selectionShift = 8
         dataSet.drawIconsEnabled  = false
         dataSet.xValuePosition = .outsideSlice
         dataSet.yValuePosition = .insideSlice
-
         dataSet.valueLineWidth = 0
         dataSet.valueLinePart1Length = 0
         dataSet.valueLinePart2Length = 0
@@ -90,6 +93,8 @@ class PieTableViewCell: UITableViewCell {
         data.setValueFont(xj_fontThin(ip6(10)))
 
         timePieChartView.data = data
+
+        
     }
 
     override func awakeFromNib() {

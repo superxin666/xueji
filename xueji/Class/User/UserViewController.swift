@@ -112,11 +112,20 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             if (timecell == nil)  {
                 timecell = StudyTimeTableViewCell(style: .default, reuseIdentifier: study_time_cell_ID)
             }
+            weak var weakself = self
+            timecell.timeClickBlock = {
+                weakself?.timeCellClick()
+            }
             return timecell
         } else if indexPath.section == 2{
             amountcell  = tableView.dequeueReusableCell(withIdentifier: study_amount_cell_ID, for: indexPath) as! StudyAmountTableViewCell
             if (amountcell == nil)  {
                 amountcell = StudyAmountTableViewCell(style: .default, reuseIdentifier: study_amount_cell_ID)
+            }
+            weak var weakself = self
+            amountcell.amountClickBlock = {
+                weakself?.amountCellClick()
+
             }
             return amountcell
             
@@ -161,21 +170,13 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
 
             }
         } else if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                XJLog(message: "时间详情")
-                let vc = TimeDetailViewController()
-                vc.hidesBottomBarWhenPushed = true
-                vc.type = .time
-                self.navigationController?.pushViewController(vc, animated: true)
+            self.timeCellClick()
 
-            }
+
+
         } else if indexPath.section == 2 {
-            XJLog(message: "量详情")
-            let vc = TimeDetailViewController()
-            vc.hidesBottomBarWhenPushed = true
-            vc.type = .amount
-            self.navigationController?.pushViewController(vc, animated: true)
 
+            self.amountCellClick()
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -206,6 +207,22 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         } else {
             return study_value_sectionHeight
         }
+    }
+
+    func timeCellClick() {
+        XJLog(message: "时间详情")
+        let vc = TimeDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = .time
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func amountCellClick() {
+        XJLog(message: "量详情")
+        let vc = TimeDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = .amount
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     // MARK: - data
     func MineDatarequestSucceed() {

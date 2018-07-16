@@ -83,7 +83,6 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         if (cell == nil)  {
             cell = ReviewTableViewCell(style: .default, reuseIdentifier: ReviewCellID)
         }
-        cell.setUpUI()
         cell.setData(model: request.getModel(rowNum: indexPath.row, currectDay: currectWeekNum))
         return cell
     }

@@ -14,6 +14,8 @@ enum StudyTimeTableViewCellType {
     case month
 }
 
+typealias StudyTimeTableViewCellBlock = ()->()
+
 class StudyTimeTableViewCell: UITableViewCell {
     var leftBackView : UIView!
     var leftTitleLabel :UILabel!
@@ -34,6 +36,7 @@ class StudyTimeTableViewCell: UITableViewCell {
 
     var barCharView : BarChartView!
     var viewType :StudyTimeTableViewCellType = .day
+    var timeClickBlock : StudyTimeTableViewCellBlock!
 
 
     /// 星期几
@@ -105,6 +108,11 @@ class StudyTimeTableViewCell: UITableViewCell {
     func creatChart() {
         barCharView = BarChartView(frame: CGRect(x: ip6(40), y: ip6(97), width: KSCREEN_WIDTH - ip6(80), height: ip6(138)))
         self.addSubview(barCharView)
+        barCharView.isUserInteractionEnabled = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(nextClick))
+        barCharView.addGestureRecognizer(tap)
+
 
         barCharView.legend.enabled = false
         barCharView.chartDescription?.text = ""//不显示，就设为空字符串即
@@ -286,18 +294,20 @@ class StudyTimeTableViewCell: UITableViewCell {
 
         if model.day.count > 0 {
             let dayModel = model.day[weekNum]
-            let str = "\(dayModel.sum.time_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            let hour = dayModel.sum.time_count!/60
+            let str = "\(hour)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.leftTimeLabel.attributedText = str
         }
         if model.month.count > 0 {
             let dayModel = model.month[weekNum]
-            let str = "\(dayModel.sum.time_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            let hour = dayModel.sum.time_count!/60
+            let str = "\(hour)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.midTimeLabel.attributedText = str
         }
         if let time =  model.sum.sum.time_count{
-            let str = "\(time)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
+            let str = "\(time/60)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.rightTimeLabel.attributedText = str
         }
@@ -306,8 +316,10 @@ class StudyTimeTableViewCell: UITableViewCell {
         self.setChartData()
     }
 
-//    func nestClick()   {
-//
-//    }
+    func nextClick() {
+        if timeClickBlock != nil {
+            self.timeClickBlock()
+        }
+    }
 
 }

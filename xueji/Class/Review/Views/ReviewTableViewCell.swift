@@ -34,8 +34,6 @@ class ReviewTableViewCell: UITableViewCell {
         self.backgroundColor  = .white
         bookImageView = UIImageView()
         bookImageView.frame = CGRect(x: ip6(12), y: ip6(5), width: ip6(67), height: ip6(100))
-        bookImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
-
         
         
         titleLabel  = UILabel.getLabel(fream: CGRect(x: bookImageView.frame.maxX + ip6(5), y: ip6(5), width: KSCREEN_WIDTH - bookImageView.frame.maxX - ip6(10), height: ip6(12)), fontSize: 12, text: "", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .left)
@@ -72,8 +70,6 @@ class ReviewTableViewCell: UITableViewCell {
         if let learnreminder = model.learnreminder {
             noteTitleLabel.text = learnreminder
         }
-
-
     }
 
 }

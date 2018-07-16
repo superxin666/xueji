@@ -101,7 +101,7 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
                 if (cell == nil)  {
                     cell = PieTableViewCell(style: .default, reuseIdentifier: PieTableViewCellID)
                 }
-        
+                cell.setPieData(model: request.getDataModel(), type: type)
                 return cell
             }
 

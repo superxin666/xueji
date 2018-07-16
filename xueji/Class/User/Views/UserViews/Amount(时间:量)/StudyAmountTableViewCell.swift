@@ -15,6 +15,7 @@ enum StudyAmountTableViewCellType {
     case week
     case month
 }
+typealias StudyAmountTableViewCellBlock = ()->()
 
 class StudyAmountTableViewCell: UITableViewCell {
     var leftBackView : UIView!
@@ -37,6 +38,7 @@ class StudyAmountTableViewCell: UITableViewCell {
     var barCharView : BarChartView!
     var viewType :StudyAmountTableViewCellType = .day
 
+    var amountClickBlock : StudyAmountTableViewCellBlock!
 
     /// 星期几
     let weekNum = String.getDayIndex()
@@ -107,6 +109,11 @@ class StudyAmountTableViewCell: UITableViewCell {
     func creatChart() {
         barCharView = BarChartView(frame: CGRect(x: ip6(40), y: ip6(97), width: KSCREEN_WIDTH - ip6(80), height: ip6(138)))
         self.addSubview(barCharView)
+        barCharView.isUserInteractionEnabled = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(nextClick))
+        barCharView.addGestureRecognizer(tap)
+
 
         barCharView.legend.enabled = false
         barCharView.chartDescription?.text = ""//不显示，就设为空字符串即
@@ -315,7 +322,9 @@ class StudyAmountTableViewCell: UITableViewCell {
         self.setChartData()
     }
     
-//    func nestClick()   {
-//
-//    }
+    func nextClick() {
+        if amountClickBlock != nil {
+            self.amountClickBlock()
+        }
+    }
 }
