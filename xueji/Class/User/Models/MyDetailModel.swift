@@ -42,14 +42,19 @@ class MyDetailModel_day: Mappable {
 class MyDetailModel_btm_list: Mappable {
 
     var category_id : Int!
+    var pic : String!
     var book_id : Int!
     var color : String!
     var name : String!
-    var pic : String!
     var day : [MyDetailModel_day] = []
     var week : [MyDetailModel_day] = []
     var month : [MyDetailModel_day] = []
 
+    var pageTotla : Int!
+    var timeTotla : Int!
+
+    var pagePre : String!
+    var timePre : String!
 
     init() {}
     required init?(map: Map){
@@ -120,6 +125,11 @@ class MyDetailModel: Mappable {
 
     var btm_list : [MyDetailModel_btm_list] = []
     var category_list : [MyDetailModel_category_list] = []
+
+    var pageNum : Int!
+    var timeNum : Int!
+
+
 
 
     init() {}

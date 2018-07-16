@@ -11,14 +11,22 @@ enum TimeDistributeViewControllerType {
     case time
     case amount
 }
-class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate,cateSelectedTableViewCellDelegate,DateSelectedTableViewCellDelegate,DateStepTableViewCellDelegate {
     var mainTabelView : UITableView!//
 
-    /// vc类型
-    var type : TimeDistributeViewControllerType!
+     var request = DetailApiManger()
 
-    /// 数据类型 0-资料 1-分类
-    var dataType :Int = 0
+    /// 分来id 默认为全部
+    var cidInt = 0
+    /// BOOK:书籍(默认) CATEGORY:分类
+    var calc_typeStr = CALC_BOOK
+    /// DAY:日(默认) WEEK:周 MONTH:月
+    var time_dim = "DAY"
+    /// 默认为0，步长位7(天周月)
+    var page = 0
+    /// vc类型
+    var type : TimeDistributeViewControllerType = .time
+
 
 
     override func viewDidLoad() {
@@ -31,8 +39,9 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
             self.navigation_title_fontsize(name: "学习量分布", fontsize: 20)
 
         }
-        self.navigationBar_rightBtn_title(title: "切换分类统计")
         self.navigationBar_leftBtn_title(title: "返回")
+        request.delegate = self
+        self.requestList()
         self.creatTableView()
     }
     func creatTableView()  {
@@ -58,7 +67,7 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
         if section == 0 {
             return 4
         }else {
-            return 10
+            return request.getCatListCount()
         }
     }
 
@@ -69,18 +78,23 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
                 if (cell == nil)  {
                     cell = DateSelectedTableViewCell(style: .default, reuseIdentifier: DateSelectedTableViewCellID)
                 }
+                cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 var cell : DateStepTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: DateStepTableViewCellID, for: indexPath) as! DateStepTableViewCell
                 if (cell == nil)  {
                     cell = DateStepTableViewCell(style: .default, reuseIdentifier: DateStepTableViewCellID)
                 }
+                cell.delegate = self
+                cell.setData(str: request.getDayTitle(type: time_dim))
                 return cell
             } else if indexPath.row == 2 {
                 var cell : CateSelectedTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: CateSelectedTableViewCellID, for: indexPath) as! CateSelectedTableViewCell
                 if (cell == nil)  {
                     cell = CateSelectedTableViewCell(style: .default, reuseIdentifier: CateSelectedTableViewCellID)
                 }
+                cell.setData(arr: request.getCatArr())
+                cell.delegate = self
                 return cell
             } else  {
                 var cell : PieTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: PieTableViewCellID, for: indexPath) as! PieTableViewCell
@@ -97,7 +111,7 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
             if (cell == nil)  {
                 cell = DistributeTableViewCell(style: .default, reuseIdentifier: DistributeTableViewCellID)
             }
-            cell.setData()
+            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), viewType: type)
             return cell
         }
 
@@ -124,13 +138,46 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
         return 0
     }
 
+    func catClick(_ model: MyDetailModel_category_list) {
+        cidInt = model.id
+        self.requestList()
+
+    }
+
+    func dateTypeSlected(type: Int) {
+        if type == 0 {
+            time_dim = "DAY"
+        } else if type == 1 {
+            time_dim = "WEEK"
+        } else {
+            time_dim = "MONTH"
+
+        }
+        self.requestList()
+    }
+
+    func dateStepClick(stpeNum: Int) {
+        page = stpeNum
+        self.requestList()
+    }
+
+
+    func requestList() {
+         request.listRequest(calc_type: calc_typeStr, cid: cidInt, time_dim: time_dim, page: page)
+    }
+
+    func requestSucceed_Detail() {
+        request.getBookpageTime(type: time_dim)
+        self.mainTabelView.reloadData()
+    }
+
+    func requestFail_Detail() {
+
+    }
+
     override func navigationLeftBtnClick() {
         self.navigationController?.popViewController(animated: true)
     }
-    override func navigationRightBtnClick() {
-        XJLog(message: "切换")
-    }
-
 
     /*
     // MARK: - Navigation

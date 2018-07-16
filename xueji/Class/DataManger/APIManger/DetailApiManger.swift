@@ -17,6 +17,12 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
     weak var delegate :DetailApiMangerDelegate!
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     var dataModel : MyDetailModel!
+
+    var totlaPage : Int = 0
+    var totlaTime : Int = 0
+
+
+
     /// 统计详情
     ///
     /// - Parameters:
@@ -109,6 +115,10 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
     }
 
 
+    /// 获取书籍/分类list
+    ///
+    /// - Parameter row: <#row description#>
+    /// - Returns: <#return value description#>
     func getCatOrBookListModel(row : Int) -> MyDetailModel_btm_list {
         if let model = dataModel {
             if model.btm_list.count > 0 {
@@ -122,6 +132,9 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
         }
     }
 
+    /// 获取模型
+    ///
+    /// - Returns: <#return value description#>
     func getDataModel() ->   MyDetailModel{
         if let model = dataModel {
             return model
@@ -130,5 +143,54 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
         }
     }
 
+
+    /// 获取书籍总页数 总时间
+    ///
+    /// - Parameters:
+    ///   - row: <#row description#>
+    ///   - type: <#type description#>
+    func getBookpageTime(type:String) {
+
+        totlaPage = 0
+        totlaTime = 0
+        let dataModel = self.getDataModel()
+        //数据计算
+        for model in dataModel.btm_list {
+            var arr : [MyDetailModel_day] = []
+            if type == "DAY" {
+                arr = model.day
+            } else if type == "WEEK" {
+                arr = model.week
+            } else {
+                arr = model.month
+            }
+            var totlaNum_time = 0
+            var totlaNum_page = 0
+            for subModel in arr {
+                totlaNum_time = totlaNum_time + subModel.time_count
+                totlaNum_page = totlaNum_page + subModel.page_count
+            }
+            model.pageTotla = totlaNum_page
+            model.timeTotla = totlaNum_time
+
+            totlaPage = totlaPage + totlaNum_page
+            totlaTime = totlaTime + totlaNum_time
+//            XJLog(message: totlaPage)
+//            XJLog(message: totlaTime)
+        }
+
+        //百分数计算
+        for model in dataModel.btm_list {
+            let page = CGFloat(model.pageTotla)/CGFloat(totlaPage)
+            let pageStr = String(format:"%.1f",page*100)//
+
+            let time = CGFloat(model.timeTotla)/CGFloat(totlaTime)
+            let timeStr = String(format:"%.1f",time*100)//
+
+            model.pagePre = pageStr
+            model.timePre = timeStr
+        }
+
+    }
 
 }

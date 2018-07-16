@@ -54,10 +54,10 @@ extension UIColor {
         let startIndex3 = hexColor.index(hexColor.startIndex, offsetBy:5)//获取d的索引
         let endIndex3 = hexColor.index(startIndex3, offsetBy:2)//的索引开始往后两个,即获取f的索引
         let blueStr = hexColor.substring(with: startIndex3..<endIndex3)
-        XJLog(message: hexColor)
-        XJLog(message: redStr)
-        XJLog(message: greenStr)
-        XJLog(message: blueStr)
+//        XJLog(message: hexColor)
+//        XJLog(message: redStr)
+//        XJLog(message: greenStr)
+//        XJLog(message: blueStr)
 
         Scanner(string: redStr).scanHexInt32(&red)
         Scanner(string: greenStr).scanHexInt32(&green)

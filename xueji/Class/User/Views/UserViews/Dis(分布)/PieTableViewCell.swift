@@ -47,10 +47,9 @@ class PieTableViewCell: UITableViewCell {
         pieChartView.legend.formSize = 12;//图示大小
         timePieChartView = pieChartView
 
-        self.setPieData()
     }
 
-    func setPieData() {
+    func setPieData(model:MyDetailModel) {
 
         let count = 5//饼状图总共有几块组成
         //每个区块的数据
