@@ -249,7 +249,7 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     }
     //退出
     func cancle_click() {
-        self.dismissVC()
+        self.navigationController?.popViewController(animated: true)
     }
     func dismissVC() {
         self.dismiss(animated: true, completion: {

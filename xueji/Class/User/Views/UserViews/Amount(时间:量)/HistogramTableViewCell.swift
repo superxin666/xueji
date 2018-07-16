@@ -28,7 +28,11 @@ class HistogramTableViewCell: UITableViewCell {
     ///0 教材  1分类
     var typeNum : String = CALC_BOOK
 
+    /// 日月年
     var type : HistogramTableViewCellType!
+
+    /// 时间 页数
+    var showType :TimeDetailViewControllerType!
 
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -104,6 +108,7 @@ class HistogramTableViewCell: UITableViewCell {
 
     }
 
+    /// 时间赋值
     func setChartData()  {
 
         let xVals_count = 7 //X轴上要显示多少条数据
@@ -111,8 +116,6 @@ class HistogramTableViewCell: UITableViewCell {
         var dataSets : [BarChartDataSet] = Array()
         for i in 1...xVals_count {
             let model : MyDetailModel_report = reportModel.report[i-1]
-
-
             let leftAxis : YAxis = barCharView.leftAxis
 
             //Y轴
@@ -185,19 +188,101 @@ class HistogramTableViewCell: UITableViewCell {
         barCharView.data = data
         barCharView.animate(yAxisDuration: 1)
 
-
-
     }
 
-    /// <#Description#>
+
+     ///页数赋值
+    func setChartData_page() {
+        let xVals_count = 7 //X轴上要显示多少条数据
+        //Y轴上面需要显示的数据
+        var dataSets : [BarChartDataSet] = Array()
+        for i in 1...xVals_count {
+            let model : MyDetailModel_report = reportModel.report[i-1]
+            let leftAxis : YAxis = barCharView.leftAxis
+
+            //Y轴
+            let pageNum = reportModel.max.page
+            XJLog(message: pageNum)
+            leftAxis.axisMinimum = 0//设置Y轴的最小值
+            leftAxis.axisMaximum = String.getPage(page: pageNum!)//设置Y轴的最大值
+            //X轴
+            var dateArr : [String] = []
+
+            if type == .day {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
+                }
+
+            } else if type == .week {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.week))                }
+
+            } else {
+                dateArr.append("")
+                for model in reportModel.report {
+                    dateArr.append(String.xj_getDate_Month(dateStr: model.month))
+                }
+
+            }
+
+            let xAxis : XAxis = barCharView.xAxis
+            xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
+            var arr : [ReportModel_date_book] = []
+
+            if typeNum == CALC_BOOK {
+                arr = model.book
+            } else {
+                arr = model.category
+            }
+            if arr.count > 0 {
+                XJLog(message: "有学习记录")
+                var bookArr : [Double] = []
+                var colourArr : [UIColor] = []
+
+                for subModel in arr {
+                    bookArr.append(Double(subModel.page_count))
+                    if let str = subModel.color {
+                        colourArr.append(UIColor.xj_colorFromString(hexColor: str))
+                    }
+                }
+                XJLog(message: colourArr.count)
+                var  yVals :[BarChartDataEntry] = []
+                let entry : BarChartDataEntry = BarChartDataEntry(x: Double(i), yValues: bookArr)
+                yVals.append(entry)
+
+                let set =  BarChartDataSet(values: yVals, label: nil)
+                set.drawValuesEnabled = false
+                set.highlightEnabled = false
+                //书本颜色
+                set.setColors(colourArr, alpha: 1)
+                dataSets.append(set)
+
+
+            } else {
+                XJLog(message: "没有学习记录")
+            }
+        }
+
+        let data : BarChartData = BarChartData(dataSets: dataSets)
+        data.barWidth = Double(0.4)
+        barCharView.data = data
+        barCharView.animate(yAxisDuration: 1)
+    }
+
+
+    /// 赋值
     ///
     /// - Parameters:
     ///   - model: <#model description#>
-    ///   - model2: <#model2 description#>
-    ///   - type:
-    func setData(model:MyDetailModel,calc_type : String,time_dim : String) {
+    ///   - calc_type: 分类 书籍
+    ///   - time_dim: 日 周 月
+    ///   - viewType: 时间 页数
+    func setData(model:MyDetailModel,calc_type : String,time_dim : String,viewType : TimeDetailViewControllerType) {
         reportModel = model
         typeNum = calc_type
+        showType = viewType
         if time_dim == "DAY" {
             type = .day
         } else if time_dim == "WEEK" {
@@ -208,7 +293,11 @@ class HistogramTableViewCell: UITableViewCell {
 
         //柱形图
         if reportModel.report.count > 0 {
-            self.setChartData()
+            if viewType == .time {
+                self.setChartData()
+            } else {
+                self.setChartData_page()
+            }
         }
 
     }

@@ -97,8 +97,8 @@ class StudyTimeTableViewCell: UITableViewCell {
 
         //表格
         self.creatChart()
-        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: barCharView.frame.origin.y - ip6(20), width: ip6(20), height: barCharView.frame.size.height - ip6(20)), selector: #selector(nestClick), vc: self, tag: 0)
-        self.addSubview(nestBtn)
+//        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: barCharView.frame.origin.y - ip6(20), width: ip6(20), height: barCharView.frame.size.height - ip6(20)), selector: #selector(nestClick), vc: self, tag: 0)
+//        self.addSubview(nestBtn)
         
     }
     
@@ -306,8 +306,8 @@ class StudyTimeTableViewCell: UITableViewCell {
         self.setChartData()
     }
 
-    func nestClick()   {
+//    func nestClick()   {
+//
+//    }
 
-    }
-    
 }

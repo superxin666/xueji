@@ -10,7 +10,10 @@ import UIKit
 let CALC_BOOK = "BOOK"
 let CALC_CATEGORY = "CATEGORY"
 
-
+enum TimeDetailViewControllerType {
+    case time;
+    case amount
+}
 
 class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,DetailApiMangerDelegate,cateSelectedTableViewCellDelegate,DateSelectedTableViewCellDelegate,DateStepTableViewCellDelegate {
     var mainTabelView : UITableView!//
@@ -25,6 +28,10 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
     var time_dim = "DAY"
     /// 默认为0，步长位7(天周月)
     var page = 0
+
+    /// 默认为时间统计
+    var type : TimeDetailViewControllerType = .time
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +103,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
                 if (cell == nil)  {
                     cell = HistogramTableViewCell(style: .default, reuseIdentifier: HistogramTableViewCellID)
                 }
-                cell.setData(model: request.getDataModel(), calc_type: calc_typeStr, time_dim: time_dim)
+                cell.setData(model: request.getDataModel(), calc_type: calc_typeStr, time_dim: time_dim, viewType: type)
                 return cell
             }
 
@@ -106,7 +113,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 //            if (cell == nil)  {
 //                cell = TimeDetailTableViewCell(style: .default, reuseIdentifier: TimeDetailTableViewCellID)
 //            }
-            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), type: calc_typeStr, time_dimType: time_dim)
+            cell.setData(model: request.getCatOrBookListModel(row: indexPath.row), type: calc_typeStr, time_dimType: time_dim, viewType: type)
             return cell
         }
 

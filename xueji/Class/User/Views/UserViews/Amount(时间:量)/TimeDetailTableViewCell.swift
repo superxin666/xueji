@@ -67,7 +67,7 @@ class TimeDetailTableViewCell: UITableViewCell {
     /// 赋值
     ///
     /// - Parameter model: <#model description#>
-    func setData(model : MyDetailModel_btm_list,type : String,time_dimType:String)  {
+    func setData(model : MyDetailModel_btm_list,type : String,time_dimType:String,viewType : TimeDetailViewControllerType)  {
         if type == CALC_BOOK {
             catCirle.isHidden  = true
             bookImageView.isHidden = false
@@ -78,12 +78,14 @@ class TimeDetailTableViewCell: UITableViewCell {
             if let str = model.color {
                 catCirle.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
             }
-
         }
-        //缺少名字 色值返回不对 图片链接
+
+
+
+        //
         bookNameLabel.text = model.name
         if let str = model.color {
-           lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
+            lineView.backgroundColor = UIColor.xj_colorFromString(hexColor: str)
         }
 
         var arr : [MyDetailModel_day] = []
@@ -94,17 +96,23 @@ class TimeDetailTableViewCell: UITableViewCell {
         } else {
             arr = model.month
         }
-        for i in 0..<7 {
-            let model : MyDetailModel_day = arr[i]
-            let str = String.getHoreMin(min: model.time_count)
-            let label1 = labelArr[i]
-            label1.text = str
+        if viewType == .time {
+            for i in 0..<7 {
+                let model : MyDetailModel_day = arr[i]
+                let str = String.getHoreMin(min: model.time_count)
+                let label1 = labelArr[i]
+                label1.text = str
+            }
+        } else {
+            for i in 0..<7 {
+                let model : MyDetailModel_day = arr[i]
+
+                let label1 = labelArr[i]
+                if let str = model.page_count {
+                    label1.text = "\(str)p"
+                }
+            }
         }
-
-
-
-
-
     }
 
 

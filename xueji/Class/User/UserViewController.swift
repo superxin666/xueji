@@ -162,12 +162,20 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                XJLog(message: "1")
+                XJLog(message: "时间详情")
                 let vc = TimeDetailViewController()
                 vc.hidesBottomBarWhenPushed = true
+                vc.type = .time
                 self.navigationController?.pushViewController(vc, animated: true)
 
             }
+        } else if indexPath.section == 2 {
+            XJLog(message: "量详情")
+            let vc = TimeDetailViewController()
+            vc.hidesBottomBarWhenPushed = true
+            vc.type = .amount
+            self.navigationController?.pushViewController(vc, animated: true)
+
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
