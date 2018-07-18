@@ -81,6 +81,16 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
             vc.hidesBottomBarWhenPushed = true
             vc.dataModel = self.model
             self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 1 {
+            let vc = AcountViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 2 {
+            let vc = StaudySetViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+
+
         }
     }
     

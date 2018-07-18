@@ -195,14 +195,19 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     ///
     /// - Returns: <#return value description#>
     func getRecentListCount() -> Int {
-        if let arr = self.recent_learnListArr {
-            if arr.count > 0 {
-                return arr.count
+        if !(UserDataManger.getIsShowRecentStudy() == "1")  {
+            return 0
+        } else {
+            if let arr = self.recent_learnListArr {
+                if arr.count > 0 {
+                    return arr.count
+                } else {
+                    return 0
+                }
             } else {
                 return 0
             }
-        } else {
-            return 0
+
         }
     }
 

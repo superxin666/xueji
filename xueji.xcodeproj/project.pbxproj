@@ -111,6 +111,8 @@
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
 		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
 		21E9D2A020FEE6A500CA7B49 /* ModifyProfileApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9D29F20FEE6A500CA7B49 /* ModifyProfileApiManger.swift */; };
+		21E9D2A220FF3A5000CA7B49 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9D2A120FF3A5000CA7B49 /* AcountViewController.swift */; };
+		21E9D2A420FF3C4000CA7B49 /* StaudySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9D2A320FF3C4000CA7B49 /* StaudySetViewController.swift */; };
 		21EA5C5F20BBF14F00169152 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */; };
 		21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */; };
 		21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */; };
@@ -259,6 +261,8 @@
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
 		21E9D29F20FEE6A500CA7B49 /* ModifyProfileApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyProfileApiManger.swift; sourceTree = "<group>"; };
+		21E9D2A120FF3A5000CA7B49 /* AcountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountViewController.swift; sourceTree = "<group>"; };
+		21E9D2A320FF3C4000CA7B49 /* StaudySetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaudySetViewController.swift; sourceTree = "<group>"; };
 		21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddApiViewController.swift; sourceTree = "<group>"; };
 		21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddApiViewController.swift; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 				214429BD1FA7260400004C38 /* UserViewController.swift */,
 				212447222002479D0038F204 /* SetInfoViewController.swift */,
 				2130E90B20F48090001A087D /* PersionInfoViewController.swift */,
+				21E9D2A120FF3A5000CA7B49 /* AcountViewController.swift */,
+				21E9D2A320FF3C4000CA7B49 /* StaudySetViewController.swift */,
 				210ABFB520A96943007BACF5 /* WeekAimViewController.swift */,
 				212E6A2020AE66EC00158940 /* AddAimViewController.swift */,
 				21BD1A3720AEB2C0005C649F /* TimeDetailViewController.swift */,
@@ -1045,7 +1051,9 @@
 				2146A85820B2D27C00903B9D /* HistogramTableViewCell.swift in Sources */,
 				215BB5FF20F7061A000EDBD4 /* ResetPasswordApiManger.swift in Sources */,
 				2146A85620B2C9F300903B9D /* CateCollectionViewCell.swift in Sources */,
+				21E9D2A420FF3C4000CA7B49 /* StaudySetViewController.swift in Sources */,
 				21C989341FAB0ABB00A43FF1 /* EditCatyTableViewCell.swift in Sources */,
+				21E9D2A220FF3A5000CA7B49 /* AcountViewController.swift in Sources */,
 				2146A84E20B2C36200903B9D /* CateSelectedTableViewCell.swift in Sources */,
 				21014B42200733FE002CB437 /* CategoryListApiMangerViewController.swift in Sources */,
 				214429C21FA7260400004C38 /* StudyViewController.swift in Sources */,
