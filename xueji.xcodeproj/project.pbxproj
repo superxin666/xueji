@@ -110,6 +110,7 @@
 		21DCA3B41FA724F60094DCFE /* xuejiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3B31FA724F60094DCFE /* xuejiTests.swift */; };
 		21DCA3BF1FA724F60094DCFE /* xuejiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */; };
 		21E344451FFF673B001F1766 /* LoginApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */; };
+		21E9D2A020FEE6A500CA7B49 /* ModifyProfileApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E9D29F20FEE6A500CA7B49 /* ModifyProfileApiManger.swift */; };
 		21EA5C5F20BBF14F00169152 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */; };
 		21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */; };
 		21ECD8F0200B7A42007632D2 /* BookAddApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */; };
@@ -257,6 +258,7 @@
 		21DCA3BE1FA724F60094DCFE /* xuejiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xuejiUITests.swift; sourceTree = "<group>"; };
 		21DCA3C01FA724F60094DCFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E344441FFF673B001F1766 /* LoginApiMangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiMangerViewController.swift; sourceTree = "<group>"; };
+		21E9D29F20FEE6A500CA7B49 /* ModifyProfileApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyProfileApiManger.swift; sourceTree = "<group>"; };
 		21EA5C5E20BBF14F00169152 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddApiViewController.swift; sourceTree = "<group>"; };
 		21ECD8EF200B7A42007632D2 /* BookAddApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddApiViewController.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				2140061F20F668E9009E606A /* RegistApiManger.swift */,
 				215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */,
 				21014B3A20070D8D002CB437 /* LogoutApiViewController.swift */,
+				21E9D29F20FEE6A500CA7B49 /* ModifyProfileApiManger.swift */,
 				215BB5FE20F7061A000EDBD4 /* ResetPasswordApiManger.swift */,
 				21014B41200733FE002CB437 /* CategoryListApiMangerViewController.swift */,
 				21ECD8ED200B164A007632D2 /* CategoryAddApiViewController.swift */,
@@ -764,7 +767,7 @@
 				TargetAttributes = {
 					21DCA39A1FA724F60094DCFE = {
 						CreatedOnToolsVersion = 9.0.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1025,6 +1028,7 @@
 				210ADD5120C6B691005A3B96 /* AddAimDataManger.swift in Sources */,
 				21ECD8EE200B164A007632D2 /* CategoryAddApiViewController.swift in Sources */,
 				2146A83F20B2C13F00903B9D /* WeekAimTableViewCell.swift in Sources */,
+				21E9D2A020FEE6A500CA7B49 /* ModifyProfileApiManger.swift in Sources */,
 				215EE03320F5F95F0093DDD5 /* SmsCodeApiManger.swift in Sources */,
 				210198752069296700907EEC /* ReviewTopView.swift in Sources */,
 				21C436CF1FBABA8D0031F2C3 /* AddBookViewController.swift in Sources */,
@@ -1282,17 +1286,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NGR2ZQ7TWS;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CCSDTMRBV9;
 				INFOPLIST_FILE = xueji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tjwl.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee40b9be-c27d-4024-8986-491cc3a7db25";
-				PROVISIONING_PROFILE_SPECIFIER = xuejihd;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/lvxin/xueji/xueji/SupportFile/Files/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1307,17 +1311,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NGR2ZQ7TWS;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CCSDTMRBV9;
 				INFOPLIST_FILE = xueji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tjwl.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee40b9be-c27d-4024-8986-491cc3a7db25";
-				PROVISIONING_PROFILE_SPECIFIER = xuejihd;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/lvxin/xueji/xueji/SupportFile/Files/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

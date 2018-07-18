@@ -17,6 +17,7 @@ let study_value_cell_ID = "study_value_cell_id"
 
 let study_time_cell_ID = "study_time_cell_id"
 let study_amount_cell_ID = "study_amount_cell_id"
+let FLISHDATA_user = "flishdata_user"
 
 
 class UserViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,MineDataMangerDelegate {
@@ -50,7 +51,13 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         self.creatTableView()
         requestVC.delegate = self
         requestVC.dataRequest()
+        NotificationCenter.default.addObserver(self, selector: #selector(reflishData), name: NSNotification.Name(rawValue: FLISHDATA_user), object: nil)
 
+
+    }
+
+    func reflishData() {
+        requestVC.dataRequest()
     }
         // MARK: - view
     //MARK: 导航栏点击

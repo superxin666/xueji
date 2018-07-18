@@ -60,7 +60,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     var publish = ""
 
     /// 封皮
-    var bookImageData : Data!
+    var bookImageData : Data = Data()
 
     /// 封皮url
     var bookImageUrl : String = ""
@@ -230,7 +230,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         
         //获取选择的编辑后的
         let  image = info[UIImagePickerControllerEditedImage] as! UIImage
-        bookImageData = UIImageJPEGRepresentation(image, 0.1)
+        bookImageData = UIImageJPEGRepresentation(image, 0.1)!
 
         //图片控制器退出
         picker.dismiss(animated: true, completion: {

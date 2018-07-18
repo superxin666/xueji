@@ -79,8 +79,8 @@ class SetInfoViewController: BaseViewController,UITableViewDelegate,UITableViewD
         if indexPath.row == 0 {
             let vc = PersionInfoViewController()
             vc.hidesBottomBarWhenPushed = true
+            vc.dataModel = self.model
             self.navigationController?.pushViewController(vc, animated: true)
-
         }
     }
     
