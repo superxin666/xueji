@@ -23,7 +23,7 @@ class HeadBookCollectionViewCell: UICollectionViewCell {
     
     func creatUI()  {
         imageView.frame = CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight)
-        imageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "book"))
+        imageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         self.addSubview(imageView)
     }
 }

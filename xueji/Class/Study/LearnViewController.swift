@@ -82,7 +82,7 @@ class LearnViewController: BaseViewController {
 
     func creatUI()  {
         bookImageView = UIImageView(frame: CGRect(x: (KSCREEN_WIDTH - ip6(130))/2, y:LNAVIGATION_HEIGHT + ip6(40), width: ip6(130), height: ip6(200)))
-        bookImageView.setImage_kf(imageName: model.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+        bookImageView.setImage_kf(imageName: model.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         self.view.addSubview(bookImageView)
 
         timeLabel = UILabel.getLabel(fream: CGRect(x: ip6(20), y: bookImageView.frame.maxY + ip6(45), width: KSCREEN_WIDTH - ip6(40), height: ip6(90)), fontSize: 64, text: "00:00:00", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353), textAlignment: .center)

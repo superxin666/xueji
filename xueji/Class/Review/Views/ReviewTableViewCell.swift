@@ -56,7 +56,7 @@ class ReviewTableViewCell: UITableViewCell {
     }
     
     func setData(model : ReviewModel_content) {
-        bookImageView.setImage_kf(imageName: model.bookcover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+        bookImageView.setImage_kf(imageName: model.bookcover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         if let reviewstep = model.reviewstep,let reviewtime = model.reviewtime {
             titleLabel.text = "记忆阶段 \(reviewstep)  复习时间\(reviewtime)"
         }

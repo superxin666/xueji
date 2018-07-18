@@ -167,11 +167,11 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         bookImageView = UIImageView(frame: CGRect(x:(KSCREEN_WIDTH - ip6(100))/2, y: ip6(20), width: ip6(100), height: ip6(150)))
         if self.type == .addBook_scan {
             bookImageView.isUserInteractionEnabled = false
-            bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+            bookImageView.setImage_kf(imageName: bookModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         } else if type == .detail || type == .editBook_scan {
             bookImageView.isUserInteractionEnabled = false
             if let url = requestManger.getMyBookModel().book.cover_img {
-                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
+                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
             }
         } else if type == .addBook_custom {
             bookImageView.isUserInteractionEnabled = true
@@ -179,7 +179,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         } else if type == .editBook_custom{
             bookImageView.isUserInteractionEnabled = true
             if let url = requestManger.getMyBookModel().book.cover_img {
-                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "book"))
+                bookImageView.setImage_kf(imageName: url, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
             }
         }
 

@@ -71,7 +71,7 @@ class TimeDetailTableViewCell: UITableViewCell {
         if type == CALC_BOOK {
             catCirle.isHidden  = true
             bookImageView.isHidden = false
-            bookImageView.setImage_kf(imageName: model.pic, placeholderImage: #imageLiteral(resourceName: "book"))
+            bookImageView.setImage_kf(imageName: model.pic, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         } else {
             catCirle.isHidden  = false
             bookImageView.isHidden = true

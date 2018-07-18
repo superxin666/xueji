@@ -39,7 +39,7 @@ class SetHeadView: UIView {
 
     func setData(model : UserInfoModel_head) {
         if let str = model.avatar {
-            iconImageView.setImage_kf(imageName:  str, placeholderImage: #imageLiteral(resourceName: "book"))
+            iconImageView.setImage_kf(imageName:  str, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         }
         if let str = model.username {
             nameLabel.text = str

@@ -56,7 +56,7 @@ class PersionInfoViewController: BaseViewController,UITextFieldDelegate,ModifyPr
 
         iconImageView = UIImageView(frame: CGRect(x: (KSCREEN_WIDTH - ip6(115))/2, y:LNAVIGATION_HEIGHT + ip6(30), width: ip6(115), height: ip6(115)))
         iconImageView.xj_makeRound()
-        iconImageView.setImage_kf(imageName: dataModel.avatar, placeholderImage: #imageLiteral(resourceName: "book"))
+        iconImageView.setImage_kf(imageName: dataModel.avatar, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         iconImageView.isUserInteractionEnabled = true
         self.view.addSubview(iconImageView)
 

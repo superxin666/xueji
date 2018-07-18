@@ -55,7 +55,7 @@ class StudyBookCellTableViewCell: UITableViewCell {
             let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
             bookImageView = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
             bookImageView.tag = i
-            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
             bookImageView.addTarget(self, action: #selector(bookClick(sender:)), for: .touchUpInside)
 
             let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(ges:)))
@@ -84,7 +84,7 @@ class StudyBookCellTableViewCell: UITableViewCell {
             let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
             bookImageView = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
             bookImageView.tag = i
-            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "book"))
+            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
             bookImageView.addTarget(self, action: #selector(bookClick_recent(sender:)), for: .touchUpInside)
 
             let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress_recent(ges:)))

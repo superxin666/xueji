@@ -68,7 +68,7 @@ class DistributeTableViewCell: UITableViewCell {
     func setData(model : MyDetailModel_btm_list,viewType : TimeDistributeViewControllerType)  {
 
         if let str  = model.pic{
-            bookImageView.setImage_kf(imageName: str, placeholderImage: #imageLiteral(resourceName: "book"))
+            bookImageView.setImage_kf(imageName: str, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
         }
 
         if let str  = model.name{
