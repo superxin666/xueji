@@ -133,7 +133,10 @@ class LearnViewController: BaseViewController {
 
     func restClick()  {
         //
-
+        statBtn.isSelected = false
+        timeNum = 0
+        timeLabel.text = "00:00:00"
+        self.stopTimeimg()
     }
 
 
