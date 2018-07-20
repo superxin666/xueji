@@ -50,7 +50,7 @@ class TimeDetailTableViewCell: UITableViewCell {
         }
         for i in 0..<7 {
             label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(18)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
-            label.xj_makeBorderWithBorderWidth(width: 0.5, color: black_53)
+            label.xj_makeBorderWithBorderWidth(width: 0.5, color: UIColor.xj_colorFromRGB(rgbValue: 0xF1F1F3))
             self.addSubview(label)
             labelArr.append(label)
 

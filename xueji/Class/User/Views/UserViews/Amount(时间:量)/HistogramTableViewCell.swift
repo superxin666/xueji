@@ -115,7 +115,7 @@ class HistogramTableViewCell: UITableViewCell {
         //Y轴上面需要显示的数据
         var dataSets : [BarChartDataSet] = Array()
         for i in 1...xVals_count {
-            let model : MyDetailModel_report = reportModel.report[i-1]
+            let model : MyDetailModel_report = reportModel.report[xVals_count - i]
             let leftAxis : YAxis = barCharView.leftAxis
 
             //Y轴
@@ -128,18 +128,18 @@ class HistogramTableViewCell: UITableViewCell {
 
             if type == .day {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
                 }
 
             } else if type == .week {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.week))                }
 
             } else {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.month))
                 }
 
@@ -197,7 +197,7 @@ class HistogramTableViewCell: UITableViewCell {
         //Y轴上面需要显示的数据
         var dataSets : [BarChartDataSet] = Array()
         for i in 1...xVals_count {
-            let model : MyDetailModel_report = reportModel.report[i-1]
+            let model : MyDetailModel_report = reportModel.report[xVals_count - i]
             let leftAxis : YAxis = barCharView.leftAxis
 
             //Y轴
@@ -210,18 +210,18 @@ class HistogramTableViewCell: UITableViewCell {
 
             if type == .day {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
                 }
 
             } else if type == .week {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.week))                }
 
             } else {
                 dateArr.append("")
-                for model in reportModel.report {
+                for model in reportModel.report.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.month))
                 }
 

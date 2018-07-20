@@ -275,7 +275,7 @@ extension String {
     /// - Returns: <#return value description#>
     static func getCountTime(sencond : Int)->(timeStr : String,timeStr2 : String) {
         let min = 60
-        let hour = 60 * 6
+        let hour = 60 * min
 
 
 

@@ -182,7 +182,7 @@ class StudyTimeTableViewCell: UITableViewCell {
             let model : ReportModel_date!
             let leftAxis : YAxis = barCharView.leftAxis
             if viewType == .day {
-                model = reportModel.day[i-1]
+                model = reportModel.day[xVals_count - i]
                 //Y轴
                 let dayNum = maxModel?.time.day
                 XJLog(message: dayNum)
@@ -191,7 +191,8 @@ class StudyTimeTableViewCell: UITableViewCell {
                 //X轴
                 var dateArr : [String] = []
                 dateArr.append("")
-                for model in reportModel.day {
+
+                for model in reportModel.day.reversed() {
                     dateArr.append(String.xj_getDate_dayMonth(dateStr: model.day))
                 }
                 let xAxis : XAxis = barCharView.xAxis
@@ -199,7 +200,7 @@ class StudyTimeTableViewCell: UITableViewCell {
 
 
             } else if viewType == .week{
-                model = reportModel.week[i-1]
+                model = reportModel.week[xVals_count - i]
                 let dayNum = maxModel?.time.week
                 XJLog(message: dayNum)
                 leftAxis.axisMinimum = 0//设置Y轴的最小值
@@ -207,13 +208,13 @@ class StudyTimeTableViewCell: UITableViewCell {
 
                 var dateArr : [String] = []
                 dateArr.append("")
-                for model in reportModel.week {
+                for model in reportModel.week.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.week))
                 }
                 let xAxis : XAxis = barCharView.xAxis
                 xAxis.valueFormatter = MonthDayFormatter(arr: dateArr)
             } else {
-                model = reportModel.month[i-1]
+                model = reportModel.month[xVals_count - i]
                 let dayNum = maxModel?.time.month
                 XJLog(message: dayNum)
 
@@ -222,7 +223,7 @@ class StudyTimeTableViewCell: UITableViewCell {
 
                 var dateArr : [String] = []
                 dateArr.append("")
-                for model in reportModel.month {
+                for model in reportModel.month.reversed() {
                     dateArr.append(String.xj_getDate_Month(dateStr: model.month))
                 }
                 let xAxis : XAxis = barCharView.xAxis
