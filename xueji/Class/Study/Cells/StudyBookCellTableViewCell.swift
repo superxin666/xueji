@@ -12,7 +12,10 @@ typealias DelBookCellTableViewCellBlock = (_ tag : Int,_ indexPath:IndexPath)->(
 
 
 class StudyBookCellTableViewCell: UITableViewCell {
-    var bookImageView : UIButton!
+
+    var bookImageView : UIButton_title!
+    var bookImageView_recent : UIButton!
+
     var bookClickBlock : StudyBookCellTableViewCellBlock!
     var bookPresBlock : StudyBookCellTableViewCellBlock!
     var currectModel : CategoryListModel_list!
@@ -41,27 +44,31 @@ class StudyBookCellTableViewCell: UITableViewCell {
     func setUpUI(model: CategoryListModel_list,indexPath : IndexPath) {
         //
         currectModel = model
-        let bookCount_line = 4
-        let boardW = ip6(21)
-//        XJLog(message: "数据个数\(model.book_list.count)")
+        let bookCount_line = 3
         for i in 0..<model.book_list.count {
             
             let subModel = model.book_list[i]
-            let imageH = ip6(100)
-            let imageW = ip6(65)
-            let appading = (KSCREEN_WIDTH - boardW * CGFloat(2) - imageW * CGFloat(bookCount_line))/CGFloat((bookCount_line - 1))
+            let imageH = ip6(132 + 14 + 7)
+            let imageW = ip6(100)
+            let appading = (KSCREEN_WIDTH - imageW * CGFloat(3))/4
 
-            let Y = CGFloat((i/bookCount_line)) * (imageH + ip6(16))
-            let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
-            bookImageView = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
+            let Y = CGFloat((i/bookCount_line)) * (imageH + ip6(10))
+            let X = appading + ((appading + imageW) * CGFloat(i%3))
+            bookImageView = UIButton_title(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
             bookImageView.tag = i
             bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
             bookImageView.addTarget(self, action: #selector(bookClick(sender:)), for: .touchUpInside)
+            bookImageView.setTitle(subModel.title, for: .normal)
+            bookImageView.titleLabel?.font = xj_fontThin(ip6(10))
+            bookImageView.titleLabel?.textAlignment = .center
+            bookImageView.setTitleColor(black_53, for: .normal)
+
+
 
             let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(ges:)))
             bookImageView.addGestureRecognizer(tap)
 
-
+            
             self.contentView.addSubview(bookImageView)
         }
         
@@ -74,23 +81,27 @@ class StudyBookCellTableViewCell: UITableViewCell {
     /// - Parameter arr: <#arr description#>
     func setUpUI_recent(arr : Array<CategoryListModel_list_book_list>)  {
         currectModelArr = arr
+
+
+
         for i in 0..<arr.count {
             let subModel = arr[i]
             let imageH = ip6(100)
-            let imageW = ip6(65)
-            //            let x = ip6(21)
-            let appading = (KSCREEN_WIDTH - ip6(42) - imageW * 4)/3
-            let Y = CGFloat((i/4)) * (imageH + ip6(16))
-            let X = ip6(21) + ((appading + imageW) * CGFloat(i%4))
-            bookImageView = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
-            bookImageView.tag = i
-            bookImageView.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
-            bookImageView.addTarget(self, action: #selector(bookClick_recent(sender:)), for: .touchUpInside)
+            let imageW = ip6(67)
+//            let appading = ip6(20)
+
+            let appading = (KSCREEN_WIDTH - imageW * 4)/5
+            let Y = CGFloat((i/4)) * (imageH + ip6(10))
+            let X = appading + ((appading + imageW) * CGFloat(i%4))
+            bookImageView_recent = UIButton(frame: CGRect(x: X, y: Y, width: imageW, height: imageH))
+            bookImageView_recent.tag = i
+            bookImageView_recent.setImage_kf(imageName: subModel.cover_img, placeholderImage: #imageLiteral(resourceName: "bookLoading"))
+            bookImageView_recent.addTarget(self, action: #selector(bookClick_recent(sender:)), for: .touchUpInside)
 
             let tap = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress_recent(ges:)))
-            bookImageView.addGestureRecognizer(tap)
+            bookImageView_recent.addGestureRecognizer(tap)
 
-            self.contentView.addSubview(bookImageView)
+            self.contentView.addSubview(bookImageView_recent)
         }
         
     }

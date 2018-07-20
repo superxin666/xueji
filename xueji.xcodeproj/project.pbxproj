@@ -84,6 +84,7 @@
 		215BB60120F86BB2000EDBD4 /* DetailApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BB60020F86BB2000EDBD4 /* DetailApiManger.swift */; };
 		215BEB3820B3D9530025FD5D /* DistributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */; };
 		215E401A20FA325500D939B9 /* MyDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215E401920FA325500D939B9 /* MyDetailModel.swift */; };
+		215E626421017429009A1452 /* UIButton+title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215E626321017429009A1452 /* UIButton+title.swift */; };
 		215EE03320F5F95F0093DDD5 /* SmsCodeApiManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */; };
 		2160FF3320E09ACD00739A45 /* LearnLogDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */; };
 		216DFEED1FFD250F002F3EA4 /* BaseApiMangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */; };
@@ -228,6 +229,7 @@
 		215BB60020F86BB2000EDBD4 /* DetailApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailApiManger.swift; sourceTree = "<group>"; };
 		215BEB3720B3D9530025FD5D /* DistributeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributeTableViewCell.swift; sourceTree = "<group>"; };
 		215E401920FA325500D939B9 /* MyDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailModel.swift; sourceTree = "<group>"; };
+		215E626321017429009A1452 /* UIButton+title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+title.swift"; sourceTree = "<group>"; };
 		215EE03220F5F95F0093DDD5 /* SmsCodeApiManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsCodeApiManger.swift; sourceTree = "<group>"; };
 		2160FF3220E09ACD00739A45 /* LearnLogDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLogDataManger.swift; sourceTree = "<group>"; };
 		216DFEEA1FFD250F002F3EA4 /* BaseApiMangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiMangerViewController.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				214F91361FEA4F1800D44165 /* ImageView+loading.swift */,
 				214F913A1FEA4F1800D44165 /* String+fun.swift */,
 				214F91371FEA4F1800D44165 /* UIButton+Init.swift */,
+				215E626321017429009A1452 /* UIButton+title.swift */,
 				214F91381FEA4F1800D44165 /* UILabel+Init.swift */,
 				214F913B1FEA4F1800D44165 /* View+Clipping.swift */,
 				2112D4E91FFDCFFD008B4500 /* SVPMessageShow.swift */,
@@ -1020,6 +1023,7 @@
 				211A65D120A0B5FA009CD41A /* LearnDetailPageTableViewCell.swift in Sources */,
 				2146A84920B2C2D300903B9D /* DateSelectedTableViewCell.swift in Sources */,
 				2132546A1FBC27F80016E1AE /* ScanViewController.swift in Sources */,
+				215E626421017429009A1452 /* UIButton+title.swift in Sources */,
 				2182CB4C2078699F00BAEBD4 /* ReviewModel.swift in Sources */,
 				210ABFB620A96943007BACF5 /* WeekAimViewController.swift in Sources */,
 				2124D729208DC8CD0007B5EE /* StepView.swift in Sources */,

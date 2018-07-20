@@ -137,8 +137,13 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     func getRowHeight(section : Int) -> CGFloat {
         let bookNum = self.getBookArrCount(index: section)
         XJLog(message: "获取高度\(bookNum)")
-        let imageH = ip6(100)
-        let height = (CGFloat((bookNum/5))+1) * (imageH + ip6(16))
+        let imageH = ip6(132 + 14 + 7)
+
+        let num1 = bookNum/3
+        let num2 = bookNum%3 > 0 ? 1 : 0
+        var height =  imageH
+        height = height + CGFloat((num1 - 1)) * (imageH + ip6(10))
+        height = height +  CGFloat(num2) *  (imageH + ip6(10))
         return height
     }
 
@@ -150,7 +155,7 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     func getRecentRowHeight() -> CGFloat {
         let bookNum = self.recent_learnListArr.count
         let imageH = ip6(100)
-        let height = (CGFloat((bookNum/5))+1) * (imageH + ip6(16))
+        let height = (CGFloat((bookNum/5))+1) * (imageH)
 
         return height
     }

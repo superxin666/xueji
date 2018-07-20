@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let StudyHeadViewH = ip6(42)
+let StudyHeadViewH = ip6(44)
 
 class StudyHeadView: UIView {
 
