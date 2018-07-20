@@ -281,13 +281,13 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
     }
     func requestSucceed_regist() {
         let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        SVPMessageShow.showSucess(infoStr: "登录成功")
+        SVPMessageShow.showSucess(infoStr: "注册成功")
         dele.tabCreat()
     }
 
     func requestFail_regist() {
         getCodeLabel.isUserInteractionEnabled = true
-        SVPMessageShow.showErro(infoStr: "发送失败")
+        SVPMessageShow.showErro(infoStr: "注册失败，请稍后重试")
         timeNum = 60
         getCodeLabel.text = "重新获取"
 
