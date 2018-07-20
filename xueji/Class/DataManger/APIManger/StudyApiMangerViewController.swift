@@ -67,6 +67,19 @@ class StudyApiMangerViewController: ViewController,BaseApiMangerViewControllerDe
     }
     
     //MARK: 数据处理
+
+
+    /// 返回是否已经有学习数据
+    ///
+    /// - Returns: <#return value description#>
+    func isHaveData() -> Bool  {
+        if !(listArr.count > 0) && !(recent_learnListArr.count > 0) {
+            return false
+        } else {
+            return true
+        }
+//        return false
+    }
     
     /// 获取分类数据模型数组个数
     ///

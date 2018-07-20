@@ -16,6 +16,8 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     let headBackView : UIView = UIView()//头部视图
     var colletionView : UICollectionView!//图片浏览
     var mainTabelView : UITableView!//
+    var noDataImageView : UIImageView!
+
     var alertController : UIAlertController!
     var isEdit : Bool = false//是否为编辑状态
     
@@ -78,6 +80,12 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
         mainTabelView.showsVerticalScrollIndicator = false
         mainTabelView.showsHorizontalScrollIndicator = false
         self.view.addSubview(mainTabelView)
+    }
+
+    func creatNoDataImageView() {
+        noDataImageView = UIImageView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY - LNAVIGATION_HEIGHT))
+        noDataImageView.setImage_kf(imageName: "", placeholderImage: #imageLiteral(resourceName: "nodata"))
+        self.view.addSubview(noDataImageView)
     }
 
     // MARK: - TableViewdelegate
@@ -189,7 +197,15 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     }
     //网络代理
     func requestSucceed() {
-        self.mainTabelView.reloadData()
+        if requestManger.isHaveData() {
+            if let imageview = noDataImageView {
+                imageview.removeFromSuperview()
+            }
+
+            self.mainTabelView.reloadData()
+        } else {
+            self.creatNoDataImageView()
+        }
     }
     func requestFail() {
         
