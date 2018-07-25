@@ -90,11 +90,11 @@ class TimeDetailTableViewCell: UITableViewCell {
 
         var arr : [MyDetailModel_day] = []
         if time_dimType == "DAY" {
-            arr = model.day
+            arr = model.day.reversed()
         } else if time_dimType == "WEEK" {
-            arr = model.week
+            arr = model.week.reversed()
         } else {
-            arr = model.month
+            arr = model.month.reversed()
         }
         if viewType == .time {
             for i in 0..<7 {
