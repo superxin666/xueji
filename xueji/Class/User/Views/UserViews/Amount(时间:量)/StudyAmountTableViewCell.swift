@@ -301,13 +301,13 @@ class StudyAmountTableViewCell: UITableViewCell {
     func setData(model:ReportModel) {
         reportModel = model
         if model.day.count > 0 {
-            let dayModel = model.day[weekNum]
+            let dayModel = model.day[0]
             let str = "\(dayModel.sum.page_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" p".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.leftTimeLabel.attributedText = str
         }
         if model.month.count > 0 {
-            let dayModel = model.month[weekNum]
+            let dayModel = model.month[0]
             let str = "\(dayModel.sum.page_count!)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" p".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.midTimeLabel.attributedText = str

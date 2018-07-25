@@ -294,14 +294,14 @@ class StudyTimeTableViewCell: UITableViewCell {
         reportModel = model
 
         if model.day.count > 0 {
-            let dayModel = model.day[weekNum]
+            let dayModel = model.day[0]
             let hour = dayModel.sum.time_count!/60
             let str = "\(hour)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
             self.leftTimeLabel.attributedText = str
         }
         if model.month.count > 0 {
-            let dayModel = model.month[weekNum]
+            let dayModel = model.month[0]
             let hour = dayModel.sum.time_count!/60
             let str = "\(hour)".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 22)
             str.append(" h".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x8e8e93), fontSzie: 14))
