@@ -22,7 +22,6 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "本周目标", fontsize: 20)
-        self.navigationBar_rightBtn_title(title: "添加")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
         request.delegate = self
@@ -118,6 +117,12 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
     }
 
     func WeekAimDetailDataSucceed() {
+        if request.currectWeakModel.time_goal > 0 || request.currectWeakModel.page_goal > 0 {
+            self.navigationBar_rightBtn_title(title: "编辑")
+        } else {
+            self.navigationBar_rightBtn_title(title: "添加")
+
+        }
         mainTabelView.reloadData()
     }
     func WeekAimDetailDataFail() {

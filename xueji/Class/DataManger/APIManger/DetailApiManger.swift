@@ -53,7 +53,7 @@ class DetailApiManger: UIViewController,BaseApiMangerViewControllerDelegate {
         if let model = dataModel {
             if model.report.count > 0 {
                 let model1 : MyDetailModel_report = model.report[0]
-                let model2 : MyDetailModel_report = model.report[5]
+                let model2 : MyDetailModel_report = model.report[6]
 
                 if type == "DAY" {
                     let str = model2.day + "~" + model1.day
