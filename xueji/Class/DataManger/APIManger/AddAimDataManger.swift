@@ -34,7 +34,7 @@ class AddAimDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
         }
 
         request.delegate = self
-        let url  = learn_week_goal_api  + "pages=\(pages)" + "&time=\(time)" + request.getTokenParameter()
+        let url  = learn_week_goal_api  + "pages=\(pages)" + "&time=\(time*60)" + request.getTokenParameter()
         request.request_api(url: url)
     }
 

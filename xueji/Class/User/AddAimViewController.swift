@@ -32,7 +32,8 @@ class AddAimViewController: BaseViewController,AddAimDataMangerDelegate {
 
 
     func AddAimDataSucceed() {
-        self.navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: FLISHDATA_user), object: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     func AddAimDataFail() {

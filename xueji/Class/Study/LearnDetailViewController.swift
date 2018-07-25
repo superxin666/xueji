@@ -245,6 +245,7 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
     }
 
     func LearnLogDataSucceed() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: FLISHDATA), object: nil)
         self.navigationLeftBtnClick()
     }
 
