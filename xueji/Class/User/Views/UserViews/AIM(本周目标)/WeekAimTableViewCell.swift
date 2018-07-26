@@ -84,7 +84,12 @@ class WeekAimTableViewCell: UITableViewCell {
         }
         //时间
         if let rate = model.time_rate {
-            leftPreLabel.text = "\(rate)%"
+            if rate > 300 {
+                leftPreLabel.text = "∞"
+            } else {
+                leftPreLabel.text = "\(rate)%"
+            }
+
         }
         let str = "目标 ".getAttributedStr_color(color: black_53, fontSzie: 8)
         str.append(model.getTimegoal())
@@ -96,7 +101,12 @@ class WeekAimTableViewCell: UITableViewCell {
 
         //学习量
         if let rate = model.page_rate {
-            rightPreLabel.text = "\(rate)%"
+            if rate > 300 {
+                rightPreLabel.text = "∞"
+            } else {
+                rightPreLabel.text = "\(rate)%"
+            }
+
         }
         let str3 = "目标 ".getAttributedStr_color(color: black_53, fontSzie: 8)
         str3.append(model.getPagegoal())

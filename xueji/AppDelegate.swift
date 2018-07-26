@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -28,8 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //显示登录注册页面
             self.showLogin()
         }
-//        self.tabCreat()
-        
+
+//        let setCategoryErr : Error!
+
+        do {
+           let setCategoryErr = try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("后台播放失败")
+        }
+
+        do {
+            let activationErr = try
+                AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("后台播放激活失败")
+        }
+
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {
@@ -40,6 +54,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+        let app = UIApplication.shared
+        var bgTask : UIBackgroundTaskIdentifier!
+        bgTask = app.beginBackgroundTask(expirationHandler: {
+            DispatchQueue.main.async {
+                if bgTask != UIBackgroundTaskInvalid{
+
+                    bgTask = UIBackgroundTaskInvalid
+                }
+            }
+
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    if bgTask != UIBackgroundTaskInvalid{
+                        bgTask = UIBackgroundTaskInvalid
+                    }
+
+                }
+            }
+
+        })
+
+
+
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
