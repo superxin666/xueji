@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,WeekAimDetailDataMangerDelegate    {
+class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,WeekAimDetailDataMangerDelegate,WeekAimLineTableViewCellDelegate    {
     var mainTabelView : UITableView!//
 
     let request = WeekAimDetailDataManger()
@@ -69,6 +69,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
                 if (cell == nil)  {
                     cell = WeekAimLineTableViewCell(style: .default, reuseIdentifier: WeekAimLineTableViewCellID)
                 }
+                cell.delegate = self
                 cell.setData(model: request.getCurrectMonthModel())
                 return cell
             }
@@ -126,6 +127,12 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         mainTabelView.reloadData()
     }
     func WeekAimDetailDataFail() {
+
+    }
+
+    func dateStepClick(stpeNum: Int) {
+        request.getCurrectWeakModel(rowNum: stpeNum)
+
 
     }
 

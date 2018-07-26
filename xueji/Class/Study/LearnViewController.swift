@@ -50,35 +50,8 @@ class LearnViewController: BaseViewController {
         self.navigation_title_fontsize(name: "计时", fontsize: 20)
         self.navigationBar_leftBtn_title(title: "取消")
         self.creatUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(backbview), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
 
-//        self.addCycleTimer()
     }
-    func backbview()  {
-        XJLog(message: "进入后台")
-        if statBtn.isSelected  {
-//            statBtn.isSelected = false
-//            time.fireDate = Date.distantFuture
-        }
-    }
-
-//    func addCycleTimer() {
-//        time = Timer(timeInterval: 1.0, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: true)
-//        RunLoop.main.add(time!, forMode:RunLoopMode.commonModes)
-//    }
-//
-//    func handleTimer (){
-//
-//        let currentDate = Date(timeIntervalSinceNow: 1)
-//
-//        //        let currentDate = Date()
-//
-//        let dateFormatter = DateFormatter()
-//
-//        dateFormatter.dateFormat = "HH:mm:ss"
-//
-//        timeLabel.text = dateFormatter.string(from: currentDate)
-//    }
 
     func creatUI()  {
         bookImageView = UIImageView(frame: CGRect(x: (KSCREEN_WIDTH - ip6(130))/2, y:LNAVIGATION_HEIGHT + ip6(40), width: ip6(130), height: ip6(200)))

@@ -10,6 +10,12 @@ import UIKit
 import Charts
 let WeekAimLineTableViewCellH = ip6(326)
 let WeekAimLineTableViewCellID = "WeekAimLineTableViewCell_ID"
+
+protocol WeekAimLineTableViewCellDelegate {
+    func dateStepClick(stpeNum : Int)
+}
+
+
 class WeekAimLineTableViewCell: UITableViewCell {
     var titleLabel : UILabel!
 
@@ -29,7 +35,10 @@ class WeekAimLineTableViewCell: UITableViewCell {
     var lineView : UIView!
 
     var dataModel : WeekAimDetailModel!
+    /// 当前位置 左加 右减
+    var stepNum = 0
 
+    var delegate : WeekAimLineTableViewCellDelegate!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -236,20 +245,27 @@ class WeekAimLineTableViewCell: UITableViewCell {
         } else {
             //只有一周时 此模型书当前周 不显示
         }
-
     }
 
 
     func click(sender:UIButton) {
         if sender.tag == 1 {
             XJLog(message: "左")
+            stepNum = stepNum + 1
 
         } else if sender.tag == 2 {
             XJLog(message: "右")
+            stepNum = stepNum - 1
+            if stepNum < 0 {
+                stepNum = 0
+                SVPMessageShow.showErro(infoStr: "暂无数据")
+                return
+            } else {
 
+            }
+        }
+        if delegate != nil {
+            self.delegate.dateStepClick(stpeNum: stepNum)
         }
     }
-
-
-
 }

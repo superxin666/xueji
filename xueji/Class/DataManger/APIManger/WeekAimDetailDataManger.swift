@@ -102,12 +102,17 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
         }
     }
 
-    func getCurrectWeakModel() {
+    func getCurrectWeakModel(rowNum : Int = 0) {
         if listArr.count > 0 {
-            let model = listArr[0]
-            if model.report.count > 0 {
-                currectWeakModel = model.report[0]
-//                model.report.remove(at: 0)
+            if rowNum < listArr.count {
+                let model = listArr[rowNum]
+                if model.report.count > 0 {
+                    currectWeakModel = model.report[0]
+
+                }
+            } else {
+                page = rowNum
+                self.dataRequest()
             }
         }
     }

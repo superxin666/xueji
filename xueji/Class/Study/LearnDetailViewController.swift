@@ -38,7 +38,12 @@ class LearnDetailViewController: BaseTableViewController,LearnDetailReviewTableV
 
     var tolPage : Int!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.navigationbar_transparency()
+        self.navigationController?.navigationBar.isTranslucent = false
 
+    }
 
 
     override func viewDidLoad() {

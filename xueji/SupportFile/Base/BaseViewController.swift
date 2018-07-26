@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         //        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         //        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "whiteside"), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     //设置导航栏右键_图片
