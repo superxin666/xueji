@@ -61,7 +61,7 @@ class ReviewTopView: UIView {
                 subView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
                 lastView = subView
             }
-            let bottomLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3*2, width: subviewW, height: subviewH/3), fontSize: 6, text: "\(model.review_count!)项", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x88B52D), textAlignment: .right)
+            let bottomLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3*2, width: subviewW, height: subviewH/3), fontSize: 8, text: "\(model.review_count!)项", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x88B52D), textAlignment: .right)
             
             subView.addSubview(bottomLabel)
      
