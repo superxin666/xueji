@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let DistributeTableViewCellH = ip6(47)
+let DistributeTableViewCellH = ip6(55)
 let DistributeTableViewCellID = "DistributeTableViewCell_id"
 
 class DistributeTableViewCell: UITableViewCell {
@@ -42,14 +42,14 @@ class DistributeTableViewCell: UITableViewCell {
         bookNameLabel = UILabel.getLabel(fream: CGRect(x: bookImageView.frame.maxX + ip6(12), y:ip6(10), width: viewW - ip6(12) -  bookImageView.frame.size.width, height: ip6(14)), fontSize: 10, text: "", textColor: black_53, textAlignment: .left)
 
 
-        lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 0.5))
+        lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 1))
 
 
         let labelW = (lineView.frame.width)/2
 
         for i in 0..<2 {
-            label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(18)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
-            label.xj_makeBorderWithBorderWidth(width: 0.5, color: UIColor.xj_colorFromRGB(rgbValue: 0xF1F1F3))
+            label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(22)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
+            label.xj_makeBorderWithBorderWidth(width: 1, color: UIColor.xj_colorFromRGB(rgbValue: 0xF1F1F3))
             if i == 0 {
                 label1 = label
             } else {

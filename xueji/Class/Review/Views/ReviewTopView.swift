@@ -44,7 +44,7 @@ class ReviewTopView: UIView {
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapClick(sender:)))
             subView.addGestureRecognizer(tap)
             
-            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 10, text: ReviewModel.getTitleStr(num: model.week_seq), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
+            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 8, text: ReviewModel.getTitleStr(num: model.week_seq), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
             topLabel.tag = 1
             subView.addSubview(topLabel)
             

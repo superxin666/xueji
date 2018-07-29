@@ -45,8 +45,15 @@ class StudyDistributeTableViewCell: UITableViewCell {
         
         for i in 0..<2 {
             let backView = UIView(frame: CGRect(x: 0, y: CGFloat(i) * viewH , width: KSCREEN_WIDTH, height: viewH))
-
+            backView.tag = i
+            backView.isUserInteractionEnabled = true
             self.addSubview(backView)
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapCLick(sender:)))
+            backView.addGestureRecognizer(tap)
+
+
+
             let titleLabel = UILabel.getLabel(fream:CGRect(x: ip6(15), y: ip6(12), width: ip6(84), height: ip6(14)), fontSize: 10, text: nameArr[i], textColor: black_53, textAlignment: .center)
             backView.addSubview(titleLabel)
             
@@ -174,9 +181,9 @@ class StudyDistributeTableViewCell: UITableViewCell {
             subBackView.addSubview(lineView)
 
         }
-        timeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(40), y: 0, width: ip6(40), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 0)
-        timeNestBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        self.addSubview(timeNestBtn)
+//        timeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(40), y: 0, width: ip6(40), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 0)
+//        timeNestBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+//        self.addSubview(timeNestBtn)
 
 
         
@@ -200,8 +207,8 @@ class StudyDistributeTableViewCell: UITableViewCell {
             
         }
 
-        valeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: study_distribute_sectionHeight/2, width: ip6(20), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 1)
-        self.addSubview(valeNestBtn)
+//        valeNestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: study_distribute_sectionHeight/2, width: ip6(20), height: study_distribute_sectionHeight/2), selector: #selector(nestClick(sender:)), vc: self, tag: 1)
+//        self.addSubview(valeNestBtn)
     }
 
     /// 赋值
@@ -216,6 +223,12 @@ class StudyDistributeTableViewCell: UITableViewCell {
 
     func nestClick(sender : UIButton) {
         self.nestBlock(sender.tag)
+    }
+
+    func tapCLick(sender : UITapGestureRecognizer) {
+        XJLog(message: "sdafasdfasdfads")
+        let tagNum = sender.view!.tag
+        self.nestBlock(tagNum)
     }
     
 }

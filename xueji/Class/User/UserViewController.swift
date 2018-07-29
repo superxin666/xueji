@@ -107,12 +107,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             if (aimCell == nil)  {
                 aimCell = StudyAimTableViewCell(style: .default, reuseIdentifier: study_aim_cell_ID)
             }
-            weak var weakself = self
-            aimCell.nestBlock = {
-                let vc = WeekAimViewController()
-                vc.hidesBottomBarWhenPushed = true
-                weakself?.navigationController?.pushViewController(vc, animated: true)
-            }
             return aimCell
         } else if indexPath.section == 1{
             timecell  = tableView.dequeueReusableCell(withIdentifier: study_time_cell_ID, for: indexPath) as! StudyTimeTableViewCell
@@ -167,7 +161,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        XJLog(message: "did")
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 XJLog(message: "0")
@@ -178,9 +171,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
             }
         } else if indexPath.section == 1 {
             self.timeCellClick()
-
-
-
         } else if indexPath.section == 2 {
 
             self.amountCellClick()

@@ -8,7 +8,7 @@
 
 import UIKit
 let TimeDetailTableViewCellID = "TimeDetailTableViewCell_id"
-let TimeDetailTableViewCellH = ip6(47)
+let TimeDetailTableViewCellH = ip6(55)
 
 class TimeDetailTableViewCell: UITableViewCell {
     var bookImageView : UIImageView!
@@ -43,14 +43,14 @@ class TimeDetailTableViewCell: UITableViewCell {
         bookNameLabel = UILabel.getLabel(fream: CGRect(x: bookImageView.frame.maxX + ip6(12), y:ip6(10), width: viewW - ip6(12) -  bookImageView.frame.size.width, height: ip6(14)), fontSize: 10, text: "", textColor: black_53, textAlignment: .left)
 
 
-        lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 0.5))
+        lineView = UIView(frame: CGRect(x: bookNameLabel.frame.origin.x, y: bookNameLabel.frame.maxY + ip6(3), width: bookNameLabel.frame.width, height: 1))
         let labelW = (lineView.frame.width)/7
         if labelArr.count > 0 {
             labelArr.removeAll()
         }
         for i in 0..<7 {
-            label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(18)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
-            label.xj_makeBorderWithBorderWidth(width: 0.5, color: UIColor.xj_colorFromRGB(rgbValue: 0xF1F1F3))
+            label = UILabel.getLabel(fream: CGRect(x: lineView.frame.origin.x + CGFloat(i) * labelW , y: lineView.frame.maxY, width: labelW, height: ip6(22)), fontSize: 10, text: "", textColor: black_53, textAlignment: .center)
+            label.xj_makeBorderWithBorderWidth(width: 1, color: UIColor.xj_colorFromRGB(rgbValue: 0xF1F1F3))
             self.addSubview(label)
             labelArr.append(label)
 

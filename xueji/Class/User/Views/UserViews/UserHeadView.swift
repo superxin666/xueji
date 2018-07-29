@@ -99,7 +99,7 @@ class UserHeadView: UIView {
             let subView = UIView(frame: CGRect(x:appad + CGFloat(i) * (viewappad + subviewW), y: topLine.frame.maxY, width: subviewW, height: subviewH - ip6(4)))
             subView.isUserInteractionEnabled = true
 
-            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 10, text: weakArr[i], textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
+            let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 8, text: weakArr[i], textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
             subView.addSubview(topLabel)
             let dateStr = String.xj_getDate_day(dateStr: model.date)
 

@@ -79,10 +79,10 @@ class StudyAimTableViewCell: UITableViewCell {
         self.addSubview(lineView)
 
 
-        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: 0, width: ip6(20), height: study_aim_sectionHeight), selector: #selector(nestClick), vc: self, tag: 0)
+//        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: 0, width: ip6(20), height: study_aim_sectionHeight), selector: #selector(nestClick), vc: self, tag: 0)
 
-        self.addSubview(nestBtn)
-        
+//        self.addSubview(nestBtn)
+
     }
 
     func setData(model : UserInfoModel_weekgoal) {
