@@ -50,7 +50,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     }
     // MARK: -头部视图
     func creatHeadView() {
-        headBackView = ReviewTopView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(46)))
+        headBackView = ReviewTopView(frame: CGRect(x: 0, y: LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(54)))
         headBackView.delegate = self
         self.view.addSubview(headBackView)
         

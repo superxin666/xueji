@@ -28,13 +28,16 @@ class ReviewTopView: UIView {
         self.addSubview(topLine)
         
         //日期
-        let subviewW = KSCREEN_WIDTH/7
-        let subviewH = ip6(42)
+        let subviewW = ip6(25)
+        let subviewH = ip6(49)
+
+        let appading = (KSCREEN_WIDTH - 7 * subviewW)/8
+
         
         for i in 0..<arr.count {
             let model : ReviewModel = arr[i]
             
-            let subView = UIView(frame: CGRect(x: CGFloat(i) * subviewW, y: ip6(2), width: subviewW, height: subviewH))
+            let subView = UIView(frame: CGRect(x: appading + CGFloat(i) * (subviewW + appading), y: ip6(2), width: subviewW, height: subviewH))
             subView.isUserInteractionEnabled = true
             subView.tag = i + 1
             
@@ -42,20 +45,23 @@ class ReviewTopView: UIView {
             subView.addGestureRecognizer(tap)
             
             let topLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: subviewW, height: subviewH/3), fontSize: 10, text: ReviewModel.getTitleStr(num: model.week_seq), textColor: UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93), textAlignment: .center)
+            topLabel.tag = 1
             subView.addSubview(topLabel)
             
             let dateStr = String.xj_getDate_style1(dateStr: "\(model.date!)", style: 3)
             
             let midLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3, width: subviewW, height: subviewH/3), fontSize: 15, text: dateStr, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x535353 ), textAlignment: .center)
+            midLabel.tag = 2
             subView.addSubview(midLabel)
            
             XJLog(message:"星期几" + "\(weekNum)")
             if i + 1 == weekNum {
+                topLabel.textColor = .white
                 midLabel.textColor = .white
                 subView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
                 lastView = subView
             }
-            let bottomLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3*2, width: subviewW, height: subviewH/3), fontSize: 6, text: "\(model.review_count!)项", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x88B52D), textAlignment: .center)
+            let bottomLabel = UILabel.getLabel(fream: CGRect(x: 0, y: subviewH/3*2, width: subviewW, height: subviewH/3), fontSize: 6, text: "\(model.review_count!)项", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x88B52D), textAlignment: .right)
             
             subView.addSubview(bottomLabel)
      
@@ -63,7 +69,7 @@ class ReviewTopView: UIView {
             
         }
         
-        let bottomLine : UIView = UIView(frame: CGRect(x: 0, y: ip6(42), width: KSCREEN_WIDTH, height: ip6(2)))
+        let bottomLine : UIView = UIView(frame: CGRect(x: 0, y: ip6(52), width: KSCREEN_WIDTH, height: ip6(2)))
         bottomLine.backgroundColor = black_22
         self.addSubview(bottomLine)
     }
@@ -73,17 +79,36 @@ class ReviewTopView: UIView {
         if view?.tag == lastView.tag {
             return
         }
-        if lastView.tag == weekNum {
-            
-        } else {
-            lastView.backgroundColor = .white
+        for subView in lastView.subviews {
+            if subView is UILabel {
+                let label : UILabel = subView as! UILabel
+                if label.tag == 1 {
+                    label.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93)
+                } else if label.tag == 2 {
+                    label.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
+                }
+            }
         }
-      
-        view?.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x999999)
+        lastView.backgroundColor = .white
+
+        view?.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
+        for subView in (view?.subviews)! {
+            if subView is UILabel {
+                let label : UILabel = subView as! UILabel
+                if subView.tag == 1 {
+                    label.textColor = .white
+                } else if subView.tag == 2 {
+                    label.textColor = .white
+                }
+
+            }
+        }
+
+
         lastView = view
         let viewTag : Int = (sender.view?.tag)!
         XJLog(message: "点击\(viewTag)")
-        if let delegate = self.delegate {
+        if  self.delegate != nil {
             self.delegate.headDateClick(num: viewTag)
         }
     }

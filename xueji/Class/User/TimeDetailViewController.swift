@@ -38,7 +38,7 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "学习时间", fontsize: 20)
-        self.navigationBar_rightBtn_title(title: "切换分类统计")
+        self.navigationBar_rightBtn_title(title: "分类统计")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
         request.delegate = self
@@ -185,11 +185,11 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         if calc_typeStr == CALC_BOOK {
             //
             calc_typeStr = CALC_CATEGORY
-            self.navigationBar_rightBtn_title(title: "切换资料统计")
+            self.navigationBar_rightBtn_title(title: "资料统计")
 
         } else {
             calc_typeStr = CALC_BOOK
-            self.navigationBar_rightBtn_title(title: "切换分类统计")
+            self.navigationBar_rightBtn_title(title: "分类统计")
 
         }
         self.requestList()

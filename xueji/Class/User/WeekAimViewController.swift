@@ -13,7 +13,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
 
     let request = WeekAimDetailDataManger()
 
-
+    var aimCell : WeekAimLineTableViewCell!
 
 
 
@@ -65,13 +65,13 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
                 cell.setData(model: request.currectWeakModel)
                 return cell
             } else {
-                var cell : WeekAimLineTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: WeekAimLineTableViewCellID, for: indexPath) as! WeekAimLineTableViewCell
-                if (cell == nil)  {
-                    cell = WeekAimLineTableViewCell(style: .default, reuseIdentifier: WeekAimLineTableViewCellID)
+                aimCell  = tableView.dequeueReusableCell(withIdentifier: WeekAimLineTableViewCellID, for: indexPath) as! WeekAimLineTableViewCell
+                if (aimCell == nil)  {
+                    aimCell = WeekAimLineTableViewCell(style: .default, reuseIdentifier: WeekAimLineTableViewCellID)
                 }
-                cell.delegate = self
-                cell.setData(model: request.getCurrectMonthModel())
-                return cell
+                aimCell.delegate = self
+                aimCell.setData(model: request.getCurrectMonthModel())
+                return aimCell
             }
         } else {
             var cell : WeekAimTableViewCell!  = tableView.dequeueReusableCell(withIdentifier: WeekAimTableViewCellID, for: indexPath) as! WeekAimTableViewCell
@@ -128,11 +128,10 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
     }
     func WeekAimDetailDataFail() {
 
+
     }
 
     func dateStepClick(stpeNum: Int) {
-        request.getCurrectWeakModel(rowNum: stpeNum)
-
 
     }
 
