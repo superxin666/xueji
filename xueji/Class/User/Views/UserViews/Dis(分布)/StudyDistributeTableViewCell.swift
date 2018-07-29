@@ -52,7 +52,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
             
             //表格
             let  pieChartView = PieChartView()
-            pieChartView.frame = CGRect(x: ip6(5), y:titleLabel.frame.maxY + ip6(10), width: ip6(104), height: ip6(104))
+            pieChartView.frame = CGRect(x: ip6(5), y:titleLabel.frame.maxY + ip6(10), width: ip6(135), height: ip6(135))
             backView.addSubview(pieChartView)
             
             pieChartView.backgroundColor = .clear
@@ -159,7 +159,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
         for i in 0..<dataModel.first5_time.count {
             let model = dataModel.first5_time[i]
 
-            let subBackView = UIView(frame: CGRect(x: self.timePieChartView.frame.maxX + ip6(15), y:self.timePieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
+            let subBackView = UIView(frame: CGRect(x: self.timePieChartView.frame.maxX + ip6(20), y:self.timePieChartView.frame.origin.y + ip6(10) + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.topBackView.addSubview(subBackView)
     
             let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: model.title, textColor: black_53, textAlignment: .left)
@@ -185,7 +185,7 @@ class StudyDistributeTableViewCell: UITableViewCell {
         //画线赋值
         for i in 0..<dataModel.first5_page.count{
             let model = dataModel.first5_page[i]
-            let subBackView = UIView(frame: CGRect(x: self.amountPieChartView.frame.maxX + ip6(15), y:self.amountPieChartView.frame.origin.y + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
+            let subBackView = UIView(frame: CGRect(x: self.amountPieChartView.frame.maxX + ip6(20), y:self.amountPieChartView.frame.origin.y + ip6(10) + CGFloat(i) * (ip6(12) + ip6(10)), width: ip6(140), height: ip6(12)))
             self.bottomView.addSubview(subBackView)
             
             let titleLabel = UILabel.getLabel(fream:CGRect(x: 0, y: 0, width: ip6(140), height: ip6(11)), fontSize: 8, text: model.title, textColor: black_53, textAlignment: .left)

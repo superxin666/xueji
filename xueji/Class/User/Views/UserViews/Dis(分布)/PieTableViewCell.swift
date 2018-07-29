@@ -8,7 +8,7 @@
 
 import UIKit
 import Charts
-let PieTableViewCellH = ip6(170)
+let PieTableViewCellH = ip6(200)
 let PieTableViewCellID = "PieTableViewCell_ID"
 
 
@@ -30,7 +30,7 @@ class PieTableViewCell: UITableViewCell {
 
     func creatUI()  {
         let  pieChartView = PieChartView()
-        pieChartView.frame = CGRect(x: (KSCREEN_WIDTH - ip6(150))/2, y: ip6(20), width: ip6(150), height: ip6(150))
+        pieChartView.frame = CGRect(x: (KSCREEN_WIDTH - PieTableViewCellH)/2, y: ip6(20), width: PieTableViewCellH, height: PieTableViewCellH)
         self.addSubview(pieChartView)
         pieChartView.backgroundColor = .clear
         pieChartView.drawSlicesUnderHoleEnabled = false

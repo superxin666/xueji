@@ -138,6 +138,19 @@ class TimeDistributeViewController: BaseViewController,UITableViewDelegate,UITab
         return 0
     }
 
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
     func catClick(_ model: MyDetailModel_category_list) {
         cidInt = model.id
         self.requestList()
