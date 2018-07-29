@@ -9,8 +9,8 @@
 import UIKit
 let study_value_sectionHeight = ip6(148)//学习力
 
-let study_time_sectionHeight = ip6(236)//学习时间
-let study_amount_sectionHeight = ip6(250)//学习量
+
+
 
 
 let study_value_cell_ID = "study_value_cell_id"
@@ -189,19 +189,32 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let view : UIView = UIView()
-        let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(19), y: ip6(8), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: sectionTitleArr[section], textColor: black_53, textAlignment: .left)
+        let nameLabel = UILabel.getLabel(fream:CGRect(x: ip6(19), y: ip6(30), width: KSCREEN_WIDTH - ip6(32), height: ip6(20)), fontSize: 15, text: sectionTitleArr[section], textColor: black_53, textAlignment: .left)
         view.addSubview(nameLabel)
 
-        let lineView = UIView(frame: CGRect(x: ip6(10), y: ip6(34), width: KSCREEN_WIDTH - ip6(20), height: 1))
+        let lineView = UIView(frame: CGRect(x: ip6(10), y: ip6(51), width: KSCREEN_WIDTH - ip6(20), height: 1))
         lineView.backgroundColor = black_e3e3e3
         view.addSubview(lineView)
+
         return view
     }
 
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-         return ip6(35)
+         return ip6(57)
     }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
+
+
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return study_aim_sectionHeight

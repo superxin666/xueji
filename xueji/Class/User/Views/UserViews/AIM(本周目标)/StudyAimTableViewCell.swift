@@ -8,7 +8,7 @@
 
 import UIKit
 let study_aim_cell_ID = "study_aim_cell_id"
-let study_aim_sectionHeight = ip6(126)//学习目标
+let study_aim_sectionHeight = ip6(80)//学习目标
 typealias StudyAimTableViewCellBlock = () ->()
 
 class StudyAimTableViewCell: UITableViewCell {

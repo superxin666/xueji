@@ -13,7 +13,7 @@ enum StudyTimeTableViewCellType {
     case week
     case month
 }
-
+let study_time_sectionHeight = ip6(97+138)//学习时间
 typealias StudyTimeTableViewCellBlock = ()->()
 
 class StudyTimeTableViewCell: UITableViewCell {
@@ -32,6 +32,8 @@ class StudyTimeTableViewCell: UITableViewCell {
     var rightTimeLabel :UILabel!
     var rightdBtn : UIButton!
     var nestBtn : UIButton!
+
+    var lastBtn : UIButton!
 
 
     var barCharView : BarChartView!
@@ -75,33 +77,38 @@ class StudyTimeTableViewCell: UITableViewCell {
             backView.addSubview(timeLabel)
             
             let btn = UIButton.getBtn_titleStyle(title_normal: btnNameArr[i], title_selected: btnNameArr[i], fream: CGRect(x: ip6(1), y: timeLabel.frame.maxY + ip6(10) , width: backViewW - ip6(2), height: ip6(23)), backgroundColor: .white, textColorSelectrd: .white, textColor: black_53, fontSize: 14, textAlignment: .center, selector: #selector(self.btnClick(sender:)), vc: self, tag: i)
-            btn.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
+
             btn.xj_makeRadius(radius: 3)
+            btn.tag = i
             backView.addSubview(btn)
             
             if i == 0 {
                 leftBackView = backView
                 leftTitleLabel = titleLabel
                 leftTimeLabel = timeLabel
-                leftBtn = btn
-                btn.backgroundColor = black_8c8484
+                btn.isSelected  = true
+
+                self.setSelectorBtn(sender: btn)
+                lastBtn = btn
+
             } else if i == 1{
                 midBackView = backView
                 midTitleLabel = titleLabel
                 midTimeLabel = timeLabel
                 midBtn = btn
+                self.setNormalBtn(sender: btn)
             } else{
                 rightBackView = backView
                 rightTitleLabel = titleLabel
                 rightTimeLabel = timeLabel
                 rightdBtn = btn
+                self.setNormalBtn(sender: btn)
             }
         }
 
         //表格
         self.creatChart()
-//        nestBtn = UIButton.getBtn_picStyle(image_normal: #imageLiteral(resourceName: "study_shape_>"), image_selected: #imageLiteral(resourceName: "study_shape_>"), fream: CGRect(x: KSCREEN_WIDTH - ip6(20), y: barCharView.frame.origin.y - ip6(20), width: ip6(20), height: barCharView.frame.size.height - ip6(20)), selector: #selector(nestClick), vc: self, tag: 0)
-//        self.addSubview(nestBtn)
+
         
     }
     
@@ -271,21 +278,38 @@ class StudyTimeTableViewCell: UITableViewCell {
     
     func btnClick(sender : UIButton) {
         let tagNum : Int = sender.tag
-        sender.backgroundColor = black_8c8484
+        sender.backgroundColor = black_8E8E93
+        if sender.isSelected {
+            return
+        }
+        self.setNormalBtn(sender: lastBtn)
+        self.setSelectorBtn(sender: sender)
+        sender.isSelected = true
+        lastBtn.isSelected = false
+
+        lastBtn = sender
+
+
         if tagNum == 0 {
-            midBtn.backgroundColor = .white
-            rightdBtn.backgroundColor = .white
             viewType = .day
         } else if tagNum == 1 {
-            leftBtn.backgroundColor = .white
-            rightdBtn.backgroundColor = .white
             viewType = .week
         } else {
-            leftBtn.backgroundColor = .white
-            midBtn.backgroundColor = .white
             viewType = .month
         }
         self.setChartData()
+    }
+
+    func setNormalBtn(sender : UIButton) {
+        sender.backgroundColor = .white
+        sender.xj_makeBorderWithBorderWidth(width: 1, color: black_53)
+
+
+    }
+
+    func setSelectorBtn(sender : UIButton) {
+        sender.backgroundColor = black_8E8E93
+        sender.xj_makeBorderWithBorderWidth(width: 1, color: .clear)
     }
 
 

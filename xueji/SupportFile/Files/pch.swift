@@ -32,6 +32,8 @@ var xj_fzFontMedium = { (num : CGFloat) ->  UIFont in
 //MARK:色值
 let black_53 = UIColor.xj_colorFromRGB(rgbValue: 0x535353)
 let black_8c8484 = UIColor.xj_colorFromRGB(rgbValue: 0x8c8484)
+let black_8E8E93 = UIColor.xj_colorFromRGB(rgbValue: 0x8E8E93)
+
 let black_97 = UIColor.xj_colorFromRGB(rgbValue: 0x979797)
 let black_e3e0e0 = UIColor.xj_colorFromRGB(rgbValue: 0xe3e0e0)
 let black_e3e3e3 = UIColor.xj_colorFromRGB(rgbValue: 0xe3e3e3)

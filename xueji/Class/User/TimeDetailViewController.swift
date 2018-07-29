@@ -37,10 +37,15 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigation_title_fontsize(name: "学习时间", fontsize: 20)
+
         self.navigationBar_rightBtn_title(title: "分类统计")
         self.navigationBar_leftBtn_title(title: "返回")
         self.creatTableView()
+        if  type == .time {
+             self.navigation_title_fontsize(name: "学习时间", fontsize: 20)
+        } else {
+             self.navigation_title_fontsize(name: "学习量", fontsize: 20)
+        }
         request.delegate = self
         self.requestList()
 
@@ -138,8 +143,35 @@ class TimeDetailViewController: BaseViewController,UITableViewDelegate,UITableVi
 
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-         return 0
+        if section == 1 {
+            return ip6(15)
+        } else {
+            return 0
+
+        }
+
+
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let view : UIView = UIView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: ip6(15)))
+            view.backgroundColor = .clear
+            return view
+        } else {
+            return UIView()
+        }
+
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+
 
     func catClick(_ model: MyDetailModel_category_list) {
         cidInt = model.id
