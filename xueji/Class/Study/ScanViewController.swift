@@ -255,6 +255,17 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     }
     //退出
     func cancle_click() {
+         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if device?.torchMode == .on {
+            do {
+                try device?.lockForConfiguration()
+            } catch {
+                return
+            }
+            device?.torchMode = .off
+            device?.unlockForConfiguration()
+
+        }
         self.navigationController?.popViewController(animated: true)
     }
     func dismissVC() {

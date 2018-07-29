@@ -31,7 +31,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     /// - Parameters:
     ///   - isbn: 书本号
     ///   - cid: 分类id
-    func addBookRequestByIsbn(isbn:Int,cid:Int) {
+    func addBookRequestByIsbn(isbn:String,cid:Int) {
         request.delegate = self
         self.type = .add_isbn
         SVPMessageShow.showLoad()
@@ -46,7 +46,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     /// - Parameters:
     ///   - isbn: <#isbn description#>
     ///   - cid: <#cid description#>
-    func editBookRequestByIsbn(bid : Int ,isbn:Int,cid:Int) {
+    func editBookRequestByIsbn(bid : Int ,isbn:String,cid:Int) {
         request.delegate = self
         self.type = .editeBook
         SVPMessageShow.showLoad()

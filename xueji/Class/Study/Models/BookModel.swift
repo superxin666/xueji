@@ -16,7 +16,7 @@ class BookModel: Mappable {
     var ctime: String!
     var douban_id: Int!
     var id: Int!
-    var isbn: Int!
+    var isbn: String!
     var pages: Int!
     var pubdate: String!
     var publisher: String!

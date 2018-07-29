@@ -300,6 +300,7 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
         XJLog(message: "保存")
         self.view.endEditing(true)
         if self.type == .addBook_scan {
+            
             requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: catID)
 
 
@@ -307,6 +308,12 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
             if bookImageData.count > 0 {
                 //有图片
                 weak var weakself = self
+
+                if !(titleStr.count > 0) {
+                    SVPMessageShow.showErro(infoStr: "请输入标题~")
+                    return
+                }
+                
                 SVPMessageShow.showLoad(infoStr: "正在保存中~~")
                 BaseApiMangerViewController.uploadfile(imgageData: bookImageData, completion: { (data) in
                     let url : String = data as! String
@@ -314,10 +321,11 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
                     weakself?.requestManger.addBookByCustom(cid: (weakself?.catID)!, title: (weakself?.titleStr)!, img: (weakself?.bookImageUrl)!, author: (weakself?.publisher)!, publisher: (weakself?.publish)!, pubdate: "", pages: (weakself?.pages)!)
 
                 }) { (erro) in
-                     SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
+                    SVPMessageShow.showErro(infoStr: "上传图片失败请重新尝试~")
                 }
             } else {
-                requestManger.addBookByCustom(cid: catID, title: titleStr, img: bookImageUrl, author: publisher, publisher: publish, pubdate: "", pages: pages)
+                SVPMessageShow.showErro(infoStr: "请选择书籍封面~")
+                return
 
             }
 
