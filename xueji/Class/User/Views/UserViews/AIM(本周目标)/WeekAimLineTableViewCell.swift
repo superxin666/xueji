@@ -151,13 +151,11 @@ class WeekAimLineTableViewCell: UITableViewCell {
             yArr.append(model.time_rate)
         }
         let dataCount = yArr.count
-
         if yArr.count<4 {
             for i in 0..<4 - yArr.count {
                 yArr.append(0)
             }
         }
-
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<xCont {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(yArr[i]))
@@ -165,7 +163,16 @@ class WeekAimLineTableViewCell: UITableViewCell {
         }
 
         //学习量
-        let yArr2 = [45,35,23,56]
+        var yArr2 : [Int] = []
+        for model in dataModel.report {
+            yArr2.append(model.page_rate)
+        }
+        let dataCount2 = yArr2.count
+        if yArr2.count<4 {
+            for i in 0..<4 - yArr2.count {
+                yArr2.append(0)
+            }
+        }
         var dataEntries2: [ChartDataEntry] = []
         for i in 0..<xCont {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(yArr2[i]))
@@ -212,9 +219,8 @@ class WeekAimLineTableViewCell: UITableViewCell {
         lineChartDataSet2.lineDashPhase = 0.5
         //显示
         lineChartDataSet2.drawValuesEnabled = false
-
         var colourArr2 : [UIColor] = []
-        switch dataCount {
+        switch dataCount2 {
         case 2:
             colourArr2 = [UIColor.xj_colorFromRGB(rgbValue: 0x4741BD), .clear,UIColor.clear]
         case 3:
