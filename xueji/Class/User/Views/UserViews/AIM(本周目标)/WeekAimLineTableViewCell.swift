@@ -246,12 +246,19 @@ class WeekAimLineTableViewCell: UITableViewCell {
             titleBtn.setTitle(month, for: .normal)
         }
         //表格
-        if model.report.count > 1 {
+        if model.report.count > 0 {
             self.setCharData()
-        } else {
-            //只有一周时 此模型书当前周 不显示
-       
         }
+//        else {
+//            //只有一周时 此模型书当前周 不显示
+//            for i in 0...3 {
+//                let subModel = WeekAimDetailModel_report()
+//                subModel.page_rate = 0
+//                subModel.time_rate = 0
+//                model.report.append(subModel)
+//            }
+//            self.setChart()
+//        }
     }
 
 
