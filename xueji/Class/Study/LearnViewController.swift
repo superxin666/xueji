@@ -7,8 +7,9 @@
 //  学习页面
 
 import UIKit
-
+import AVFoundation
 class LearnViewController: BaseViewController {
+    var avplayer: AVAudioPlayer? = nil
 
     var model  : CategoryListModel_list_book_list!
 
@@ -32,7 +33,7 @@ class LearnViewController: BaseViewController {
     var time : Timer!
 
     var timeNum : Int = 0
-
+    var timeNum2 : Int = 0
     var timeTuple : (timeStr : String,timeStr2 : String)!
 
     deinit {
@@ -93,8 +94,16 @@ class LearnViewController: BaseViewController {
     /// 开始计时
     func timeStart() {
         timeNum = timeNum + 1
+        timeNum2 = timeNum2 + 1
+        if timeNum2 == 60 {
+            self.tik()
+            timeNum2 = 0
+        }
+
         timeTuple = String.getCountTime(sencond: timeNum)
         timeLabel.text = timeTuple.timeStr
+
+
     }
 
 
@@ -131,7 +140,28 @@ class LearnViewController: BaseViewController {
 
     }
 
+    func tik() {
+        XJLog(message: "检测")
+        if UIApplication.shared.backgroundTimeRemaining < 61 {
+            let urlStr = Bundle.main.path(forResource: "timer", ofType: "mp3")
+            let url  = URL(fileURLWithPath: urlStr!)
+            weak var weakself = self
+            do {
+                weakself?.avplayer = try AVAudioPlayer(contentsOf: url)
+            } catch _{
+                weakself?.avplayer = nil
+            }
+            weakself?.avplayer?.play()
+
+            UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        }
+    }
+
+
     override func navigationLeftBtnClick() {
+        if (time != nil) {
+            self.stopTimeimg()
+        }
         self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {

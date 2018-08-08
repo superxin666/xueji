@@ -42,6 +42,7 @@
 		21258A9E1FAC0DD800D34D57 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */; };
 		2127BBA920A28A840098017B /* LearnDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */; };
 		212E6A2120AE66EC00158940 /* AddAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E6A2020AE66EC00158940 /* AddAimViewController.swift */; };
+		21306572211AD9640073ECF9 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21306571211AD9640073ECF9 /* timer.mp3 */; };
 		2130809120DB5AB400FD323C /* MyBookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809020DB5AB400FD323C /* MyBookDetailModel.swift */; };
 		2130809320DB5B4D00FD323C /* CategoryMolde.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130809220DB5B4D00FD323C /* CategoryMolde.swift */; };
 		2130E90A20F35FCA001A087D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130E90920F35FCA001A087D /* ImageData.swift */; };
@@ -185,6 +186,7 @@
 		21258A9D1FAC0DD800D34D57 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		2127BBA820A28A840098017B /* LearnDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
 		212E6A2020AE66EC00158940 /* AddAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAimViewController.swift; sourceTree = "<group>"; };
+		21306571211AD9640073ECF9 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		2130809020DB5AB400FD323C /* MyBookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookDetailModel.swift; sourceTree = "<group>"; };
 		2130809220DB5B4D00FD323C /* CategoryMolde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMolde.swift; sourceTree = "<group>"; };
 		2130E90920F35FCA001A087D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 		214F91481FEA5A3C00D44165 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				21306571211AD9640073ECF9 /* timer.mp3 */,
 				214F91491FEA5A3C00D44165 /* APIS.swift */,
 				214F914A1FEA5A3C00D44165 /* pch.swift */,
 				214F914B1FEA5A3C00D44165 /* Bridging-Header.h */,
@@ -776,7 +779,7 @@
 				TargetAttributes = {
 					21DCA39A1FA724F60094DCFE = {
 						CreatedOnToolsVersion = 9.0.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -820,6 +823,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21306572211AD9640073ECF9 /* timer.mp3 in Resources */,
 				21DCA3A91FA724F60094DCFE /* LaunchScreen.storyboard in Resources */,
 				21DCA3A61FA724F60094DCFE /* Assets.xcassets in Resources */,
 				21DCA3A41FA724F60094DCFE /* Main.storyboard in Resources */,
@@ -1300,8 +1304,8 @@
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CCSDTMRBV9;
 				INFOPLIST_FILE = xueji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1325,15 +1329,15 @@
 				CODE_SIGN_ENTITLEMENTS = xueji/xueji.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CCSDTMRBV9;
 				INFOPLIST_FILE = xueji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tjwl.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3936f2d4-52e6-4fb4-a5d7-4da682fa93b2";
-				PROVISIONING_PROFILE_SPECIFIER = 10;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/lvxin/xueji/xueji/SupportFile/Files/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

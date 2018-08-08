@@ -96,12 +96,18 @@ class SelectCatViewController: BaseViewController,UITableViewDelegate,UITableVie
 
     func requestSucceed() {
         mainTabelView.reloadData()
-        mainTabelView.mj_footer.endRefreshing()
+        if mainTabelView.mj_footer.isRefreshing() {
+            mainTabelView.mj_footer.endRefreshing()
+        }
+
     }
 
     func requestFail() {
-        mainTabelView.mj_footer.endRefreshing()
+        if mainTabelView.mj_footer.isRefreshing() {
+            mainTabelView.mj_footer.endRefreshing()
+        }
     }
+    
     func getData()  {
         requestManger.listRequest()
     }

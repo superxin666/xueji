@@ -12,6 +12,7 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var backgroundTask:UIBackgroundTaskIdentifier! = nil
 
     //MARK: life circle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.showLogin()
         }
 
-//        let setCategoryErr : Error!
+        let setCategoryErr : Error!
 
         do {
            let setCategoryErr = try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -49,12 +50,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
+//        UIApplication.shared.beginReceivingRemoteControlEvents()
+//        let session : AVAudioSession = AVAudioSession.sharedInstance()
+//        do {
+//            let activationErr = try
+//                session.setActive(true)
+//        } catch {
+//            print("后台播放激活失败")
+//        }
+
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-
+//        十分钟
         let app = UIApplication.shared
         var bgTask : UIBackgroundTaskIdentifier!
         bgTask = app.beginBackgroundTask(expirationHandler: {
@@ -75,7 +87,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
         })
+
+
+        //后台任务
+//        if self.backgroundTask != nil {
+//            application.endBackgroundTask(self.backgroundTask)
+//            self.backgroundTask = UIBackgroundTaskInvalid
+//        }
+//        self.backgroundTask = application.beginBackgroundTask(expirationHandler: {
+//            application.endBackgroundTask(self.backgroundTask)
+//            self.backgroundTask = UIBackgroundTaskInvalid
+//        })
+
+
     }
+
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
