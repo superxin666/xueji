@@ -9,8 +9,10 @@
 import UIKit
 import ObjectMapper
 protocol WeekAimDetailDataMangerDelegate: NSObjectProtocol{
+
     func WeekAimDetailDataSucceed() -> Void
     func WeekAimDetailDataFail() -> Void
+    func MonthStepClickDelegate() -> Void
 }
 
 class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
@@ -19,6 +21,10 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
     let request : BaseApiMangerViewController = BaseApiMangerViewController()
     var page = 0
     let pageNum = 2
+
+    var step = 0
+    var isStepClickNet : Bool = false
+
 
     var listArr : Array<WeekAimDetailModel> = []
     var listArr_report : Array<WeekAimDetailModel_report>!
@@ -38,20 +44,48 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
         request.request_api(url: url)
     }
 
+    func loadMore() {
+
+        page = page + 1
+        self.dataRequest()
+
+    }
+
+    
+    func loadMore_push() {
+        self.isStepClickNet = false
+        page = page + 1
+        self.dataRequest()
+
+    }
+
     func requestSucceed(response: Any) {
         SVPMessageShow.dismissSVP()
         XJLog(message: response)
         let arr = Mapper<WeekAimDetailModel>().mapArray(JSONArray: response as! [[String : Any]])
-
-        if page>1 {
+        if page > 0 {
             listArr = listArr + arr
-            self.delegate.WeekAimDetailDataSucceed()
+            if isStepClickNet {
+                if self.step < listArr.count {
+                    XJLog(message: listArr.count)
+                    XJLog(message: step)
+                    currectMonthModel = self.listArr[step]
+                    self.delegate.MonthStepClickDelegate()
+                } else {
+                    SVPMessageShow.showErro(infoStr: "暂无数据")
+                }
+
+            } else {
+                self.delegate.WeekAimDetailDataSucceed()
+            }
+
         } else {
             self.removeArr()
             listArr = arr
             self.getCurrectWeakModel()
             self.delegate.WeekAimDetailDataSucceed()
         }
+
     }
 
     func getSectionNum() -> Int {
@@ -106,9 +140,9 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
         if listArr.count > 0 {
             if rowNum < listArr.count {
                 let model = listArr[rowNum]
+                currectMonthModel = model
                 if model.report.count > 0 {
                     currectWeakModel = model.report[0]
-
                 }
             } else {
                 page = rowNum
@@ -123,6 +157,22 @@ class WeekAimDetailDataManger: UIViewController,BaseApiMangerViewControllerDeleg
             return listArr[0]
         } else {
             return WeekAimDetailModel()
+        }
+    }
+
+
+    func getMonthModel(stepNum : Int) -> Bool{
+        self.step = stepNum
+        if stepNum < listArr.count {
+            let model = listArr[stepNum]
+            currectMonthModel = model
+
+            return true
+        } else {
+            isStepClickNet = true
+            self.loadMore()
+
+            return false
         }
     }
     

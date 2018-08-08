@@ -42,7 +42,15 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
         mainTabelView.register(WeekAimTableViewCell.self, forCellReuseIdentifier: WeekAimTableViewCellID)
         mainTabelView.register(WeekAimLineTableViewCell.self, forCellReuseIdentifier: WeekAimLineTableViewCellID)
 
+        mainTabelView.mj_footer = MJRefreshAutoNormalFooter()
+        mainTabelView.mj_footer.setRefreshingTarget(self, refreshingAction: #selector(loadMoreData))
+
+
         self.view.addSubview(mainTabelView)
+    }
+    func loadMoreData() {
+        request.loadMore_push()
+
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return request.getSectionNum()
@@ -70,7 +78,7 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
                     aimCell = WeekAimLineTableViewCell(style: .default, reuseIdentifier: WeekAimLineTableViewCellID)
                 }
                 aimCell.delegate = self
-                aimCell.setData(model: request.getCurrectMonthModel())
+                aimCell.setData(model: request.currectMonthModel)
                 return aimCell
             }
         } else {
@@ -124,15 +132,26 @@ class WeekAimViewController: BaseViewController,UITableViewDelegate,UITableViewD
             self.navigationBar_rightBtn_title(title: "添加")
 
         }
+        if mainTabelView.mj_footer.isRefreshing() {
+            mainTabelView.mj_footer.endRefreshing()
+        }
+
         mainTabelView.reloadData()
     }
-    func WeekAimDetailDataFail() {
 
+    func MonthStepClickDelegate() {
+        self.mainTabelView.reloadData()
+    }
+    func WeekAimDetailDataFail() {
 
     }
 
     func dateStepClick(stpeNum: Int) {
-
+        XJLog(message: "dateStepClick-----\(stpeNum)")
+        let isHaveModel : Bool = request.getMonthModel(stepNum: stpeNum)
+        if isHaveModel {
+            aimCell.setData(model: request.currectMonthModel)
+        }
     }
 
     override func navigationLeftBtnClick() {

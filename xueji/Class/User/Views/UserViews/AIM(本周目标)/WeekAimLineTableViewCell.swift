@@ -244,6 +244,7 @@ class WeekAimLineTableViewCell: UITableViewCell {
             self.setCharData()
         } else {
             //只有一周时 此模型书当前周 不显示
+       
         }
     }
 
@@ -264,7 +265,7 @@ class WeekAimLineTableViewCell: UITableViewCell {
 
             }
         }
-        if delegate != nil {
+        if (delegate != nil) {
             self.delegate.dateStepClick(stpeNum: stepNum)
         }
     }
