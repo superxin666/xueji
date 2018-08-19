@@ -20,7 +20,8 @@ class LoginApiMangerViewController:UIViewController, BaseApiMangerViewController
 
     func loginRequest(name : String, password : String)  {
         request.delegate = self
-        request.request_api(url: login_user_api + "phone=\(name)" + "&key=\(password)")
+        let keyStr = password.sha1()
+        request.request_api(url: login_user_api + "phone=\(name)" + "&key=\(keyStr)")
     }
 
     func requestSucceed(response: Any) {

@@ -9,5 +9,5 @@
 #ifndef Bridging_Header_h
 #define Bridging_Header_h
 #import <MJRefresh/MJRefresh.h>
-
+#import <CommonCrypto/CommonCrypto.h>//sha1 算法应用库
 #endif /* Bridging_Header_h */

@@ -25,7 +25,8 @@ class ResetPasswordApiManger: UIViewController,BaseApiMangerViewControllerDelega
 
     func resetRequest(phone:String,sms_code:String,key:String) {
         request.delegate = self
-        request.request_api(url: reset_password_api + "phone=\(phone)&sms_code=\(sms_code)&key=\(key)")
+        let keyStr = key.sha1()
+        request.request_api(url: reset_password_api + "phone=\(phone)&sms_code=\(sms_code)&key=\(keyStr)")
     }
 
 
