@@ -32,6 +32,7 @@ class SVPMessageShow: NSObject {
     /// 加载中提示 手动去除
     static func showLoad(infoStr : String = "正在努力加载中") {
         SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         SVProgressHUD.show(withStatus: infoStr)
     }

@@ -51,7 +51,7 @@ class LearnLogDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
         let reminderStr = reminder.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let etimeStr = etime.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let num = review.hashValue
-
+        SVPMessageShow.showLoad()
         request.delegate = self
         let url  = learn_log_api  + "bid=\(bid)" + "&etime=\(etimeStr)" + "&mins_count=\(mins_count)" + "&bpage=\(bpage)" + "&epage=\(epage)" + "&review=\(num)" + "&reminder=\(reminderStr)" + request.getTokenParameter()
         request.request_api(url: url)
@@ -60,12 +60,14 @@ class LearnLogDataManger: UIViewController,BaseApiMangerViewControllerDelegate {
 
 
     func requestSucceed(response: Any) {
+        SVPMessageShow.dismissSVP()
         if (self.delegate != nil) {
             self.delegate.LearnLogDataSucceed()
         }
     }
 
     func requestFail(response: Any) {
+        SVPMessageShow.dismissSVP()
         if (self.delegate != nil) {
             self.delegate.LearnLogDataFail()
         }

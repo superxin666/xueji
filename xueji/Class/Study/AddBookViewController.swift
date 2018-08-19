@@ -299,8 +299,9 @@ class AddBookViewController: BaseTableViewController,UIImagePickerControllerDele
     override func navigationRightBtnClick() {
         XJLog(message: "保存")
         self.view.endEditing(true)
+        
         if self.type == .addBook_scan {
-            
+
             requestManger.addBookRequestByIsbn(isbn: bookModel.isbn, cid: catID)
 
 

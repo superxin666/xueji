@@ -32,6 +32,7 @@ class BookAddApiViewController: UIViewController,BaseApiMangerViewControllerDele
     ///   - isbn: 书本号
     ///   - cid: 分类id
     func addBookRequestByIsbn(isbn:String,cid:Int) {
+        SVPMessageShow.showLoad(infoStr: "正在保存中~~")
         request.delegate = self
         self.type = .add_isbn
         SVPMessageShow.showLoad()
