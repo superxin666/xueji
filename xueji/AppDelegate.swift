@@ -13,6 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var backgroundTask:UIBackgroundTaskIdentifier! = nil
+    var avplayer: AVAudioPlayer? = nil
+    var time : Timer!
+    var timeNum2 : Int = 0
+
+
 
     //MARK: life circle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -66,6 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+
+
+
 //        十分钟
         let app = UIApplication.shared
         var bgTask : UIBackgroundTaskIdentifier!
@@ -88,6 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         })
 
+        time = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(timeStart), userInfo: nil, repeats: true)
+
 
         //后台任务
 //        if self.backgroundTask != nil {
@@ -98,8 +109,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            application.endBackgroundTask(self.backgroundTask)
 //            self.backgroundTask = UIBackgroundTaskInvalid
 //        })
+    }
+
+    func timeStart() {
+        timeNum2 = timeNum2 + 1
+        if timeNum2 == 60 {
+            self.tik()
+            timeNum2 = 0
+        }
+    }
 
 
+    func tik() {
+        XJLog(message: "检测")
+        if UIApplication.shared.backgroundTimeRemaining < 61 {
+            let urlStr = Bundle.main.path(forResource: "timer", ofType: "mp3")
+            let url  = URL(fileURLWithPath: urlStr!)
+            weak var weakself = self
+            do {
+                weakself?.avplayer = try AVAudioPlayer(contentsOf: url)
+            } catch _{
+                weakself?.avplayer = nil
+            }
+            weakself?.avplayer?.play()
+
+            UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        }
     }
 
 

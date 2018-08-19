@@ -94,11 +94,11 @@ class LearnViewController: BaseViewController {
     /// 开始计时
     func timeStart() {
         timeNum = timeNum + 1
-        timeNum2 = timeNum2 + 1
-        if timeNum2 == 60 {
-            self.tik()
-            timeNum2 = 0
-        }
+//        timeNum2 = timeNum2 + 1
+//        if timeNum2 == 60 {
+//            self.tik()
+//            timeNum2 = 0
+//        }
 
         timeTuple = String.getCountTime(sencond: timeNum)
         timeLabel.text = timeTuple.timeStr
@@ -109,8 +109,10 @@ class LearnViewController: BaseViewController {
 
     /// 结束
     func stopTimeimg() {
-        time.fireDate = Date.distantFuture
-        time.invalidate()
+        if time != nil {
+            time.fireDate = Date.distantFuture
+            time.invalidate()
+        }
     }
 
     func restClick()  {

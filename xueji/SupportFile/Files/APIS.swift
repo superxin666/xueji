@@ -11,6 +11,10 @@ let base_api = "http://47.52.101.29/app1"
 let base_image_api = "http://47.52.101.29"
 
 let upload_api = "/upload/index?"
+
+let UMENGKEY = "5b4c4c468f4a9d0e7b00016c"
+
+
 //---------------------------------用户
 let login_user_api = "/user/login?"
 let logout_user_api = "/user/logout?"
