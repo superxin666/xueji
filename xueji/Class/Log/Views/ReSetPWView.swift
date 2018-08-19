@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApiMangerDelegate {
+class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,ResetPasswordApiMangerDelegate {
     /// 手机号 UITextField
     var phoneTextFiled : UITextField!
     /// 验证码 UITextField
@@ -33,7 +33,7 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
     var codeBackView : UIView!
 
     var codeRequest = SmsCodeApiManger()
-    var registRequest = RegistApiManger()
+    var registRequest = ResetPasswordApiManger()
 
 
     var codeSt = ""
@@ -222,20 +222,23 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,RegistApi
             return
         }
         registRequest.delegate = self
-        registRequest.registRequest(phone: phoneStr, sms_code: codeSt, key: keyStr)
+        registRequest.resetRequest(phone: phoneStr, sms_code: codeSt, key: keyStr)
+    
 
     }
 
-    func requestSucceed_regist() {
+    func requestSucceed_reset() {
         let dele :AppDelegate = UIApplication.shared.delegate as! AppDelegate
         SVPMessageShow.showSucess(infoStr: "修改成功")
         dele.showLogin()
     }
-    func requestFail_regist() {
+
+    func requestFail_reset() {
         getCodeLabel.isUserInteractionEnabled = true
         SVPMessageShow.showErro(infoStr: "发送失败")
         timeNum = 60
         getCodeLabel.text = "重新获取"
+
     }
 
 
