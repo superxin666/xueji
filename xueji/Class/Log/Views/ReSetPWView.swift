@@ -32,6 +32,8 @@ class ReSetPWView: UIView,UITextFieldDelegate,SmsCodeApiMangerDelegate,ResetPass
     /// 验证码 背景
     var codeBackView : UIView!
 
+  
+
     var codeRequest = SmsCodeApiManger()
     var registRequest = ResetPasswordApiManger()
 

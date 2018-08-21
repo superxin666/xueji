@@ -39,6 +39,9 @@ class LoginView: UIView,UITextFieldDelegate {
     /// qq  button
     var qqBtn : UIButton!
 
+    /// 提示
+    var noticeLabel2 : UILabel!
+
 
     var phoneStr = ""
     var keyStr = ""
@@ -165,6 +168,16 @@ class LoginView: UIView,UITextFieldDelegate {
 //        self.addSubview(leftView)
 //        self.addSubview(noticeLabel)
 //        self.addSubview(rightView)
+
+        let noticeStr = "联系我们：".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSzie: 10)
+
+        let str2 = "2068173977（QQ）".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x6C9CE2), fontSzie: 10)
+        noticeStr.append(str2)
+
+        noticeLabel2 = UILabel.getLabel_AttributedTitle(fream: CGRect(x: 0, y: KSCREEN_HEIGHT - ip6(60) - LNAVIGATION_HEIGHT, width: KSCREEN_WIDTH, height: ip6(35)), fontSize: 14, text: noticeStr, textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .center)
+        noticeLabel.numberOfLines = 0
+        self.addSubview(noticeLabel2)
+
     }
     
     func logInClick() {
