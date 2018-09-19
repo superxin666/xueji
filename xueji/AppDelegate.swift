@@ -122,6 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func tik() {
         XJLog(message: "检测")
+        XJLog(message: UIApplication.shared.backgroundTimeRemaining)
         if UIApplication.shared.backgroundTimeRemaining < 61 {
             let urlStr = Bundle.main.path(forResource: "timer", ofType: "mp3")
             let url  = URL(fileURLWithPath: urlStr!)

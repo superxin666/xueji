@@ -38,6 +38,9 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 
         self.navigationbar_transparency()
+        requestVC.delegate = self
+        requestVC.dataRequest()
+
 
         
     }
@@ -49,8 +52,6 @@ class UserViewController: BaseViewController,UITableViewDelegate,UITableViewData
         self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "user_send"))
         self.creatHeadUI()
         self.creatTableView()
-        requestVC.delegate = self
-        requestVC.dataRequest()
         NotificationCenter.default.addObserver(self, selector: #selector(reflishData), name: NSNotification.Name(rawValue: FLISHDATA_user), object: nil)
 
 

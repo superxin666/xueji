@@ -55,7 +55,7 @@ class ReviewTopView: UIView {
             subView.addSubview(midLabel)
            
             XJLog(message:"星期几" + "\(weekNum)")
-            if i  == weekNum {
+            if i + 1 == weekNum {
                 topLabel.textColor = .white
                 midLabel.textColor = .white
                 subView.backgroundColor = UIColor.xj_colorFromRGB(rgbValue: 0x535353)

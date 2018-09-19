@@ -18,11 +18,8 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     let request : ReviewApiMangerViewController = ReviewApiMangerViewController()
     let doneRequest : ReviewDoneViewController = ReviewDoneViewController()
 
-    /// 当前星期几
-    let weekNum = String.getDayIndex()
-    
-    /// 目前头部选项
-    var currectWeekNum : Int = String.getDayIndex()
+    /// 目前头部选项 当前星期几
+    var currectWeekNum : Int = String.getDayIndex() - 1
 
     /// 具体步骤
     var stepView : StepView!
@@ -34,18 +31,26 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 
         self.navigationbar_transparency()
+        request.delegate = self
+        doneRequest.delegate = self
+        request.listRequest()
+        currectWeekNum = String.getDayIndex() - 1
+        self.creatHeadView()
+
+
 
     }
-    
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        headBackView.removeFromSuperview()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigation_title_fontsize(name: "复习", fontsize: 20)
-        self.creatHeadView()
         self.creatTableView()
-        request.delegate = self
-        doneRequest.delegate = self
-        request.listRequest()
+
     }
     // MARK: -头部视图
     func creatHeadView() {
@@ -57,7 +62,9 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     }
     
     func creatTableView()  {
-        mainTabelView = UITableView.init(frame: CGRect(x: 0, y: headBackView.frame.maxY , width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - headBackView.frame.maxY), style: .grouped)
+        let height =  LNAVIGATION_HEIGHT + ip6(15) + ip6(54)
+
+        mainTabelView = UITableView.init(frame: CGRect(x: 0, y:  height, width: KSCREEN_WIDTH, height: KSCREEN_HEIGHT - height), style: .grouped)
         mainTabelView.backgroundColor = UIColor.clear
         mainTabelView.delegate = self;
         mainTabelView.dataSource = self;
@@ -67,6 +74,7 @@ class ReviewViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         mainTabelView.showsHorizontalScrollIndicator = false
         mainTabelView.setEditing(false, animated: true)
         mainTabelView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewCellID)
+
         self.view.addSubview(mainTabelView)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
