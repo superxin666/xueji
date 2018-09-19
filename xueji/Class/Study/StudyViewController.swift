@@ -58,7 +58,7 @@ class StudyViewController: BaseViewController ,UITableViewDelegate,UITableViewDa
     func setUpNavigation_normal() {
         self.navigation_title_fontsize(name: "学习", fontsize: 20)
 //        self.navigationBar_leftBtn_image(image: #imageLiteral(resourceName: "study_setup"))
-        self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_scan"))
+        self.navigationBar_rightBtn_image(image: #imageLiteral(resourceName: "study_plus"))
     }
     
     func setUpNavigation_edit()  {
