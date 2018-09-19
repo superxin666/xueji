@@ -71,12 +71,12 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
         //手机号码
         phoneBackView = UIView(frame: CGRect(x: backViewX, y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
 
-        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(60), height: ip6(15)), fontSize: ip6(15), text: "手机号", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(60), height: backViewHeight), fontSize: ip6(15), text: "手机号", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         phoneBackView.addSubview(phoneNameLabel)
 
 
         phoneTextFiled = UITextField()
-        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(80), height: ip6(15))
+        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(80), height: backViewHeight)
         phoneTextFiled.font = xj_fzFontMedium(ip6(15))
         phoneTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         phoneTextFiled.adjustsFontSizeToFitWidth = true
@@ -96,12 +96,12 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
         //验证码
         codeBackView = UIView(frame: CGRect(x: backViewX, y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
 
-        let codeNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(45), height: ip6(15)), fontSize: 15, text: "验证码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let codeNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(45), height: backViewHeight), fontSize: 15, text: "验证码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         codeBackView.addSubview(codeNameLabel)
 
 
         codeWorldTextFiled = UITextField()
-        codeWorldTextFiled.frame = CGRect(x: codeNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(80) - ip6(50), height: ip6(15))
+        codeWorldTextFiled.frame = CGRect(x: codeNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(80) - ip6(50), height: backViewHeight)
         codeWorldTextFiled.font = xj_fzFontMedium(ip6(15))
         codeWorldTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         codeWorldTextFiled.adjustsFontSizeToFitWidth = true
@@ -134,12 +134,12 @@ class RegistView: UIView,SmsCodeApiMangerDelegate,UITextFieldDelegate,RegistApiM
         //账号密码
         scrBackView = UIView(frame: CGRect(x: backViewX, y: codeBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
 
-        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(15)), fontSize: 15, text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: backViewHeight), fontSize: 15, text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         scrBackView.addSubview(scrNameLabel)
 
 
         passWorldTextFiled = UITextField()
-        passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: ip6(3), width: backViewWidth - ip6(60) - ip6(40), height: ip6(15))
+        passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: ip6(3), width: backViewWidth - ip6(60) - ip6(40), height: backViewHeight)
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
         passWorldTextFiled.textAlignment = .left
         passWorldTextFiled.returnKeyType = .done

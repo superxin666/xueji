@@ -71,13 +71,15 @@ class LoginView: UIView,UITextFieldDelegate {
         
         //手机号码
         let phoneBackView = UIView(frame: CGRect(x: backViewX, y: titleLabel_sub.frame.maxY + ip6(70), width: backViewWidth, height: backViewHeight))
+//        phoneBackView.backgroundColor = .green
 
-        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(70), height: ip6(15)), fontSize: ip6(15), text: "手机号码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let phoneNameLabel  = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(70), height: backViewHeight), fontSize: ip6(15), text: "手机号码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         phoneBackView.addSubview(phoneNameLabel)
         
         
         phoneTextFiled = UITextField()
-        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(10), y: 0, width: backViewWidth - ip6(80), height: ip6(15))
+//        phoneTextFiled.backgroundColor = .red
+        phoneTextFiled.frame = CGRect(x: phoneNameLabel.frame.maxX + ip6(10), y: 0, width: backViewWidth - ip6(80), height: backViewHeight)
         phoneTextFiled.font = xj_fzFontMedium(ip6(15))
         phoneTextFiled.textColor = UIColor.xj_colorFromRGB(rgbValue: 0x070707)
         phoneTextFiled.adjustsFontSizeToFitWidth = true
@@ -96,13 +98,15 @@ class LoginView: UIView,UITextFieldDelegate {
         
         //账号密码
         let scrBackView = UIView(frame: CGRect(x: backViewX, y: phoneBackView.frame.maxY + ip6(20), width: backViewWidth, height: backViewHeight))
+//        scrBackView.backgroundColor = .green
 
-        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: ip6(15)), fontSize: 15, text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
+        let scrNameLabel = UILabel.getLabel(fream: CGRect(x: 0, y: 0, width: ip6(30), height: backViewHeight), fontSize: 15, text: "密码", textColor: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), textAlignment: .left)
         scrBackView.addSubview(scrNameLabel)
         
         
         passWorldTextFiled = UITextField()
-        passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: ip6(3), width: backViewWidth - ip6(60) - ip6(40), height: ip6(15))
+//        passWorldTextFiled.backgroundColor = .red
+        passWorldTextFiled.frame = CGRect(x: scrNameLabel.frame.maxX + ip6(20), y: 0, width: backViewWidth - ip6(60) - ip6(40), height: backViewHeight)
         let str = "（6-18位数字或字母组合）".getAttributedStr_color(color: UIColor.xj_colorFromRGB(rgbValue: 0x9a9a9a), fontSzie: 10)
         passWorldTextFiled.attributedPlaceholder = str
         passWorldTextFiled.adjustsFontSizeToFitWidth = true
