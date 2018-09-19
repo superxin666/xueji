@@ -147,6 +147,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             }
             let fream = CGRect(x: ip6(35), y: ip6(190), width: KSCREEN_WIDTH - ip6(70), height: ip6(250))
             NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: {[weak self] (noti) in
+                XJLog(message: "自动对焦")
+
                 output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: fream))!
             })
 
@@ -169,10 +171,12 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
     //MARK: deleghate
 
     func captureOutput(_ output: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        self.scanSession!.stopRunning()
         XJLog(message: "扫描完成")
         //扫完完成
         if metadataObjects.count > 0{
+
+            XJLog(message: "扫描有结果")
+            self.scanSession!.stopRunning()
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject{
                 XJLog(message: resultObj.stringValue)
                 self.addbookRequest(isbn: Int(resultObj.stringValue!)!)
@@ -184,6 +188,8 @@ class ScanViewController: BaseViewController,AVCaptureMetadataOutputObjectsDeleg
             alertView.show()
         }
     }
+
+
 
 
 
